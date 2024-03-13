@@ -1,0 +1,28 @@
+# Ignora el archivo .env que contiene las variables de entorno
+.env
+
+# Ignora los archivos de configuración del IDE (por ejemplo, para VS Code)
+.vscode/
+.idea/
+
+# Ignora los archivos de log
+*.log
+
+# Ignora los archivos de cache
+cache/
+*.cache
+
+# Ignora los archivos de sesión
+sessions/
+
+# Ignora los directorios de los paquetes instalados por composer
+vendor/
+
+# Ignora los archivos generados por composer
+composer.lock
+composer.phar
+composer.phar.asc
+
+# Ignora los archivos generados por phpunit
+/phpunit.xml
+/.phpunit.result.cache
