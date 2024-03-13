@@ -1,5 +1,7 @@
 <?php
 
+require_once '../config/database.php';
+
 class Audio{
     private $conn;
     private $vista = "audio";
@@ -21,10 +23,11 @@ class Audio{
 
     public function obtenerAudios(){
         $query = "SELECT * FROM " . $this->vista;
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->execute();
         return $stmt;
     }
+    
 
 }
 ?>
