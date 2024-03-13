@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
 import { LoginComponent } from './login/login.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
@@ -16,7 +21,9 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()
