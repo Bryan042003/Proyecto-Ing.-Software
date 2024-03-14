@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/database.php';
+//require_once '../config/database.php';
 
 class Audio{
     private $conn;
@@ -26,6 +26,23 @@ class Audio{
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->execute();
         return $stmt;
+    }
+
+    public function obtenerAudio($id){
+        $query = "SELECT * FROM " . $this->vista . " WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    //public function removerAudio($id_admin, $id_audio, $motivo){
+    public function removerAudio($id){
+        $query = "DELETE FROM " . $this->vista . " WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
     }
     
 
