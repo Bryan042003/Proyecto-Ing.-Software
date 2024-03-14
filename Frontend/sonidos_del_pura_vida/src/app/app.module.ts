@@ -12,13 +12,20 @@ import { LoginComponent } from './login/login.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FiltrosComponent } from './Componentes/filtros/filtros.component';
+import { CardAudioComponent } from './Componentes/card-audio/card-audio.component';
+import { MapaComponent } from './Componentes/mapa/mapa.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PaginaPrincipalComponent,
-    VistaAdministradorComponent
+    VistaAdministradorComponent,
+    CardAudioComponent,
+    MapaComponent,
+    FiltrosComponent,
+    PaginaPrincipalComponent
   ],
   imports: [
     BrowserModule,
