@@ -13,29 +13,29 @@ $count = $stmt->rowCount();
 
 if($count > 0){
     $audios = array();
-    $audios["body"] = array();
-    $audios["count"] = $count;
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ 
         extract($row); 
         $p  = array( // Crea un objeto por cada fila
-             "Titulo: " => $titulo,
-             "Autor: " => $autor,
-             "Comentarios: " => $comentarios,
-             "Ruta del audio: " =>  $ruta_audio,
-             "Ruta de la imagen: " => $ruta_imagen,
-             "Latitud: "  => $latitud,
-             "Longitud: " => $longitud,
-             "Distrito: " => $distrito,
-             "Canton: " => $canton,
-             "Provincia: " => $provincia 
+             "id" => $id,
+             "titulo" => $titulo,
+             "autor" => $autor,
+             "comentarios" => $comentarios,
+             "ruta_audio" =>  $ruta_audio,
+             "ruta_imagen" => $ruta_imagen,
+             "latitud"  => $latitud,
+             "longitud" => $longitud,
+             "distrito" => $distrito,
+             "canton" => $canton,
+             "provincia" => $provincia ,
+             "fecha_registro" => $fecha_registro
         );
-        array_push($audios["body"], $p);
+        array_push($audios, $p);
     }
     echo json_encode($audios, JSON_UNESCAPED_UNICODE);
 } else {
     echo json_encode(
-        array("body" => array(), "count" => 0)
+        array()
     );
 }
 
