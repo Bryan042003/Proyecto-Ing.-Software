@@ -21,18 +21,18 @@ BEGIN
     FROM provincia
     WHERE nombre = _nombre_provincia;
     
-    --Buscar el id del canton
+    -- Buscar el id del canton
     SELECT id INTO _id_canton
     FROM canton
     WHERE nombre = _nombre_canton AND id_provincia = _id_provincia;
     
-    --Insertar la ubicacion y obtener el id
+    -- Insertar la ubicacion y obtener el id
     INSERT INTO ubicacion(longitud, latitud, id_canton)
     VALUES (_longitud, _latitud, _id_canton);
     
     SET _id_ubicacion = LAST_INSERT_ID();
     
-    --Insertar el audio con el id de ubicacion
+    -- Insertar el audio con el id de ubicacion
     INSERT INTO audio(titulo, autor, comentarios, ruta_audio, ruta_imagen, id_ubicacion)
     VALUES (_titulo, _autor, _comentarios, _ruta_audio, _ruta_imagen, _id_ubicacion);
 END$$

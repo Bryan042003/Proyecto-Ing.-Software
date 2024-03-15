@@ -4,7 +4,7 @@
 
 class Audio{
     private $conn;
-    private $vista = "audio";
+    private $vista = "vista_audio_ubicacion";
 
     public $titulo;
     public $autor;
