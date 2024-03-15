@@ -17,7 +17,7 @@ if($count > 0){
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ 
         extract($row); 
         $p  = array( // Crea un objeto por cada fila
-             "id" => $id,
+             "id" => $audio_id,
              "titulo" => $titulo,
              "autor" => $autor,
              "comentarios" => $comentarios,
@@ -25,9 +25,8 @@ if($count > 0){
              "ruta_imagen" => $ruta_imagen,
              "latitud"  => $latitud,
              "longitud" => $longitud,
-             "distrito" => $distrito,
-             "canton" => $canton,
-             "provincia" => $provincia ,
+             "canton" => $nombre_canton,
+             "provincia" => $nombre_provincia ,
              "fecha_registro" => $fecha_registro
         );
         array_push($audios, $p);
