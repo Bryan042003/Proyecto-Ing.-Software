@@ -1,95 +1,66 @@
+DELIMITER $$
 
---INSERTS
-
-DELIMETER//
-create procedure insertar_audio(
-    in titulo_audio varchar(100),
-    in autor_audio varchar(100),
-    in comentarios_audio varchar(255),
-    in ruta_audio varchar(255),
-    in ruta_imagen_audio varchar(255),
-    in fecha_registro datetime,
-    in id_ubicacion int
+CREATE PROCEDURE InsertarAudioUbicacion(
+    IN _titulo VARCHAR(100),
+    IN _autor VARCHAR(100),
+    IN _comentarios VARCHAR(255),
+    IN _ruta_audio VARCHAR(255),
+    IN _ruta_imagen VARCHAR(255),
+    IN _latitud DOUBLE(10,5),
+    IN _longitud DOUBLE(10,5),
+    IN _nombre_canton VARCHAR(100),
+    IN _nombre_provincia VARCHAR(100)
 )
 BEGIN
-    insert into audio(titulo_audio, autor_audio, comentarios_audio, ruta_audio, ruta_imagen_audio, fecha_registro, id_ubicacion) values(titulo_audio, autor_audio, comentarios_audio, ruta_audio, ruta_imagen_audio, fecha_registro, id_ubicacion);
-END //
+    DECLARE _id_provincia INT;
+    DECLARE _id_canton INT;
+    DECLARE _id_ubicacion INT;
+    
+    -- Buscr el id de la provincia
+    SELECT id INTO _id_provincia
+    FROM provincia
+    WHERE nombre = _nombre_provincia;
+    
+    --Buscar el id del canton
+    SELECT id INTO _id_canton
+    FROM canton
+    WHERE nombre = _nombre_canton AND id_provincia = _id_provincia;
+    
+    --Insertar la ubicacion y obtener el id
+    INSERT INTO ubicacion(longitud, latitud, id_canton)
+    VALUES (_longitud, _latitud, _id_canton);
+    
+    SET _id_ubicacion = LAST_INSERT_ID();
+    
+    --Insertar el audio con el id de ubicacion
+    INSERT INTO audio(titulo, autor, comentarios, ruta_audio, ruta_imagen, id_ubicacion)
+    VALUES (_titulo, _autor, _comentarios, _ruta_audio, _ruta_imagen, _id_ubicacion);
+END$$
+
+CALL InsertarAudioUbicacion('titulo audio', 'autor audio', 'comentarios del audio', 'rutaAudio.mp3', 'rutaimagen.jpg', 9.748917, -83.753428, 'Paraíso', 'Cartago');
+
 
 DELIMITER ;
 
-DELIMETER//
-create procedure insertar_historial_admin_audios(
-    in id_administrador int,
-    in id_audio int,
-    in accion varchar(25),
-    in motivo varchar(255),
-    in fecha_registro datetime
-)   
-BEGIN
-    insert into historial_admin_audios(id_administrador, id_audio, accion, motivo, fecha_registro) values(id_administrador, id_audio, accion, motivo, fecha_registro);
-END //  
+CREATE VIEW vista_audio_ubicacion AS
+SELECT
+    audio.id AS audio_id,
+    audio.titulo,
+    audio.autor,
+    audio.comentarios,
+    audio.ruta_audio,
+    audio.ruta_imagen,
+    audio.fecha_registro,
+    ubicacion.longitud,
+    ubicacion.latitud,
+    canton.nombre AS nombre_canton,
+    provincia.nombre AS nombre_provincia
+FROM
+    audio
+INNER JOIN ubicacion ON audio.id_ubicacion = ubicacion.id
+INNER JOIN canton ON ubicacion.id_canton = canton.id
+INNER JOIN provincia ON canton.id_provincia = provincia.id;
 
-DELIMITER ;
 
 
-DELIMETER//
-create procedure insertar_administrador(
-    in nombre_administrador varchar(50),
-    in correo_administrador varchar(50),
-    in password varchar(50)
-)   
-BEGIN
-    insert into administrador(nombre_administrador, correo_administrador, password) values(nombre_administrador, correo_administrador, password);
-END //  
-
-DELIMETER ;
-
-DELIMETER//
-create procedure insertar_ubicacion(
-    in longitud_ubicacion decimal(5,10),
-    in latitud_ubicacion decimal(5,10),
-    in id_distrito int
-)   
-BEGIN
-    insert into ubicacion(longitud_ubicacion, latitud_ubicacion, id_distrito) values(longitud_ubicacion, latitud_ubicacion, id_distrito);
-END //  
-
-DELIMETER ;
-
-DELIMETER //
-create procedure insertar_distrito(
-    in nombre_distrito varchar(100),
-    in id_canton int
-)
-BEGIN
-    insert into distrito(nombre_distrito, id_canton) values(nombre_distrito, id_canton);
-END //
-
-DELIMITER ;
-
-DELIMETER //
-
-create procedure insertar_canton(
-    in nombre_canton varchar(100),
-    in id_provincia int
-)
-BEGIN
-    insert into canton(nombre_canton, id_provincia) values(nombre_canton, id_provincia);
-END //
-
-DELIMITER ;
-
-DELIMETER //
-
-create procedure insertar_provincia(
-    in nombre_provincia varchar(100)
-)
-
-BEGIN
-    insert into provincia(nombre_provincia) values(nombre_provincia);
-END //
-
-DELIMITER ;
-
---GETS
 
