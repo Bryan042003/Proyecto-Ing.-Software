@@ -14,19 +14,14 @@ create table canton(
     FOREIGN KEY (id_provincia) REFERENCES provincia(id)
 );
 
-create table distrito(
-    id int not null auto_increment primary key,
-    nombre varchar(100) not null,
-    id_canton int not null,
-    FOREIGN KEY (id_canton) REFERENCES canton(id)
-);
+
 
 create table ubicacion(
     id int not null auto_increment primary key,
     longitud double(10,5) not null,
     latitud double(10,5) not null,
-    id_distrito int not null,
-    FOREIGN KEY (id_distrito ) REFERENCES distrito(id)
+    id_canton int not null,
+    FOREIGN KEY (id_canton) REFERENCES canton(id)
 );
 
 create table administrador(
