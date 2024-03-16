@@ -45,20 +45,6 @@ class Audio{
         return $stmt->rowCount() > 0;
     }
 
-    public function agregarImagen($imagen) {
-        $imagen_name = $_FILES["imagen"]["name"];
-        $temp_imagen_name = $_FILES["imagen"]["tmp_name"];
-        $folder = '../../imagenes/'. $imagen_name;
-        //echo "IMAGEN_NAME: " . $imagen_name . " TEMPIMAGEN_NAME: " . $temp_imagen_name;
-        $direccion = 'http://localhost/sonidosPV/imagenes/'. $imagen_name;
-        if(move_uploaded_file($temp_imagen_name, $folder)){
-            return $direccion;
-            //echo "Se subió la imagen";
-        } else {
-            //echo "No se subió la imagen";
-        }
-    }
-
     // CALL InsertarAudioUbicacion('titulo audio', 'autor audio', 'comentarios del audio', 'rutaAudio.mp3', 'rutaimagen.jpg', 9.748917, -83.753428, 'Paraíso', 'Cartago');
 
     public function agregarAudio($audio){
