@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PasarDatosService } from '../../services/pasar-datos.service';
 import { Audio } from '../../models/Audio.model';
-import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-card-audio',
@@ -11,14 +11,17 @@ import { Inject } from '@angular/core';
 export class CardAudioComponent implements OnInit{
 
   audios:Audio[] = [];
-  constructor(@Inject(PasarDatosService) private pasarDatosService: PasarDatosService) { }
+  constructor(private pasarDatosService: PasarDatosService) { }
 
-
+  ngOnInit(): void {
+    this.cargarAudios();
+  }
 
   private cargarAudios(){
     this.pasarDatosService.getAudios().subscribe(
-      (audios) => {
-        this.audios = audios;
+      (res:any) => {
+        console.log(res);
+        this.audios = res;
       }
     );
   }
@@ -31,8 +34,5 @@ export class CardAudioComponent implements OnInit{
 
 
 */
-  ngOnInit(): void {
-    this.cargarAudios();
-  }
 
 }

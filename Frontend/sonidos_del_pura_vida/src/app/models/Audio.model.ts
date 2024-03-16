@@ -1,4 +1,5 @@
 export interface Audio {
+    data(data: any): unknown;
     id:number;
     titulo:string;
     autor:string;
@@ -7,7 +8,7 @@ export interface Audio {
     ruta_imagen:string;
     latitud:string;
     longitud:string;
-    distrito:string;
     canton:string;
     provincia:string;
+    fecha_registro:string;
 }

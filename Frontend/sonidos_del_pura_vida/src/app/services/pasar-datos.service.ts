@@ -7,16 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PasarDatosService {
-  private urlAudios = 'http://localhost/sonidosPV/controladores/Audios/obtenerAudios.php';
-  private urlAudio = 'http://localhost/sonidosPV/controladores/Audios/obtenerAudioById.php?id=';
-  private urlRemoverAudio = 'http://localhost/sonidosPV/controladores/Audios/removerAudio.php?id=';
+  //ver como hacer para que la url sea dinamica
+  private urlAudios = 'http://localhost/sonidosPV/controladores/Audios/';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
 
-  getAudios():Observable<Audio[]>{
-    return this.http.get<Audio[]>(this.urlAudios);
+  getAudios():Observable<Audio>{
+    return this.http.get<Audio>(this.urlAudios +  'obtenerAudios');
   }
-
+/*
   getAudio(id:number):Observable<Audio>{
     return this.http.get<Audio>(this.urlAudio + id);
   }
@@ -24,4 +23,5 @@ export class PasarDatosService {
   deleteAudio(id:number):Observable<Audio>{
     return this.http.delete<Audio>(this.urlRemoverAudio + id);
   }
+  */
 }
