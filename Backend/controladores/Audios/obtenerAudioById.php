@@ -15,7 +15,7 @@ $audioObtenido = $audio->obtenerAudio($id);
 
 if($audioObtenido){
     $audioData = array(
-        "id" => $audioObtenido['id'],
+        "id" => $audioObtenido['audio_id'],
         "titulo" => $audioObtenido['titulo'],
         "autor" => $audioObtenido['autor'],
         "comentarios" => $audioObtenido['comentarios'],
@@ -23,9 +23,9 @@ if($audioObtenido){
         "ruta_imagen" => $audioObtenido['ruta_imagen'],
         "latitud" => $audioObtenido['latitud'],
         "longitud" => $audioObtenido['longitud'],
-        "distrito" => $audioObtenido['distrito'],
-        "canton" => $audioObtenido['canton'],
-        "provincia" => $audioObtenido['provincia']
+        "canton" => $audioObtenido['nombre_canton'],
+        "provincia" => $audioObtenido['nombre_provincia'],
+        "fecha_registro" => $audioObtenido['fecha_registro']
     );
     echo json_encode($audioData, JSON_UNESCAPED_UNICODE);
 } else {
