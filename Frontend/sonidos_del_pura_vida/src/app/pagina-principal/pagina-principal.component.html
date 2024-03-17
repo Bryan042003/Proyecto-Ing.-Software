@@ -1,13 +1,44 @@
 <div class="card" style="align-items: center;  border: none;">
 
-    <div class="card-header" style="background-color: white; border: none;">
-        <img style="width: 300px;" src="assets/imagenes/sonidos_del_pura_vida.png">
-        <span class="material-symbols-outlined" style="text-decoration: none;">help</span>
+    <div class="card-header align-items-center" style="background-color: white; border: none; width: 100%;">
+        <div style="display: flex; justify-content: center;">
+            <img style="width: 300px;" src="assets/imagenes/sonidos_del_pura_vida.png">
+        </div>
+
+
+        <div class="dropdown d-flex ms-auto" style="justify-content: flex-end; width: 98%;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                style="background-color: white; color: black; border: none; margin: 15px ;">
+                <span class="material-symbols-outlined " style="text-decoration: none; font-size: 40px; ">help</span>
+            </button>
+            <ul class="dropdown-menu">
+
+                <H5 style=" margin: 15px;">Ayuda</H5>
+
+                <li style="margin:20px 50px 20px 0px"><a class="dropdown-item" href="#">
+                        <span class="material-symbols-outlined" style="margin-right: 5px;">
+                            quick_reference
+                        </span>
+                        <strong>Términos de uso</strong></a></li>
+
+                <div class="dropdown-divider"></div>
+
+                <li style="margin:20px 50px 20px 0px">
+                    <a class="dropdown-item" href="#">
+                        <span class="material-symbols-outlined" style="margin-right: 5px;">
+                            info
+                        </span>
+                        <strong>Acerca de nosotros</strong> </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
 
-    <div class="card-body"
-        style="width: 95%; align-items: center; border: 1px solid #E2E2E2; margin: 20px 0 25px 0;  border-radius: 20px;">
+
+    <div class="card-body" style="width: 95%; align-items: center; border: 1px solid #E2E2E2;  border-radius: 20px;">
 
         <div class="row">
             <div class="col-sm-6">
@@ -16,13 +47,14 @@
                         <app-filtros></app-filtros>
                     </div>
 
-                    <div class="col-sm-7" >
+                    <div class="col-sm-7">
 
-                        <div class="card" style="border: none;" >
+                        <div class="card" style="border: none;">
 
-                            <div class="dropdown d-flex ms-auto" >
+                            <div class="dropdown d-flex ms-auto">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
                                     Ordenar por:
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
@@ -36,33 +68,48 @@
                             <nav class="dropdown d-flex mx-auto" aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item" style="margin-right: 5px;">
-                                        <a style="background-color: #F1F3F4; color:black; border: none;"  class="page-link" href="#" aria-label="Previous">
+                                        <a style="background-color: #F1F3F4; color:black; border: none;"
+                                            class="page-link" href="#" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
-                                    <li class="page-item" style="margin-right: 5px;"><a style="background-color: #F1F3F4; color:black; border: none;" class="page-link" href="#">1</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a style="background-color: #F1F3F4; color:black ; border: none;" class="page-link" href="#">2</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a style="background-color: #F1F3F4; color:black ; border: none;" class="page-link" href="#">3</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a style="background-color: #F1F3F4; color:black ; border: none;" class="page-link" href="#">4</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a style="background-color: #F1F3F4; color:black ; border: none;" class="page-link" href="#">5</a></li>
-                                    <li class="page-item" style="margin-right:5px;"><a style="background-color: #F1F3F4; color:black ; border: none;" class="page-link" href="#">...</a></li>
+                                    <li class="page-item" style="margin-right: 5px;"><a
+                                            style="background-color: #F1F3F4; color:black; border: none;"
+                                            class="page-link" href="#">1</a></li>
+                                    <li class="page-item" style="margin-right: 5px;"><a
+                                            style="background-color: #F1F3F4; color:black ; border: none;"
+                                            class="page-link" href="#">2</a></li>
+                                    <li class="page-item" style="margin-right: 5px;"><a
+                                            style="background-color: #F1F3F4; color:black ; border: none;"
+                                            class="page-link" href="#">3</a></li>
+                                    <li class="page-item" style="margin-right: 5px;"><a
+                                            style="background-color: #F1F3F4; color:black ; border: none;"
+                                            class="page-link" href="#">4</a></li>
+                                    <li class="page-item" style="margin-right: 5px;"><a
+                                            style="background-color: #F1F3F4; color:black ; border: none;"
+                                            class="page-link" href="#">5</a></li>
+                                    <li class="page-item" style="margin-right:5px;"><a
+                                            style="background-color: #F1F3F4; color:black ; border: none;"
+                                            class="page-link" href="#">...</a></li>
                                     <li class="page-item">
-                                        <a style="background-color: #F1F3F4; color:black;  border: none;" class="page-link" href="#" aria-label="Next">
+                                        <a style="background-color: #F1F3F4; color:black;  border: none;"
+                                            class="page-link" href="#" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
-                            <div class="container" style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
+                            <div class="container"
+                                style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
                                 <!-- Aquí se crea la lista de los audios a mostrar -->
-                                
-                                <app-card-audio/>
-                                
+
+                                <app-card-audio />
+
                             </div>
-                           
+
                         </div>
 
-                        
+
                     </div>
 
                 </div>
@@ -80,23 +127,68 @@
 
 </div>
 
-<div class="card-footer text-muted d-flex" style="background-color: #F1F3F4; place-content: center; width: 100%; margin-top:5%;">
-        <div class="col" style="margin:5%;">
-            <H5>Sonidos del Pura vida es un proyecto de ...</H5>
-            <p>Universidad Estatal a Distancia</p>
-            <p>Mercedes de Montes de Oca</p>
-            <p>Apartado postal San José 474-2050</p>
-        </div>
+<div class="card-footer text-muted d-flex"
+    style="background-color: #F1F3F4; place-content: center; width: 100%; margin-top:5%;">
+    <div class="col" style="margin:5%;">
+        <H5>Sonidos del Pura vida es un proyecto de ...</H5>
+        <p>Universidad Estatal a Distancia</p>
+        <p>Mercedes de Montes de Oca</p>
+        <p>Apartado postal San José 474-2050</p>
+    </div>
 
-        <div class="col" style="margin: 5%;">
-            <img src="assets/imagenes/LIT.png" alt="" style="width: 350px;">
-        </div>
+    <div class="col" style="margin: 5%;">
+        <img src="assets/imagenes/LIT.png" alt="" style="width: 350px;">
+    </div>
 
-        <div class="col" style="margin:5%;">
-            <H5>Contáctenos</H5>
-            <p>Correo: liit&#64;uned.ac.cr</p>
-            <p>Teléfonos:</p>
-            <p>(+506) 22343236 / ext 4621</p>
-            <p>(+506) 2234-3536 / ext. 4622</p>
+    <div class="col" style="margin:5%;">
+        <H5>Contáctenos</H5>
+        <p>Correo: liit&#64;uned.ac.cr</p>
+        <p>Teléfonos:</p>
+        <p>(+506) 22343236 / ext 4621</p>
+        <p>(+506) 2234-3536 / ext. 4622</p>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="verinfoaudios" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1500px; " >
+        <div class="modal-content" style="height: 800px; border-radius: 40px;">
+            <div >
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="background: transparent; border: none; margin: 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h1 class="d-flex" style="margin: 0px 30px 30px 30px;place-content: center;">Nombre audio</h1>
+
+            <div class="modal-body d-flex" style="place-content: center;">
+                <div class="card" style="width: 90%;height: 85%; border-radius: 20px; stroke: #F1F3F4;">
+                    <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px;">
+                        <div class="col">
+                            <h5>Provincia: </h5>
+                            <h5>Autor: </h5>
+                            <h5>Sonido</h5>
+                            <audio controls src="" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
+                        </div>
+                        <div class="col">
+                            <h5>Foto</h5>
+                            <img style="width: 300px;" src="assets/imagenes/sonidos_del_pura_vida.png">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px;">
+                        <h5>Ubicación</h5>
+                        <div class="d-flex" style="width: 80%; height:80%; place-content: center; align-items: center;">
+                            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
+                                marginwidth="0"
+                                src="https://maps.google.com/maps?width=100%%26amp;height=600&amp;hl=en&amp;q=Costa%20Rica,%20San%20josé+(Your%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+                                    href="https://www.gps.ie/sport-gps/">bike gps</a></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </div>
 </div>
