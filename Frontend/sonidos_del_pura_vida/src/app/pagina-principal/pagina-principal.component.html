@@ -16,7 +16,7 @@
 
                 <H5 style=" margin: 15px;">Ayuda</H5>
 
-                <li style="margin:20px 50px 20px 0px"><a class="dropdown-item" href="#">
+                <li style="margin:20px 50px 20px 0px"><a class="dropdown-item">
                         <span class="material-symbols-outlined" style="margin-right: 5px;">
                             quick_reference
                         </span>
@@ -25,7 +25,7 @@
                 <div class="dropdown-divider"></div>
 
                 <li style="margin:20px 50px 20px 0px">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" >
                         <span class="material-symbols-outlined" style="margin-right: 5px;">
                             info
                         </span>
@@ -149,12 +149,13 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Visualizar info audios-->
 <div class="modal fade" id="verinfoaudios" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1500px; " >
+    <div class="modal-dialog" style="max-width: 1500px; ">
         <div class="modal-content" style="height: 800px; border-radius: 40px;">
-            <div >
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="background: transparent; border: none; margin: 20px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background: transparent; border: none; margin: 20px;">
                     <span class="material-symbols-outlined" style=" font-size: 40px;">
                         cancel
                     </span>
@@ -167,19 +168,20 @@
                 <div class="card" style="width: 90%;height: 85%; border-radius: 20px; stroke: #F1F3F4;">
                     <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px;">
                         <div class="col">
-                            <h5>Provincia: </h5>
-                            <h5>Autor: </h5>
-                            <h5>Sonido</h5>
+                            <h5 style="margin-bottom:20px;">Provincia: </h5>
+                            <h5 style="margin-bottom:20px;">Autor: </h5>
+                            <h5 style="margin-bottom:20px;">Sonido</h5>
                             <audio controls src="" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
                         </div>
-                        <div class="col">
+                        <div class="col" style="margin-bottom:30px;">
                             <h5>Foto</h5>
                             <img style="width: 300px;" src="assets/imagenes/sonidos_del_pura_vida.png">
                         </div>
                     </div>
-                    <div class="row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px;">
+                    <div class="row d-flex"
+                        style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px; place-content: center;">
                         <h5>Ubicación</h5>
-                        <div class="d-flex" style="width: 80%; height:80%; place-content: center; align-items: center;">
+                        <div class="" style="width: 100%; height:100%;">
                             <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
                                 marginwidth="0"
                                 src="https://maps.google.com/maps?width=100%%26amp;height=600&amp;hl=en&amp;q=Costa%20Rica,%20San%20josé+(Your%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
@@ -189,6 +191,93 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal crear sonidos-->
+<div class="modal fade" id="crearAudios" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1500px; ">
+        <div class="modal-content" style="height: 850px; border-radius: 40px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background: transparent; border: none; margin: 20px 0px 0px 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h1 class="d-flex" style="place-content: center;">Crear Sonidos Pura Vida</h1>
+
+            <div class="modal-body d-flex" style="place-content: center;">
+                <div class="card" style="width: 90%;height: 90%; border-radius: 20px; stroke: #F1F3F4;">
+                    <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px; height: 100%;">
+
+                        <div class="col ">
+                            <h5 style="margin-bottom:20px;">Nombre su sonido pura vida: </h5>
+                            <input type="text" class="form-control"
+                                style="border-radius: 20px; width: 50%;margin-bottom:20px;">
+                            <h5 style="margin-bottom:20px;">Autor: </h5>
+                            <input type="text" class="form-control"
+                                style="border-radius: 20px; width: 50%;margin-bottom:20px;">
+                            <h5 style="margin-bottom:20px;">Ubicación</h5>
+
+                            <iframe width="80%" height="40%" frameborder="0" scrolling="no" marginheight="0"
+                                marginwidth="0"
+                                src="https://maps.google.com/maps?width=100%%26amp;height=600&amp;hl=en&amp;q=Costa%20Rica,%20San%20josé+(Your%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+                                    href="https://www.gps.ie/sport-gps/">bike gps</a></iframe>
+
+                            <button class="btn btn-primary btn-sm"
+                                style="border-radius: 20px; background-color: #001148; color:white; margin-top:20px; width: 250px; height: 50px;">Encontrar
+                                mi ubicación actual</button>
+                        </div>
+
+                        <div class="col">
+                            <h5 style="margin-bottom:20px;">Sonido </h5>
+
+                            <div class="file-input" style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
+                                <label for="file-upload" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                                  <span class="material-symbols-outlined" style="font-size: 45px; margin-bottom: 10px;">
+                                    cloud_upload
+                                  </span>
+                                  <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o examinar</span>
+                                  <input type="file" id="file-upload" style="display: none;">
+                                </label>
+                            </div>
+
+                            <p>Los archivos deben ser menores que <strong>50MB</strong></p>
+                            <p>Tipos de archivos permitidos: <strong>mp3 wav ogg mp4.</strong></p>
+
+
+                            <h5 style="margin-bottom:20px;">Foto </h5>
+
+                            <div class="file-input" style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
+                                <label for="file-upload" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                                  <span class="material-symbols-outlined" style="font-size: 45px; margin-bottom: 10px;">
+                                    cloud_upload
+                                  </span>
+                                  <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o examinar</span>
+                                  <input type="file" id="file-upload" style="display: none;">
+                                </label>
+                            </div>
+
+                            <p>Los archivos deben ser menores que <strong>50MB</strong></p>
+                            <p>Tipos de archivos permitidos: <strong>png gif jpg jpeg.</strong></p>
+                            <div class="d-flex" style="place-content: center;">
+                                <button  type="submit" style="border-radius: 20px; width: 150px; height: 50px; background-color: #001148; color: white; margin-top: 15px;">Guardar</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 </div>
