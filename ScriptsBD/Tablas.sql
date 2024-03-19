@@ -18,8 +18,8 @@ create table canton(
 
 create table ubicacion(
     id int not null auto_increment primary key,
-    longitud double(10,5) not null,
-    latitud double(10,5) not null,
+    longitud double(10,10) not null,
+    latitud double(10,10) not null,
     id_canton int not null,
     FOREIGN KEY (id_canton) REFERENCES canton(id)
 );
