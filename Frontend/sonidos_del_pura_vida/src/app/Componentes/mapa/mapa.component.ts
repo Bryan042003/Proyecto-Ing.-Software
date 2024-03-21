@@ -39,6 +39,7 @@ export class MapaComponent implements OnInit {
       let latitud = parseFloat(audio.latitud);
       let longitud = parseFloat(audio.longitud);
       const marker = new Marker([latitud, longitud]).addTo(map);
+      marker.bindPopup("<b>Titulo: " + audio.titulo + "</b><br>Autor: " + audio.autor);
     });
   }
 
