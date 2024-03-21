@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'sonidos_del_pura_vida'`, () => {
+  it(`should have as title 'SONIDOS_DEL_PURA_VIDA'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('sonidos_del_pura_vida');
+    expect(app.title).toEqual('SONIDOS_DEL_PURA_VIDA');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, sonidos_del_pura_vida');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, SONIDOS_DEL_PURA_VIDA');
   });
 });

@@ -1,31 +1,32 @@
 
 
 <div *ngFor="let audio of audios">
-  <div class="card d-flex" style="border: 2px solid #E2E2E2; margin-bottom: 10px; width: 98%; border-radius: 20px; border-radius: 20px;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
-
-      <div class="row">
-
-          <div class="col-sm-4 d-flex" style="align-items: center; text-align:start; place-content: center;">
-              <img src="assets/imagenes/Sin_foto.png"
-                  style="width: 95%;height:80%;object-fit:contain; border-radius: 5px;">
-          </div>
-          <div class="col-sm-6" style="margin-top: 10px;">
-              <button data-bs-toggle="modal" data-bs-target="#verinfoaudios"style="border:none; background: transparent;text-align:start;">
-                  <h5> {{ audio.titulo }}</h5>
-                  <p>Provincia: {{ audio.provincia }}</p>
-                  <p>Autor: {{ audio.autor }}</p>
-              </button>
-          </div>
-          <div class="col d-flex" style="text-align: center;align-items: center; place-content: center;">
-              <button style="border: none; background: transparent;">
-                  <span class="material-symbols-outlined" style="font-size: 40px;">
-                      download
-                  </span>
-              </button>
-          </div>
-      </div>
-      <div class="row d-flex" style="place-content: center;">
-          <audio controls src="" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
-      </div>
+    <div class="card d-flex" style="border: 2px solid #E2E2E2; margin-bottom: 10px; width: 98%; border-radius: 20px; border-radius: 20px;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
+  
+        <div class="row">
+  
+            <div class="col-sm-4 d-flex" style="align-items: center; text-align:start; place-content: center;">
+                <img src="assets/imagenes/Sin_foto.png"
+                    style="width: 95%;height:80%;object-fit:contain; border-radius: 5px;">
+            </div>
+            <div class="col-sm-6" style="margin-top: 10px;">
+                <button data-bs-toggle="modal" data-bs-target="#verinfoaudios"style="border:none; background: transparent;text-align:start;">
+                    <h5> {{ audio.titulo }}</h5>
+                    <p>Provincia: {{ audio.provincia }}</p>
+                    <p>Autor: {{ audio.autor }}</p>
+                </button>
+            </div>
+            <div class="col d-flex" style="text-align: center;align-items: center; place-content: center;">
+                <button style="border: none; background: transparent;">
+                    <span class="material-symbols-outlined" style="font-size: 40px;">
+                        download
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="row d-flex" style="place-content: center;">
+            <audio controls src="" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
+        </div>
+    </div>
   </div>
-</div>
+  
