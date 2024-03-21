@@ -20,7 +20,7 @@ export class CardAudioComponent implements OnInit{
   private cargarAudios(){
     this.pasarDatosService.getAudios().subscribe(
       (res:any) => {
-        //console.log(res);
+        console.log(res);
         this.audios = res;
       }
     );

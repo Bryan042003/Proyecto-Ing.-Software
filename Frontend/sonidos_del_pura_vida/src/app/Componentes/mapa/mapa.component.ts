@@ -38,7 +38,16 @@ export class MapaComponent implements OnInit {
       console.log(audio.latitud, audio.longitud);
       let latitud = parseFloat(audio.latitud);
       let longitud = parseFloat(audio.longitud);
-      const marker = new Marker([latitud, longitud]).addTo(map);
+      const marker = new Marker([latitud, longitud]).addTo(map).
+      bindPopup(`
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 300px; margin-bottom: 10px;">
+    <h5 style="margin-top: 10px;"><strong>${audio.titulo}</strong></h5>
+    <p><strong>Autor</strong> ${audio.autor}</p>
+    <img src="${audio.ruta_imagen}" alt="" style="width: 100px; height: 30%; margin-bottom: 10px;">
+    <audio controls src="${audio.ruta_audio}" style="border-radius: 0%; width: 100%; margin-bottom: 15px;" height: 50%></audio>
+    <button data-bs-toggle="modal" data-bs-target="#verinfoaudios" style="border:none; background: transparent; text-align: start; color: #4D7DEA ">Leer más</button>
+  </div>
+`);
     });
   }
 
