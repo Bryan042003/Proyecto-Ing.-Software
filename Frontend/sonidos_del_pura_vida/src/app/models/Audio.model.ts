@@ -5,8 +5,8 @@ export interface Audio {
     comentarios: string;
     ruta_audio:string;
     ruta_imagen:string;
-    latitud:number;
-    longitud:number;
+    latitud:string;
+    longitud:string;
     canton:string;
     provincia:string;
     fecha_registro:string;

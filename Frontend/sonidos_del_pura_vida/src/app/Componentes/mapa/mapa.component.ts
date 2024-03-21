@@ -18,22 +18,14 @@ export class MapaComponent implements OnInit {
       (res: any) => {
         this.audios = res;
         console.log("cargando audios");
-        console.log(this.audios);
+        console.log(res);
+        this.cargarMapa();
       }
     );
   }
 
-
-  ngOnInit(): void {
-    console.log("antes de cargar audios");
-    console.log(this.audios);
-    this.cargarAudios();
-    console.log("despues de cargar audios");
-    console.log(this.audios);
-  }
-
-  ngAfterViewInit(): void {
-    console.log("afterviewinit");
+  private cargarMapa() {
+    console.log("En cargando mapa");
     console.log(this.audios);
 
     const map = new Map('map').setView([9.9634, -84.1003], 9);
@@ -42,8 +34,20 @@ export class MapaComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    const marker = new Marker([9.9634,-84.1003]).addTo(map);
+    this.audios.forEach(audio => {
+      console.log(audio.latitud, audio.longitud);
+      let latitud = parseFloat(audio.latitud);
+      let longitud = parseFloat(audio.longitud);
+      const marker = new Marker([latitud, longitud]).addTo(map);
+    });
+  }
 
+  ngOnInit(): void {
+    console.log("antes de cargar audios");
+    console.log(this.audios);
+    this.cargarAudios();
+    console.log("despues de cargar audios");
+    console.log(this.audios);
   }
 
 }
