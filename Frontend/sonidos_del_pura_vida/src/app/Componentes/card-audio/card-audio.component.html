@@ -2,16 +2,12 @@
 
 <div *ngFor="let audio of audios">
     <div class="card d-flex" style="border: 2px solid #E2E2E2; margin-bottom: 10px; width: 98%; border-radius: 20px; border-radius: 20px;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
-  
+
         <div class="row">
-  
+
             <div class="col-sm-4 d-flex" style="align-items: center; text-align:start; place-content: center;">
-                <img *ngIf="audio.ruta_imagen && audio.ruta_imagen != 'rutaimagen.jpg'; else noImage" [src]="audio.ruta_imagen"
+                <img [src]="audio.ruta_imagen"
                      style="width: 95%;height:80%;object-fit:contain; border-radius: 5px;">
-                <ng-template #noImage>
-                  <img src="assets/Sin_foto.png"
-                       style="width: 95%;height:80%;object-fit:contain; border-radius: 5px;">
-                </ng-template>
             </div>
 
             <div class="col-sm-6" style="margin-top: 10px;">
@@ -36,4 +32,3 @@
         </div>
     </div>
   </div>
-  
