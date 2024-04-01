@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS sonidos_pura_vida_bd;
-create database sonidos_pura_vida_bd;
-use sonidos_pura_vida_bd;
+DROP DATABASE IF EXISTS sonidospv_bd;
+create database sonidospv_bd;
+use sonidospv_bd;
 
 create table provincia(
     id int not null auto_increment primary key,
@@ -48,13 +48,15 @@ create table audio(
 create table historial_admin_audios(
     id int not null auto_increment primary key,
     id_administrador int not null,
-    FOREIGN KEY(id_administrador) REFERENCES administrador(id),
-    id_audio int not null,
-    FOREIGN KEY(id_audio) REFERENCES audio(id),
+    id_audio int,
+    titulo varchar(100) not null,
+    autor varchar(100) not null,
     accion varchar(25) not null,
     motivo varchar(255) not null,
-    fecha_registro datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-
+    fecha_accion datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(id_administrador) REFERENCES administrador(id),
+    CONSTRAINT fk_historial_audio FOREIGN KEY(id_audio) REFERENCES audio(id)
+    ON DELETE SET NULL
 );
 
 
