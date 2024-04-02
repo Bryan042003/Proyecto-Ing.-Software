@@ -1,151 +1,149 @@
-<div class="card fondo"  style="align-items: center;  border: none;">
-
-    <div class="card-header align-items-center mt-3" style="background-color: #f5f5f5; border: none; width: 100%; opacity: 1;">
-        <div style="display: flex; justify-content: center;">
-            <img style="width: 700px;" src="assets/imagenes/sonidosPV.png">
-        </div>
-
-
-        <div class="dropdown d-flex ms-auto " style="justify-content: flex-end; width: 98%; bottom: 0.5rem;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                style="background-color: transparent; color: black; border: none; margin: 15px ;">
-                <span class="material-symbols-outlined " style="text-decoration: none; font-size: 40px; ">help</span>
-            </button>
-            <ul class="dropdown-menu">
-
-                <H5 style=" margin: 15px;">Ayuda</H5>
-
-                <li style="margin:20px 50px 20px 0px"><a class="dropdown-item">
-                        <span class="material-symbols-outlined" style="margin-right: 5px;">
-                            quick_reference
-                        </span>
-                        <strong>Términos de uso</strong></a></li>
-
-                <div class="dropdown-divider"></div>
-
-                <li style="margin:20px 50px 20px 0px">
-                    <a class="dropdown-item" >
-                        <span class="material-symbols-outlined" style="margin-right: 5px;">
-                            info
-                        </span>
-                        <strong>Acerca de nosotros</strong> </a>
-                </li>
-            </ul>
-        </div>
-
+<div class="p-4" style="width: 100%;">
+    <div style="display: flex; justify-content: center;">
+        <img style="width: 700px;" src="assets/imagenes/sonidosPV.png">
     </div>
 
 
+    <div class="dropdown d-flex ms-auto " style="justify-content: flex-end; width: 100%; bottom: 1rem;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false"
+            style="background-color: transparent; color: black; border: none; margin: 15px ;">
+            <span class="material-symbols-outlined " style="text-decoration: none; font-size: 40px; ">help</span>
+        </button>
+        <ul class="dropdown-menu">
 
-    <div class="card-body" style="margin-top: -1.8rem; width: 95%; align-items: center">
+            <H5 style=" margin: 15px;">Ayuda</H5>
 
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <app-filtros></app-filtros>
-                    </div>
+            <li style="margin:20px 50px 20px 0px"><a class="dropdown-item">
+                    <span class="material-symbols-outlined" style="margin-right: 5px;">
+                        quick_reference
+                    </span>
+                    <strong>Términos de uso</strong></a></li>
 
-                    <div class="col-sm-7">
+            <div class="dropdown-divider"></div>
 
-                        <div class="card" style="border: none;">
+            <li style="margin:20px 50px 20px 0px">
+                <a class="dropdown-item">
+                    <span class="material-symbols-outlined" style="margin-right: 5px;">
+                        info
+                    </span>
+                    <strong>Acerca de nosotros</strong> </a>
+            </li>
+        </ul>
+    </div>
 
-                            <div class="dropdown d-flex ms-auto">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                    style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
-                                    Ordenar por:
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
-                                    <li><a class="dropdown-item" href="#">Más reciente</a></li>
-                                    <li><a class="dropdown-item" href="#">Más antiguo</a></li>
-                                    <li><a class="dropdown-item" href="#">A → Z</a></li>
-                                    <li><a class="dropdown-item" href="#">Z → A</a></li>
-                                </ul>
+
+    <div class="card fondo" style="align-items: center;  border: none;">
+
+        <div class="card-body" style="margin-top: -1.8rem; width: 95%; align-items: center">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <app-filtros></app-filtros>
+                        </div>
+
+                        <div class="col-sm-7">
+
+                            <div class="card" style="border: none;">
+
+                                <div class="dropdown d-flex ms-auto">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                                        style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
+                                        Ordenar por:
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
+                                        <li><a class="dropdown-item" href="#">Más reciente</a></li>
+                                        <li><a class="dropdown-item" href="#">Más antiguo</a></li>
+                                        <li><a class="dropdown-item" href="#">A → Z</a></li>
+                                        <li><a class="dropdown-item" href="#">Z → A</a></li>
+                                    </ul>
+                                </div>
+
+                                <nav class="dropdown d-flex mx-auto" aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item" style="margin-right: 5px;">
+                                            <a style="background-color: #F1F3F4; color:black; border: none;"
+                                                class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item" style="margin-right: 5px;"><a
+                                                style="background-color: #F1F3F4; color:black; border: none;"
+                                                class="page-link" href="#">1</a></li>
+                                        <li class="page-item" style="margin-right: 5px;"><a
+                                                style="background-color: #F1F3F4; color:black ; border: none;"
+                                                class="page-link" href="#">2</a></li>
+                                        <li class="page-item" style="margin-right: 5px;"><a
+                                                style="background-color: #F1F3F4; color:black ; border: none;"
+                                                class="page-link" href="#">3</a></li>
+                                        <li class="page-item" style="margin-right: 5px;"><a
+                                                style="background-color: #F1F3F4; color:black ; border: none;"
+                                                class="page-link" href="#">4</a></li>
+                                        <li class="page-item" style="margin-right: 5px;"><a
+                                                style="background-color: #F1F3F4; color:black ; border: none;"
+                                                class="page-link" href="#">5</a></li>
+                                        <li class="page-item" style="margin-right:5px;"><a
+                                                style="background-color: #F1F3F4; color:black ; border: none;"
+                                                class="page-link" href="#">...</a></li>
+                                        <li class="page-item">
+                                            <a style="background-color: #F1F3F4; color:black;  border: none;"
+                                                class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="container"
+                                    style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
+                                    <!-- Aquí se crea la lista de los audios a mostrar -->
+
+                                    <app-card-audio />
+
+                                </div>
+
                             </div>
 
-                            <nav class="dropdown d-flex mx-auto" aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item" style="margin-right: 5px;">
-                                        <a style="background-color: #F1F3F4; color:black; border: none;"
-                                            class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item" style="margin-right: 5px;"><a
-                                            style="background-color: #F1F3F4; color:black; border: none;"
-                                            class="page-link" href="#">1</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a
-                                            style="background-color: #F1F3F4; color:black ; border: none;"
-                                            class="page-link" href="#">2</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a
-                                            style="background-color: #F1F3F4; color:black ; border: none;"
-                                            class="page-link" href="#">3</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a
-                                            style="background-color: #F1F3F4; color:black ; border: none;"
-                                            class="page-link" href="#">4</a></li>
-                                    <li class="page-item" style="margin-right: 5px;"><a
-                                            style="background-color: #F1F3F4; color:black ; border: none;"
-                                            class="page-link" href="#">5</a></li>
-                                    <li class="page-item" style="margin-right:5px;"><a
-                                            style="background-color: #F1F3F4; color:black ; border: none;"
-                                            class="page-link" href="#">...</a></li>
-                                    <li class="page-item">
-                                        <a style="background-color: #F1F3F4; color:black;  border: none;"
-                                            class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div class="container"
-                                style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
-                                <!-- Aquí se crea la lista de los audios a mostrar -->
-
-                                <app-card-audio />
-
-                            </div>
 
                         </div>
 
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+
+                        <app-mapa></app-mapa>
 
                     </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-
-                    <app-mapa></app-mapa>
-
                 </div>
             </div>
         </div>
+
+
     </div>
 
+    <div class="card-footer text-muted d-flex mt-4"
+        style="background-color: #f5f5f5; place-content: center; width: 100%;">
+        <div class="col" style="margin:5%;">
+            <H5>Sonidos del Pura vida es un proyecto de ...</H5>
+            <p>Universidad Estatal a Distancia</p>
+            <p>Mercedes de Montes de Oca</p>
+            <p>Apartado postal San José 474-2050</p>
+        </div>
 
-</div>
+        <div class="col" style="margin: 5%;">
+            <img src="assets/imagenes/LIT.png" alt="" style="width: 350px;">
+        </div>
 
-<div class="card-footer text-muted d-flex mt-4"
-    style="background-color: #f5f5f5; place-content: center; width: 100%;">
-    <div class="col" style="margin:5%;">
-        <H5>Sonidos del Pura vida es un proyecto de ...</H5>
-        <p>Universidad Estatal a Distancia</p>
-        <p>Mercedes de Montes de Oca</p>
-        <p>Apartado postal San José 474-2050</p>
-    </div>
-
-    <div class="col" style="margin: 5%;">
-        <img src="assets/imagenes/LIT.png" alt="" style="width: 350px;">
-    </div>
-
-    <div class="col" style="margin:5%;">
-        <H5>Contáctenos</H5>
-        <p>Correo: liit&#64;uned.ac.cr</p>
-        <p>Teléfonos:</p>
-        <p>(+506) 22343236 / ext 4621</p>
-        <p>(+506) 2234-3536 / ext. 4622</p>
+        <div class="col" style="margin:5%;">
+            <H5>Contáctenos</H5>
+            <p>Correo: liit&#64;uned.ac.cr</p>
+            <p>Teléfonos:</p>
+            <p>(+506) 22343236 / ext 4621</p>
+            <p>(+506) 2234-3536 / ext. 4622</p>
+        </div>
     </div>
 </div>
 
@@ -165,7 +163,8 @@
             <h1 class="d-flex" style="margin: 0px 30px 30px 30px;place-content: center;">Nombre audio</h1>
 
             <div class="modal-body d-flex" style="place-content: center;">
-                <div class="card" style="width: 90%;height: 85%; border-radius: 20px; stroke: #F1F3F4;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
+                <div class="card"
+                    style="width: 90%;height: 85%; border-radius: 20px; stroke: #F1F3F4;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
                     <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px;">
                         <div class="col">
                             <h5 style="margin-bottom:20px;">Provincia: </h5>
@@ -214,7 +213,8 @@
             <h1 class="d-flex" style="place-content: center;">Crear Sonidos Pura Vida</h1>
 
             <div class="modal-body d-flex" style="place-content: center;">
-                <div class="card" style="width: 90%;height: 90%; border-radius: 20px; stroke: #F1F3F4;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
+                <div class="card"
+                    style="width: 90%;height: 90%; border-radius: 20px; stroke: #F1F3F4;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
                     <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px; height: 100%;">
 
                         <div class="col ">
@@ -239,13 +239,17 @@
                         <div class="col">
                             <h5 style="margin-bottom:20px;">Sonido </h5>
 
-                            <div class="file-input" style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
-                                <label for="file-upload" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
-                                  <span class="material-symbols-outlined" style="font-size: 45px; margin-bottom: 10px;">
-                                    cloud_upload
-                                  </span>
-                                  <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o examinar</span>
-                                  <input type="file" id="file-upload" style="display: none;">
+                            <div class="file-input"
+                                style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
+                                <label for="file-upload"
+                                    style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 45px; margin-bottom: 10px;">
+                                        cloud_upload
+                                    </span>
+                                    <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o
+                                        examinar</span>
+                                    <input type="file" id="file-upload" style="display: none;">
                                 </label>
                             </div>
 
@@ -255,20 +259,25 @@
 
                             <h5 style="margin-bottom:20px;">Foto </h5>
 
-                            <div class="file-input" style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
-                                <label for="file-upload" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
-                                  <span class="material-symbols-outlined" style="font-size: 45px; margin-bottom: 10px;">
-                                    cloud_upload
-                                  </span>
-                                  <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o examinar</span>
-                                  <input type="file" id="file-upload" style="display: none;">
+                            <div class="file-input"
+                                style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
+                                <label for="file-upload"
+                                    style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 45px; margin-bottom: 10px;">
+                                        cloud_upload
+                                    </span>
+                                    <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o
+                                        examinar</span>
+                                    <input type="file" id="file-upload" style="display: none;">
                                 </label>
                             </div>
 
                             <p>Los archivos deben ser menores que <strong>50MB</strong></p>
                             <p>Tipos de archivos permitidos: <strong>png gif jpg jpeg.</strong></p>
                             <div class="d-flex" style="place-content: center;">
-                                <button  type="submit" style="border-radius: 20px; width: 150px; height: 50px; background-color: #001148; color: white; margin-top: 15px;">Guardar</button>
+                                <button type="submit"
+                                    style="border-radius: 20px; width: 150px; height: 50px; background-color: #001148; color: white; margin-top: 15px;">Guardar</button>
 
                             </div>
                         </div>
