@@ -6,8 +6,8 @@ CREATE PROCEDURE InsertarAudioUbicacion(
     IN _comentarios VARCHAR(255),
     IN _ruta_audio VARCHAR(255),
     IN _ruta_imagen VARCHAR(255),
-    IN _latitud DOUBLE(10,10),
-    IN _longitud DOUBLE(10,10),
+    IN _latitud DOUBLE,
+    IN _longitud DOUBLE,
     IN _nombre_canton VARCHAR(100),
     IN _nombre_provincia VARCHAR(100)
 )
