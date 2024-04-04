@@ -33,14 +33,12 @@ export class MapaComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    // Create a marker cluster group
 const markers = new MarkerClusterGroup();
 
 this.audios.forEach(audio => {
   let latitud = parseFloat(audio.latitud);
   let longitud = parseFloat(audio.longitud);
 
-  // Create a marker and add it to the cluster group
   const marker = new Marker([latitud, longitud]).
     bindPopup(`
       <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 300px; margin-bottom: 10px;">
@@ -54,10 +52,6 @@ this.audios.forEach(audio => {
   markers.addLayer(marker);
 });
 
-// Add the marker cluster group to the map
-map.addLayer(markers);
-
-// Add the marker cluster group to the map
 map.addLayer(markers);
   }
 
