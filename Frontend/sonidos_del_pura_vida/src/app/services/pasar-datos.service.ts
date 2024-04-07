@@ -8,14 +8,14 @@ import { environment } from '../../enviroments/enviroment';
   providedIn: 'root'
 })
 export class PasarDatosService {
-  
+
   private urlBase = environment.baseUrl;
   private urlAudios = this.urlBase + 'controladores/Audios/';
 
   constructor(private http:HttpClient) {}
 
   getAudios():Observable<Audio>{
-    return this.http.get<Audio>(this.urlAudios +  'obtenerAudios');
+    return this.http.get<Audio>(this.urlAudios +  'obtenerAudios.php');
   }
 /*
   getAudio(id:number):Observable<Audio>{

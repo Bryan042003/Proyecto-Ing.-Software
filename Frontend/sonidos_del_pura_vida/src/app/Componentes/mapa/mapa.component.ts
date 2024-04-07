@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Map, tileLayer, Marker, MarkerClusterGroup } from 'leaflet';
+import * as L from 'leaflet';
 import 'leaflet.markercluster';
 
 import { PasarDatosService } from '../../services/pasar-datos.service';
 import { Audio } from '../../models/Audio.model';
 import { OnInit } from '@angular/core';
-import 'leaflet.markercluster';
 
 @Component({
   selector: 'app-mapa',
@@ -33,7 +33,7 @@ export class MapaComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-const markers = new MarkerClusterGroup();
+const markers = new  window.L.MarkerClusterGroup();
 
 this.audios.forEach(audio => {
   let latitud = parseFloat(audio.latitud);

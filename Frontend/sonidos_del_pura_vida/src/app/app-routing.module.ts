@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 
 const routes: Routes = [ 
-  {path: '',redirectTo: "pagina-principal", pathMatch: "full"},
-  {path: 'pagina-principal',component: PaginaPrincipalComponent},
+  // {path: '',redirectTo: "pagina-principal", pathMatch: "full"},
+  {path: '',component: PaginaPrincipalComponent},
   {path: 'mapa',component: MapaComponent},
   {path: 'card-audio',component: CardAudioComponent},
   {path: 'filtros',component: FiltrosComponent},
