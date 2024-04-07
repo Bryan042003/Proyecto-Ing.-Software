@@ -17,7 +17,7 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
         $temp_imagen_name = $_FILES["imagen"]["tmp_name"];
         $imagen_size = $_FILES["imagen"]["size"];
         $folder_imagen = '../../imagenes/'. $imagen_name;
-        $direccion_image = 'http://localhost/sonidosPV/imagenes/'. $imagen_name;
+        $direccion_image = $_ENV['DIR_IMGS']. $imagen_name;
 
         $extension_image = strtolower(pathinfo($imagen_name, PATHINFO_EXTENSION));
         $extensions_image_allowed = array('png', 'gif', 'jpg', 'jpeg');
@@ -33,7 +33,9 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
             return;
         }
     } else {
-        $direccion_image = 'http://localhost/sonidosPV/imagenes/Sin_foto.png';
+        
+        $direccion_image = $_ENV['DIR_IMGS_NOPHOTO'];
+        
     }
     
 
@@ -43,7 +45,7 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
     $audio_size = $_FILES["AudioFile"]["size"];
     $temp_audiofile_name = $_FILES["AudioFile"]["tmp_name"];
     $folder_audio = '../../audiosFile/'. $audiofile_name;
-    $direccion_audiofile = 'http://localhost/sonidosPV/audiosFile/'. $audiofile_name;
+    $direccion_audiofile = $_ENV['DIR_AUDIOS']. $audiofile_name;
 
     $extension_audio = strtolower(pathinfo($audiofile_name, PATHINFO_EXTENSION));
     $extensions_audio_allowed = array('mp3', 'wav', 'ogg', 'mp4');
