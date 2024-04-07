@@ -26,3 +26,11 @@ composer.phar.asc
 # Ignora los archivos generados por phpunit
 /phpunit.xml
 /.phpunit.result.cache
+
+*.mp3
+*.mp4
+
+*.jpg
+*.jpeg
+*.png
+*.gif
