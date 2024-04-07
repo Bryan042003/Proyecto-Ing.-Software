@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Audio } from '../models/Audio.model';
 import { Observable } from 'rxjs';
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasarDatosService {
-  //ver como hacer para que la url sea dinamica
-  private urlAudios = 'http://localhost/sonidosPV/controladores/Audios/';
+  
+  private urlBase = environment.baseUrl;
+  private urlAudios = this.urlBase + 'controladores/Audios/';
 
   constructor(private http:HttpClient) {}
 
