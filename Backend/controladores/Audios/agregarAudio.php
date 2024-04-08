@@ -16,7 +16,7 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
         $imagen_name = $_FILES["imagen"]["name"];
         $temp_imagen_name = $_FILES["imagen"]["tmp_name"];
         $imagen_size = $_FILES["imagen"]["size"];
-        $folder_imagen = '../../imagenes/'. $imagen_name;
+        $folder_imagen = '../../../public/imagenes/'. $imagen_name;
         $direccion_image = $_ENV['DIR_IMGS']. $imagen_name;
 
         $extension_image = strtolower(pathinfo($imagen_name, PATHINFO_EXTENSION));
@@ -44,7 +44,7 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
     $audiofile_type = $_FILES['AudioFile']['type'];
     $audio_size = $_FILES["AudioFile"]["size"];
     $temp_audiofile_name = $_FILES["AudioFile"]["tmp_name"];
-    $folder_audio = '../../audiosFile/'. $audiofile_name;
+    $folder_audio = '../../../public/audios/'. $audiofile_name;
     $direccion_audiofile = $_ENV['DIR_AUDIOS']. $audiofile_name;
 
     $extension_audio = strtolower(pathinfo($audiofile_name, PATHINFO_EXTENSION));

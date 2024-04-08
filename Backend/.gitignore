@@ -34,3 +34,5 @@ composer.phar.asc
 *.jpeg
 *.png
 *.gif
+
+../public/*
