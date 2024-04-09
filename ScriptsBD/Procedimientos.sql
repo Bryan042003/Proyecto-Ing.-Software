@@ -38,8 +38,6 @@ BEGIN
     VALUES (_titulo, _autor, _comentarios, _ruta_audio, _ruta_imagen, _id_ubicacion);
 END$$
 
-CALL InsertarAudioUbicacion('titulo audio', 'autor audio', 'comentarios del audio', 'rutaAudio.mp3', 'rutaimagen.jpg', 9.748917, -83.753428, 'Para├¡so', 'Cartago');
-
 
 DELIMITER ;
 
