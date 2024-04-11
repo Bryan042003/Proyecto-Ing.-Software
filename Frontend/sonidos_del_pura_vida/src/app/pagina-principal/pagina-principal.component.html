@@ -14,20 +14,32 @@
 
             <H5 style=" margin: 15px;">Ayuda</H5>
 
-            <li style="margin:20px 50px 20px 0px"><a class="dropdown-item">
-                    <span class="material-symbols-outlined" style="margin-right: 5px;">
-                        quick_reference
-                    </span>
-                    <strong>Términos de uso</strong></a></li>
+            <li style="margin:20px 50px 20px 0px">
+                <a class="dropdown-item">
+                    <button data-bs-toggle="modal" data-bs-target="#terminosDeUso"
+                        style="border:none; background: transparent; ">
+                        <span class="material-symbols-outlined" style="margin-right: 5px;">
+                            quick_reference
+                        </span>
+                        <strong>Términos de uso</strong>
+                    </button>
+                </a>
+
+            </li>
+
 
             <div class="dropdown-divider"></div>
 
             <li style="margin:20px 50px 20px 0px">
                 <a class="dropdown-item">
-                    <span class="material-symbols-outlined" style="margin-right: 5px;">
-                        info
-                    </span>
-                    <strong>Acerca de nosotros</strong> </a>
+                    <button data-bs-toggle="modal" data-bs-target="#acercaDeNosotros"
+                        style="border:none; background: transparent; ">
+                        <span class="material-symbols-outlined" style="margin-right: 5px;">
+                            info
+                        </span>
+                        <strong>Acerca de nosotros</strong>
+                    </button>
+                </a>
             </li>
         </ul>
     </div>
@@ -62,7 +74,8 @@
                                     </ul>
                                 </div>
 
-                                <nav class="dropdown d-flex flex-column flex-md-row mx-auto" aria-label="Page navigation example">
+                                <nav class="dropdown d-flex flex-column flex-md-row mx-auto"
+                                    aria-label="Page navigation example">
                                     <ul class="pagination flex-wrap">
                                         <li class="page-item mb-2 mb-md-0" style="margin-right: 5px;">
                                             <a style="background-color: #F1F3F4; color:black; border: none;"
@@ -99,9 +112,9 @@
                                 <div class="container"
                                     style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
                                     <!-- Aquí se crea la lista de los audios a mostrar -->
-
-                                    <app-card-audio />
-
+                                    <div *ngFor="let audio of audios">
+                                        <app-card-audio [audio]="audio"></app-card-audio>
+                                    </div>
                                 </div>
 
                             </div>
@@ -125,26 +138,26 @@
     </div>
 
     <div class="card-footer text-muted d-flex flex-column flex-md-row mt-5"
-    style="background-color: #f5f5f5; place-content: center; width: 100%;height: 100%;">
-    <div class="col-12 col-md-4 mt-2 mb-2" style="place-content: center; text-align: center;">
-        <H5>Sonidos del Pura vida es un proyecto de ...</H5>
-        <p>Universidad Estatal a Distancia</p>
-        <p>Mercedes de Montes de Oca</p>
-        <p>Apartado postal San José 474-2050</p>
-    </div>
+        style="background-color: #f5f5f5; place-content: center; width: 100%;height: 100%;">
+        <div class="col-12 col-md-4 mt-2 mb-2" style="place-content: center; text-align: center;">
+            <H5>Sonidos del Pura vida es un proyecto de ...</H5>
+            <p>Universidad Estatal a Distancia</p>
+            <p>Mercedes de Montes de Oca</p>
+            <p>Apartado postal San José 474-2050</p>
+        </div>
 
-    <div class="col-12 col-md-4 mt-2 mb-2" style="place-content: center; text-align: center;">
-        <img src="assets/imagenes/LIT.png" alt="" style="width: 100%; max-width: 350px;">
-    </div>
+        <div class="col-12 col-md-4 mt-2 mb-2" style="place-content: center; text-align: center;">
+            <img src="assets/imagenes/LIT.png" alt="" style="width: 100%; max-width: 350px;">
+        </div>
 
-    <div class="col-12 col-md-4 mt-4 mb-2" style="place-content: center; text-align: center;">
-        <H5>Contáctenos</H5>
-        <p>Correo: liit&#64;uned.ac.cr</p>
-        <p>Teléfonos:</p>
-        <p>(+506) 22343236 / ext 4621</p>
-        <p>(+506) 2234-3536 / ext. 4622</p>
+        <div class="col-12 col-md-4 mt-4 mb-2" style="place-content: center; text-align: center;">
+            <H5>Contáctenos</H5>
+            <p>Correo: liit&#64;uned.ac.cr</p>
+            <p>Teléfonos:</p>
+            <p>(+506) 22343236 / ext 4621</p>
+            <p>(+506) 2234-3536 / ext. 4622</p>
+        </div>
     </div>
-</div>
 
 </div>
 
@@ -288,6 +301,136 @@
 
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal acerca de nosotros-->
+<div class="modal fade" id="acercaDeNosotros" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1500px; ">
+        <div class="modal-content" style="height: 800px; border-radius: 40px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background: transparent; border: none; margin: 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h2 class="d-flex" style="place-content: center;">Acerca de Nosotros</h2>
+
+            <div class="modal-body d-flex" style="place-content: center;">
+                <div class="card"
+                    style="place-content: center; align-items: center;  width: 90%;height: 85%; border: none;">
+                    <img style="max-width: 500px; width: 100%; margin-top: 20px;" src="assets/imagenes/sonidosPV.png">
+                    <div style=" height: 70%; width:70%; margin-top: 20px;">
+                        <h5> El Laboratorio de Investigación e Innovación Tecnológica (LIIT) junto con la Catédra de
+                            Emprendedurismo Turístico de la Escuela de Ciencias Sociales y Humanidades desarrollan el
+                            proyecto de participación ciudadana “Los sonidos del Pura Vida”. Consiste en un mapa sonoro
+                            de Costa Rica, con el objetivo de crear una memoria de sonidos de nuestro país.
+                            <br>
+                            <br>
+                            Un mapa sonoro es una técnica acústica para conocer los sonidos de un lugar, comunidad o
+                            ciudad; ubica los sonidos geográficamente. Para construir este tipo de material se requiere
+                            de diferentes puntos de vista, en particular de las personas que conocen el lugar.
+                            <br>
+                            <br>
+                            Por ello les invitamos a que nos envíen los sonidos más representativos de su comunidad.
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal terminos de uso-->
+<div class="modal fade" id="terminosDeUso" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1500px; ">
+        <div class="modal-content" style="height: 800px; border-radius: 40px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background: transparent; border: none; margin: 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h2 class="d-flex" style="margin: 0px 30px 10px 30px;place-content: center;"><strong>Términos de Uso</strong></h2>
+
+            <div class="modal-body d-flex" style="place-content: center; height: 500px">
+                <div class="card" style="align-items: center;width: 90%;height:90%; border: none;">
+                    <div style=" height: 100%; width: 100%; margin-top: 20px; overflow: auto;">
+                        <h5>
+                            Esta plataforma es de propiedad de la Universidad Estatal a Distancia. Los sonidos
+                            contenidos en la plataforma BioSonidos están protegidos por una Licencia Creative Commons
+                            del tipo Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0) Costa
+                            Rica.
+                        </h5>
+
+                        <h3>
+                            <strong>Licencia de uso</strong>
+                        </h3>
+                        <h5><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es"  style="text-decoration: none;color: #9bbbd1;">https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es</a></h5>
+                        <br>
+                        <h5>Gracias a esta licencia es posible:</h5>
+                        
+                        <ul style="list-style-type: disc;">
+                            <li style="list-style-type: disc;">
+                                <h5>Copiar, distribuir, compartir, comunicar y utilizar públicamente los sonidos de la plataforma.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5>Generar obras derivadas, transformar y construir nuevo material a partir de los sonidos.</h5>
+                            </li>
+                        </ul>
+
+                        <h3>
+                            <strong>Términos de uso de la Colección Biosonidos</strong>
+                        </h3>
+                        <br>
+                        <h5>El uso de los sonidos de la plataforma BioSonidos está enmarcado por los siguientes términos:</h5>
+                        <ul style="list-style-type: disc;">
+                            <li style="list-style-type: disc;">
+                                <h5><strong>Atribución:</strong> Debes reconocer y citar la obra de la forma especificada por el autor o el
+                                    licenciante.</h5>
+
+                                <h5>Recomendamos citar su uso considerando las normas APA con el siguiente ejemplo:</h5>
+
+                                <h5>Vargas-Masís, R. (2019). Mochuelo enano. BioSonidos.[<a href="https://biosonidos.uned.ac.cr/?q=node/471"  style="text-decoration: none; color: #9bbbd1;" >https://biosonidos.uned.ac.cr/?q=node/471</a>]. UNED, Costa Rica.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5><strong>No Comercial:</strong> No es posible utilizar los sonidos de la plataforma para fines comerciales.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5><strong>Licenciar Igual:</strong> Si generas una obra derivada a partir de los sonidos de la plataforma, sólo
+                                    puedes distribuir las modificaciones generada bajo una licencia idéntica a ésta.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5> <strong>Compartir Igual:</strong> Si genera una obra derivada a partir de los sonidos contenidos en la
+                                    plataforma, tienes que dejar bien claro los términos de la licencia de esta nueva obra.
+                                    Alguna de estas condiciones puede no aplicarse si se obtiene el permiso del titular de los
+                                    derechos de autor. Nada en esta licencia sustituye o restringe los derechos morales del
+                                    autor.</h5>
+                            </li>
+                        </ul>
+                        <h5>El texto legal completo de esta licencia puede encontrarse en:
+                            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.es" style="text-decoration: none; color: #9bbbd1;">https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.es</a>
+                        </h5>
+                        <h5>En caso de utilizar el contenido de la manera indicada en la licencia, se solicita enviar
+                                por cortesía aviso vía correo electrónico a <a href="mailto:biosonidos@uned.ac.cr"
+                                    style="text-decoration: none; color: #9bbbd1;">biosonidos&#64;uned.ac.cr</a>
+                        </h5>
+
+                        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="assets/imagenes/Licencia.jpg" style="width: 100px; height: 50px; margin: 20px 20px 20px 0px;"></a>
+                        <h5>Esta obra está bajo una <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="text-decoration: none; color: #9bbbd1;">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a></h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

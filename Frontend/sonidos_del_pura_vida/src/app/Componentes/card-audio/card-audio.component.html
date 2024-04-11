@@ -1,4 +1,4 @@
-<div *ngFor="let audio of audios">
+
   <div class="card d-flex"
     style="border: 2px solid #E2E2E2; margin-bottom: 10px; width: 98%; border-radius: 20px; border-radius: 20px;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
 
@@ -13,6 +13,7 @@
           style="border:none; background: transparent;text-align:start;">
           <h5> {{ audio.titulo }}</h5>
           <p>Provincia: {{ audio.provincia }}</p>
+          <p>Cantón: {{ audio.canton }}</p>
           <p>Autor: {{ audio.autor }}</p>
         </button>
       </div>
@@ -30,4 +31,4 @@
       <audio controls [src]="audio.ruta_audio" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
     </div>
   </div>
-</div>
+
