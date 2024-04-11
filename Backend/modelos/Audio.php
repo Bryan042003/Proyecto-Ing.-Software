@@ -45,8 +45,6 @@ class Audio{
         return $stmt->rowCount() > 0;
     }
 
-    // CALL InsertarAudioUbicacion('titulo audio', 'autor audio', 'comentarios del audio', 'rutaAudio.mp3', 'rutaimagen.jpg', 9.748917, -83.753428, 'Paraíso', 'Cartago');
-
     public function agregarAudio($audio){
         $query = "CALL InsertarAudioUbicacion(:titulo, :autor, :comentarios, :ruta_audio, :ruta_imagen, :latitud, :longitud, :canton, :provincia)";
         $stmt = $this->conn->getConnection()->prepare($query);
