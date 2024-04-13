@@ -9,11 +9,13 @@ import { Audio } from '../models/Audio.model';
 })
 export class PaginaPrincipalComponent implements OnInit {
   audios:Audio[] = [];
+  audioU: any;
 
-  constructor(private pasarDatosService: PasarDatosService) { }
+  constructor(public pasarDatosService: PasarDatosService) {}
 
   ngOnInit(): void {
     this.cargarAudios();
+    this.audioU = this.pasarDatosService.getAudio();
   }
 
   private cargarAudios(){
@@ -25,6 +27,12 @@ export class PaginaPrincipalComponent implements OnInit {
     );
   }
 
+
+
+
+
+}
+
 /*
   deleteAudio(id:number){
     this.pasarDatosService.deleteAudio(id).subscribe();
@@ -33,4 +41,4 @@ export class PaginaPrincipalComponent implements OnInit {
 
 
 */
-}
+
