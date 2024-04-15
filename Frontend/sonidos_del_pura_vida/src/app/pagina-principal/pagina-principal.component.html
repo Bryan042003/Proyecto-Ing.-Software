@@ -16,8 +16,8 @@
 
             <li style="margin:20px 50px 20px 0px">
                 <a class="dropdown-item">
-                    <button data-bs-toggle="modal" data-bs-target="#terminosDeUso"
-                        style="border:none; background: transparent; ">
+                    <button class="d-flex" data-bs-toggle="modal" data-bs-target="#terminosDeUso"
+                        style="border:none; background: transparent; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="margin-right: 5px;">
                             quick_reference
                         </span>
@@ -32,12 +32,26 @@
 
             <li style="margin:20px 50px 20px 0px">
                 <a class="dropdown-item">
-                    <button data-bs-toggle="modal" data-bs-target="#acercaDeNosotros"
-                        style="border:none; background: transparent; ">
+                    <button class="d-flex" data-bs-toggle="modal" data-bs-target="#sobreProyecto"
+                        style="border:none; background: transparent;align-items: center; justify-content: center; ">
+                        <span class="material-symbols-outlined" style="margin-right: 5px;">
+                            groups
+                        </span>
+                        <strong>Sobre proyecto </strong>
+                    </button>
+                </a>
+            </li>
+
+            <div class="dropdown-divider"></div>
+            
+            <li style="margin:20px 50px 20px 0px">
+                <a class="dropdown-item">
+                    <button class="d-flex" data-bs-toggle="modal" data-bs-target="#acercaDeNosotros"
+                        style="border:none; background: transparent; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="margin-right: 5px;">
                             info
                         </span>
-                        <strong>Acerca de nosotros</strong>
+                        <strong>Acerca</strong>
                     </button>
                 </a>
             </li>
@@ -306,8 +320,8 @@
 </div>
 
 
-<!-- Modal acerca de nosotros-->
-<div class="modal fade" id="acercaDeNosotros" tabindex="-1" aria-hidden="true">
+<!-- Modal sobre proyecto-->
+<div class="modal fade" id="sobreProyecto" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 1500px; ">
         <div class="modal-content" style="height: 800px; border-radius: 40px;">
             <div>
@@ -319,7 +333,7 @@
                 </button>
             </div>
 
-            <h2 class="d-flex" style="place-content: center;">Acerca de Nosotros</h2>
+            <h2 class="d-flex" style="place-content: center;">Sobre proyecto</h2>
 
             <div class="modal-body d-flex" style="place-content: center;">
                 <div class="card"
@@ -338,6 +352,36 @@
                             <br>
                             <br>
                             Por ello les invitamos a que nos envíen los sonidos más representativos de su comunidad.
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal acerca de nosotros-->
+<div class="modal fade" id="acercaDeNosotros" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1500px; ">
+        <div class="modal-content" style="height: 800px; border-radius: 40px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background: transparent; border: none; margin: 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h2 class="d-flex" style="place-content: center;">Acerca de nosotros</h2>
+
+            <div class="modal-body d-flex" style="place-content: center;">
+                <div class="card"
+                    style="place-content: center; align-items: center;  width: 90%;height: 85%; border: none;">
+                    <div style=" height: 70%; width:70%; margin-top: 20px;">
+                        <h5> Escribir sobre nosotros
                         </h5>
                     </div>
 
