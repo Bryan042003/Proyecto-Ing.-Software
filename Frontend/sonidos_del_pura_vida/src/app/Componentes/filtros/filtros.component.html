@@ -3,7 +3,7 @@
     <div  class=""
         style=" width: 100%; border: 1px solid #E2E2E2; border-bottom-left-radius: 0%; border-bottom-right-radius: 0%;">
         <H5 style="margin: 10px;">Filtrar por:</H5>
-        
+
 
     </div>
 
@@ -90,7 +90,7 @@
                     <input type="text" class="form-control" style="border: none; border-radius: 20px;" #titulo >
                 </div>
                 <div *ngIf="estadoFiltro">
-                    <button (click)="desactivarFiltro()" style="border: none;background: none;">
+                  <button (click)="desactivarFiltro(titulo)" style="border: none;background: none;">
                         <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
                             cancel
                         </span>

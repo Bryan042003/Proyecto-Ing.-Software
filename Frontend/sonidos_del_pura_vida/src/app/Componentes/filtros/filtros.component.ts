@@ -8,7 +8,7 @@ import { PasarDatosService } from '../../services/pasar-datos.service';
 })
 export class FiltrosComponent {
   constructor(public pasarDatosService: PasarDatosService) {}
-  estadoFiltro:boolean = false;  
+  estadoFiltro:boolean = false;
 
   activarFiltro(tipoFiltro:string, filtrar:string, estado:boolean):void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
@@ -17,8 +17,9 @@ export class FiltrosComponent {
     this.estadoFiltro = estado;
   }
 
-  desactivarFiltro():void {
+  desactivarFiltro(input: HTMLInputElement): void {
     this.pasarDatosService.setEstadoFiltro(false);
     this.estadoFiltro = false;
+    input.value = '';
   }
 }
