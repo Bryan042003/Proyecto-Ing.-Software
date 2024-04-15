@@ -12,6 +12,7 @@ import { FiltrosComponent } from './Componentes/filtros/filtros.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { LoginComponent } from './login/login.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
+import { MapaAudioComponent } from './Componentes/mapa-audio/mapa-audio.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
     CardAudioComponent,
     FiltrosComponent,
     LoginComponent,
-    VistaAdministradorComponent
+    VistaAdministradorComponent,
+    MapaAudioComponent
     
   ],
   imports: [
