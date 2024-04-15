@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Audio } from '../models/Audio.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,6 +13,10 @@ export class PasarDatosService {
 
   private urlBase = environment.baseUrl;
   private urlAudios = this.urlBase + 'controladores/Audios/';
+
+  public tipoFiltro: string = '';
+  public datoFiltrar: string = '';
+  private estadoFiltro = new BehaviorSubject<boolean>(false);
 
   public AudioGuardar: any;
 
@@ -30,14 +34,25 @@ export class PasarDatosService {
     return this.AudioGuardar;
   }
 
-/*
-  getAudio(id:number):Observable<Audio>{
-    return this.http.get<Audio>(this.urlAudio + id);
+  getTipoFiltro(){  
+    return this.tipoFiltro;
+  }
+  setTipoFiltro(tipoFiltro:string):void{
+    this.tipoFiltro = tipoFiltro;
+  }
+  getDatoFiltrar(){
+    return this.datoFiltrar;
+  }
+  setDatoFiltrar(datoFiltrar:string):void{
+    console.log(datoFiltrar);
+    this.datoFiltrar = datoFiltrar;
+  }
+  setEstadoFiltro(estado:boolean):void{
+    this.estadoFiltro.next(estado);
+  }
+  getEstadoFiltro(){
+    return this.estadoFiltro.asObservable();
   }
 
 
-  deleteAudio(id:number):Observable<Audio>{
-    return this.http.delete<Audio>(this.urlRemoverAudio + id);
-  }
-  */
 }

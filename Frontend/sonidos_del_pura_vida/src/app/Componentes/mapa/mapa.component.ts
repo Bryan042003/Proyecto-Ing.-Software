@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Map, tileLayer, Marker, MarkerClusterGroup } from 'leaflet';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
-
+import { MapaAudioComponent } from '../mapa-audio/mapa-audio.component';
 import { PasarDatosService } from '../../services/pasar-datos.service';
 import { Audio } from '../../models/Audio.model';
 
@@ -25,6 +25,8 @@ export class MapaComponent implements OnInit {
   }
 
   private cargarMapa() {
+    console.log('cargarMapa1');
+
     const map = new Map('map').setView([9.9634, -84.1003], 9);
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -56,6 +58,7 @@ export class MapaComponent implements OnInit {
         if (leerMasButton) {
           leerMasButton.addEventListener('click', () => {
             this.pasarDatosService.setAudio(audio);
+            MapaAudioComponent.cargarMapa2(audio);
           });
         }
       });

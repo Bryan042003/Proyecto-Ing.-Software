@@ -111,15 +111,21 @@
                                 </nav>
                                 <div class="container"
                                     style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
-                                    <!-- Aquí se crea la lista de los audios a mostrar -->
-                                    <div *ngFor="let audio of audios">
-                                        <app-card-audio [audio]="audio"></app-card-audio>
+                                    
+                                    <div *ngIf="estadoFiltro; else elseBlock">
+                                        <div *ngFor="let audio of audiosFilter">
+                                            <app-card-audio [audio]="audio"></app-card-audio>
+                                        </div>
                                     </div>
+                                      
+                                    <ng-template #elseBlock>
+                                        <div *ngFor="let audio of audios">
+                                            <app-card-audio [audio]="audio"></app-card-audio>
+                                        </div>
+                                    </ng-template>
+
                                 </div>
-
                             </div>
-
-
                         </div>
 
                     </div>
@@ -174,28 +180,26 @@
                 </button>
             </div>
 
-            <h1 class="d-flex" style="margin: 0px 30px 30px 30px;place-content: center;"></h1>
+            <h1 class="d-flex" style="margin: 0px 30px 30px 30px;place-content: center;">{{this.pasarDatosService.getAudio()?.titulo}}</h1>
 
             <div class="modal-body d-flex" style="place-content: center;">
                 <div class="card"
                     style="width: 90%;height: 85%; border-radius: 20px; stroke: #F1F3F4;box-shadow: 0px 2px 21px -1px rgba(0,0,0,0.38);">
                     <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px;">
                         <div class="col">
-                          <h5 style="margin-bottom:20px;"><strong>Provincia:</strong> </h5>
-                          <h5 style="margin-bottom:20px;"><strong>Cantón:</strong> </h5>
-                          <h5 style="margin-bottom:20px;"><strong>Autor:</strong> </h5>
-                          <h5 style="margin-bottom:20px;"><strong>Comentario:</strong></h5>
-                          <audio  style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
+                          <h5 style="margin-bottom:20px;"><strong>Provincia:</strong>{{this.pasarDatosService.getAudio()?.provincia}} </h5>
+                          <h5 style="margin-bottom:20px;"><strong>Cantón:</strong> {{this.pasarDatosService.getAudio()?.canton}}</h5>
+                          <h5 style="margin-bottom:20px;"><strong>Autor:</strong> {{this.pasarDatosService.getAudio()?.autor}}</h5>
+                          <h5 style="margin-bottom:20px;"><strong>Comentario:</strong> {{this.pasarDatosService.getAudio()?.comentarios}}</h5>
+                          <audio controls [src]="this.pasarDatosService.getAudio()?.ruta_audio" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
                         </div>
                         <div class="col" style="margin-bottom:30px;">
-                            <img style="width: 300px;">
+                            <img [src]="this.pasarDatosService.getAudio()?.ruta_imagen" style="width: 300px;">
                         </div>
                     </div>
                     <div class="row d-flex"
-                        style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px; place-content: center;">
-                        <div class="" style="width: 100%; height:100%;">
-
-                        </div>
+                        style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px; place-content: center;height: 300px; width: 300px;">
+                        <app-mapa-audio></app-mapa-audio>
                     </div>
                 </div>
 
