@@ -17,7 +17,7 @@ export class PasarDatosService {
   public tipoFiltro: string = '';
   public datoFiltrar: string = '';
   private estadoFiltro = new BehaviorSubject<boolean>(false);
-
+  public listaAudios:Audio[] = [];
   public AudioGuardar: any;
 
   constructor(private http:HttpClient) {}
@@ -54,5 +54,12 @@ export class PasarDatosService {
     return this.estadoFiltro.asObservable();
   }
 
+  getListaAudios(){
+    return this.listaAudios;
+  }
+  setListaAudios(listaAudios:Audio[]){
+
+    this.listaAudios = listaAudios;
+  }
 
 }

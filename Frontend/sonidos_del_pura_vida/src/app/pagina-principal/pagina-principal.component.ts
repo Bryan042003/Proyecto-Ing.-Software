@@ -19,9 +19,7 @@ export class PaginaPrincipalComponent implements OnInit {
     this.cargarAudios();
 
     this.pasarDatosService.getEstadoFiltro().subscribe(estadoFiltro => {
-      
       this.estadoFiltro = estadoFiltro;
-      console.log("estadoFiltro ");
       this.filtros();
     });
   
@@ -52,6 +50,7 @@ export class PaginaPrincipalComponent implements OnInit {
 
       case 'titulo':
         this.audiosFilter = this.audios.filter(audio => audio.titulo.toLowerCase().includes(datoFiltrar.toLowerCase()));
+        this.pasarDatosService.setListaAudios(this.audiosFilter);
         break;
 
       default:
