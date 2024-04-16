@@ -46,6 +46,7 @@ export class PaginaPrincipalComponent implements OnInit {
         break;
 
       case 'autor':
+        this.audiosFilter = this.audios.filter(audio => audio.autor.toLowerCase().includes(datoFiltrar.toLowerCase())); 
         break;
 
       case 'titulo':

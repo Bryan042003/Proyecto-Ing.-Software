@@ -62,15 +62,26 @@
     </div>
 
     <div>
-        <div style="border-radius: 0%;">
+        <div style="border-radius: 0%;border: 1px solid #E2E2E2">
             <h5 style="margin: 10px;">Autor:</h5>
-            <div class="input-group mb-3" style="width: 80%;margin: 10px;border: 1px solid black; border-radius: 20px;">
-                <div class="input-group-prepend">
-                    <span class="material-symbols-outlined" style="margin: 5px;">
-                        search
-                    </span>
+            <div class="d-flex" style="justify-content:center; align-items: center; ">
+                <div class="input-group mb-3" style="width: 80%;margin: 10px;border: 1px solid black; border-radius: 20px;">
+                    <div class="input-group-prepend">
+                        <button style="background: none; border: none;" (click)="activarFiltro('autor',autor.value, true)">
+                            <span class="material-symbols-outlined" style="margin: 5px;">
+                                search
+                            </span>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" style="border: none; border-radius: 20px;" #autor >
                 </div>
-                <input type="text" class="form-control" style="border: none; border-radius: 20px;">
+                <div *ngIf="estadoFiltro">
+                  <button (click)="desactivarFiltro(autor)" style="border: none;background: none;">
+                        <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
+                            cancel
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -99,6 +110,7 @@
             </div>
         </div>
     </div>
+
     <div>
         <div
             style="border-radius: 10px; border-top-left-radius: 0%;border-top-right-radius: 0%; align-items: center; text-align: center;border: 1px solid #E2E2E2;">
