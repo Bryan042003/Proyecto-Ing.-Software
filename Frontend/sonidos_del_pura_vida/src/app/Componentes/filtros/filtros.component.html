@@ -11,49 +11,49 @@
         <div style="border-radius: 0%;border: 1px solid #E2E2E2">
             <H5 style="margin: 10px;">Provincia:</H5>
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="provinciaSanJose" (change)="activarFiltro('provincia', provinciaSanJose ? 'San José' : '')">
                 <label class="form-check-label" for="flexCheckDefault">
                     San José
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaAlajuela" (change)="activarFiltro('provincia', provinciaAlajuela ? 'Alajuela' : '')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Alajuela
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaCartago" (change)="activarFiltro('provincia', provinciaCartago ? 'Cartago' : '')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Cartago
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" [(ngModel)]="provinciaHeredia" (change)="activarFiltro('provincia', provinciaHeredia ? 'Heredia' : '')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Heredia
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaGuanacaste" (change)="activarFiltro('provincia', provinciaGuanacaste ? 'Guanacaste' : '')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Guanacaste
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaPuntarenas" (change)="activarFiltro('provincia', provinciaPuntarenas ? 'Puntarenas' : '')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Puntarenas
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaLimon" (change)="activarFiltro('provincia', provinciaLimon ? 'Limón' : '')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Limón
                 </label>

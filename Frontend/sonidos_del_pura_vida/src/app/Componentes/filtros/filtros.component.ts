@@ -10,7 +10,15 @@ export class FiltrosComponent {
   constructor(public pasarDatosService: PasarDatosService) {}
   estadoFiltroAutor:boolean = false;
   estadoFiltroTitulo:boolean = false;
+  estadoFiltradoProvincia:boolean = false;
   estadoFiltro:boolean = false;
+  public provinciaSanJose: boolean = false;
+  public provinciaAlajuela: boolean = false;
+  public provinciaGuanacaste: boolean = false;
+  public provinciaLimon: boolean = false;
+  public provinciaHeredia: boolean = false;
+  public provinciaPuntarenas: boolean = false;
+  public provinciaCartago: boolean = false;
 
   activarFiltro(tipoFiltro:string, filtrar:string):void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
@@ -28,6 +36,11 @@ export class FiltrosComponent {
         this.estadoFiltroTitulo = estado;
         this.estadoFiltro = estado;
         
+        break;
+
+      case 'provincia':
+        this.estadoFiltradoProvincia = estado;
+        this.estadoFiltro = estado;
         break;
     }
 
