@@ -8,18 +8,42 @@ import { PasarDatosService } from '../../services/pasar-datos.service';
 })
 export class FiltrosComponent {
   constructor(public pasarDatosService: PasarDatosService) {}
+  estadoFiltroAutor:boolean = false;
+  estadoFiltroTitulo:boolean = false;
   estadoFiltro:boolean = false;
 
   activarFiltro(tipoFiltro:string, filtrar:string, estado:boolean):void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
     this.pasarDatosService.setDatoFiltrar(filtrar);
     this.pasarDatosService.setEstadoFiltro(estado);
-    this.estadoFiltro = estado;
+    switch(tipoFiltro) {
+
+      case 'autor':
+        this.estadoFiltroAutor = estado;
+        break;
+
+      case 'titulo':
+        this.estadoFiltroTitulo = estado;
+        break;
+    }
   }
 
-  desactivarFiltro(input: HTMLInputElement): void {
-    this.pasarDatosService.setEstadoFiltro(false);
-    this.estadoFiltro = false;
-    input.value = '';
+  desactivarFiltro(desactivarFiltro:string): void {
+
+    switch(desactivarFiltro) {
+
+      case 'autor':
+        this.estadoFiltroAutor = false;
+        this.estadoFiltro = false;
+        this.pasarDatosService.setEstadoFiltro(false);
+        break;
+
+      case 'titulo':
+        this.estadoFiltroTitulo = false;
+        this.estadoFiltro = false;
+        this.pasarDatosService.setEstadoFiltro(false);
+        break;
+    }
+    
   }
 }

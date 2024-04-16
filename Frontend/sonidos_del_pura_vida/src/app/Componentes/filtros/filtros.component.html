@@ -65,7 +65,7 @@
         <div style="border-radius: 0%;border: 1px solid #E2E2E2">
             <h5 style="margin: 10px;">Autor:</h5>
             <div class="d-flex" style="justify-content:center; align-items: center; ">
-                <div class="input-group mb-3" style="width: 80%;margin: 10px;border: 1px solid black; border-radius: 20px;">
+                <div class="input-group mb-3" style="width: 80%;margin: 10px;">
                     <div class="input-group-prepend">
                         <button style="background: none; border: none;" (click)="activarFiltro('autor',autor.value, true)">
                             <span class="material-symbols-outlined" style="margin: 5px;">
@@ -73,10 +73,10 @@
                             </span>
                         </button>
                     </div>
-                    <input type="text" class="form-control" style="border: none; border-radius: 20px;" #autor >
+                    <input type="text" class="form-control" style=" border-radius: 20px;" #autor >
                 </div>
-                <div *ngIf="estadoFiltro">
-                  <button (click)="desactivarFiltro(autor)" style="border: none;background: none;">
+                <div *ngIf="estadoFiltroAutor">
+                  <button (click)="desactivarFiltro('autor')" style="border: none;background: none;">
                         <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
                             cancel
                         </span>
@@ -100,8 +100,8 @@
                     </div>
                     <input type="text" class="form-control" style=" border-radius: 20px;" #titulo >
                 </div>
-                <div *ngIf="estadoFiltro">
-                  <button (click)="desactivarFiltro(titulo)" style="border: none;background: none;">
+                <div *ngIf="estadoFiltroTitulo">
+                  <button (click)="desactivarFiltro('titulo')" style="border: none;background: none;">
                         <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
                             cancel
                         </span>
