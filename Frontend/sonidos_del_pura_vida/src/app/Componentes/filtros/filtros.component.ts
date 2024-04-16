@@ -12,38 +12,26 @@ export class FiltrosComponent {
   estadoFiltroTitulo:boolean = false;
   estadoFiltro:boolean = false;
 
-  activarFiltro(tipoFiltro:string, filtrar:string, estado:boolean):void {
+  activarFiltro(tipoFiltro:string, filtrar:string):void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
     this.pasarDatosService.setDatoFiltrar(filtrar);
-    this.pasarDatosService.setEstadoFiltro(estado);
-    switch(tipoFiltro) {
+    
+    let estado = filtrar !== '';
 
+    switch(tipoFiltro) {
       case 'autor':
         this.estadoFiltroAutor = estado;
+        this.estadoFiltro = estado;
         break;
 
       case 'titulo':
         this.estadoFiltroTitulo = estado;
+        this.estadoFiltro = estado;
+        
         break;
     }
-  }
 
-  desactivarFiltro(desactivarFiltro:string): void {
+    this.pasarDatosService.setEstadoFiltro(this.estadoFiltro);
+}
 
-    switch(desactivarFiltro) {
-
-      case 'autor':
-        this.estadoFiltroAutor = false;
-        this.estadoFiltro = false;
-        this.pasarDatosService.setEstadoFiltro(false);
-        break;
-
-      case 'titulo':
-        this.estadoFiltroTitulo = false;
-        this.estadoFiltro = false;
-        this.pasarDatosService.setEstadoFiltro(false);
-        break;
-    }
-    
-  }
 }
