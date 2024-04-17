@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PasarDatosService } from '../services/pasar-datos.service';
 import { Audio } from '../models/Audio.model';
+import { FormCrearAudioComponent } from '../form-crear-audio/form-crear-audio.component';
 
 @Component({
   selector: 'app-pagina-principal',

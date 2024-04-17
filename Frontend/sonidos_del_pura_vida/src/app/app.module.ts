@@ -12,6 +12,8 @@ import { FiltrosComponent } from './Componentes/filtros/filtros.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { LoginComponent } from './login/login.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
+import { FormCrearAudioComponent } from './form-crear-audio/form-crear-audio.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
     CardAudioComponent,
     FiltrosComponent,
     LoginComponent,
-    VistaAdministradorComponent
+    VistaAdministradorComponent,
+    FormCrearAudioComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

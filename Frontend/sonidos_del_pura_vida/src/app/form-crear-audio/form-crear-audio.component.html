@@ -1,0 +1,104 @@
+<div class="modal fade" id="crearAudios" tabindex="-1" aria-hidden="true" #crearAudios (shown.bs.modal)="onModalShown()">
+    <div class="modal-dialog" style="max-width: 1500px; ">
+        <div class="modal-content" style="height: 850px; border-radius: 40px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background: transparent; border: none; margin: 20px 0px 0px 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h1 class="d-flex" style="place-content: center;">Crear Sonidos Pura Vida</h1>
+
+            <div class="modal-body d-flex" style="place-content: center;">
+                <div class="card" style="width: 90%;height: 90%; border-radius: 20px; stroke: #F1F3F4;">
+
+                    <form class="needs-validation m-4" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+
+                                    <label class="form-label" for="titulo">Título del sonido: </label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control form-control-lg" id="titulo"
+                                            name="titulo" formControlName="titulo"
+                                            [class.is-invalid]="form.get('titulo')?.invalid && form.get('titulo')?.touched">
+                                        <div class="invalid-feedback"
+                                            *ngIf="form.get('titulo')?.invalid && form.get('titulo')?.touched">
+                                            Debe ingresar un título para el audio
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-3">
+                                    <label class="form-label" for="autor">Autor: </label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control form-control-lg" id="autor" name="autor"
+                                            formControlName="autor"
+                                            [class.is-invalid]="form.get('autor')?.invalid && form.get('autor')?.touched">
+                                        <div class="invalid-feedback"
+                                            *ngIf="form.get('autor')?.invalid && form.get('autor')?.touched">
+                                            Debe ingresar el autor del audio
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <label class="form-label" for="comentarios">Comentarios: </label>
+                                    <div class="input-group has-validation">
+                                        <textarea type="text" class="form-control form-control-lg" id="comentarios"
+                                            name="comentarios" formControlName="comentarios"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <h5 style="margin-bottom:20px;">Sonido </h5>
+
+                                    <div class="file-input"
+                                        style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
+                                        <label for="file-upload"
+                                            style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                                            <span class="material-symbols-outlined"
+                                                style="font-size: 45px; margin-bottom: 10px;">
+                                                cloud_upload
+                                            </span>
+                                            <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o
+                                                examinar</span>
+                                            <input type="file" id="file-upload" style="display: none;">
+                                        </label>
+                                    </div>
+
+                                    <p>Los archivos deben ser menores que <strong>50MB</strong></p>
+                                    <p>Tipos de archivos permitidos: <strong>mp3 wav ogg mp4.</strong></p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+
+                                <div id="mapid">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+                        <button class="btn btn-primary btn-sm"
+                            style="border-radius: 20px; background-color: #001148; color:white; margin-top:20px; width: 250px; height: 50px;">Encontrar
+                            mi ubicación actual</button>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

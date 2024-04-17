@@ -1,0 +1,26 @@
+
+
+.form-label{
+    font-size: 1.3rem;
+    color: #000;
+    font-weight: 500;
+}
+
+.form-control{
+    border-radius: 20px;
+}
+
+textarea{
+    border-radius: 20px;
+}
+
+textarea::after{
+    border-radius: 20px;
+}
+
+
+#mapid{
+    height: 400px;
+    width: 100%;
+    border-radius: 20px;
+}
