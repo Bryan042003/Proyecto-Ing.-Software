@@ -7,61 +7,75 @@
 
     </div>
 
-    <div>
-        <div style="border-radius: 0%;border: 1px solid #E2E2E2">
+    <div class="d-flex " >
+        <div class="w-50">
             <H5 style="margin: 10px;">Provincia:</H5>
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" [(ngModel)]="provinciaSanJose" (change)="activarFiltro('provincia', provinciaSanJose ? 'San José' : '')">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="provinciaSanJose" (change)="activarFiltro('provincia', provinciaSanJose ? 'San José' : '')"  (click)="cargarCantones('1')">
                 <label class="form-check-label" for="flexCheckDefault">
                     San José
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaAlajuela" (change)="activarFiltro('provincia', provinciaAlajuela ? 'Alajuela' : '')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaAlajuela" (change)="activarFiltro('provincia', provinciaAlajuela ? 'Alajuela' : '')" (click)="cargarCantones('2')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Alajuela
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaCartago" (change)="activarFiltro('provincia', provinciaCartago ? 'Cartago' : '')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaCartago" (change)="activarFiltro('provincia', provinciaCartago ? 'Cartago' : '')" (click)="cargarCantones('3')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Cartago
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" [(ngModel)]="provinciaHeredia" (change)="activarFiltro('provincia', provinciaHeredia ? 'Heredia' : '')">
+                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" [(ngModel)]="provinciaHeredia" (change)="activarFiltro('provincia', provinciaHeredia ? 'Heredia' : '')" (click)="cargarCantones('4')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Heredia
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaGuanacaste" (change)="activarFiltro('provincia', provinciaGuanacaste ? 'Guanacaste' : '')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaGuanacaste" (change)="activarFiltro('provincia', provinciaGuanacaste ? 'Guanacaste' : '')" (click)="cargarCantones('5')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Guanacaste
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaPuntarenas" (change)="activarFiltro('provincia', provinciaPuntarenas ? 'Puntarenas' : '')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaPuntarenas" (change)="activarFiltro('provincia', provinciaPuntarenas ? 'Puntarenas' : '')" (click)="cargarCantones('6')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Puntarenas
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaLimon" (change)="activarFiltro('provincia', provinciaLimon ? 'Limón' : '')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaLimon" (change)="activarFiltro('provincia', provinciaLimon ? 'Limón' : '')"  (click)="cargarCantones('7')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Limón
                 </label>
             </div>
         </div>
+
+        <div class="w-50 " *ngIf="estadoFiltro"> 
+            <H5 style="margin: 10px;">Cantones:</H5>
+                <div style=" width: 100%; height: 180px; box-sizing: content-box;overflow-y: auto;">
+                    <div *ngFor="let canton of cantones">
+                    <div class="form-check" style="margin-left: 10px;">
+                        <input class="form-check-input" type="checkbox" id="flexCheckChecked" #canton (input)="activarFiltro('canton', canton.nombre)" >
+                        <label class="form-check-label" for="flexCheckChecked">
+                            {{canton.nombre}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
+    <div >
         <div style="border-radius: 0%;border: 1px solid #E2E2E2">
             <h5 style="margin: 10px;">Autor:</h5>
             <div class="d-flex" style="justify-content:center; align-items: center; ">

@@ -17,47 +17,52 @@ export class PasarDatosService {
   public tipoFiltro: string = '';
   public datoFiltrar: string = '';
   private estadoFiltro = new BehaviorSubject<boolean>(false);
-  public listaAudios:Audio[] = [];
+  public listaAudios: Audio[] = [];
   public AudioGuardar: any;
 
-  constructor(private http:HttpClient) {}
 
-  getAudios():Observable<Audio>{
-    return this.http.get<Audio>(this.urlAudios +  'obtenerAudios.php');
+  constructor(private http: HttpClient) { }
+
+  getAudios(): Observable<Audio> {
+    return this.http.get<Audio>(this.urlAudios + 'obtenerAudios.php');
   }
 
-  setAudio(audio:any){
+  setAudio(audio: any) {
     this.AudioGuardar = audio;
   }
 
-  getAudio(){
+  getCantones(idProvincia:string): Observable<any> {
+    return this.http.get(this.urlAudios + 'obtenerCantonByProvincia?id_provincia='+idProvincia);
+  }
+
+  getAudio() {
     return this.AudioGuardar;
   }
 
-  getTipoFiltro(){  
+  getTipoFiltro() {
     return this.tipoFiltro;
   }
-  setTipoFiltro(tipoFiltro:string):void{
+  setTipoFiltro(tipoFiltro: string): void {
     this.tipoFiltro = tipoFiltro;
   }
-  getDatoFiltrar(){
+  getDatoFiltrar() {
     return this.datoFiltrar;
   }
-  setDatoFiltrar(datoFiltrar:string):void{
+  setDatoFiltrar(datoFiltrar: string): void {
     console.log(datoFiltrar);
     this.datoFiltrar = datoFiltrar;
   }
-  setEstadoFiltro(estado:boolean):void{
+  setEstadoFiltro(estado: boolean): void {
     this.estadoFiltro.next(estado);
   }
-  getEstadoFiltro(){
+  getEstadoFiltro() {
     return this.estadoFiltro.asObservable();
   }
 
-  getListaAudios(){
+  getListaAudios() {
     return this.listaAudios;
   }
-  setListaAudios(listaAudios:Audio[]){
+  setListaAudios(listaAudios: Audio[]) {
 
     this.listaAudios = listaAudios;
   }

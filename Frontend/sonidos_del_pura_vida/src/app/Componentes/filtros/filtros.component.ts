@@ -12,6 +12,7 @@ export class FiltrosComponent {
   estadoFiltroTitulo:boolean = false;
   estadoFiltradoProvincia:boolean = false;
   estadoFiltro:boolean = false;
+  estadoFiltradoCanton:boolean = false;
   public provinciaSanJose: boolean = false;
   public provinciaAlajuela: boolean = false;
   public provinciaGuanacaste: boolean = false;
@@ -19,6 +20,8 @@ export class FiltrosComponent {
   public provinciaHeredia: boolean = false;
   public provinciaPuntarenas: boolean = false;
   public provinciaCartago: boolean = false;
+
+  cantones:any[] = [];
 
   activarFiltro(tipoFiltro:string, filtrar:string):void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
@@ -42,9 +45,23 @@ export class FiltrosComponent {
         this.estadoFiltradoProvincia = estado;
         this.estadoFiltro = estado;
         break;
+
+        case 'canton':
+          this.estadoFiltradoCanton = estado;
+          this.estadoFiltro = estado;
+          break;
     }
 
     this.pasarDatosService.setEstadoFiltro(this.estadoFiltro);
 }
+
+cargarCantones(idProvincia:string){
+  this.pasarDatosService.getCantones(idProvincia).subscribe(
+    (res:any) => {
+      this.cantones = res;
+    }
+  );
+}
+
 
 }

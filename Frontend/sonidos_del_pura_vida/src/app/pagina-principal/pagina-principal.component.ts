@@ -57,6 +57,11 @@ export class PaginaPrincipalComponent implements OnInit {
         this.pasarDatosService.setListaAudios(this.audiosFilter);
         break;
 
+      case 'canton':
+        this.audiosFilter = this.audios.filter(audio => audio.canton.toLowerCase().includes(datoFiltrar.toLowerCase()));
+        this.pasarDatosService.setListaAudios(this.audiosFilter);
+        break;
+
       default:
         break;
     }
