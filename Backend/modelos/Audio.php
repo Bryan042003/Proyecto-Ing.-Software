@@ -29,7 +29,7 @@ class Audio{
     }
 
     public function obtenerAudio($id){
-        $query = "SELECT * FROM " . $this->vista . " WHERE id = :id";
+        $query = "SELECT * FROM " . $this->vista . " WHERE audio_id = :id";
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -61,12 +61,12 @@ class Audio{
         return $stmt->rowCount() > 0;
     }
 
-
-    
-    
-    
-
-    
-
+    public function obtenerCantones($id_provincia) {
+        $query = "SELECT * FROM canton WHERE id_provincia = :id_provincia";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id_provincia', $id_provincia); 
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
 }
 ?>
