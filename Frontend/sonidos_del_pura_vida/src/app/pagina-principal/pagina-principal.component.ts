@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { PasarDatosService } from '../services/pasar-datos.service';
 import { Audio } from '../models/Audio.model';
 import { FormCrearAudioComponent } from '../form-crear-audio/form-crear-audio.component';
@@ -10,13 +10,21 @@ import { FormCrearAudioComponent } from '../form-crear-audio/form-crear-audio.co
 })
 export class PaginaPrincipalComponent implements OnInit {
   audios:Audio[] = [];
-  audioU: any;
+
+  audiosFilter: Audio[] = [];
+  estadoFiltro:boolean = false;
 
   constructor(public pasarDatosService: PasarDatosService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.cargarAudios();
-    this.audioU = this.pasarDatosService.getAudio();
+
+    this.pasarDatosService.getEstadoFiltro().subscribe(estadoFiltro => {
+      this.estadoFiltro = estadoFiltro;
+      this.filtros();
+    });
+  
+
   }
 
   private cargarAudios(){
@@ -27,19 +35,38 @@ export class PaginaPrincipalComponent implements OnInit {
       }
     );
   }
+  
 
+  filtros():void {
+    this.audiosFilter = [];
+    const tipoFiltro = this.pasarDatosService.getTipoFiltro();
+    const  datoFiltrar = this.pasarDatosService.getDatoFiltrar();
 
+    switch (tipoFiltro) {
+      case 'provincia':
+        this.audiosFilter = this.audios.filter(audio => audio.provincia.toLowerCase().includes(datoFiltrar.toLowerCase()));
+        this.pasarDatosService.setListaAudios(this.audiosFilter);
+        break;
 
+      case 'autor':
+        this.audiosFilter = this.audios.filter(audio => audio.autor.toLowerCase().includes(datoFiltrar.toLowerCase())); 
+        this.pasarDatosService.setListaAudios(this.audiosFilter);
+        break;
 
+      case 'titulo':
+        this.audiosFilter = this.audios.filter(audio => audio.titulo.toLowerCase().includes(datoFiltrar.toLowerCase()));
+        this.pasarDatosService.setListaAudios(this.audiosFilter);
+        break;
 
-}
+      case 'canton':
+        this.audiosFilter = this.audios.filter(audio => audio.canton.toLowerCase().includes(datoFiltrar.toLowerCase()));
+        this.pasarDatosService.setListaAudios(this.audiosFilter);
+        break;
 
-/*
-  deleteAudio(id:number){
-    this.pasarDatosService.deleteAudio(id).subscribe();
-    this.audios = this.audios.filter(audio => audio.id !== id);
+      default:
+        break;
+    }
   }
 
-
-*/
+}
 

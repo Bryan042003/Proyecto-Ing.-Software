@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 import { FormCrearAudioComponent } from './form-crear-audio/form-crear-audio.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MapaAudioComponent } from './Componentes/mapa-audio/mapa-audio.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FiltrosComponent,
     LoginComponent,
     VistaAdministradorComponent,
-    FormCrearAudioComponent
+    FormCrearAudioComponent,
+    MapaAudioComponent
     
   ],
   imports: [
