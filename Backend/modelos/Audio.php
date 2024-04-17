@@ -66,7 +66,9 @@ class Audio{
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->bindParam(':id_provincia', $id_provincia); 
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        return $stmt; 
     }
+
+
 }
 ?>
