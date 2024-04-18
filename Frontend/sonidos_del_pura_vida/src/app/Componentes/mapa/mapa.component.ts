@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Map, tileLayer, Marker, MarkerClusterGroup } from 'leaflet';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
-import { MapaAudioComponent } from '../mapa-audio/mapa-audio.component';
 import { PasarDatosService } from '../../services/pasar-datos.service';
 import { Audio } from '../../models/Audio.model';
 
@@ -84,7 +83,6 @@ export class MapaComponent implements OnInit {
           if (leerMasButton) {
             leerMasButton.addEventListener('click', () => {
               this.pasarDatosService.setAudio(audio);
-              MapaAudioComponent.cargarMapa2(audio);
             });
           }
         });
@@ -96,7 +94,9 @@ export class MapaComponent implements OnInit {
 
 
   private actualizarMapa() {
+    if (this.markers) {
     this.map.removeLayer(this.markers);
+    }
     this.cargarMapa();
   }
 
