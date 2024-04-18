@@ -182,47 +182,7 @@
 </div>
 
 <!-- Modal Visualizar info audios-->
-<div class="modal fade" id="verinfoaudios" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1500px; ">
-        <div class="modal-content" style="height: 800px; border-radius: 40px;">
-            <div>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
-                    style="background: transparent; border: none; margin: 20px;">
-                    <span class="material-symbols-outlined" style=" font-size: 40px;">
-                        cancel
-                    </span>
-                </button>
-            </div>
-
-            <h1 class="d-flex" style="margin: 0px 30px 30px 30px;place-content: center;">{{this.pasarDatosService.getAudio()?.titulo}}</h1>
-
-            <div class="modal-body d-flex" style="place-content: center;">
-                <div class="card"
-                    style="width: 90%;height: 85%; border-radius: 20px; stroke: #F1F3F4;">
-                    <div class="row" style=" margin-left: 50px; margin-right: 50px; margin-top: 50px;">
-                        <div class="col">
-                          <h5 style="margin-bottom:20px;"><strong>Provincia:</strong>{{this.pasarDatosService.getAudio()?.provincia}} </h5>
-                          <h5 style="margin-bottom:20px;"><strong>Cantón:</strong> {{this.pasarDatosService.getAudio()?.canton}}</h5>
-                          <h5 style="margin-bottom:20px;"><strong>Autor:</strong> {{this.pasarDatosService.getAudio()?.autor}}</h5>
-                          <h5 style="margin-bottom:20px;"><strong>Comentario:</strong> {{this.pasarDatosService.getAudio()?.comentarios}}</h5>
-                          <audio controls [src]="this.pasarDatosService.getAudio()?.ruta_audio" style="border-radius: 0%; width: 80%; margin-bottom: 10px;"></audio>
-                        </div>
-                        <div class="col" style="margin-bottom:30px;">
-                            <img [src]="this.pasarDatosService.getAudio()?.ruta_imagen" style="width: 300px;">
-                        </div>
-                    </div>
-                    <div class="row d-flex"
-                        style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px; place-content: center;height: 300px; width: 300px;">
-                        <app-mapa-audio></app-mapa-audio>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<app-visualizar-info-audios></app-visualizar-info-audios>
 
 
 <!-- Modal crear sonidos-->

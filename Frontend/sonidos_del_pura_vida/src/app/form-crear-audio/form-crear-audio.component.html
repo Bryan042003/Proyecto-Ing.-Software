@@ -1,4 +1,5 @@
-<div class="modal fade" id="crearAudios" tabindex="-1" aria-hidden="true" #crearAudios (shown.bs.modal)="onModalShown()">
+<div class="modal fade" id="crearAudios" tabindex="-1" aria-hidden="true" #crearAudios
+    (shown.bs.modal)="onModalShown()">
     <div class="modal-dialog" style="max-width: 1500px; ">
         <div class="modal-content" style="height: 850px; border-radius: 40px;">
             <div>
@@ -53,23 +54,32 @@
                                 </div>
                                 <div class="row mt-3">
                                     <h5 style="margin-bottom:20px;">Sonido </h5>
+                                    <div class="d-flex" style="align-items: center; justify-content: center;">
+                                        <div class="file-input "
+                                            style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
+                                            <label for="file-upload"
+                                                style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                                                <span class="material-symbols-outlined"
+                                                    style="font-size: 45px; margin-bottom: 10px;">
+                                                    cloud_upload
+                                                </span>
+                                                <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o
+                                                    examinar</span>
+                                                <input type="file" id="file-upload" style="display: none;">
+                                            </label>
+                                        </div>
 
-                                    <div class="file-input"
-                                        style="display: flex; flex-direction: column; align-items: center; border: 2px dashed black; border-radius: 5px; padding: 20px; width:500px ; height:100px ; cursor: pointer; margin-bottom: 20px;">
-                                        <label for="file-upload"
-                                            style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
-                                            <span class="material-symbols-outlined"
-                                                style="font-size: 45px; margin-bottom: 10px;">
-                                                cloud_upload
-                                            </span>
-                                            <span style="font-size: 14px; margin-bottom: 10px;">Arrastar y soltar o
-                                                examinar</span>
-                                            <input type="file" id="file-upload" style="display: none;">
-                                        </label>
+
                                     </div>
+                                    <div class="d-flex" style="justify-content: center; align-items: center;">
+                                        
+                                        <p>Tipos de archivos permitidos: <strong>mp3 wav ogg mp4.</strong></p>
+                                    </div>
+                                    <div class="d-flex" style="justify-content: center; align-items: center;">
+                                        <p>Los archivos deben ser menores que <strong>50MB</strong></p>
+                                    </div>
+                                    
 
-                                    <p>Los archivos deben ser menores que <strong>50MB</strong></p>
-                                    <p>Tipos de archivos permitidos: <strong>mp3 wav ogg mp4.</strong></p>
 
                                 </div>
                             </div>
@@ -78,6 +88,9 @@
 
                                 <div id="mapid">
                                 </div>
+                                <button class="btn btn-primary btn-sm"
+                                    style="border-radius: 20px; background-color: #001148; color:white; margin-top:20px; width: 250px; height: 50px;">Encontrar
+                                    mi ubicación actual</button>
 
                             </div>
 
@@ -88,9 +101,7 @@
 
 
 
-                        <button class="btn btn-primary btn-sm"
-                            style="border-radius: 20px; background-color: #001148; color:white; margin-top:20px; width: 250px; height: 50px;">Encontrar
-                            mi ubicación actual</button>
+
 
 
                     </form>
