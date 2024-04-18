@@ -2,7 +2,6 @@ import { Component, AfterViewInit, OnInit,ViewChild,ElementRef } from '@angular/
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 
 
-
 import * as L from 'leaflet';
 
 
@@ -15,8 +14,24 @@ export class FormCrearAudioComponent  {
   @ViewChild('crearAudios',{static:false}) crearAudios!: ElementRef;
   private map: any;
   private marker: any;
+  selectedImage!: string | ArrayBuffer;
+  imageSrc!: string | ArrayBuffer;
 
   constructor(private fb: FormBuilder) { }
+
+
+  form = this.fb.group({
+    titulo: ['', Validators.required],
+    autor: ['', Validators.required],
+    comentarios: [''],
+    AudioFile: ['', Validators.required],
+    imagen: [''],
+    latitud: ['', Validators.required],
+    longitud: ['', Validators.required],
+    canton: ['', Validators.required],
+    provincia: ['', Validators.required]
+
+  });
 
 
   private initMap(): void {
@@ -38,20 +53,37 @@ export class FormCrearAudioComponent  {
     });
   }
 
+  onImagechange(event: any) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+        this.form.controls.imagen.setValue(this.imageSrc);
+      };
+    }
 
+  }
 
-  form = this.fb.group({
-    titulo: ['', Validators.required],
-    autor: ['', Validators.required],
-    comentarios: [''],
-    AudioFile: ['', Validators.required],
-    imagen: [''],
-    latitud: ['', Validators.required],
-    longitud: ['', Validators.required],
-    canton: ['', Validators.required],
-    provincia: ['', Validators.required]
+  onDrop(event:any) {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+    if (files.length > 0) {
+        this.onImagechange({ target: { files: files } });
+    }
+}
 
-  });
+onDragOver(event:any) {
+    event.stopPropagation();
+    event.preventDefault();
+}
+
+onDragLeave(event:any) {
+    event.stopPropagation();
+    event.preventDefault();
+}
+
   onSubmit() {
 
   }
