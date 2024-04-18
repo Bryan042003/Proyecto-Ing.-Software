@@ -13,6 +13,7 @@ export class PaginaPrincipalComponent implements OnInit {
 
   audiosFilter: Audio[] = [];
   estadoFiltro:boolean = false;
+  opcionElegida: string = 'Ordenar por:';
 
   constructor(public pasarDatosService: PasarDatosService) {}
 
@@ -23,7 +24,7 @@ export class PaginaPrincipalComponent implements OnInit {
       this.estadoFiltro = estadoFiltro;
       this.filtros();
     });
-  
+
 
   }
 
@@ -35,13 +36,12 @@ export class PaginaPrincipalComponent implements OnInit {
       }
     );
   }
-  
+
 
   filtros():void {
     this.audiosFilter = [];
     const tipoFiltro = this.pasarDatosService.getTipoFiltro();
     const  datoFiltrar = this.pasarDatosService.getDatoFiltrar();
-
     switch (tipoFiltro) {
       case 'provincia':
         this.audiosFilter = this.audios.filter(audio => audio.provincia.toLowerCase().includes(datoFiltrar.toLowerCase()));
@@ -49,7 +49,7 @@ export class PaginaPrincipalComponent implements OnInit {
         break;
 
       case 'autor':
-        this.audiosFilter = this.audios.filter(audio => audio.autor.toLowerCase().includes(datoFiltrar.toLowerCase())); 
+        this.audiosFilter = this.audios.filter(audio => audio.autor.toLowerCase().includes(datoFiltrar.toLowerCase()));
         this.pasarDatosService.setListaAudios(this.audiosFilter);
         break;
 
@@ -63,10 +63,32 @@ export class PaginaPrincipalComponent implements OnInit {
         this.pasarDatosService.setListaAudios(this.audiosFilter);
         break;
 
+      case 'A → Z':
+        this.audios.sort((a, b) => a.titulo.localeCompare(b.titulo));
+        break;
+
+      case 'Z → A':
+        this.audios.sort((a, b) => b.titulo.localeCompare(a.titulo));
+        break;
+
+      case 'Más reciente':
+        this.audios.sort((a, b) => b.fecha_registro.localeCompare(a.fecha_registro));
+        break;
+
+      case 'Más antiguo':
+        this.audios.sort((a, b) => a.fecha_registro.localeCompare(b.fecha_registro));
+        break;
+
       default:
         break;
     }
   }
+
+  filtrando(tipoFiltrar: string) {
+    this.opcionElegida = tipoFiltrar;
+    this.pasarDatosService.setTipoFiltro(tipoFiltrar);
+    this.filtros();
+}
 
 }
 

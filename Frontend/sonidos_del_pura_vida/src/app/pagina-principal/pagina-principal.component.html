@@ -43,7 +43,7 @@
             </li>
 
             <div class="dropdown-divider"></div>
-            
+
             <li style="margin:20px 50px 20px 0px">
                 <a class="dropdown-item">
                     <button class="d-flex" data-bs-toggle="modal" data-bs-target="#acercaDeNosotros"
@@ -78,13 +78,13 @@
                                     <button class="btn btn-secondary dropdown-toggle btn-block btn-sm" type="button"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
                                         style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
-                                        Ordenar por:
+                                        {{opcionElegida}}
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
-                                        <li><a class="dropdown-item" href="#">Más reciente</a></li>
-                                        <li><a class="dropdown-item" href="#">Más antiguo</a></li>
-                                        <li><a class="dropdown-item" href="#">A → Z</a></li>
-                                        <li><a class="dropdown-item" href="#">Z → A</a></li>
+                                      <li><a class="dropdown-item" href="#" (click)="filtrando('Más reciente')">Más reciente</a></li>
+                                      <li><a class="dropdown-item" href="#" (click)="filtrando('Más antiguo')">Más antiguo</a></li>
+                                      <li><a class="dropdown-item" href="#" (click)="filtrando('A → Z')">A → Z</a></li>
+                                      <li><a class="dropdown-item" href="#" (click)="filtrando('Z → A')">Z → A</a></li>
                                     </ul>
                                 </div>
 
@@ -125,13 +125,13 @@
                                 </nav>
                                 <div class="container"
                                     style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-content;height:550px;">
-                                    
+
                                     <div *ngIf="estadoFiltro; else elseBlock">
                                         <div *ngFor="let audio of audiosFilter">
                                             <app-card-audio [audio]="audio"></app-card-audio>
                                         </div>
                                     </div>
-                                      
+
                                     <ng-template #elseBlock>
                                         <div *ngFor="let audio of audios">
                                             <app-card-audio [audio]="audio"></app-card-audio>
