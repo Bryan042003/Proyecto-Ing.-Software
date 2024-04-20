@@ -1,7 +1,7 @@
 <div class="modal fade" id="crearAudios" tabindex="-1" aria-hidden="true" #crearAudios
     (shown.bs.modal)="onModalShown()">
-    <div class="modal-dialog" style="max-width: 1500px; ">
-        <div class="modal-content" style="height: 850px; border-radius: 40px;">
+    <div class="modal-dialog" style="max-width: 1500px;">
+        <div class="modal-content" style=" border-radius: 40px; padding: 5px;">
             <div>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
                     style="background: transparent; border: none; margin: 20px 0px 0px 20px;">
@@ -18,7 +18,7 @@
 
                     <form class="needs-validation m-4" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="row">
 
                                     <label class="form-label" for="titulo">Título del sonido: </label>
@@ -75,7 +75,7 @@
 
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
 
                                 <div id="mapid">
                                 </div>

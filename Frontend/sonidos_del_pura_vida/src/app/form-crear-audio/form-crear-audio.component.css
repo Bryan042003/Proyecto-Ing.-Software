@@ -61,3 +61,30 @@ textarea::after{
     font-size: 20px;
 
 }
+
+@media only screen and (max-width: 600px) {
+    #drop-area{
+        width: 100%;
+        height: auto;
+    }
+
+    #img-view img{
+        width: 60px;
+    }
+
+    #img-view span{
+        font-size: 12px;
+    }
+
+    #img-view p{
+        font-size: 16px;
+    }
+
+    #mapid{
+        height: 300px;
+        width: 100%;
+        border-radius: 20px;
+        margin-top: 1rem;
+    }
+    
+}
