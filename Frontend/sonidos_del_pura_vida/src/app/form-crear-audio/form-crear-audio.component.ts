@@ -130,6 +130,12 @@ export class FormCrearAudioComponent {
     event.preventDefault();
   }
 
+  quitarImagen() {
+    this.imageSrc = '';
+    this.form.controls.imagen.setValue('');
+  
+  }
+
   onSubmit() {
 
   }
