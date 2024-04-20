@@ -25,15 +25,17 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
         $extensions_image_allowed = array('png', 'gif', 'jpg', 'jpeg');
 
         if (in_array($extension_image, $extensions_image_allowed)) {
-            move_uploaded_file($temp_imagen_name, $folder_imagen);
+            if ($imagen_size > 50000000) { // 50MB en bytes
+                echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
+                return;
+            } else {
+                move_uploaded_file($temp_imagen_name, $folder_imagen);
+            }
         } else {
             echo json_encode(array("ERROR" => "El tipo de archivo no está permitido. Formatos permitidos: PNG, GIF, JPG, JPEG."), JSON_UNESCAPED_UNICODE);
             return;
         }
-        if ($imagen_size > 50000000) { // 50MB en bytes
-            echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
-            return;
-        }
+
     } else {
         
         $direccion_image = $_ENV['DIR_IMGS_NOPHOTO'];
@@ -55,15 +57,17 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
     $extensions_audio_allowed = array('mp3', 'wav', 'ogg', 'mp4');
 
     if (in_array($extension_audio, $extensions_audio_allowed)) {
-        move_uploaded_file($temp_audiofile_name, $folder_audio);
+        if ($audio_size > 50000000) { // 50MB en bytes
+            echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
+            return;
+        } else {
+            move_uploaded_file($temp_audiofile_name, $folder_audio);
+        }
     } else {
         echo json_encode(array("ERROR" => "El tipo de archivo no está permitido. Formatos permitidos: mp3, wav, ogg, mp4."), JSON_UNESCAPED_UNICODE);
         return;
     }
-    if ($audio_size > 50000000) { // 50MB en bytes
-        echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
-        return;
-    }
+
 
     // audio data
     $audio->titulo = $_POST["titulo"];
