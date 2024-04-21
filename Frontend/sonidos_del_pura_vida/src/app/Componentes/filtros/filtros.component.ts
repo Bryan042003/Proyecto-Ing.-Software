@@ -20,6 +20,9 @@ export class FiltrosComponent {
   public provinciaHeredia: boolean = false;
   public provinciaPuntarenas: boolean = false;
   public provinciaCartago: boolean = false;
+  public cantonSeleccionado: boolean = false;
+
+  public provinciaGuardada: string = '';
 
   cantones: any[] = [];
 
@@ -27,17 +30,27 @@ export class FiltrosComponent {
     return !str || !str.trim();
   }
 
+  verificandoCantonEsSeleccionado(tipoCanton: string, cantonNombre: string, seleccionado: boolean) {
+    if (seleccionado) {
+      this.activarFiltro(tipoCanton, cantonNombre);
+      //console.log('El checkbox ' + cantonNombre + ' está seleccionado');
+    } else {
+      this.activarFiltro("provincia", this.provinciaGuardada);
+      //console.log('El checkbox ' + cantonNombre + ' no está seleccionado');
+    }
+}
+
   activarFiltro(tipoFiltro: string, filtrar: string): void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
     this.pasarDatosService.setDatoFiltrar(filtrar);
 
     let estado = filtrar !== '';
     console.log("estado: " + estado);
-    console.log("tipoFiltro: " + tipoFiltro);
+    console.log("tipoFiltro en activar filtro: " + tipoFiltro);
     console.log("dato: " + filtrar);
 
     if (!this.isEmptyOrWhitespace(filtrar)) {
-      console.log("entrooooo");
+      console.log("entramos a activar filtos");
       if (tipoFiltro == 'autor') {
         this.estadoFiltroAutor = estado;
         this.pasarDatosService.setEstadoFiltroAutor(this.estadoFiltroAutor);
@@ -47,11 +60,16 @@ export class FiltrosComponent {
         this.pasarDatosService.setEstadoFiltroTitulo(this.estadoFiltroTitulo);
       }
       if (tipoFiltro == 'provincia') {
+        this.provinciaGuardada = filtrar;
         console.log("entrooooo provincia");
         this.estadoFiltradoProvincia = estado;
         this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltradoProvincia);
       }
+
       if (tipoFiltro == 'canton') {
+        console.log("entrooooo canton");
+        console.log("Estado provincia:");
+        console.log(this.pasarDatosService.getEstadoFiltroProvincia());
         this.estadoFiltradoCanton = estado;
         this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltradoCanton);
       }
@@ -74,6 +92,7 @@ export class FiltrosComponent {
       }
       if (tipoFiltro == 'provincia') {
         console.log("entrooooo provincia quitado");
+        this.provinciaGuardada = '';
         this.estadoFiltradoProvincia = false;
         this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltradoProvincia);
 

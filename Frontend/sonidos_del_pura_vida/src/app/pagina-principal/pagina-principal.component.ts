@@ -44,14 +44,13 @@ export class PaginaPrincipalComponent implements OnInit {
   filtros(): void {
     const tipoFiltro = this.pasarDatosService.getTipoFiltro();
     const datoFiltrar = this.pasarDatosService.getDatoFiltrar();
+    console.log("entrmos a filtros");
 
     switch (tipoFiltro) {
-
       case 'canton':
         this.pasarDatosService.getEstadoFiltroCanton().subscribe(estadoFiltroCanton => {
           if (estadoFiltroCanton === false) {
             this.audiosFiltradosCanton = [];
-            this.pasarDatosService.setTipoFiltro('provincia');
             console.log("limpiando canton");
             console.log(this.audiosFiltradosCanton);
           } else {
@@ -67,6 +66,8 @@ export class PaginaPrincipalComponent implements OnInit {
             console.log("limpiando provincia");
             console.log(this.audiosFiltradosProvincia);
           } else {
+            console.log("estamos haciendo lista provincia")
+            this.audiosFiltradosCanton = [];
             this.audiosFiltradosProvincia = this.audios.filter(audio => audio.provincia.toLowerCase().includes(datoFiltrar.toLowerCase()));
           }
         });
