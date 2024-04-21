@@ -7,12 +7,12 @@ import { PasarDatosService } from '../../services/pasar-datos.service';
   styleUrl: './filtros.component.css'
 })
 export class FiltrosComponent {
-  constructor(public pasarDatosService: PasarDatosService) {}
-  estadoFiltroAutor:boolean = false;
-  estadoFiltroTitulo:boolean = false;
-  estadoFiltradoProvincia:boolean = false;
-  estadoFiltro:boolean = false;
-  estadoFiltradoCanton:boolean = false;
+  constructor(public pasarDatosService: PasarDatosService) { }
+  estadoFiltroAutor: boolean = false;
+  estadoFiltroTitulo: boolean = false;
+  estadoFiltradoProvincia: boolean = false;
+  estadoFiltro: boolean = false;
+  estadoFiltradoCanton: boolean = false;
   public provinciaSanJose: boolean = false;
   public provinciaAlajuela: boolean = false;
   public provinciaGuanacaste: boolean = false;
@@ -21,47 +21,53 @@ export class FiltrosComponent {
   public provinciaPuntarenas: boolean = false;
   public provinciaCartago: boolean = false;
 
-  cantones:any[] = [];
+  cantones: any[] = [];
 
-  activarFiltro(tipoFiltro:string, filtrar:string):void {
+  activarFiltro(tipoFiltro: string, filtrar: string): void {
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
     this.pasarDatosService.setDatoFiltrar(filtrar);
-    
+
     let estado = filtrar !== '';
 
-    switch(tipoFiltro) {
+    switch (tipoFiltro) {
       case 'autor':
+        
         this.estadoFiltroAutor = estado;
-        this.estadoFiltro = estado;
+        this.pasarDatosService.setEstadoFiltroAutor(this.estadoFiltroAutor);
         break;
 
       case 'titulo':
         this.estadoFiltroTitulo = estado;
-        this.estadoFiltro = estado;
-        
+        this.pasarDatosService.setEstadoFiltroTitulo(this.estadoFiltroAutor);
         break;
 
       case 'provincia':
         this.estadoFiltradoProvincia = estado;
-        this.estadoFiltro = estado;
+        this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltroAutor);
+
         break;
 
-        case 'canton':
-          this.estadoFiltradoCanton = estado;
-          this.estadoFiltro = estado;
-          break;
+      case 'canton':
+        this.estadoFiltradoCanton = estado;
+        this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltroAutor);
+
+        break;
     }
 
-    this.pasarDatosService.setEstadoFiltro(this.estadoFiltro);
-}
-
-cargarCantones(idProvincia:string){
-  this.pasarDatosService.getCantones(idProvincia).subscribe(
-    (res:any) => {
-      this.cantones = res;
+    if (this.estadoFiltradoProvincia || this.estadoFiltradoCanton || this.estadoFiltroAutor || this.estadoFiltroTitulo) {
+      this.pasarDatosService.setEstadoFiltro(true);
+    }else{
+      this.pasarDatosService.setEstadoFiltro(false);
     }
-  );
-}
+  }
+
+  cargarCantones(idProvincia: string) {
+    this.pasarDatosService.getCantones(idProvincia).subscribe(
+      (res: any) => {
+        this.cantones = res;
+      }
+    );
+  }
 
 
 }

@@ -19,6 +19,12 @@ export class PasarDatosService {
   private estadoFiltro = new BehaviorSubject<boolean>(false);
   public listaAudios: Audio[] = [];
   public AudioGuardar: any;
+  public filtroProvincia: Audio[] = [];
+
+  private estadoFiltroAutor = new BehaviorSubject<boolean>(false);
+  private estadoFiltroProvincia = new BehaviorSubject<boolean>(false);
+  private estadoFiltroCanton= new BehaviorSubject<boolean>(false);
+  private estadoFiltroTitulo = new BehaviorSubject<boolean>(false);
 
 
   constructor(private http: HttpClient) { }
@@ -63,8 +69,32 @@ export class PasarDatosService {
     return this.listaAudios;
   }
   setListaAudios(listaAudios: Audio[]) {
-
     this.listaAudios = listaAudios;
+  }
+
+  setEstadoFiltroAutor(estado: boolean): void {
+    this.estadoFiltroAutor.next(estado);
+  }
+  getEstadoFiltroAutor() {
+    return this.estadoFiltroAutor.asObservable();
+  }
+  setEstadoFiltroProvincia(estado: boolean): void {
+    this.estadoFiltroProvincia.next(estado);
+  }
+  getEstadoFiltroProvincia() {
+    return this.estadoFiltroProvincia.asObservable();
+  }
+  setEstadoFiltroCanton(estado: boolean): void {
+    this.estadoFiltroCanton.next(estado);
+  }
+  getEstadoFiltroCanton() {
+    return this.estadoFiltroCanton.asObservable();
+  }
+  setEstadoFiltroTitulo(estado: boolean): void {
+    this.estadoFiltroTitulo.next(estado);
+  }
+  getEstadoFiltroTitulo() {
+    return this.estadoFiltroTitulo.asObservable();
   }
 
 }

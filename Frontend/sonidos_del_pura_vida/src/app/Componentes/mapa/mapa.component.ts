@@ -27,7 +27,6 @@ export class MapaComponent implements OnInit {
   }
 
   private cargarMapa() {
-    console.log('cargarMapa1');
     if (!this.map) {
       this.map = new Map('map').setView([9.9634, -84.1003], 9);
       tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,7 +37,6 @@ export class MapaComponent implements OnInit {
     this.markers = new window.L.MarkerClusterGroup();
 
     if (this.estadoFiltro) {
-      console.log("filtro en true: " + this.estadoFiltro);
       this.pasarDatosService.getListaAudios().forEach(audio => {
         let latitud = parseFloat(audio.latitud);
         let longitud = parseFloat(audio.longitud);
