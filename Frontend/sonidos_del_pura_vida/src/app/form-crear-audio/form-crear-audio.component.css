@@ -20,7 +20,7 @@ textarea::after{
 
 
 #mapid{
-    height: 400px;
+    height: 280px;
     width: 100%;
     border-radius: 20px;
 }
@@ -62,6 +62,41 @@ textarea::after{
 
 }
 
+.btn-outline-primary{
+    border-radius: 20px;
+    border-color: #001148;
+    color: #001148;
+}
+
+.btn-outline-primary:hover{
+    background-color: #001148;
+    color: #fff;
+}
+
+.btn-outline-danger{
+    border-radius: 20px;
+
+}
+
+.btn-outline-primary:danger{
+    color: #fff;
+}
+
+.btn-primary{
+    border-radius: 20px;
+    background-color: #001148;
+    border-color: #001148;
+    width: 20rem;
+    height: 3.5rem;
+    margin-top: 2rem;
+    font-size: x-large;
+}
+
+.btn-primary:hover{
+    background-color: #002366;
+    border-color: #002366;
+}
+
 @media only screen and (max-width: 600px) {
     #drop-area{
         width: 100%;
@@ -70,6 +105,7 @@ textarea::after{
 
     #img-view img{
         width: 60px;
+        background-size: cover;
     }
 
     #img-view span{
@@ -86,5 +122,19 @@ textarea::after{
         border-radius: 20px;
         margin-top: 1rem;
     }
+
+    .btn-outline-primary{
+        font-size: medium;
+    }
+
+    .btn-primary{
+        width: 100%;
+        height: 3rem;
+        font-size: medium;
+        margin-top: 3rem;
+    }
     
+    .space{
+        margin-top: 2rem;
+    }
 }
