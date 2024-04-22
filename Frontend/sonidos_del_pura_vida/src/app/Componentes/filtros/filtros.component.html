@@ -11,56 +11,56 @@
         <div class="w-50">
             <H5 style="margin: 10px;">Provincia:</H5>
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" [(ngModel)]="provinciaSanJose" (change)="activarFiltro('provincia', provinciaSanJose ? 'San José' : '')"  (click)="cargarCantones('1')">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="provinciaSanJose" (change)="activarFiltro('provincia', provinciaSanJose ? 'San José' : '', '1')">
                 <label class="form-check-label" for="flexCheckDefault">
                     San José
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaAlajuela" (change)="activarFiltro('provincia', provinciaAlajuela ? 'Alajuela' : '')" (click)="cargarCantones('2')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaAlajuela" (change)="activarFiltro('provincia', provinciaAlajuela ? 'Alajuela' : '', '2')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Alajuela
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaCartago" (change)="activarFiltro('provincia', provinciaCartago ? 'Cartago' : '')" (click)="cargarCantones('3')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaCartago" (change)="activarFiltro('provincia', provinciaCartago ? 'Cartago' : '', '3')" >
                 <label class="form-check-label" for="flexCheckChecked">
                     Cartago
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" [(ngModel)]="provinciaHeredia" (change)="activarFiltro('provincia', provinciaHeredia ? 'Heredia' : '')" (click)="cargarCantones('4')">
+                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" [(ngModel)]="provinciaHeredia" (change)="activarFiltro('provincia', provinciaHeredia ? 'Heredia' : '', '4')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Heredia
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaGuanacaste" (change)="activarFiltro('provincia', provinciaGuanacaste ? 'Guanacaste' : '')" (click)="cargarCantones('5')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaGuanacaste" (change)="activarFiltro('provincia', provinciaGuanacaste ? 'Guanacaste' : '', '5')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Guanacaste
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaPuntarenas" (change)="activarFiltro('provincia', provinciaPuntarenas ? 'Puntarenas' : '')" (click)="cargarCantones('6')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaPuntarenas" (change)="activarFiltro('provincia', provinciaPuntarenas ? 'Puntarenas' : '', '6')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Puntarenas
                 </label>
             </div>
 
             <div class="form-check" style="margin-left: 10px;">
-                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaLimon" (change)="activarFiltro('provincia', provinciaLimon ? 'Limón' : '')"  (click)="cargarCantones('7')">
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="provinciaLimon" (change)="activarFiltro('provincia', provinciaLimon ? 'Limón' : '', '7')">
                 <label class="form-check-label" for="flexCheckChecked">
                     Limón
                 </label>
             </div>
         </div>
 
-        <div class="w-50 " *ngIf="estadoFiltradoProvincia">
+        <div class="w-50 " *ngIf="this.pasarDatosService.getProvinciaList().length > 0 && this.pasarDatosService.getProvinciaList().length < 2">
             <H5 style="margin: 10px;">Cantones:</H5>
                 <div style=" width: 100%; height: 180px; box-sizing: content-box;overflow-y: auto;">
                     <div *ngFor="let canton of cantones">
@@ -85,7 +85,7 @@
                             search
                         </span>
                     </div>
-                    <input type="text" class="form-control" style=" border-radius: 20px;" #autor (input)="activarFiltro('autor', autor.value)" >
+                    <input type="text" class="form-control" style=" border-radius: 20px;" #autor (input)="activarFiltro('autor', autor.value, '')" >
                 </div>
                 <div *ngIf="estadoFiltroAutor">
                     <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
@@ -106,7 +106,7 @@
                             search
                         </span>
                     </div>
-                    <input type="text" class="form-control" style="border-radius: 20px;" #titulo (input)="activarFiltro('titulo', titulo.value)"></div>
+                    <input type="text" class="form-control" style="border-radius: 20px;" #titulo (input)="activarFiltro('titulo', titulo.value, '')"></div>
                 <div *ngIf="estadoFiltroTitulo">
                     <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
                         cancel

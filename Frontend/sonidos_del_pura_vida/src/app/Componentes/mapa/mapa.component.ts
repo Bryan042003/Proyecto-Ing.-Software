@@ -57,7 +57,6 @@ export class MapaComponent implements OnInit {
       });
 
     } else {
-      console.log("filtro en false: " + this.estadoFiltro);
       this.audios.forEach(audio => {
         let latitud = parseFloat(audio.latitud);
         let longitud = parseFloat(audio.longitud);

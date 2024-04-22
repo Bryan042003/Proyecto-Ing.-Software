@@ -17,6 +17,7 @@ export class PaginaPrincipalComponent implements OnInit {
   audiosFiltradosAutor: Audio[] = [];
   audiosFiltradosTitulo: Audio[] = [];
 
+  pList: any[] = [];
   estadoFiltro: boolean = false;
   opcionElegida: string = 'Ordenar por:';
 
@@ -44,15 +45,12 @@ export class PaginaPrincipalComponent implements OnInit {
   filtros(): void {
     const tipoFiltro = this.pasarDatosService.getTipoFiltro();
     const datoFiltrar = this.pasarDatosService.getDatoFiltrar();
-    console.log("entrmos a filtros");
 
     switch (tipoFiltro) {
       case 'canton':
         this.pasarDatosService.getEstadoFiltroCanton().subscribe(estadoFiltroCanton => {
           if (estadoFiltroCanton === false) {
             this.audiosFiltradosCanton = [];
-            console.log("limpiando canton");
-            console.log(this.audiosFiltradosCanton);
           } else {
             this.audiosFiltradosCanton = this.audios.filter(audio => audio.canton.toLowerCase().includes(datoFiltrar.toLowerCase()));
           }
@@ -61,26 +59,29 @@ export class PaginaPrincipalComponent implements OnInit {
 
       case 'provincia':
         this.pasarDatosService.getEstadoFiltroProvincia().subscribe(estadoFiltroProvincia => {
-          if (estadoFiltroProvincia === false) {
+          this.pList = this.pasarDatosService.getProvinciaList();
+          if (this.pList.length === 0) {
             this.audiosFiltradosProvincia = [];
-            console.log("limpiando provincia");
-            console.log(this.audiosFiltradosProvincia);
           } else {
-            console.log("estamos haciendo lista provincia")
             this.audiosFiltradosCanton = [];
-            this.audiosFiltradosProvincia = this.audios.filter(audio => audio.provincia.toLowerCase().includes(datoFiltrar.toLowerCase()));
+
+            this.pList.forEach((provincia) => {
+              let nuevosAudiosFiltrados = this.audios.filter(audio => audio.provincia.toLowerCase().includes(provincia.toLowerCase()));
+              this.audiosFiltradosProvincia = this.audiosFiltradosProvincia.concat(nuevosAudiosFiltrados);
+            });
+
+            this.audiosFiltradosProvincia = this.audiosFiltradosProvincia.filter(audio => {
+              return this.pList.some(provincia => provincia.toLowerCase() === audio.provincia.toLowerCase());
+            });
+
           }
         });
         break;
 
       case 'autor':
-        console.log("entro a case autor");
-
         this.pasarDatosService.getEstadoFiltroAutor().subscribe(estadoFiltroAutor => {
           if (estadoFiltroAutor === false) {
             this.audiosFiltradosAutor = [];
-            console.log("limpiando autor");
-            console.log(this.audiosFiltradosAutor);
           } else {
             this.audiosFiltradosAutor = this.audios.filter(audio => audio.autor.toLowerCase().includes(datoFiltrar.toLowerCase()));
           }
@@ -91,14 +92,11 @@ export class PaginaPrincipalComponent implements OnInit {
         this.pasarDatosService.getEstadoFiltroTitulo().subscribe(estadoFiltroTitulo => {
           if (estadoFiltroTitulo === false) {
             this.audiosFiltradosTitulo = [];
-            console.log("limpiando titulo");
-            console.log(this.audiosFiltradosTitulo);
           } else {
             this.audiosFiltradosTitulo = this.audios.filter(audio => audio.titulo.toLowerCase().includes(datoFiltrar.toLowerCase()));
           }
         });
         break;
-
 
       case 'A → Z':
         this.audios.sort((a, b) => a.titulo.localeCompare(b.titulo));
@@ -123,21 +121,6 @@ export class PaginaPrincipalComponent implements OnInit {
     const allFilteredAudios = [this.audiosFiltradosProvincia, this.audiosFiltradosAutor, this.audiosFiltradosTitulo, this.audiosFiltradosCanton];
     this.audiosFilter = this.audios.filter(audio => allFilteredAudios.every(filteredAudios => filteredAudios.length === 0 || filteredAudios.some(filteredAudio => filteredAudio.id === audio.id)));
     this.pasarDatosService.setListaAudios(this.audiosFilter);
-    console.log("----------------");
-    console.log("audios filtradosProvincia");
-    console.log(this.audiosFiltradosProvincia);
-    console.log("audios filtradosCanton");
-    console.log(this.audiosFiltradosCanton);
-    console.log("audios filtradosAutor");
-    console.log(this.audiosFiltradosAutor);
-    console.log("audios filtradosTitulo");
-    console.log(this.audiosFiltradosTitulo);
-    console.log("audios filtrados");
-    console.log(this.audiosFilter);
-
-
-    console.log("----------------");
-
   }
 
   filtrando(tipoFiltrar: string) {

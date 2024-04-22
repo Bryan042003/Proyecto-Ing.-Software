@@ -25,32 +25,129 @@ export class FiltrosComponent {
   public provinciaGuardada: string = '';
 
   cantones: any[] = [];
+  PROVI: any[] = [];
+  provinciaList: any[] = [];
+  cantonList: any[] = [];
+  proviSeleccionadas: any[] = [];
 
   isEmptyOrWhitespace(str: string): boolean {
     return !str || !str.trim();
   }
 
-  verificandoCantonEsSeleccionado(tipoCanton: string, cantonNombre: string, seleccionado: boolean) {
-    if (seleccionado) {
-      this.activarFiltro(tipoCanton, cantonNombre);
-      //console.log('El checkbox ' + cantonNombre + ' está seleccionado');
-    } else {
-      this.activarFiltro("provincia", this.provinciaGuardada);
-      //console.log('El checkbox ' + cantonNombre + ' no está seleccionado');
+  verificandoProvinciaEsSeleccionada(){
+    if (this.provinciaSanJose && !this.provinciaList.includes("San José")){
+      this.provinciaList.push("San José");
+      this.proviSeleccionadas.push("1");
+    } else if (!this.provinciaSanJose) {
+      const index = this.provinciaList.indexOf("San José");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("1");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
     }
-}
+    if (this.provinciaAlajuela && !this.provinciaList.includes("Alajuela")){
+      this.provinciaList.push("Alajuela");
+      this.proviSeleccionadas.push("2");
+    } else if (!this.provinciaAlajuela) {
+      const index = this.provinciaList.indexOf("Alajuela");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("2");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
+    }
+    if (this.provinciaGuanacaste && !this.provinciaList.includes("Guanacaste")){
+      this.provinciaList.push("Guanacaste");
+      this.proviSeleccionadas.push("5");
+    } else if (!this.provinciaGuanacaste) {
+      const index = this.provinciaList.indexOf("Guanacaste");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("5");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
+    }
+    if (this.provinciaLimon && !this.provinciaList.includes("Limón")){
+      this.provinciaList.push("Limón");
+      this.proviSeleccionadas.push("7");
+    } else if (!this.provinciaLimon) {
+      const index = this.provinciaList.indexOf("Limón");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("7");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
+    }
+    if (this.provinciaHeredia && !this.provinciaList.includes("Heredia")){
+      this.provinciaList.push("Heredia");
+      this.proviSeleccionadas.push("4");
+    } else if (!this.provinciaHeredia) {
+      const index = this.provinciaList.indexOf("Heredia");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("4");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
+    }
+    if (this.provinciaPuntarenas && !this.provinciaList.includes("Puntarenas")){
+      this.provinciaList.push("Puntarenas");
+      this.proviSeleccionadas.push("6");
+    } else if (!this.provinciaPuntarenas) {
+      const index = this.provinciaList.indexOf("Puntarenas");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("6");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
+    }
+    if (this.provinciaCartago && !this.provinciaList.includes("Cartago")){
+      this.provinciaList.push("Cartago");
+      this.proviSeleccionadas.push("3");
+    } else if (!this.provinciaCartago) {
+      const index = this.provinciaList.indexOf("Cartago");
+      if (index > -1) {
+        this.provinciaList.splice(index, 1);
+      }
+      const indexC = this.proviSeleccionadas.indexOf("3");
+      if (index > -1) {
+        this.proviSeleccionadas.splice(index, 1);
+      }
+    }
 
-  activarFiltro(tipoFiltro: string, filtrar: string): void {
+  }
+
+  verificandoCantonEsSeleccionado(tipoCanton: string, cantonNombre: string, seleccionado: boolean) {
+
+      if (seleccionado) {
+        this.activarFiltro(tipoCanton, cantonNombre, '');
+      } else {
+        this.activarFiltro("provincia", this.provinciaGuardada, '');
+      }
+  }
+
+
+  activarFiltro(tipoFiltro: string, filtrar: string, idProvinciaFiltro: string): void {
+    this.verificandoProvinciaEsSeleccionada();
+    this.pasarDatosService.setProvinciaList(this.provinciaList);
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
     this.pasarDatosService.setDatoFiltrar(filtrar);
 
     let estado = filtrar !== '';
-    console.log("estado: " + estado);
-    console.log("tipoFiltro en activar filtro: " + tipoFiltro);
-    console.log("dato: " + filtrar);
 
     if (!this.isEmptyOrWhitespace(filtrar)) {
-      console.log("entramos a activar filtos");
       if (tipoFiltro == 'autor') {
         this.estadoFiltroAutor = estado;
         this.pasarDatosService.setEstadoFiltroAutor(this.estadoFiltroAutor);
@@ -61,15 +158,11 @@ export class FiltrosComponent {
       }
       if (tipoFiltro == 'provincia') {
         this.provinciaGuardada = filtrar;
-        console.log("entrooooo provincia");
         this.estadoFiltradoProvincia = estado;
         this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltradoProvincia);
       }
 
       if (tipoFiltro == 'canton') {
-        console.log("entrooooo canton");
-        console.log("Estado provincia:");
-        console.log(this.pasarDatosService.getEstadoFiltroProvincia());
         this.estadoFiltradoCanton = estado;
         this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltradoCanton);
       }
@@ -85,35 +178,34 @@ export class FiltrosComponent {
         this.pasarDatosService.setEstadoFiltroTitulo(this.estadoFiltroTitulo);
       }
       if (tipoFiltro == 'canton') {
-        console.log("entrooooo canton quitado");
         this.estadoFiltradoCanton = false;
         this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltradoCanton);
 
       }
       if (tipoFiltro == 'provincia') {
-        console.log("entrooooo provincia quitado");
         this.provinciaGuardada = '';
-        this.estadoFiltradoProvincia = false;
+        if(this.pasarDatosService.getProvinciaList().length > 0){
+          this.estadoFiltradoProvincia = true;
+        } else {
+          this.estadoFiltradoProvincia = false;
+         }
         this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltradoProvincia);
-
       }
     }
 
     if (this.estadoFiltradoProvincia || this.estadoFiltradoCanton || this.estadoFiltroAutor || this.estadoFiltroTitulo) {
-
       this.pasarDatosService.setEstadoFiltro(true);
     } else {
       this.pasarDatosService.setEstadoFiltro(false);
     }
+    this.cargarCantones(this.proviSeleccionadas[0]);
   }
 
   cargarCantones(idProvincia: string) {
     this.pasarDatosService.getCantones(idProvincia).subscribe(
-      (res: any) => {
-        this.cantones = res;
-      }
+        (res: any) => {
+          this.cantones = res;
+        }
     );
-  }
-
-
+    }
 }
