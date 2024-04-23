@@ -14,7 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 import { FormCrearAudioComponent } from './form-crear-audio/form-crear-audio.component';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
+import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
+//import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     VistaAdministradorComponent,
     FormCrearAudioComponent,
-
-    
+    VisualizarInfoAudiosComponent,
   ],
   imports: [
     BrowserModule,
