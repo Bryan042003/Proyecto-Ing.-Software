@@ -47,5 +47,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         port: 22
-        source: "Frontend/sonidos_del_pura_vida/dist/sonidos-del-pura-vida/browser/."
+        source: "dist/sonidos-del-pura-vida/browser/."
         target: "/var/www/html"
