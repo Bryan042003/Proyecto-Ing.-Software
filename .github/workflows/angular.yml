@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install Dependencies
+    - name: Install Dependencies NPM
       run: npm install
       working-directory: ./Frontend/sonidos_del_pura_vida
 
