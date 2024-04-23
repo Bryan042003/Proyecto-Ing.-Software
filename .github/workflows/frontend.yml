@@ -58,4 +58,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
-        mv /var/www/html/Frontend/sonidos_del_pura_vida/dist/sonidos-del-pura-vida/browser/* /var/www/html/ && rm -rf /var/www/html/Frontend
+        mv /var/www/html/Frontend/sonidos_del_pura_vida/dist/sonidos-del-pura-vida/browser/* /var/www/html/
