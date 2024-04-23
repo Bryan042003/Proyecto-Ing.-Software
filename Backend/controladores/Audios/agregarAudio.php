@@ -11,8 +11,6 @@ $id_unico = uniqid();
 if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["AudioFile"], $_FILES["imagen"], $_POST["latitud"], $_POST["longitud"], $_POST["canton"], $_POST["provincia"])) {
 
     $audio = new Audio($db);
-    
-    // imagen
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
         $imagen_name = $_FILES["imagen"]["name"];
         $temp_imagen_name = $_FILES["imagen"]["tmp_name"];
