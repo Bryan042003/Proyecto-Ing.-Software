@@ -1,9 +1,13 @@
-name: Deploy to OCI VM	
+name: Deploy frontend to OCI VM	
 
 on:
   push:
+    paths:
+    - 'Frontend/sonidos_del_pura_vida/**'
     branches: [ main ]
   pull_request:
+    paths:
+    - 'Frontend/sonidos_del_pura_vida/**'
     branches: [ main ]
 
 jobs:
