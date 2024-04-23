@@ -26,6 +26,10 @@ jobs:
       run: ls -la
       working-directory: ./Frontend/sonidos_del_pura_vida
 
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+      working-directory: ./Frontend/sonidos_del_pura_vida
+
     - name: Install Dependencies
       run: npm install
       working-directory: ./Frontend/sonidos_del_pura_vida
