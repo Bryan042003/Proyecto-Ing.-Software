@@ -51,6 +51,11 @@ jobs:
         target: "/var/www/html"
 
     - name: Move content to web root
-      run: ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} "mv /var/www/html/Frontend/sonidos_del_pura_vida/dist/sonidos-del-pura-vida/browser/* /var/www/html/ && rm -rf /var/www/html/Frontend"
-      env:
-        SSH_KEY: ${{ secrets.SSH_KEY }}
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          mv /var/www/html/browser/* /var/www/html/ && rm -rf /var/www/html/browser
