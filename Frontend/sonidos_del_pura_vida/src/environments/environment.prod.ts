@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    baseUrl: 'http://129.213.52.156/sonidosPV/Backend/'
+    baseUrl: 'http://150.230.173.90/sonidosPV/Backend/'
   };
   

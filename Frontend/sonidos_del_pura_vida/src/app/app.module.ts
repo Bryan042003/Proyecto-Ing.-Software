@@ -28,8 +28,6 @@ import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualiz
     VistaAdministradorComponent,
     FormCrearAudioComponent,
     VisualizarInfoAudiosComponent,
-    //VisualizarInfoAudiosComponent
-    
   ],
   imports: [
     BrowserModule,
