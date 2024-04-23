@@ -79,7 +79,7 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
     $audio->provincia = $_POST["provincia"];
     
     if ($audio->agregarAudio($audio)) {
-        echo json_encode(array("mensaje" => "Audio agregado correctamente"));
+        echo json_encode(array("mensaje" => "Audio agregado correctamente."));
     } else {
         echo json_encode(array("mensaje" => "Error al agregar el audio"));
     }
