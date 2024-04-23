@@ -1,0 +1,49 @@
+name: Deploy frontend to OCI VM  
+
+on:
+  push:
+    paths:
+    - 'Frontend/sonidos_del_pura_vida/**'
+    branches: [ main ]
+  pull_request:
+    paths:
+    - 'Frontend/sonidos_del_pura_vida/**'
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '20'
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+      working-directory: ./Frontend/sonidos_del_pura_vida
+
+    - name: Install Dependencies
+      run: npm install
+      working-directory: ./Frontend/sonidos_del_pura_vida
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+      working-directory: ./Frontend/sonidos_del_pura_vida
+
+    - name: Build Angular Project
+      run: ng build --configuration production
+      working-directory: ./Frontend/sonidos_del_pura_vida
+
+    - name: Deploy to OCI VM
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        source: "./Frontend/sonidos_del_pura_vida/dist/sonidos-del-pura-vida/browser/*"
+        target: "/var/www/html"
