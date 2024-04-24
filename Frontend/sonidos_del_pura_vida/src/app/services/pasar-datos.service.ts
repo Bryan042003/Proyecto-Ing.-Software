@@ -39,7 +39,7 @@ export class PasarDatosService {
   }
 
   getCantones(idProvincia:string): Observable<any> {
-    return this.http.get(this.urlAudios + 'obtenerCantonByProvincia?id_provincia='+idProvincia);
+    return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia='+idProvincia);
   }
 
   getAudio() {

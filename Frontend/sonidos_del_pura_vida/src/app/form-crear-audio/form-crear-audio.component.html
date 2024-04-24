@@ -49,7 +49,13 @@
                                     <label class="form-label" for="comentarios">Comentarios: </label>
                                     <div class="input-group has-validation">
                                         <textarea type="text" class="form-control form-control-lg" id="comentarios"
-                                            name="comentarios" formControlName="comentarios"></textarea>
+                                            name="comentarios" formControlName="comentarios"
+                                            [class.is-invalid]="form.get('comentarios')?.invalid"></textarea>
+                                        <div class="invalid-feedback" *ngIf="form.get('comentarios')?.errors?.['maxlength']">
+                                            El comentario no puede exceder los 255 caracteres
+                                        
+
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mt-3 mb-1">

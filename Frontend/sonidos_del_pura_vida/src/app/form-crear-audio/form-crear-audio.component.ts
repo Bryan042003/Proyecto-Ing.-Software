@@ -27,7 +27,7 @@ export class FormCrearAudioComponent {
   form = this.fb.group({
     titulo: ['', Validators.required],
     autor: ['', Validators.required],
-    comentarios: [''],
+    comentarios: ['',Validators.maxLength(255)],
     AudioFile: ['', Validators.required],
     imagen: [''],
     latitud: ['', Validators.required],
