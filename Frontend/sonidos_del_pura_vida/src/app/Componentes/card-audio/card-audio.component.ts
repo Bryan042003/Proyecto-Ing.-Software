@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Audio } from '../../models/Audio.model';
+import { PasarDatosService } from '../../services/pasar-datos.service';
 
 @Component({
   selector: 'app-card-audio',
@@ -8,5 +9,11 @@ import { Audio } from '../../models/Audio.model';
 })
 export class CardAudioComponent {
   @Input() audio!: Audio;
+
+  constructor(private pasarDatosService: PasarDatosService) { }
+
+ubicarAudio() {
+    this.pasarDatosService.setAudio(this.audio);
+}
 
 }
