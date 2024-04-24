@@ -40,6 +40,17 @@ jobs:
       run: ng build --configuration production
       working-directory: ./Frontend/sonidos_del_pura_vida
 
+    - name: Clean web root
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          shopt -s extglob
+          rm -rf /var/www/html/!(sonidosPV)  
+
     - name: Deploy to OCI VM
       uses: appleboy/scp-action@master
       with:
