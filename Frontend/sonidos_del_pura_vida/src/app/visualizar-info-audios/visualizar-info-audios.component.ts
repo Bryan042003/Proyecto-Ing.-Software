@@ -15,11 +15,10 @@ export class VisualizarInfoAudiosComponent {
   @ViewChild('visualizarInfoAudios', { static: false }) visualizarInfoAudios!: ElementRef;
   private map: any;
   private marker: any;
+  private markers: L.Marker[] = [];
+  private varMarcador: boolean = true;
 
   private cargarMapa2(): void {
-
-
-
     if (!this.map) {
       this.map = L.map('mapU', {
         center: [parseFloat(this.pasarDatosService.getAudio().latitud), parseFloat(this.pasarDatosService.getAudio().longitud)],
@@ -31,16 +30,22 @@ export class VisualizarInfoAudiosComponent {
     }
     this.marker = new Marker([parseFloat(this.pasarDatosService.getAudio().latitud), parseFloat(this.pasarDatosService.getAudio().longitud)]);
     this.map.addLayer(this.marker);
+    this.markers.push(this.marker);
   }
 
   onModalShown() {
+    //this.map.removeLayer(this.marker);
     this.cargarMapa2();
     setTimeout(() => {
       if (this.map) {
         this.map.invalidateSize();
       }
     }, 200);
+
   }
 
+  onModalHidden() {
+    this.map.removeLayer(this.marker);
+  }
 
 }

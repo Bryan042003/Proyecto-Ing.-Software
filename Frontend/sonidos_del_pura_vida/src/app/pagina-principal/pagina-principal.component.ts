@@ -18,6 +18,7 @@ export class PaginaPrincipalComponent implements OnInit {
   audiosFiltradosTitulo: Audio[] = [];
 
   pList: any[] = [];
+  cList: any[] = [];
   estadoFiltro: boolean = false;
   opcionElegida: string = 'Ordenar por:';
 
@@ -49,10 +50,18 @@ export class PaginaPrincipalComponent implements OnInit {
     switch (tipoFiltro) {
       case 'canton':
         this.pasarDatosService.getEstadoFiltroCanton().subscribe(estadoFiltroCanton => {
+          this.cList = this.pasarDatosService.getCantonList();
           if (estadoFiltroCanton === false) {
             this.audiosFiltradosCanton = [];
           } else {
-            this.audiosFiltradosCanton = this.audios.filter(audio => audio.canton.toLowerCase().includes(datoFiltrar.toLowerCase()));
+            this.cList.forEach((canton) => {
+              let nuevosAudiosFiltrados = this.audios.filter(audio => audio.canton.toLowerCase().includes(canton.toLowerCase()));
+              this.audiosFiltradosCanton = this.audiosFiltradosCanton.concat(nuevosAudiosFiltrados);
+            });
+
+            this.audiosFiltradosCanton = this.audiosFiltradosCanton.filter(audio => {
+              return this.cList.some(canton => canton.toLowerCase() === audio.canton.toLowerCase());
+            })
           }
         });
         break;
@@ -64,7 +73,6 @@ export class PaginaPrincipalComponent implements OnInit {
             this.audiosFiltradosProvincia = [];
           } else {
             this.audiosFiltradosCanton = [];
-
             this.pList.forEach((provincia) => {
               let nuevosAudiosFiltrados = this.audios.filter(audio => audio.provincia.toLowerCase().includes(provincia.toLowerCase()));
               this.audiosFiltradosProvincia = this.audiosFiltradosProvincia.concat(nuevosAudiosFiltrados);
@@ -73,7 +81,6 @@ export class PaginaPrincipalComponent implements OnInit {
             this.audiosFiltradosProvincia = this.audiosFiltradosProvincia.filter(audio => {
               return this.pList.some(provincia => provincia.toLowerCase() === audio.provincia.toLowerCase());
             });
-
           }
         });
         break;
