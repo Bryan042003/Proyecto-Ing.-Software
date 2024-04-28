@@ -230,8 +230,10 @@ export class FormCrearAudioComponent {
         if(this.imagenFile)
           audio.append('imagen', this.imagenFile, this.imagenFile.name);
 
+        this.showAlertLoad();
         this.pasarDatosService.addAudio(audio).subscribe(
           (res) => {
+            Swal.close();
             this.showAlertSuccess();
             this.form.reset();
             this.imageSrc = '';
@@ -243,6 +245,7 @@ export class FormCrearAudioComponent {
           
           },
           (error) => {
+            Swal.close();
             this.showAlertError();
           }
         );
@@ -311,5 +314,16 @@ export class FormCrearAudioComponent {
     });
   }
 
+  showAlertLoad(){
+    Swal.fire({
+      title: 'Cargando...',
+      text: 'Espere un momento por favor',
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+
+    });
+  }
 
 }
