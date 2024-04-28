@@ -324,6 +324,7 @@ export class FormCrearAudioComponent {
       allowEnterKey: false,
 
     });
+    Swal.showLoading();
   }
 
 }
