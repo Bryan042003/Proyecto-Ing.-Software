@@ -1,5 +1,8 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+
 include_once '../../config/database.php';
 include_once '../../modelos/Audio.php';
 
@@ -7,11 +10,11 @@ $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
 $db = Database::getInstance();
 $id_unico = uniqid();
-
+$response = array();
 if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["AudioFile"], $_FILES["imagen"], $_POST["latitud"], $_POST["longitud"], $_POST["canton"], $_POST["provincia"])) {
-
     $audio = new Audio($db);
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
+        
         $imagen_name = $_FILES["imagen"]["name"];
         $temp_imagen_name = $_FILES["imagen"]["tmp_name"];
         $imagen_size = $_FILES["imagen"]["size"];
@@ -25,12 +28,14 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
         if (in_array($extension_image, $extensions_image_allowed)) {
             if ($imagen_size > 50000000) { // 50MB en bytes
                 echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
+                //$response["mensaje"] = "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB.";
                 return;
             } else {
                 move_uploaded_file($temp_imagen_name, $folder_imagen);
             }
         } else {
             echo json_encode(array("ERROR" => "El tipo de archivo no está permitido. Formatos permitidos: PNG, GIF, JPG, JPEG."), JSON_UNESCAPED_UNICODE);
+           // $response["mensaje"] = "El tipo de archivo no está permitido. Formatos permitidos: PNG, GIF, JPG, JPEG.";
             return;
         }
 
@@ -77,14 +82,16 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
     $audio->longitud = $_POST["longitud"];
     $audio->canton = $_POST["canton"];
     $audio->provincia = $_POST["provincia"];
-    
     if ($audio->agregarAudio($audio)) {
-        echo json_encode(array("mensaje" => "Audio agregado correctamente."));
+        //echo json_encode(array("mensaje" => "Audio agregado correctamente."));
+        $response["mensaje"] = "Audio agregado correctamente.";
     } else {
-        echo json_encode(array("mensaje" => "Error al agregar el audio. Inténtelo de nuevo."));
+        //echo json_encode(array("mensaje" => "Error al agregar el audio. Inténtelo de nuevo."));
+        $response["mensaje"] = "Error al agregar el audio. Inténtelo de nuevo.";
     }
 } else {
-    echo json_encode(array("mensaje" => "No se recibieron los datos del formulario correctamente"));
+    $response["mensaje"] = "No se recibieron los datos del formulario correctamente";
+    //echo json_encode(array("mensaje" => "No se recibieron los datos del formulario correctamente"));
 }
-
+echo json_encode($response, JSON_UNESCAPED_UNICODE);
 ?>

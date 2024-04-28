@@ -4,7 +4,7 @@
         <div class="modal-content" style=" border-radius: 40px; padding: 5px;">
             <div>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
-                    style="background: transparent; border: none; margin: 20px 0px 0px 20px;">
+                    style="background: transparent; border: none; margin: 20px 0px 0px 20px;" (click)="onCloseModal()">
                     <span class="material-symbols-outlined" style=" font-size: 40px;">
                         cancel
                     </span>
@@ -28,7 +28,7 @@
                                             [class.is-invalid]="form.get('titulo')?.invalid && form.get('titulo')?.touched">
                                         <div class="invalid-feedback"
                                             *ngIf="form.get('titulo')?.invalid && form.get('titulo')?.touched">
-                                            Debe ingresar un título para el audio
+                                            Debe ingresar un título para el audio y que no exceda 50 caracteres
                                         </div>
                                     </div>
 
@@ -41,41 +41,49 @@
                                             [class.is-invalid]="form.get('autor')?.invalid && form.get('autor')?.touched">
                                         <div class="invalid-feedback"
                                             *ngIf="form.get('autor')?.invalid && form.get('autor')?.touched">
-                                            Debe ingresar el autor del audio
+                                            Debe ingresar el autor del audio y que no exceda 50 caracteres
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <label class="form-label" for="comentarios">Comentarios: </label>
+                                    <label class="form-label" for="comentarios">Comentarios (opcional): </label>
                                     <div class="input-group has-validation">
                                         <textarea type="text" class="form-control form-control-lg" id="comentarios"
                                             name="comentarios" formControlName="comentarios"
                                             [class.is-invalid]="form.get('comentarios')?.invalid"></textarea>
-                                        <div class="invalid-feedback" *ngIf="form.get('comentarios')?.errors?.['maxlength']">
+                                        <div class="invalid-feedback"
+                                            *ngIf="form.get('comentarios')?.errors?.['maxlength']">
                                             El comentario no puede exceder los 255 caracteres
-                                        
+
 
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-3 mb-1">
+                                    <label class="form-label" for="imagen">Imagen (opcional): </label>
                                     <div>
+
                                         <label for="input-file" id="drop-area" (drop)="onDrop($event)"
                                             (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
 
-                                            <input type="file" accept="image/png, image/jpg, image/jpeg" id="input-file" hidden
-                                                (change)="onImagechange($event)">
+                                            <input type="file" accept="image/png, image/jpg, image/jpeg" id="input-file"
+                                                hidden (change)="onImagechange($event)">
                                             <div id="img-view" [style.background-image]="'url('+imageSrc+')'"
                                                 [style.textContent]="" [ngStyle]="{'border': imageSrc ? '0' : null}">
                                                 <img *ngIf="!imageSrc" src="../../assets/icons/cloud-upload.svg">
                                                 <p *ngIf="!imageSrc">Arrastra y suelta o haz clic para <br> subir una
                                                     imagen</p>
                                                 <span *ngIf="!imageSrc">50MB tamaño máximo</span>
-                                               
+
                                             </div>
                                         </label>
                                         <br>
-                                        <button *ngIf="imageSrc" class="btn btn-outline-danger mt-1" (click)="quitarImagen()">Quitar</button>
+                                        <div class="text-danger" *ngIf="invalidSizeImage">
+                                            El archivo de imagen no puede exceder los 50MB
+                                        </div>
+                                        <button *ngIf="imageSrc" class="btn btn-outline-danger mt-1"
+                                            (click)="quitarImagen()">Quitar</button>
                                     </div>
                                 </div>
 
@@ -85,34 +93,79 @@
                                 <div class="row space">
                                     <div class="d-flex align-items-center">
                                         <label class="form-label">Seleccione la ubicación del sonido: </label>
-                                        <button class="btn btn-outline-primary" style="margin-left: 1rem;"
-                                        (click)="encontrarUbicacion()">Usar
+                                        <button type="button" class="btn btn-outline-primary" style="margin-left: 1rem;"
+                                            (click)="encontrarUbicacion()">Usar
                                             mi ubicación</button>
                                     </div>
 
                                     <div class="mt-2" id="mapid">
                                     </div>
+                                    <div class="text-danger mt-2"
+                                        *ngIf="form.get('latitud')?.invalid && form.get('latitud')?.touched">
+
+                                        Debe marcar un punto en el mapa
+                                    </div>
+
+                                    <div class="text-danger mt-2"
+                                    *ngIf="puntoInvalido">
+                                    Punto marcado fuera de la zona permitida
+                                </div>
                                 </div>
 
 
-                                <div class="row mt-5 col-md-10">
+                                <div class="row mt-2 col-md-10">
 
                                     <label class="form-label" for="audio">Cargar audio: </label>
                                     <input type="file" class="form-control mb-3" id="audio" name="audio"
-                                        accept="audio/*" (change)="onAudiochange($event)">
+                                        accept="audio/*" (change)="onAudiochange($event)"
+                                        [class.is-invalid]="form.get('AudioFile')?.invalid && form.get('AudioFile')?.touched"
+                                        #audioInput>
 
                                     <audio #audioTag controls>
                                         <source [src]="audioSrc" type="audio/mpeg">
                                     </audio>
+                                    <div class="invalid-feedback"
+                                        *ngIf="form.get('AudioFile')?.invalid && form.get('AudioFile')?.touched">
+                                        Debe cargar un archivo de audio
+                                    </div>
+                                    <div class="text-danger mt-2" *ngIf="invalidSizeAudio">
+                                        El archivo de audio no puede exceder los 50MB
+                                    </div>
 
 
+                                </div>
+                                <div class="row mt-3 col-md-12">
+                                    <div class="d-flex align-items-center">
+                                        <label class="form-label">Términos de uso</label>
+                                        <button class="btnTerminos" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#terminosDeUso">
+                                            <span class="material-symbols-outlined">
+                                                open_in_new
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                    <div class="form-check mb-2 mr-2">
+                                        <input class="form-check-input" type="checkbox" name="terminos" id="terminos"
+                                            formControlName="terminos"
+                                            [class.is-invalid]="form.get('terminos')?.invalid && form.get('terminos')?.touched">
+                                        <label class="form-check-label" for="terminos">
+                                            Acepto los términos y condiciones de uso</label>
+                                    </div>
+
+                                    <re-captcha id="captcha" formControlName="recaptcha"
+                                        [siteKey]="sitekey"></re-captcha>
+                                    <div class="text-danger"
+                                        *ngIf="form.get('recaptcha')?.invalid && form.get('recaptcha')?.touched">
+                                        Debe completar el captcha
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="col-md-12 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary btn-lg">Crear Sonido</button>
                             </div>
-                            
+
 
                         </div>
 
@@ -125,4 +178,115 @@
         </div>
     </div>
 
+</div>
+
+
+<!-- Modal terminos de uso-->
+<div class="modal fade" id="terminosDeUso" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1500px; ">
+        <div class="modal-content" style="height: 800px; border-radius: 40px;">
+            <div>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                    data-bs-target="#crearAudios" data-bs-toggle="modal"
+                    style="background: transparent; border: none; margin: 20px;">
+                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                        cancel
+                    </span>
+                </button>
+            </div>
+
+            <h2 class="d-flex" style="margin: 0px 30px 10px 30px;place-content: center;"><strong>Términos de
+                    Uso</strong></h2>
+
+            <div class="modal-body d-flex" style="place-content: center; height: 500px">
+                <div class="card" style="align-items: center;width: 90%;height:90%; border: none;">
+                    <div style=" height: 100%; width: 100%; margin-top: 20px; overflow: auto;">
+                        <h5>
+                            Esta plataforma es de propiedad de la Universidad Estatal a Distancia. Los sonidos
+                            contenidos en la plataforma BioSonidos están protegidos por una Licencia Creative Commons
+                            del tipo Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0) Costa
+                            Rica.
+                        </h5>
+
+                        <h3>
+                            <strong>Licencia de uso</strong>
+                        </h3>
+                        <h5><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es"
+                                style="text-decoration: none;color: #9bbbd1;">https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es</a>
+                        </h5>
+                        <br>
+                        <h5>Gracias a esta licencia es posible:</h5>
+
+                        <ul style="list-style-type: disc;">
+                            <li style="list-style-type: disc;">
+                                <h5>Copiar, distribuir, compartir, comunicar y utilizar públicamente los sonidos de la
+                                    plataforma.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5>Generar obras derivadas, transformar y construir nuevo material a partir de los
+                                    sonidos.</h5>
+                            </li>
+                        </ul>
+
+                        <h3>
+                            <strong>Términos de uso de la Colección Biosonidos</strong>
+                        </h3>
+                        <br>
+                        <h5>El uso de los sonidos de la plataforma BioSonidos está enmarcado por los siguientes
+                            términos:</h5>
+                        <ul style="list-style-type: disc;">
+                            <li style="list-style-type: disc;">
+                                <h5><strong>Atribución:</strong> Debes reconocer y citar la obra de la forma
+                                    especificada por el autor o el
+                                    licenciante.</h5>
+
+                                <h5>Recomendamos citar su uso considerando las normas APA con el siguiente ejemplo:</h5>
+
+                                <h5>Vargas-Masís, R. (2019). Mochuelo enano. BioSonidos.[<a
+                                        href="https://biosonidos.uned.ac.cr/?q=node/471"
+                                        style="text-decoration: none; color: #9bbbd1;">https://biosonidos.uned.ac.cr/?q=node/471</a>].
+                                    UNED, Costa Rica.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5><strong>No Comercial:</strong> No es posible utilizar los sonidos de la plataforma
+                                    para fines comerciales.</h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5><strong>Licenciar Igual:</strong> Si generas una obra derivada a partir de los
+                                    sonidos de la plataforma, sólo
+                                    puedes distribuir las modificaciones generada bajo una licencia idéntica a ésta.
+                                </h5>
+                            </li>
+                            <li style="list-style-type: disc;">
+                                <h5> <strong>Compartir Igual:</strong> Si genera una obra derivada a partir de los
+                                    sonidos contenidos en la
+                                    plataforma, tienes que dejar bien claro los términos de la licencia de esta nueva
+                                    obra.
+                                    Alguna de estas condiciones puede no aplicarse si se obtiene el permiso del titular
+                                    de los
+                                    derechos de autor. Nada en esta licencia sustituye o restringe los derechos morales
+                                    del
+                                    autor.</h5>
+                            </li>
+                        </ul>
+                        <h5>El texto legal completo de esta licencia puede encontrarse en:
+                            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.es"
+                                style="text-decoration: none; color: #9bbbd1;">https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.es</a>
+                        </h5>
+                        <h5>En caso de utilizar el contenido de la manera indicada en la licencia, se solicita enviar
+                            por cortesía aviso vía correo electrónico a <a href="mailto:biosonidos@uned.ac.cr"
+                                style="text-decoration: none; color: #9bbbd1;">biosonidos&#64;uned.ac.cr</a>
+                        </h5>
+
+                        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+                                src="assets/imagenes/Licencia.jpg"
+                                style="width: 100px; height: 50px; margin: 20px 20px 20px 0px;"></a>
+                        <h5>Esta obra está bajo una <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                style="text-decoration: none; color: #9bbbd1;">Licencia Creative Commons
+                                Atribución-NoComercial-CompartirIgual 4.0 Internacional</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

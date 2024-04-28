@@ -97,6 +97,38 @@ textarea::after{
     border-color: #002366;
 }
 
+.form-check-label{
+    font-size: 1.15rem;
+    color: #000;
+
+}
+
+#captcha {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho disponible */
+  }
+  
+  #captcha > div {
+    transform:scale(0.77); /* Reduce el tamaño del reCAPTCHA */
+    -webkit-transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+  }
+
+  .btnTerminos{
+    background: none;
+    border: none;
+    color: #0000EE;
+    text-decoration: underline;
+    width: min-content;
+  }
+
+    .btnTerminos:hover{
+        color: #3C3CFF;
+        text-decoration: underline;
+    }
+
 @media only screen and (max-width: 600px) {
     #drop-area{
         width: 100%;
@@ -106,7 +138,7 @@ textarea::after{
     #img-view{
         /* width:100%;
         height: 100%; */
-        width: 250px;
+        width: 14rem;
         height: 250px;
         border-radius: 20px;
         border: 3px dashed #bbb;
@@ -149,6 +181,7 @@ textarea::after{
     .space{
         margin-top: 2rem;
     }
+
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {

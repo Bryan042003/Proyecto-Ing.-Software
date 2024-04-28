@@ -46,6 +46,11 @@ export class PasarDatosService {
     return this.AudioGuardar;
   }
 
+  addAudio(audio: FormData): Observable<any> {
+
+    return this.http.post(this.urlAudios + 'agregarAudio.php', audio);
+  }
+
   getTipoFiltro() {
     return this.tipoFiltro;
   }

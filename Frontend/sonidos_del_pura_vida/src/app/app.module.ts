@@ -15,7 +15,7 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
 import { FormCrearAudioComponent } from './form-crear-audio/form-crear-audio.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
-//import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,8 @@ import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualiz
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
