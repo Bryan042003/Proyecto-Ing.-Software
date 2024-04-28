@@ -57,7 +57,7 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
     $direccion_audiofile = $_ENV['DIR_AUDIOS']. $audio_unico;
 
     $extension_audio = strtolower(pathinfo($audiofile_name, PATHINFO_EXTENSION));
-    $extensions_audio_allowed = array('mp3', 'wav', 'ogg', 'mp4');
+    $extensions_audio_allowed = array('mp3', 'wav', 'ogg', 'mp4','m4a');
 
     if (in_array($extension_audio, $extensions_audio_allowed)) {
         if ($audio_size > 50000000) { // 50MB en bytes
