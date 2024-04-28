@@ -11,7 +11,8 @@ $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $db = Database::getInstance();
 $id_unico = uniqid();
 $response = array();
-if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["AudioFile"], $_FILES["imagen"], $_POST["latitud"], $_POST["longitud"], $_POST["canton"], $_POST["provincia"])) {
+
+if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["AudioFile"], $_POST["latitud"], $_POST["longitud"], $_POST["canton"], $_POST["provincia"])) {
     $audio = new Audio($db);
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
         
@@ -40,7 +41,6 @@ if (isset($_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["Aud
         }
 
     } else {
-        
         $direccion_image = $_ENV['DIR_IMGS_NOPHOTO'];
         
     }

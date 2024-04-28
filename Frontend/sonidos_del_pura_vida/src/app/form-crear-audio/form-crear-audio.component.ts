@@ -2,8 +2,11 @@ import { Component, AfterViewInit, OnInit, ViewChild, ElementRef, viewChild } fr
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { PasarDatosService } from '../services/pasar-datos.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 import * as L from 'leaflet';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -199,6 +202,7 @@ export class FormCrearAudioComponent {
         this.puntoInvalido = false;
       })
       .catch(error => {
+       
         this.puntoInvalido = true;
       });
     
@@ -228,7 +232,7 @@ export class FormCrearAudioComponent {
 
         this.pasarDatosService.addAudio(audio).subscribe(
           (res) => {
-            alert('Audio guardado');
+            this.showAlertSuccess();
             this.form.reset();
             this.imageSrc = '';
             this.audioSrc = '';
@@ -236,16 +240,17 @@ export class FormCrearAudioComponent {
             this.map.removeLayer(this.marker);
             this.marker = null;
             this.form.untouched;
+          
           },
           (error) => {
-            alert('Error al guardar el audio');
+            this.showAlertError();
           }
         );
 
       }
     }
     else{
-      alert('Formulario invalido');
+      this.showAlertInvalid();
       this.form.markAllAsTouched();
       
     }
@@ -276,7 +281,35 @@ export class FormCrearAudioComponent {
     this.form.untouched;
 
   }
+  showAlertSuccess() {
+    Swal.fire({
+      title: 'Audio guardado',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#001148'
+    }).then(() => {
+      window.location.reload();
+    });
+  }
 
+  showAlertError() {
+    Swal.fire({
+      title: 'Error al guardar el audio',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#001148'
+    });
+  }
+
+  showAlertInvalid(){
+    Swal.fire({
+      title: 'Campos inválidos',
+      text: 'Por favor, revise los campos del formulario',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#001148'
+    });
+  }
 
 
 }
