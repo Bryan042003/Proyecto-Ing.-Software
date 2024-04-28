@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div >
+    <div>
         <div style="border-radius: 0%;border: 1px solid #E2E2E2">
             <h5 style="margin: 10px;">Autor:</h5>
             <div class="d-flex" style="justify-content:center; align-items: center; ">
@@ -88,9 +88,12 @@
                     <input type="text" class="form-control" style=" border-radius: 20px;" #autor (input)="activarFiltro('autor', autor.value)" >
                 </div>
                 <div *ngIf="estadoFiltroAutor">
-                    <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
-                        cancel
-                    </span>
+                    <button style="border: none; background: transparent;" (click)=" autor.value=''; activarFiltro('autor', autor.value)">
+                        <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
+                            cancel
+                        </span>
+                    </button>
+                    
                 </div>
             </div>
         </div>
@@ -108,9 +111,11 @@
                     </div>
                     <input type="text" class="form-control" style="border-radius: 20px;" #titulo (input)="activarFiltro('titulo', titulo.value)"></div>
                 <div *ngIf="estadoFiltroTitulo">
-                    <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
-                        cancel
-                    </span>
+                    <button style="border: none; background: transparent;" (click)=" titulo.value=''; activarFiltro('titulo', titulo.value)">
+                        <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
+                            cancel
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
