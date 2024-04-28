@@ -21,6 +21,7 @@ export class FiltrosComponent {
   public provinciaPuntarenas: boolean = false;
   public provinciaCartago: boolean = false;
   public cantonSeleccionado: boolean = false;
+  public checkbox: boolean = false;
 
   public provinciaGuardada: string = '';
 
@@ -29,6 +30,8 @@ export class FiltrosComponent {
   provinciaList: any[] = [];
   cantonList: any[] = [];
   proviSeleccionadas: any[] = [];
+  checkboxes = [];
+
 
   isEmptyOrWhitespace(str: string): boolean {
     return !str || !str.trim();
@@ -129,17 +132,20 @@ export class FiltrosComponent {
 
   }
 
-  verificandoCantonEsSeleccionado(tipoCanton: string, cantonNombre: string, seleccionado: boolean) {
-
-      if (seleccionado) {
-        this.activarFiltro(tipoCanton, cantonNombre, '');
-      } else {
-        this.activarFiltro("provincia", this.provinciaGuardada, '');
+  verificandoCantonEsSeleccionada(filtrar: string){
+    if (this.estadoFiltradoCanton && !this.cantonList.includes(filtrar)) {
+      this.cantonList.push(filtrar);
+    } else {
+      const index = this.cantonList.indexOf(filtrar);
+      if (index > -1) {
+        this.cantonList.splice(index, 1);
       }
+    }
+    this.pasarDatosService.setCantonList(this.cantonList);
+
   }
 
-
-  activarFiltro(tipoFiltro: string, filtrar: string, idProvinciaFiltro: string): void {
+  activarFiltro(tipoFiltro: string, filtrar: string): void {
     this.verificandoProvinciaEsSeleccionada();
     this.pasarDatosService.setProvinciaList(this.provinciaList);
     this.pasarDatosService.setTipoFiltro(tipoFiltro);
@@ -161,13 +167,12 @@ export class FiltrosComponent {
         this.estadoFiltradoProvincia = estado;
         this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltradoProvincia);
       }
-
       if (tipoFiltro == 'canton') {
         this.estadoFiltradoCanton = estado;
         this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltradoCanton);
+        this.verificandoCantonEsSeleccionada(filtrar);
       }
     } else {
-
       if (tipoFiltro == 'autor') {
         this.estadoFiltroAutor = false;
         this.pasarDatosService.setEstadoFiltroAutor(this.estadoFiltroAutor);
@@ -178,9 +183,13 @@ export class FiltrosComponent {
         this.pasarDatosService.setEstadoFiltroTitulo(this.estadoFiltroTitulo);
       }
       if (tipoFiltro == 'canton') {
-        this.estadoFiltradoCanton = false;
-        this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltradoCanton);
-
+          if(this.pasarDatosService.getProvinciaList().length == 1){
+            this.estadoFiltradoCanton = true;
+            this.verificandoCantonEsSeleccionada(filtrar);
+          } else {
+            this.estadoFiltradoCanton = false;
+          }
+          this.pasarDatosService.setEstadoFiltroCanton(this.estadoFiltradoCanton);
       }
       if (tipoFiltro == 'provincia') {
         this.provinciaGuardada = '';
@@ -188,6 +197,7 @@ export class FiltrosComponent {
           this.estadoFiltradoProvincia = true;
         } else {
           this.estadoFiltradoProvincia = false;
+          this.estadoFiltradoCanton = false;
          }
         this.pasarDatosService.setEstadoFiltroProvincia(this.estadoFiltradoProvincia);
       }
@@ -198,6 +208,7 @@ export class FiltrosComponent {
     } else {
       this.pasarDatosService.setEstadoFiltro(false);
     }
+
     this.cargarCantones(this.proviSeleccionadas[0]);
   }
 
@@ -207,5 +218,5 @@ export class FiltrosComponent {
           this.cantones = res;
         }
     );
-    }
+  }
 }

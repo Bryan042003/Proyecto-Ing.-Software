@@ -27,6 +27,7 @@ export class PasarDatosService {
   private estadoFiltroTitulo = new BehaviorSubject<boolean>(false);
 
   provinciaList: any[] = [];
+  cantonList: any[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -61,7 +62,6 @@ export class PasarDatosService {
     return this.datoFiltrar;
   }
   setDatoFiltrar(datoFiltrar: string): void {
-    console.log(datoFiltrar);
     this.datoFiltrar = datoFiltrar;
   }
   setEstadoFiltro(estado: boolean): void {
@@ -109,6 +109,13 @@ export class PasarDatosService {
 
   getProvinciaList() {
     return this.provinciaList;
+  }
+
+  setCantonList(listC: any[]) {
+    this.cantonList = listC;
+  }
+  getCantonList() {
+    return this.cantonList;
   }
 
 }
