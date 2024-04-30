@@ -11,6 +11,10 @@ import { FormCrearAudioComponent } from '../form-crear-audio/form-crear-audio.co
 export class PaginaPrincipalComponent implements OnInit {
   audios: Audio[] = [];
 
+  audiosPorPagina: number = 10;
+  paginas: any[] = []; 
+  paginaActual: number = 0;
+
   audiosFilter: Audio[] = [];
   audiosFiltradosProvincia: Audio[] = [];
   audiosFiltradosCanton: Audio[] = [];
@@ -30,9 +34,33 @@ export class PaginaPrincipalComponent implements OnInit {
     this.pasarDatosService.getEstadoFiltro().subscribe(estadoFiltro => {
       this.estadoFiltro = estadoFiltro;
       this.filtros();
+
+      this.paginas = [];
+
+      const listaAudios = estadoFiltro ? this.audiosFilter : this.audios;
+
+      for (let i = 0; i < listaAudios.length; i += this.audiosPorPagina) {
+        this.paginas.push(listaAudios.slice(i, i + this.audiosPorPagina));
+      }
     });
 
 
+  }
+
+  irAPagina(pagina: number) {
+    this.paginaActual = pagina;
+  }
+  
+  paginaAnterior() {
+    if (this.paginaActual > 0) {
+      this.paginaActual--;
+    }
+  }
+  
+  paginaSiguiente() {
+    if (this.paginaActual < this.paginas.length - 1) {
+      this.paginaActual++;
+    }
   }
 
   private cargarAudios() {
