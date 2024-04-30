@@ -34,18 +34,22 @@ export class PaginaPrincipalComponent implements OnInit {
     this.pasarDatosService.getEstadoFiltro().subscribe(estadoFiltro => {
       this.estadoFiltro = estadoFiltro;
       this.filtros();
-
-      this.paginas = [];
-
-      const listaAudios = estadoFiltro ? this.audiosFilter : this.audios;
-
-      for (let i = 0; i < listaAudios.length; i += this.audiosPorPagina) {
-        this.paginas.push(listaAudios.slice(i, i + this.audiosPorPagina));
-      }
     });
-
+    console.log("audios: " +  this.audios);
 
   }
+
+  
+  paginateAudios() {
+    this.paginaActual = 0;
+    this.paginas = [];
+    const listaAudios = this.estadoFiltro ? this.audiosFilter : this.audios;
+  
+    for (let i = 0; i < listaAudios.length; i += this.audiosPorPagina) {
+      this.paginas.push(listaAudios.slice(i, i + this.audiosPorPagina));
+    }
+  }
+
 
   irAPagina(pagina: number) {
     this.paginaActual = pagina;
@@ -63,10 +67,11 @@ export class PaginaPrincipalComponent implements OnInit {
     }
   }
 
-  private cargarAudios() {
+  cargarAudios() {
     this.pasarDatosService.getAudios().subscribe(
       (res: any) => {
         this.audios = res;
+        this.paginateAudios();
       }
     );
   }
@@ -156,6 +161,8 @@ export class PaginaPrincipalComponent implements OnInit {
     const allFilteredAudios = [this.audiosFiltradosProvincia, this.audiosFiltradosAutor, this.audiosFiltradosTitulo, this.audiosFiltradosCanton];
     this.audiosFilter = this.audios.filter(audio => allFilteredAudios.every(filteredAudios => filteredAudios.length === 0 || filteredAudios.some(filteredAudio => filteredAudio.id === audio.id)));
     this.pasarDatosService.setListaAudios(this.audiosFilter);
+
+    this.paginateAudios();
   }
 
   filtrando(tipoFiltrar: string) {

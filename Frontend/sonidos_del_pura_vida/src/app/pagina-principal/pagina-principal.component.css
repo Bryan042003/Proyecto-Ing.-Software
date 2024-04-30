@@ -13,7 +13,17 @@
     background-color: white;
 }
 
-
+#btn-paginacion{
+    background-color: #001148;
+    color: white;
+}
+#btn-paginacion2{
+    color: #001148;
+}
+.page-item.active {
+    background-color: #640404;
+    color: #640404;
+}
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
     #drop-area {
