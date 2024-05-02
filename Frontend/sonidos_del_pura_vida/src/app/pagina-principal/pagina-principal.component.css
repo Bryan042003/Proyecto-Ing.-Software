@@ -21,8 +21,8 @@
 }
 
 #btn-paginacion:hover {
-    background-color: #002366;
-    border-color: #002366;
+    background-color: #001148;
+    color: white;
 }
 
 #btn-paginacion2 {
@@ -33,7 +33,7 @@
 }
 
 #btn-paginacion2:hover {
-    background: #001148;
+    background: #DA291C;
     color: white;
 
 }
@@ -44,8 +44,8 @@ a{
 
 .page-item.active .page-link {
     color: #fff;
-    background-color: #001148;
-    border-color: #001148;
+    background-color: #DA291C;
+    border-color: #DA291C;
 }
 .page-link {
     align-items: center;
