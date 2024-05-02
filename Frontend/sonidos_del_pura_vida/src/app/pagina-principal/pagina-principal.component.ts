@@ -35,7 +35,6 @@ export class PaginaPrincipalComponent implements OnInit {
       this.estadoFiltro = estadoFiltro;
       this.filtros();
     });
-    console.log("audios: " +  this.audios);
 
   }
 
