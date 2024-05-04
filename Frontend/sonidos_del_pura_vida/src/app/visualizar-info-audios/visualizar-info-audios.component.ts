@@ -27,14 +27,16 @@ export class VisualizarInfoAudiosComponent {
       tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19
       }).addTo(this.map);
+    } else {
+      this.map.setView([parseFloat(this.pasarDatosService.getAudio().latitud), parseFloat(this.pasarDatosService.getAudio().longitud)], 10);
     }
+
     this.marker = new Marker([parseFloat(this.pasarDatosService.getAudio().latitud), parseFloat(this.pasarDatosService.getAudio().longitud)]);
     this.map.addLayer(this.marker);
     this.markers.push(this.marker);
   }
 
   onModalShown() {
-    //this.map.removeLayer(this.marker);
     this.cargarMapa2();
     setTimeout(() => {
       if (this.map) {
