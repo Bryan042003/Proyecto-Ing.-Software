@@ -69,11 +69,8 @@
                         <div class="col-sm-5">
                             <app-filtros></app-filtros>
                         </div>
-
-                        <div class="col-sm-7">
-
-                            <div class="card" style="border: none;">
-
+                        <div class="col-sm-7" style="height: 100%;">
+                            <div class="card" style="border: none; height: 100%;">
                                 <div class="dropdown d-flex ms-auto">
                                     <button class="btn btn-secondary dropdown-toggle btn-block btn-sm" type="button"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
@@ -107,37 +104,36 @@
                                 </div> -->
 
                                 <nav aria-label="Page navigation example">
-
                                     <ul class="pagination justify-content-center flex-wrap">
-                                      <li class="page-item"  [class.disabled]="paginaActual === 0">
-                                        <a class="page-link" id="btn-paginacion" href="#" (click)="paginaAnterior()">Anterior</a>
-                                      </li>
-                                      <li class="page-item"   *ngFor="let _ of paginas; let i = index" [class.active]="i === paginaActual">
-                                        <a class="page-link" id="btn-paginacion2" href="#" (click)="irAPagina(i)">{{ i + 1 }}</a>
-                                      </li>
-                                      <li class="page-item" [class.disabled]="paginaActual === paginas.length - 1">
-                                        <a class="page-link" id="btn-paginacion" href="#" (click)="paginaSiguiente()">Siguiente</a>
-                                      </li>
+                                        <li class="page-item" [class.disabled]="paginaActual === 0">
+                                            <a class="page-link" id="btn-paginacion" href="#"
+                                                (click)="paginaAnterior()">Anterior</a>
+                                        </li>
+                                        <li class="page-item" *ngFor="let _ of paginas; let i = index"
+                                            [class.active]="i === paginaActual">
+                                            <a class="page-link" id="btn-paginacion2" href="#" (click)="irAPagina(i)">{{
+                                                i + 1 }}</a>
+                                        </li>
+                                        <li class="page-item" [class.disabled]="paginaActual === paginas.length - 1">
+                                            <a class="page-link" id="btn-paginacion" href="#"
+                                                (click)="paginaSiguiente()">Siguiente</a>
+                                        </li>
                                     </ul>
-                                  </nav>
-                                  
-                                  <div class="container" style="border: none; box-sizing: content-box; overflow-y: auto; width: fit-conten;height:600px;">
+                                </nav>
+                                <div class="container"
+                                    style="border: none; box-sizing:border-box; overflow-y: auto; width: 100%;height:620px; border-radius: 20px; ">
                                     <div *ngFor="let audio of paginas[paginaActual]">
-                                      <app-card-audio [audio]="audio"></app-card-audio>
+                                        <app-card-audio [audio]="audio"></app-card-audio>
                                     </div>
-                                  </div>
-                                  
-
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-sm-6 " style="margin-top: 20px;">
-                    <div class="card">
-
+                <div class="col-sm-6 " style="height: 100%; border-radius: 20px;">
+                    <div class="card" style="height: 100%; border-radius: 20px;" >
                         <app-mapa></app-mapa>
-
                     </div>
                 </div>
             </div>
@@ -161,7 +157,7 @@
             </div>
             <div class="row">
                 <div class="col" style="margin-top: 40px;">
-                    <a href="https://www.facebook.com/LIITUNEDCR" target="_blank"  style="margin-right:10px;">
+                    <a href="https://www.facebook.com/LIITUNEDCR" target="_blank" style="margin-right:10px;">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="url(#a)" height="40"
                             width="40">
                             <defs>
@@ -210,7 +206,7 @@
 
 
 <!-- Modal crear sonidos-->
- <app-form-crear-audio></app-form-crear-audio>
+<app-form-crear-audio></app-form-crear-audio>
 
 
 <!-- Modal sobre proyecto-->
