@@ -70,4 +70,8 @@ a{
         flex: 0 0 100%;
         max-width: 100%;
     }
+
+    .col-12{
+        margin-top: 1rem;
+    }
 }
