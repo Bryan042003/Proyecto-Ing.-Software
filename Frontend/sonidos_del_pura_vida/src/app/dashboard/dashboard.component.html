@@ -3,46 +3,115 @@
 
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white " style="width: 300px;height: auto; background-color: #1C232F; border-radius: 20px; margin: 5px;">
 
-        <div #imagen class="d-flex">
-            <img src="assets/imagenes/Sin_foto.png" style="width: 250px;height: 100px;">
+        <div #imagen class="d-flex"   >
+            <div class="music">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            
+
         </div>
     
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link  d-flex text-white " aria-current="page">
-                    <span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                    <p class="mb-0" >Perfil</p> 
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link d-flex text-white" aria-current="page">
-                    <span class="material-symbols-outlined">
-                        graphic_eq
-                    </span>
-                    <p class="mb-0" >Gestión de audios</p>
+            <li class="nav-item"  (click)="seleccionarEspacio('perfil')">
+                <div *ngIf="flagPerfil ; else perfilNoActive" >
+                    <a  class="nav-link active d-flex text-white " aria-current="page">
                     
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link  d-flex text-white" aria-current="page">
-                    <span class="material-symbols-outlined">
-                        manage_accounts
-                    </span>
-                    <p class="mb-0" > Gestión de administradores</p>
-                   
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link  d-flex  text-white" aria-current="page">
-                    <span class="material-symbols-outlined">
-                        quick_reference_all
-                    </span>
-                    <p class="mb-0" >Historial</p>
+                        <span class="material-symbols-outlined">
+                            account_circle
+                        </span>
+                        <p class="mb-0" >Perfil</p> 
+                    </a>
+                </div>
+
+                <ng-template #perfilNoActive>
+                    <a  class="nav-link d-flex text-white " aria-current="page">
                     
-                </a>
+                        <span class="material-symbols-outlined">
+                            account_circle
+                        </span>
+                        <p class="mb-0" >Perfil</p> 
+                    </a>
+                </ng-template>
+
+                
+            </li>
+            <li class="nav-item" (click)="seleccionarEspacio('gestionDeAudios')">
+                <div *ngIf="flagGestionDeAudios ; else gestionDeAudiosNoActive" >
+                    <a  class="nav-link active d-flex text-white" aria-current="page">
+                        <span class="material-symbols-outlined">
+                            graphic_eq
+                        </span>
+                        <p class="mb-0" >Gestión de audios</p>
+                        
+                    </a>
+                </div>
+                <ng-template #gestionDeAudiosNoActive>
+                    <a  class="nav-link d-flex text-white" aria-current="page">
+                        <span class="material-symbols-outlined">
+                            graphic_eq
+                        </span>
+                        <p class="mb-0" >Gestión de audios</p>
+                        
+                    </a>
+                </ng-template>
+                
+            </li>
+            <li class="nav-item" (click)="seleccionarEspacio('gestionDeAdministradores')">
+
+                <div *ngIf="flagGestionDeAdministrador ; else gestionDeAdminitradorNoActive" >
+                    <a  class="nav-link active d-flex text-white" aria-current="page">
+                        <span class="material-symbols-outlined">
+                            manage_accounts
+                        </span>
+                        <p class="mb-0" > Gestión de administradores</p>
+                       
+                    </a>
+                </div>
+                <ng-template #gestionDeAdminitradorNoActive>
+                    <a  class="nav-link d-flex text-white" aria-current="page">
+                        <span class="material-symbols-outlined">
+                            manage_accounts
+                        </span>
+                        <p class="mb-0" > Gestión de administradores</p>
+                    </a>
+                </ng-template>
+                
+            </li>
+            <li class="nav-item" (click)="seleccionarEspacio('historial')">
+                <div *ngIf="flagHistorial ; else historialNoActive"> 
+                    <a class="nav-link active d-flex  text-white" aria-current="page">
+                        <span class="material-symbols-outlined">
+                            quick_reference_all
+                        </span>
+                        <p class="mb-0" >Historial</p>
+                    </a>
+
+                </div>
+
+                <ng-template #historialNoActive>
+                    <a class="nav-link d-flex  text-white" aria-current="page">
+                        <span class="material-symbols-outlined">
+                            quick_reference_all
+                        </span>
+                        <p class="mb-0" >Historial</p>
+                    </a>
+                </ng-template>
+                
             </li>
         </ul>
 
@@ -58,7 +127,31 @@
 
     <div id="espacioderecha" >
         <div id="espacio" class="card">
-
+            <div *ngIf="flagPerfil; else gestionDeAudiosBlock">
+                <!-- Contenido para flagPerfil -->
+                <app-perfil></app-perfil>
+            </div>
+            
+            <ng-template #gestionDeAudiosBlock>
+                <div *ngIf="flagGestionDeAudios; else gestionDeAdministradorBlock">
+                    <!-- Contenido para flagGestionDeAudios -->
+                    <app-gestion-de-audios></app-gestion-de-audios>
+                </div>
+            </ng-template>
+            
+            <ng-template #gestionDeAdministradorBlock>
+                <div *ngIf="flagGestionDeAdministrador; else historialBlock">
+                    <!-- Contenido para flagGestionDeAdministrador -->
+                    <app-gestion-de-administradores></app-gestion-de-administradores>
+                </div>
+            </ng-template>
+            
+            <ng-template #historialBlock>
+                <div *ngIf="flagHistorial">
+                    <!-- Contenido para flagHistorial -->
+                    <app-historial></app-historial>
+                </div>
+            </ng-template>
         </div>
     </div>
 
