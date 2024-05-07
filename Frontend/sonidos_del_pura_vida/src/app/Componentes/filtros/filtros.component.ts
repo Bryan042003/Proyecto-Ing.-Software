@@ -23,6 +23,7 @@ export class FiltrosComponent {
   public provinciaCartago: boolean = false;
   public cantonSeleccionado: boolean = false;
   public checkbox: boolean = false;
+  public borrarCantones: boolean = false;
 
   public provinciaGuardada: string = '';
 
@@ -37,8 +38,12 @@ export class FiltrosComponent {
   isEmptyOrWhitespace(str: string): boolean {
     return !str || !str.trim();
   }
-
   verificandoProvinciaEsSeleccionada(){
+    if(!this.provinciaAlajuela && !this.provinciaCartago && !this.provinciaGuanacaste && !this.provinciaHeredia &&
+      !this.provinciaLimon && !this.provinciaPuntarenas && !this.provinciaSanJose){
+        this.checkboxes = [];
+        this.cantonList = [];
+    }
     if (this.provinciaSanJose && !this.provinciaList.includes("San José")){
       this.provinciaList.push("San José");
       this.proviSeleccionadas.push("1");
@@ -130,7 +135,10 @@ export class FiltrosComponent {
         this.proviSeleccionadas.splice(index, 1);
       }
     }
-
+    if(this.pasarDatosService.getProvinciaList().length > 1){
+      this.checkboxes = [];
+      this.cantonList = [];
+    }
   }
 
   verificandoCantonEsSeleccionada(filtrar: string){
