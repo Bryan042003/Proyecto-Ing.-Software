@@ -117,7 +117,7 @@
 
                                     <label class="form-label" for="audio">Cargar audio: </label>
                                     <input type="file" class="form-control mb-3" id="audio" name="audio"
-                                        accept="audio/*" (change)="onAudiochange($event)"
+                                        accept="audio/mp3, audio/wav, audio/ogg, audio/m4a, video/mp4" (change)="onAudiochange($event)"
                                         [class.is-invalid]="form.get('AudioFile')?.invalid && form.get('AudioFile')?.touched"
                                         #audioInput>
 
