@@ -195,3 +195,24 @@ END$$
 
 DELIMITER ;
 
+
+-- Ejecutar antes de ejecutar InsertarAdministrador
+
+ALTER TABLE administrador MODIFY password VARCHAR(255);
+
+-------------------------------------------------
+
+DELIMITER $$
+
+CREATE PROCEDURE InsertarAdministrador(
+    IN _nombre VARCHAR(50),
+    IN _correo VARCHAR(50),
+    IN _password VARCHAR(255)
+)
+BEGIN
+    INSERT INTO administrador(nombre, correo, password)
+    VALUES (_nombre, _correo, _password);
+END$$
+
+DELIMITER ;
+
