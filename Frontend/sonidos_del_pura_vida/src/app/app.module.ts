@@ -16,6 +16,7 @@ import { FormCrearAudioComponent } from './form-crear-audio/form-crear-audio.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     VistaAdministradorComponent,
     FormCrearAudioComponent,
     VisualizarInfoAudiosComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
