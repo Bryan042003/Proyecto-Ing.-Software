@@ -4,7 +4,7 @@
     <div style="display: flex; justify-content: center;">
       <img style="max-width: 800px; width: 120%;" src="assets/imagenes/sonidosPV.png">
     </div>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <form class="needs-validation mt-4" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
       <div>
         <input type="email" placeholder="Correo Institucional" class="text-input" id="email"
           formControlName="email">
