@@ -1,18 +1,20 @@
 <div class="center-container">
-   
-    <div class="login-container">
-        <div style="display: flex; justify-content: center;">
-            <img style="max-width: 800px; width: 120%;" src="assets/imagenes/sonidosPV.png">
-        </div>
+
+  <div class="login-container">
+    <div style="display: flex; justify-content: center;">
+      <img style="max-width: 800px; width: 120%;" src="assets/imagenes/sonidosPV.png">
+    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
       <div>
-        <input type="text" placeholder="Correo Institucional" class="text-input" id="username" formControlName="username">
+        <input type="email" placeholder="Correo Institucional" class="text-input" id="email"
+          formControlName="email">
       </div>
       <div>
-        <input type="password" placeholder="Contraseña" class="text-input icon-input" id="password" formControlName="password">
+        <input type="password" placeholder="Contraseña" class="text-input icon-input" id="password"
+          formControlName="password">
         <div class="col-md-12 d-flex justify-content-center">
-            <button type="submit"  class="btn btn-primary btn-lg">Iniciar Sesión</button>
+          <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
         </div>
-    </div>
-  </div>  
-
-  
+      </div>
+    </form>
+  </div>
