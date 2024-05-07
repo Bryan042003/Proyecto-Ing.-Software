@@ -6,7 +6,12 @@ import { CardAudioComponent } from './Componentes/card-audio/card-audio.componen
 import { FiltrosComponent } from './Componentes/filtros/filtros.component';
 import { LoginComponent } from './login/login.component';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { GestionDeAudiosComponent } from './gestion-de-audios/gestion-de-audios.component';
+import { GestionDeAdministradoresComponent } from './gestion-de-administradores/gestion-de-administradores.component';
+import { HistorialComponent } from './historial/historial.component'; 
 
 const routes: Routes = [ 
   // {path: '',redirectTo: "pagina-principal", pathMatch: "full"},
@@ -18,6 +23,11 @@ const routes: Routes = [
   {path: 'admin', component: LoginComponent},
   {path: 'vista-admistrador',component: VistaAdministradorComponent},
   {path: 'dashboard',component: DashboardComponent},
+  {path: 'perfil',component: PerfilComponent},
+  {path: 'gestion-de-audios',component: GestionDeAudiosComponent},
+  {path: 'gestion-de-administradores',component: GestionDeAdministradoresComponent},
+  {path: 'historial',component: HistorialComponent},
+
 ];
 
 @NgModule({
