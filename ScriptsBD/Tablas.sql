@@ -28,10 +28,8 @@ create table administrador(
     id int not null auto_increment primary key,
     nombre varchar(50) not null,
     correo varchar(50) unique not null,
-    password varchar(50) not null
-
+    password varchar(255) not null
 );
-
 
 create table audio(
     id int not null auto_increment primary key,
