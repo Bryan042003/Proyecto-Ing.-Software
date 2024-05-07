@@ -17,6 +17,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VisualizarInfoAudiosComponent } from './visualizar-info-audios/visualizar-info-audios.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { GestionDeAudiosComponent } from './gestion-de-audios/gestion-de-audios.component';
+import { GestionDeAdministradoresComponent } from './gestion-de-administradores/gestion-de-administradores.component';
+import { HistorialComponent } from './historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormCrearAudioComponent,
     VisualizarInfoAudiosComponent,
     DashboardComponent,
+    PerfilComponent,
+    GestionDeAudiosComponent,
+    GestionDeAdministradoresComponent,
+    HistorialComponent,
   ],
   imports: [
     BrowserModule,
