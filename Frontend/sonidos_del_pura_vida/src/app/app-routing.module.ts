@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: 'mapa',component: MapaComponent},
   {path: 'card-audio',component: CardAudioComponent},
   {path: 'filtros',component: FiltrosComponent},
-  {path: 'login', component: LoginComponent},
+  //{path: 'login', component: LoginComponent},
+  {path: 'admin', component: LoginComponent},
   {path: 'vista-admistrador',component: VistaAdministradorComponent},
   {path: 'dashboard',component: DashboardComponent},
 ];
