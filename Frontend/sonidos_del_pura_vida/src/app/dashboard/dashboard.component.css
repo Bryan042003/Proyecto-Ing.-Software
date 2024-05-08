@@ -149,6 +149,33 @@ p{
     animation-delay: 2.6s;
 }
 
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.nav-link.active {
+    color: #fff;
+    background-color: #DA291C;
+    border-color: #DA291C;
+    opacity:  0.95;
+    animation: fadeIn 2s;
+}
+
+.nav-item {
+    cursor:pointer;
+}
 
 
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 
+  .d-flex.flex-column.flex-shrink-0.p-3.text-white {
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+  }
