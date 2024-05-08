@@ -21,6 +21,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { GestionDeAudiosComponent } from './gestion-de-audios/gestion-de-audios.component';
 import { GestionDeAdministradoresComponent } from './gestion-de-administradores/gestion-de-administradores.component';
 import { HistorialComponent } from './historial/historial.component';
+import { RegistrarAdminComponent } from './registrar-admin/registrar-admin.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HistorialComponent } from './historial/historial.component';
     GestionDeAudiosComponent,
     GestionDeAdministradoresComponent,
     HistorialComponent,
+    RegistrarAdminComponent,
   ],
   imports: [
     BrowserModule,
