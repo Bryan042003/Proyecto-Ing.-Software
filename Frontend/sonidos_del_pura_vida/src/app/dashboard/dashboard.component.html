@@ -1,9 +1,9 @@
 
-<div class="d-flex" style="background-color: #EDEFF6; height: 100vh">
+<div id="cuadroGeneral" class="d-flex">
 
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white " style="width: 300px;height: auto; background-color: #1C232F; border-radius: 20px; margin: 5px;">
 
-        <div #imagen class="d-flex"   >
+        <div #imagen class="d-flex" >
             <div class="music">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -126,7 +126,14 @@
     </div>
 
     <div id="espacioderecha" >
-        <div id="espacio" class="card">
+
+        <button id="botonMenu"> 
+            <span class="material-symbols-outlined">
+                menu
+            </span>
+        </button>
+
+        <div id="espacio" class="card" style=" border: none; background-color: transparent;">
             <div *ngIf="flagPerfil; else gestionDeAudiosBlock">
                 <!-- Contenido para flagPerfil -->
                 <app-perfil></app-perfil>
