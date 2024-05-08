@@ -13,6 +13,7 @@ export class PasarDatosService {
 
   private urlBase = environment.baseUrl;
   private urlAudios = this.urlBase + 'controladores/Audios/';
+  private urlAdmin = this.urlBase + 'controladores/Administradores/';
 
   public tipoFiltro: string = '';
   public datoFiltrar: string = '';
@@ -116,6 +117,10 @@ export class PasarDatosService {
   }
   getCantonList() {
     return this.cantonList;
+  }
+
+  addAdmin(admin: FormData): Observable<any> {
+    return this.http.post(this.urlAdmin + 'agregarAdmin.php', admin);
   }
 
 }

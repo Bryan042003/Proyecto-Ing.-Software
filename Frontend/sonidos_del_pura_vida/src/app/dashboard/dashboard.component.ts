@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
 
   flagPerfil: boolean = false;
-  flagGestionDeAudios: boolean = true;
-  flagGestionDeAdministrador: boolean = false;
+  flagGestionDeAudios: boolean = false;
+  flagGestionDeAdministrador: boolean = true;
   flagHistorial: boolean = false;
 
-  
+
 
   seleccionarEspacio(espacioSeleccionado: string) {
 
