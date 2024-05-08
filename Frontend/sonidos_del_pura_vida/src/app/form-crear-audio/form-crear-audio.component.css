@@ -1,31 +1,29 @@
-
-
-.form-label{
+.form-label {
     font-size: 1.3rem;
     color: #000;
     font-weight: 500;
 }
 
-.form-control{
+.form-control {
     border-radius: 20px;
 }
 
-textarea{
+textarea {
     border-radius: 20px;
 }
 
-textarea::after{
+textarea::after {
     border-radius: 20px;
 }
 
 
-#mapid{
+#mapid {
     height: 280px;
     width: 100%;
     border-radius: 20px;
 }
 
-#drop-area{
+#drop-area {
     width: 500px;
     height: 250px;
     border-radius: 20px;
@@ -34,55 +32,56 @@ textarea::after{
 }
 
 
-#img-view{
-    width:100%;
+#img-view {
+    width: 100%;
     height: 100%;
     border-radius: 20px;
     border: 3px dashed #bbb;
-    background: #f7f8ff;;
+    background: #f7f8ff;
+    ;
     background-position: center;
     background-size: cover;
 }
 
-#img-view img{
+#img-view img {
     width: 120px;
 
 }
 
-#img-view span{
+#img-view span {
     display: block;
     font-size: 15px;
     color: #777;
     margin-top: 5px;
 }
 
-#img-view p{
+#img-view p {
     display: block;
     font-size: 20px;
 
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
     border-radius: 20px;
     border-color: #001148;
     color: #001148;
 }
 
-.btn-outline-primary:hover{
+.btn-outline-primary:hover {
     background-color: #001148;
     color: #fff;
 }
 
-.btn-outline-danger{
+.btn-outline-danger {
     border-radius: 20px;
 
 }
 
-.btn-outline-primary:danger{
+.btn-outline-primary:danger {
     color: #fff;
 }
 
-.btn-primary{
+.btn-primary {
     border-radius: 20px;
     background-color: #001148;
     border-color: #001148;
@@ -92,12 +91,12 @@ textarea::after{
     font-size: x-large;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: #002366;
     border-color: #002366;
 }
 
-.form-check-label{
+.form-check-label {
     font-size: 1.15rem;
     color: #000;
 
@@ -106,86 +105,94 @@ textarea::after{
 #captcha {
     display: inline-block;
     overflow: hidden;
-    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho disponible */
-  }
-  
-  #captcha > div {
-    transform:scale(0.77); /* Reduce el tamaño del reCAPTCHA */
-    -webkit-transform:scale(0.77);
-    transform-origin:0 0;
-    -webkit-transform-origin:0 0;
-  }
+    width: 100%;
+    /* Asegúrate de que el contenedor ocupe todo el ancho disponible */
+}
 
-  .btnTerminos{
+#captcha>div {
+    transform: scale(0.77);
+    /* Reduce el tamaño del reCAPTCHA */
+    -webkit-transform: scale(0.77);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+}
+
+.btnTerminos {
     background: none;
     border: none;
     color: #0000EE;
     text-decoration: underline;
     width: min-content;
-  }
+}
 
-    .btnTerminos:hover{
-        color: #3C3CFF;
-        text-decoration: underline;
-    }
+.btnTerminos:hover {
+    color: #3C3CFF;
+    text-decoration: underline;
+}
+
+p{
+    font-size: large;
+
+}
 
 @media only screen and (max-width: 600px) {
-    #drop-area{
+    #drop-area {
         width: 100%;
         height: auto;
     }
 
-    #img-view{
+    #img-view {
         /* width:100%;
         height: 100%; */
         width: 14rem;
         height: 250px;
         border-radius: 20px;
         border: 3px dashed #bbb;
-        background: #f7f8ff;;
+        background: #f7f8ff;
+        ;
         background-position: center;
         background-size: cover;
     }
 
-    #img-view img{
+    #img-view img {
         width: 110px;
         background-size: cover;
     }
 
-    #img-view span{
+    #img-view span {
         font-size: 15px;
     }
 
-    #img-view p{
+    #img-view p {
         font-size: 18px;
     }
 
-    #mapid{
+    #mapid {
         height: 300px;
         width: 100%;
         border-radius: 20px;
         margin-top: 1rem;
     }
 
-    .btn-outline-primary{
+    .btn-outline-primary {
         font-size: medium;
     }
 
-    .btn-primary{
+    .btn-primary {
         width: 100%;
         height: 3rem;
         font-size: medium;
         margin-top: 3rem;
     }
-    
-    .space{
+
+    .space {
         margin-top: 2rem;
     }
 
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    #drop-area{
+    #drop-area {
         width: 100%;
         height: auto;
     }

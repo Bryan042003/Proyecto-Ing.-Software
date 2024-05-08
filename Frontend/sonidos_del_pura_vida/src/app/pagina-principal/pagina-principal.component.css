@@ -42,6 +42,10 @@ a{
 
 }
 
+p{
+    font-size: large;
+}
+
 .page-item.active .page-link {
     color: #fff;
     background-color: #DA291C;
