@@ -10,13 +10,13 @@ li:hover{
     background-color: #161C25;
     border-radius: 10px;
 }
-button{
+.salir{
     align-items: center;
     background-color: #1C232F; 
     border: transparent; 
     margin: 10px;
 }
-button:hover{
+.salir:hover{
     background-color: #161C25;
     border-radius: 10px;
 }
