@@ -198,6 +198,7 @@ p {
     display: none;
     border: none;
     background-color: transparent;
+    width: 100px;
 }
 
 #cuadroGeneral {
@@ -212,7 +213,6 @@ p {
        height: 100vh;
     }
 
-
     .d-flex {
         flex-direction: column;
         height: auto;
@@ -220,23 +220,35 @@ p {
 
     #botonMenu {
         display: block;
-        position: fixed; 
-        top: 10px; 
-        left: 10px; 
-        z-index: 9999; /* Add this line */
+        
     }
 
     .d-flex.flex-column.flex-shrink-0.p-3.text-white {
-        width: 100%;
-        margin: 0;
-        border-radius: 0;
-        display: none !important;
+        height: 50px;
+        width:50% ;
+        position: fixed;
+        z-index: 1; 
     }
+
     #espacioderecha {
         flex-grow: 1;
         padding: 20px;
         height: auto;
-        width: 100%; /* Add this line */
+        width: 100%; 
     }
+
+    #imagen{
+        height: 5%;
+    }
+
+    #hr{
+        display: none !important;
+    }
+    .music {
+        width: 200px;
+        height: 100px;
+    }
+    
+
 
 }

@@ -1,9 +1,20 @@
 
 <div id="cuadroGeneral" class="d-flex">
+    <button id="botonMenu"  (click)="toggleSidebar()"> 
+        <span class="material-symbols-outlined">
+            menu
+        </span>
+    </button>
 
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white " style="width: 300px;height: auto; background-color: #1C232F; border-radius: 20px; margin: 5px;">
+    <div id="sidebar" [ngClass]="{'d-none': !sidebarOpen, 'd-md-block': sidebarOpen}" class="d-flex flex-column flex-shrink-0 p-3 text-white " style="width: 300px;height: auto; background-color: #1C232F; border-radius: 20px; margin: 5px;">
 
-        <div #imagen class="d-flex" >
+        <button id="botonMenu"  (click)="toggleSidebar()" style="color: white;"> 
+            <span class="material-symbols-outlined">
+                menu
+            </span>
+        </button>
+
+        <div id="imagen" class="d-flex" >
             <div class="music">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -25,9 +36,9 @@
 
         </div>
     
-        <hr>
+        <hr id="hr">
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item"  (click)="seleccionarEspacio('perfil')">
+            <li class="nav-item"  (click)="seleccionarEspacio('perfil')" (click)="toggleSidebar()">
                 <div *ngIf="flagPerfil ; else perfilNoActive" >
                     <a  class="nav-link active d-flex text-white " aria-current="page">
                     
@@ -50,7 +61,7 @@
 
                 
             </li>
-            <li class="nav-item" (click)="seleccionarEspacio('gestionDeAudios')">
+            <li class="nav-item" (click)="seleccionarEspacio('gestionDeAudios')" (click)="toggleSidebar()">
                 <div *ngIf="flagGestionDeAudios ; else gestionDeAudiosNoActive" >
                     <a  class="nav-link active d-flex text-white" aria-current="page">
                         <span class="material-symbols-outlined">
@@ -71,7 +82,7 @@
                 </ng-template>
                 
             </li>
-            <li class="nav-item" (click)="seleccionarEspacio('gestionDeAdministradores')">
+            <li class="nav-item" (click)="seleccionarEspacio('gestionDeAdministradores')" (click)="toggleSidebar()">
 
                 <div *ngIf="flagGestionDeAdministrador ; else gestionDeAdminitradorNoActive" >
                     <a  class="nav-link active d-flex text-white" aria-current="page">
@@ -92,7 +103,7 @@
                 </ng-template>
                 
             </li>
-            <li class="nav-item" (click)="seleccionarEspacio('historial')">
+            <li class="nav-item" (click)="seleccionarEspacio('historial')" (click)="toggleSidebar()">
                 <div *ngIf="flagHistorial ; else historialNoActive"> 
                     <a class="nav-link active d-flex  text-white" aria-current="page">
                         <span class="material-symbols-outlined">
@@ -126,12 +137,6 @@
     </div>
 
     <div id="espacioderecha" >
-
-        <button id="botonMenu"> 
-            <span class="material-symbols-outlined">
-                menu
-            </span>
-        </button>
 
         <div id="espacio" class="card" style=" border: none; background-color: transparent;">
             <div *ngIf="flagPerfil; else gestionDeAudiosBlock">
