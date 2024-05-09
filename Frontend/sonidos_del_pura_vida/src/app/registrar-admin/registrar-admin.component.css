@@ -1,4 +1,14 @@
 
+.form-label {
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 10%;
+}
+
+.form-control {
+  background-color: #f1f3f4;
+  border-radius: 20px;
+}
 
 .btn-primary {
   border-radius: 20px;
@@ -8,7 +18,6 @@
   height: 3.5rem;
   font-size: x-large;
 }
-
 
 progress {
   border-radius: 5px;
