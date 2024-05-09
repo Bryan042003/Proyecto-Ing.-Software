@@ -29,13 +29,13 @@ export class FormCrearAudioComponent {
   audioFile!: File;
   imagenFile!: File;
 
-  constructor(private fb: FormBuilder,public pasarDatosService: PasarDatosService) { }
+  constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) { }
 
 
   form = this.fb.group({
     titulo: ['', [Validators.required, Validators.maxLength(50)]],
     autor: ['', [Validators.required, Validators.maxLength(50)]],
-    comentarios: ['',Validators.maxLength(255)],
+    comentarios: ['', Validators.maxLength(255)],
     AudioFile: ['', Validators.required],
     imagen: [''],
     latitud: ['', Validators.required],
@@ -56,39 +56,37 @@ export class FormCrearAudioComponent {
       this.map = L.map('mapid', {
         center: [9.9634, -84.1003],
         zoom: 8,
-        maxBounds: bounds,
-        maxBoundsViscosity: 1.0
+        // maxBounds: bounds,
+        // maxBoundsViscosity: 1.0
 
       });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        minZoom: 7
+        minZoom: 3
       }).addTo(this.map);
     }
     this.map.on('click', (e: any) => {
       const lat = e.latlng.lat;
       const lng = e.latlng.lng;
-    
-      if (lat >= 8 && lat <= 11.15 && lng >= -86 && lng <= -82) {
-        if (this.marker) {
-          this.map.removeLayer(this.marker);
-        }
-        this.marker = L.marker([lat, lng]).addTo(this.map);
-        this.form.controls.latitud.setValue(lat);
-        this.form.controls.longitud.setValue(lng);
-      } else {
-        alert('Por favor, selecciona un punto dentro de Costa Rica');
+
+
+      if (this.marker) {
+        this.map.removeLayer(this.marker);
       }
+      this.marker = L.marker([lat, lng]).addTo(this.map);
+      this.form.controls.latitud.setValue(lat);
+      this.form.controls.longitud.setValue(lng);
+
     });
   }
 
   encontrarUbicacion() {
-    if(navigator.geolocation){
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const latitud = position.coords.latitude;
         const longitud = position.coords.longitude;
         this.map.setView([latitud, longitud], 15);
-        if(this.marker){
+        if (this.marker) {
           this.map.removeLayer(this.marker);
         }
         this.marker = L.marker([latitud, longitud]).addTo(this.map);
@@ -96,7 +94,7 @@ export class FormCrearAudioComponent {
         this.form.controls.longitud.setValue(longitud.toString());
       });
     }
-    else{
+    else {
       alert('No se pudo obtener la ubicación');
     }
   }
@@ -177,10 +175,10 @@ export class FormCrearAudioComponent {
   quitarImagen() {
     this.imageSrc = '';
     this.form.controls.imagen.setValue('');
-  
+
   }
 
-  obtenerCantonProvincia():Promise<void> {
+  obtenerCantonProvincia(): Promise<void> {
     const lat = this.form.controls.latitud.value;
     const lng = this.form.controls.longitud.value;
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
@@ -189,32 +187,48 @@ export class FormCrearAudioComponent {
       .then(data => {
         let canton = data.address.county;
         let provincia = data.address.province;
-        if(canton === undefined || provincia === undefined){
-          this.puntoInvalido = true;
-          return;
+
+        if(provincia === undefined ){
+          provincia = 'Indefinido';
         }
+        if(canton === undefined){
+          canton = 'Indefinido';
+        }
+
         canton = canton.replace('Cantón ', '');
         provincia = provincia.replace('Provincia ', '');
         provincia = provincia.replace('de ', '');
+
+        if (provincia !== 'San José' &&
+          provincia !== 'Alajuela' &&
+          provincia !== 'Cartago' && provincia !== 'Heredia' &&
+          provincia !== 'Guanacaste' && provincia !== 'Puntarenas' && provincia !== 'Limón') {
+          provincia = "Indefinido";
+          canton = "Indefinido";
+          console.log('Provincia indefinida');
+
+        }
+        console.log(canton);
+        console.log(provincia);
         this.form.controls.canton.setValue(canton);
         this.form.controls.provincia.setValue(provincia);
-        
+
         this.puntoInvalido = false;
       })
       .catch(error => {
-       
-        this.puntoInvalido = true;
+        this.form.controls.canton.setValue("Indefinido");
+        this.form.controls.provincia.setValue("Indefinido");
       });
-    
-      
+
+
   }
 
   async onSubmit() {
 
     if (this.form.valid) {
       await this.obtenerCantonProvincia();
-      if(!this.puntoInvalido){
-       
+      if (!this.puntoInvalido) {
+
         const audio = new FormData();
         audio.append('titulo', this.form.get('titulo')?.value || '');
         audio.append('autor', this.form.get('autor')?.value || '');
@@ -224,10 +238,10 @@ export class FormCrearAudioComponent {
         audio.append('canton', this.form.get('canton')?.value || '');
         audio.append('provincia', this.form.get('provincia')?.value || '');
 
-        if(this.audioFile)
+        if (this.audioFile)
           audio.append('AudioFile', this.audioFile, this.audioFile.name);
 
-        if(this.imagenFile)
+        if (this.imagenFile)
           audio.append('imagen', this.imagenFile, this.imagenFile.name);
 
         this.showAlertLoad();
@@ -242,9 +256,10 @@ export class FormCrearAudioComponent {
             this.map.removeLayer(this.marker);
             this.marker = null;
             this.form.untouched;
-          
+
           },
           (error) => {
+            console.log(error);
             Swal.close();
             this.showAlertError();
           }
@@ -252,10 +267,10 @@ export class FormCrearAudioComponent {
 
       }
     }
-    else{
+    else {
       this.showAlertInvalid();
       this.form.markAllAsTouched();
-      
+
     }
   }
 
@@ -275,7 +290,7 @@ export class FormCrearAudioComponent {
     this.imageSrc = '';
     this.audioSrc = '';
     this.reloadAudio();
-    if(this.marker){
+    if (this.marker) {
       this.map.removeLayer(this.marker);
       this.marker = null;
     }
@@ -304,7 +319,7 @@ export class FormCrearAudioComponent {
     });
   }
 
-  showAlertInvalid(){
+  showAlertInvalid() {
     Swal.fire({
       title: 'Campos inválidos',
       text: 'Por favor, revise los campos del formulario',
@@ -314,7 +329,7 @@ export class FormCrearAudioComponent {
     });
   }
 
-  showAlertLoad(){
+  showAlertLoad() {
     Swal.fire({
       title: 'Cargando...',
       text: 'Espere un momento por favor',

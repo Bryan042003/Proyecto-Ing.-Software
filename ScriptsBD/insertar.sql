@@ -2,6 +2,7 @@ use sonidospv_bd;
 -- Provincia -----------------------------------------------------------------------
 
 INSERT INTO provincia (nombre) VALUES
+('Indefinido'),
 ('San José'),
 ('Alajuela'),
 ('Cartago'),
@@ -16,6 +17,27 @@ INSERT INTO provincia (nombre) VALUES
 
 -- San José
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido', 1),
+('Central', 1),
+('Escazú', 1),
+('Desamparados', 1),
+('Puriscal', 1),
+('Tarrazú', 1),
+('Aserrí', 1),
+('Mora', 1),
+('Goicoechea', 1),
+('Santa Ana', 1),
+('Alajuelita', 1),
+('Vázquez de Coronado', 1),
+('Acosta', 1),
+('Tibás', 1),
+('Moravia', 1),
+('Montes de Oca', 1),
+('Turrubares', 1),
+('Dota', 1),
+('Curridabat', 1),
+('Pérez Zeledón', 1),
+('León Cortés Castro', 1);
 ('San José', 1),
 ('Escazú', 1),
 ('Desamparados', 1),
@@ -39,6 +61,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Alajuela
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',2),
 ('Alajuela', 2),
 ('San Ramón', 2),
 ('Grecia', 2),
@@ -58,6 +81,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Cartago
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',3),
 ('Cartago', 3),
 ('Paraíso', 3),
 ('La Unión', 3),
@@ -69,6 +93,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Heredia
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',4),
 ('Heredia', 4),
 ('Barva', 4),
 ('Santo Domingo', 4),
@@ -82,6 +107,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Guanacaste
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',5),
 ('Liberia', 5),
 ('Nicoya', 5),
 ('Santa Cruz', 5),
@@ -96,6 +122,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Puntarenas
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',6),
 ('Puntarenas', 6),
 ('Esparza', 6),
 ('Buenos Aires', 6),
@@ -110,6 +137,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Limón
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',7),
 ('Limón', 7),
 ('Pococí', 7),
 ('Siquirres', 7),
@@ -119,3 +147,5 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 --
 
+INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',8);
