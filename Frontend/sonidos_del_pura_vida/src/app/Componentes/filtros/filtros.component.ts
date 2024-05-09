@@ -224,10 +224,8 @@ export class FiltrosComponent {
   cargarCantones(idProvincia: string) {
     this.pasarDatosService.getCantones(idProvincia).subscribe(
         (res: any) => {
-          this.cantones = res;
+          this.cantones = res.slice(1);
         }
     );
   }
-
-
 }
