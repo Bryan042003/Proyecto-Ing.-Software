@@ -22,12 +22,45 @@
                             </ng-template>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        hola2
+
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center flex-wrap">
+                            <li class="page-item" [class.disabled]="paginaActual === 0">
+                                <a class="page-link" id="btn-paginacion" href="#"
+                                    (click)="paginaAnterior()">Anterior</a>
+                            </li>
+                            <ng-container *ngIf="paginas.length <= 5; else mostrarPuntos">
+                                <li class="page-item" *ngFor="let _ of paginas; let i = index" [class.active]="i === paginaActual">
+                                  <a class="page-link" id="btn-paginacion2" href="#" (click)="irAPagina(i)">{{ i + 1 }}</a>
+                                </li>
+                              </ng-container>
+                          
+                              <ng-template #mostrarPuntos>
+                                <li class="page-item" *ngFor="let _ of paginas.slice(0, 3); let i = index" [class.active]="i === paginaActual">
+                                  <a class="page-link" id="btn-paginacion2" href="#" (click)="irAPagina(i)">{{ i + 1 }}</a>
+                                </li>
+                                <li class="page-item disabled"><a class="page-link">...</a></li>
+                                <li class="page-item" *ngFor="let _ of paginas.slice(-2); let i = index" [class.active]="paginaActual === paginas.length - 1 - i">
+                                  <a class="page-link" id="btn-paginacion2" href="#" (click)="irAPagina(paginas.length - 1 - i)">{{ paginas.length - i }}</a>
+                                </li>
+                              </ng-template>
+                          
+                            <li class="page-item" [class.disabled]="paginaActual === paginas.length - 1">
+                                <a class="page-link" id="btn-paginacion" href="#"
+                                    (click)="paginaSiguiente()">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="container"
+                        style=" overflow-y: auto; width: 100%;height:620px;">
+                        <div *ngFor="let admin of paginas[paginaActual]">
+                            <app-card-admin [admin]="admin"></app-card-admin>
+                        </div>
                     </div>
-                    <div class="row mt-3">
-                        hola3
-                    </div>
+
+
+
                 </div>
             </div>
             <div class="col " style="height: 100%;">

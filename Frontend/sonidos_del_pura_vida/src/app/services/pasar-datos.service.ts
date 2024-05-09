@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Audio } from '../models/Audio.model';
+import { Admin } from '../models/Admin.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -18,8 +19,14 @@ export class PasarDatosService {
   public tipoFiltro: string = '';
   public datoFiltrar: string = '';
   private estadoFiltro = new BehaviorSubject<boolean>(false);
+
+
   public listaAudios: Audio[] = [];
+  public listaAdmins: Admin[] = [];
+
   public AudioGuardar: any;
+  public AdminGuardar: any;
+
   public filtroProvincia: Audio[] = [];
 
   private estadoFiltroAutor = new BehaviorSubject<boolean>(false);
@@ -121,6 +128,18 @@ export class PasarDatosService {
 
   addAdmin(admin: FormData): Observable<any> {
     return this.http.post(this.urlAdmin + 'agregarAdmin.php', admin);
+  }
+
+  getAdmins(): Observable<any> {
+    return this.http.get(this.urlAdmin + 'obtenerAdmins.php');
+  }
+
+  setAdmin(admin: any) {
+    this.AdminGuardar = admin;
+  }
+
+  getAdmin() {
+    return this.AdminGuardar;
   }
 
 }

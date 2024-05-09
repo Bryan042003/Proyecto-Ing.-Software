@@ -20,5 +20,15 @@ class Administrador{
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
+
+    
+    public function obtenerAdmins(){
+        $query = "SELECT * FROM Administrador";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+
 }
 ?>
