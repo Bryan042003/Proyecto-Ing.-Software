@@ -45,4 +45,12 @@ export class DashboardComponent {
     }
   }
 
+  sidebarOpen = true;
+
+  toggleSidebar() {
+    if (window.innerWidth < 768) {
+        this.sidebarOpen = !this.sidebarOpen;
+    }
+}
+
 }
