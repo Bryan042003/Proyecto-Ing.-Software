@@ -2,13 +2,49 @@
     <div class="card-body" style="width: 100%; height: 100%;">
         <div class="row" style="height: 100%;">
             <div class="col" style="height: 100%;">
-                <div class="card" style="height: 100%; border-radius: 20px;">
-                    aqui mete algo
+                <div class="d-flex card" style="height: 100%; border-radius: 20px; align-items: center;  width: 100%;">
+                    <div class="row d-flex" style="justify-content: right; width: 100%; ">
+                        <div class="col d-flex" style="align-items: center; justify-content: end; margin: 20px;">
+                            <div *ngIf="tocoBotonAnadir; else noTocado">
+                                <button style="background-color: transparent;border: none;" (click)="botonAnadir()">
+                                    <span class="material-symbols-outlined" style="font-size: 60px; color: red;">
+                                        person_add
+                                    </span>
+                                </button>
+                            </div>
+
+                            <ng-template #noTocado>
+                                <button style="background-color: transparent;border: none;" (click)="botonAnadir()">
+                                    <span class="material-symbols-outlined" style="font-size: 60px;">
+                                        person_add
+                                    </span>
+                                </button>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        hola2
+                    </div>
+                    <div class="row mt-3">
+                        hola3
+                    </div>
                 </div>
             </div>
-            <div class="col" style="height: 100%;">
-                <div class="card" style="height: 100%; border-radius: 20px;">
-                  <app-registrar-admin></app-registrar-admin>
+            <div class="col " style="height: 100%;">
+                <div class="card" style="height: 100%; border-radius: 20px; justify-content: center; ">
+
+                    <div *ngIf="tocoBotonAnadir ; else vistaAnadirUsuario ">
+                        <app-registrar-admin></app-registrar-admin>
+                    </div>
+
+                    <ng-template #vistaAnadirUsuario>
+                        <div>
+                            <img src="assets/imagenes/sonidosPV.png"
+                                style="display: flex; width: 100%; place-content: center; ">
+                        </div>
+
+                    </ng-template>
+
                 </div>
             </div>
         </div>

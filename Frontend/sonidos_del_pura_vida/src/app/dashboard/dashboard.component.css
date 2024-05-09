@@ -173,7 +173,7 @@ p {
 
 @keyframes slideInFromLeft {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 
     100% {
@@ -181,7 +181,7 @@ p {
     }
 }
 
-.d-flex.flex-column.flex-shrink-0.p-3.text-white {
+.sidebar {
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
@@ -243,7 +243,25 @@ p {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        display: none;
+        animation: none;
+
     }
+    .sidebar.active {
+        display: block;
+        animation: none;
+    }
+
+    #botonMenu{
+        width: 20%;
+        color: black !important;
+        display: flex;
+        align-items:flex-start;
+    }
+    .botoncin {
+        display: flex;
+        justify-content: flex-start;
+      }
 
     #salir {
         margin-top: 0; 
@@ -253,13 +271,23 @@ p {
         height: auto;
         flex-direction: column;
     }
+    #sidebarCollapse{
+        width: 100% !important;
+    }
 
 }
 
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
     .sidebar {
-        width: 72vh;
+        width: 100%;
         position:static;
+    }
+}
+
+
+@media only screen and (min-width: 1024px){
+    .botoncin{
+        display: none;
     }
 }

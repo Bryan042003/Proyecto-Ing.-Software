@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class GestionDeAdministradoresComponent {
 
+tocoBotonAnadir: boolean = false;
+
+  botonAnadir(){
+    this.tocoBotonAnadir = !this.tocoBotonAnadir;
+  }
+
 }
+

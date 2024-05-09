@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { PasarDatosService } from '../services/pasar-datos.service';
 import Swal from 'sweetalert2';
 
@@ -13,13 +13,59 @@ export class RegistrarAdminComponent {
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService ) { }
 
   emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,}$/i;
+  passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  public strengthBar = document.getElementById("strength-bar");
+  public msg = document.getElementById("msg");
+  public barLenght: any;
+
+  visible:boolean = true;
+  changetype: boolean = true;
+  public passwordActual = '';
 
   form = this.fb.group({
     nombre: ['', [Validators.required, Validators.maxLength(50)]],
-    correo: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-    password: ['',Validators.maxLength(255)]
-  });
+    correo: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(this.emailPattern)]],
+    password: ['',[Validators.required, Validators.maxLength(50), this.hasNumber, this.hasCapitalCase, this.hasEightCharacters]],
+    confirmPassword: ['']
+  }, { validator: this.verificarContraseñas });
 
+  verificarContraseñas(group: FormGroup): {[s: string]: boolean} | null {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    if (password !== confirmPassword) {
+      return { passwordsNotMatch: true };
+    }
+    return null;
+  }
+
+  hasNumber(control: FormControl): {[s: string]: boolean} | null {
+    const numReg = /\d/;
+    if (!control.value || !numReg.test(control.value)) {
+      return { noNumber: true };
+    }
+    return null;
+  }
+
+  hasCapitalCase(control: FormControl): {[s: string]: boolean} | null {
+    const capitalReg = /[A-Z]/;
+    if (!control.value || !capitalReg.test(control.value)) {
+      return { noCapitalCase: true };
+    }
+    return null;
+  }
+
+  hasEightCharacters(control: FormControl): {[s: string]: boolean} | null {
+    if (!control.value || control.value.length < 8) {
+      return { lessThanEightCharacters: true };
+    }
+    return null;
+  }
+
+  viewpass() {
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
 
   async onSubmit() {
 
@@ -76,6 +122,37 @@ export class RegistrarAdminComponent {
     });
   }
 
+  getPasswordStrength() {
+    let contraActual = (<HTMLInputElement>document.getElementById("password")).value;
+    let strength = 0;
 
+    if (contraActual.length > 7) {
+      strength++;
+    }
+    if (contraActual.match(/[a-z]/)) {
+      strength++;
+    }
+    if (contraActual.match(/[A-Z]/)) {
+      strength++;
+    }
+    if (contraActual.match(/[0-9]/)) {
+      strength++;
+    }
+    if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(contraActual)) {
+      strength++;
+    }
+
+    let progressBar = <HTMLProgressElement>document.getElementById("passwordStrength");
+    progressBar.value = strength;
+
+    if (strength <= 1) {
+      progressBar.classList.add('weak');
+    } else if (strength <= 4) {
+      progressBar.classList.add('medium');
+    } else {
+      progressBar.classList.add('strong');
+    }
+    return strength;
+  }
 
 }
