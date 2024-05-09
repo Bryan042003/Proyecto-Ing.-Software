@@ -8,6 +8,8 @@ import { PasarDatosService } from '../services/pasar-datos.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  visible:boolean = true;
+  changetype: boolean = true;
 
   constructor(private fb: FormBuilder,public pasarDatosService: PasarDatosService) { }
 
@@ -18,6 +20,11 @@ export class LoginComponent {
 
   onSubmit() {
     console.log('Formulario enviado');
+  }
+
+  viewpass() {
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
   }
 
 }
