@@ -2,7 +2,6 @@ use sonidospv_bd;
 -- Provincia -----------------------------------------------------------------------
 
 INSERT INTO provincia (nombre) VALUES
-('Indefinido'),
 ('San José'),
 ('Alajuela'),
 ('Cartago'),
@@ -10,8 +9,8 @@ INSERT INTO provincia (nombre) VALUES
 ('Guanacaste'),
 ('Puntarenas'),
 ('Limón');
+('Indefinido'),
 
---
 
 -- Canton ----------------------------------------------------------------------------
 
@@ -38,26 +37,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 ('Curridabat', 1),
 ('Pérez Zeledón', 1),
 ('León Cortés Castro', 1);
-('San José', 1),
-('Escazú', 1),
-('Desamparados', 1),
-('Puriscal', 1),
-('Tarrazú', 1),
-('Aserrí', 1),
-('Mora', 1),
-('Goicoechea', 1),
-('Santa Ana', 1),
-('Alajuelita', 1),
-('Vázquez de Coronado', 1),
-('Acosta', 1),
-('Tibás', 1),
-('Moravia', 1),
-('Montes de Oca', 1),
-('Turrubares', 1),
-('Dota', 1),
-('Curridabat', 1),
-('Pérez Zeledón', 1),
-('León Cortés Castro', 1);
+
 
 -- Alajuela
 INSERT INTO canton (nombre, id_provincia) VALUES
