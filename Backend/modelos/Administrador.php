@@ -3,6 +3,8 @@
 class Administrador{
     private $conn;
 
+    private $tabla = "Administrador";
+
     public $nombre;
     public $correo;
     public $password;
@@ -27,6 +29,14 @@ class Administrador{
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->execute();
         return $stmt;
+    }
+
+    public function removerAdministrador($id){
+        $query = "DELETE FROM " . $this->tabla . " WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
     }
 
 

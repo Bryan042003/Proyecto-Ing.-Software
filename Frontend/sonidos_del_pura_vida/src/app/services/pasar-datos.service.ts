@@ -142,4 +142,8 @@ export class PasarDatosService {
     return this.AdminGuardar;
   }
 
+  deleteAdministrador(id: string){
+    return this.http.delete(this.urlAdmin + 'removerAdministrador?id='+id);
+  }
+
 }

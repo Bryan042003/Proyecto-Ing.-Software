@@ -21,6 +21,7 @@ if($count > 0){
         extract($row);
 
         $admin = array(
+            "id" => $id,
             "nombre" => $nombre,
             "correo" => $correo,
             "password" => $password,
