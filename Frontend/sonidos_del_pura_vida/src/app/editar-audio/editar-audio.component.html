@@ -1,0 +1,46 @@
+<div class="container">
+    
+    <div style="width: 100%;">
+        <button type="button" class="close" style="background: transparent; border: none; " (click)="cerrarEditar()">
+            <span class="material-symbols-outlined" style=" font-size: 40px; ">
+                cancel
+            </span>
+        </button>
+    </div>
+
+
+    <div class="card">
+        <div class="row w-100">
+            <div class="col w-50">
+                <div class="inner-card">
+                    <h5 id="provincia"><strong>Provincia:</strong> {{audio.provincia}}</h5>
+                    <h5><strong>Cantón:</strong> {{audio.canton}}</h5>
+                    <h5><strong>Autor:</strong> {{audio.autor}}</h5>
+                    <h5><strong>Comentarios:</strong></h5>
+                    <div class="comments">
+                        <h5> {{audio.comentarios}}</h5>
+                    </div>
+                    <div class="audio-player">
+                        <audio controls [src]="audio.ruta_audio"></audio>
+                    </div>
+                </div>
+            </div>
+            <div class="col w-50">
+                    <div class="image-container">
+                        <img [src]="audio.ruta_imagen">
+                    </div>
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col">
+                <div class="inner-card map-container" id="mapU"></div>
+            </div>
+
+           
+
+        </div>
+
+        <button (click)="editarAudio()">Editar</button>
+        <button (click)="editarAudio()">Eliminar</button>
+    </div>
+</div>

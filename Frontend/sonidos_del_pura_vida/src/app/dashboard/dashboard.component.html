@@ -12,7 +12,7 @@
                     </button>
                 </div>
                 
-                <div [class.active]="sidebarActive" class=" sidebar text-white" style="background-color:#1C232F;height: 100%; width: 100%;" >
+                <div  [ngClass]="{'active': sidebarActive}" class=" sidebar text-white" style="background-color:#1C232F;height: 100%; width: 100%;" >
                     
 
                     <div class="collapse d-xl-block" id="sidebarCollapse">
@@ -41,7 +41,7 @@
                         <hr id="hr">
 
                         <ul class="list-group">
-                            <li class="list-group-item" (click)="seleccionarEspacio('perfil')">
+                            <li class="list-group-item" (click)="seleccionarEspacio('perfil'); toggleSidebar()">
                                 <div *ngIf="flagPerfil ; else perfilNoActive">
                                     <a class="nav-link active d-flex text-white " aria-current="page">
 
@@ -63,7 +63,7 @@
                                 </ng-template>
 
                             </li>
-                            <li class="list-group-item" (click)="seleccionarEspacio('gestionDeAudios')">
+                            <li class="list-group-item" (click)="seleccionarEspacio('gestionDeAudios'); toggleSidebar()">
                                 <div *ngIf="flagGestionDeAudios ; else gestionDeAudiosNoActive">
                                     <a class="nav-link active d-flex text-white" aria-current="page">
                                         <span class="material-symbols-outlined">
@@ -83,7 +83,7 @@
                                     </a>
                                 </ng-template>
                             </li>
-                            <li class="list-group-item" (click)="seleccionarEspacio('gestionDeAdministradores')">
+                            <li class="list-group-item" (click)="seleccionarEspacio('gestionDeAdministradores'); toggleSidebar()">
                                 <div *ngIf="flagGestionDeAdministrador ; else gestionDeAdminitradorNoActive">
                                     <a class="nav-link active d-flex text-white" aria-current="page">
                                         <span class="material-symbols-outlined">
@@ -103,7 +103,7 @@
                                 </ng-template>
                             </li>
 
-                            <li class="list-group-item" (click)="seleccionarEspacio('historial')">
+                            <li class="list-group-item" (click)="seleccionarEspacio('historial'); toggleSidebar()" >
                                 <div *ngIf="flagHistorial ; else historialNoActive">
                                     <a class="nav-link active d-flex  text-white" aria-current="page">
                                         <span class="material-symbols-outlined">
@@ -150,7 +150,7 @@
                     </div>
                     
                     <ng-template #gestionDeAudiosBlock>
-                        <div *ngIf="flagGestionDeAudios; else gestionDeAdministradorBlock">
+                        <div *ngIf="flagGestionDeAudios; else gestionDeAdministradorBlock" style="height: 100%;">
                             <!-- Contenido para flagGestionDeAudios -->
                             <app-gestion-de-audios></app-gestion-de-audios>
                         </div>

@@ -9,14 +9,14 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
 
   flagPerfil: boolean = false;
-  flagGestionDeAudios: boolean = false;
-  flagGestionDeAdministrador: boolean = true;
+  flagGestionDeAudios: boolean = true;
+  flagGestionDeAdministrador: boolean = false;
   flagHistorial: boolean = false;
-
-
+  sidebarActive = false;
 
   seleccionarEspacio(espacioSeleccionado: string) {
-
+   
+    console.log(this.sidebarActive);
     switch (espacioSeleccionado) {
       case 'perfil':
         this.flagPerfil = true;
@@ -45,10 +45,11 @@ export class DashboardComponent {
     }
   }
 
-  sidebarActive = false;
-
   toggleSidebar() {
     this.sidebarActive = !this.sidebarActive;
+    console.log(this.sidebarActive);
   }
+
+
 
 }

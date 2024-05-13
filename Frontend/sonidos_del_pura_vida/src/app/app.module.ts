@@ -23,6 +23,7 @@ import { GestionDeAdministradoresComponent } from './gestion-de-administradores/
 import { HistorialComponent } from './historial/historial.component';
 import { RegistrarAdminComponent } from './registrar-admin/registrar-admin.component';
 import { CardAdminComponent } from './card-admin/card-admin.component';
+import { EditarAudioComponent } from './editar-audio/editar-audio.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CardAdminComponent } from './card-admin/card-admin.component';
     HistorialComponent,
     RegistrarAdminComponent,
     CardAdminComponent,
+    EditarAudioComponent,
   ],
   imports: [
     BrowserModule,
