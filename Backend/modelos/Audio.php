@@ -5,6 +5,7 @@
 class Audio{
     private $conn;
     private $vista = "vista_audio_ubicacion";
+    private $tabla = "Audio";
 
     public $titulo;
     public $autor;
@@ -38,7 +39,7 @@ class Audio{
 
     //public function removerAudio($id_admin, $id_audio, $motivo){
     public function removerAudio($id){
-        $query = "DELETE FROM " . $this->vista . " WHERE id = :id";
+        $query = "DELETE FROM " . $this->tabla . " WHERE id = :id";
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
