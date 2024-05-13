@@ -15,6 +15,8 @@ export class GestionDeAudiosComponent {
   paginaActual: number = 0;
   activarVistaInformacionAudio: boolean = false;
   audioSeleccionado!: Audio;
+  opcionElegida: string = 'Ordenar por:';
+
   constructor(public pasarDatosService: PasarDatosService) { }
   ngOnInit() {
     this.cargarAudios();
@@ -58,6 +60,46 @@ export class GestionDeAudiosComponent {
     console.log(this.audioSeleccionado);
     console.log(this.activarVistaInformacionAudio);
     this.activarVistaInformacionAudio = true;
+  }
+
+
+  filtros(): void {
+    const tipoFiltro = this.pasarDatosService.getTipoFiltro();
+    const datoFiltrar = this.pasarDatosService.getDatoFiltrar();
+
+    switch (tipoFiltro) {
+      case 'A → Z':
+        this.audios.sort((a, b) => a.titulo.localeCompare(b.titulo));
+        break;
+
+      case 'Z → A':
+        this.audios.sort((a, b) => b.titulo.localeCompare(a.titulo));
+        break;
+
+      case 'Más reciente':
+        this.audios.sort((a, b) => b.fecha_registro.localeCompare(a.fecha_registro));
+        break;
+
+      case 'Más antiguo':
+        this.audios.sort((a, b) => a.fecha_registro.localeCompare(b.fecha_registro));
+        break;
+
+      default:
+        break;
+    }
+    this.paginateAudios();
+  }
+
+  
+  filtrando(tipoFiltrar: string) {
+    this.opcionElegida = tipoFiltrar;
+    this.pasarDatosService.setTipoFiltro(tipoFiltrar);
+    this.filtros();
+  }
+
+
+  cerrarEditar(){
+    this.activarVistaInformacionAudio = false;
   }
 
 }

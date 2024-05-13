@@ -61,3 +61,7 @@ p{
     background-color: #001148;
     color: white;
 }
+.botonCerrar:hover{
+    background-color: #DA291C;
+
+}

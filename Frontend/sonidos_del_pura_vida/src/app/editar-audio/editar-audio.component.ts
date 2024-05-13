@@ -16,6 +16,8 @@ export class EditarAudioComponent  implements OnInit {
   private markers: L.Marker[] = [];
   private varMarcador: boolean = true;
 
+  
+
 
   ngOnInit() {
     this.mostrarMapa();
@@ -52,7 +54,9 @@ export class EditarAudioComponent  implements OnInit {
     
   }
 
-  cerrarEditar(){
+
+
+  eliminarAudio(){
     
   }
 

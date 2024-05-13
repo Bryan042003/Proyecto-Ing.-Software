@@ -4,20 +4,20 @@
             <div class="col" style="height: 100%; border: none;">
                 <div class="d-flex card" style="height: 100%; border-radius: 20px; align-items: center;  width: 100%;">
 
-                    <div class="dropdown d-flex ms-auto" style="margin: 20px;">
+                    <div class="dropdown d-flex ms-auto">
                         <button class="btn btn-secondary dropdown-toggle btn-block btn-sm" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
                             style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
-                            Ordenar por:
+                            {{opcionElegida}}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
-                            <li><a class="dropdown-item" href="#">Más
+                            <li><a class="dropdown-item" (click)="filtrando('Más reciente')">Más
                                     reciente</a></li>
-                            <li><a class="dropdown-item" href="#">Más
+                            <li><a class="dropdown-item" (click)="filtrando('Más antiguo')">Más
                                     antiguo</a></li>
-                            <li><a class="dropdown-item" href="#">A → Z</a>
+                            <li><a class="dropdown-item"  (click)="filtrando('A → Z')">A → Z</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Z → A</a>
+                            <li><a class="dropdown-item"  (click)="filtrando('Z → A')">Z → A</a>
                             </li>
                         </ul>
                     </div>
@@ -69,6 +69,15 @@
                     <div class="d-flex" style="height: 100%; align-items: center;">
                         <div style="height: 100%; width: 100%;"
                             *ngIf="activarVistaInformacionAudio ; else vistaOriginal ">
+
+                            <div id="botonCerrar" style="width: 100%; margin:20px;">
+                                <button type="button" class="close" style="background: transparent; border: none; " (click)="cerrarEditar()">
+                                    <span class="material-symbols-outlined" style=" font-size: 40px; ">
+                                        cancel
+                                    </span>
+                                </button>
+                            </div>
+
                             <app-editar-audio [audio]="audioSeleccionado"></app-editar-audio>
                         </div>
                         <ng-template #vistaOriginal>
