@@ -1,18 +1,25 @@
 <div class="center-container">
   <div class="login-container">
-    <div style="text-align: center;">
-      <img style="max-width: 100%; height: auto;" src="assets/imagenes/sonidosPV.png">
-    </div>
+
+    <img style="max-width: 100%;" class="img-fluid" src="assets/imagenes/sonidosPV.png">
+
     <form class="needs-validation mt-4" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
-      <div>
-        <input type="email" placeholder="Correo Institucional" class="text-input" id="email" formControlName="email">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <input type="email" placeholder="Correo Institucional" class="text-input" id="email" formControlName="email">
+        </div>
       </div>
-      <div>
-        <input [type]="changetype?'password': 'text'" placeholder="Contraseña" class="text-input icon-input" id="password" formControlName="password">
-        <span class="material-symbols-outlined eyeicon" (click)="viewpass()" style="border:none; text-align: center;">
-          <i class="material-icons">{{visible ? 'visibility' : 'visibility_off'}}</i>
-        </span>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 d-flex justify-content-between align-items-center">
+          <input [type]="changetype?'password': 'text'" placeholder="Contraseña" class="text-input icon-input"
+            id="password" formControlName="password">
+          <span class="material-symbols-outlined eyeicon" (click)="viewpass()">
+            <i class="material-icons">{{visible ? 'visibility' : 'visibility_off'}}</i>
+          </span>
+        </div>
       </div>
+
       <div class="col-md-12 d-flex justify-content-center">
         <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
       </div>

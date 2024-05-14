@@ -1,5 +1,7 @@
+
+
 .center-container {
-    padding: 0 20%;
+    padding: 0 33%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +13,6 @@
     border-radius: 50px;
     border-width: 1px;
     border-style: solid;
-    border-color: #480000;
     padding: 20px;
     width: 100%;
     text-align: center;
@@ -45,7 +46,7 @@
     width: 20rem;
     height: 3.5rem;
     margin-top: 2rem;
-    font-size: large;
+    font-size: x-large;
 }
 
 .btn-primary:hover{
@@ -57,17 +58,39 @@
     border: none;
     border-bottom: 1px solid #ccc; 
     outline: none; 
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px; 
-    width: 40%;
+    width: 100%;
+    font-size: x-large;
+    /* font-size: 1.5rem; */
   }
   
   .text-input:focus {
     border-bottom: 1px solid #001148; 
   }
   
-  .input-wrapper {
+  /* .input-wrapper {
     position: relative;
     width: 271px;
+  } */
+
+  @media only screen and (max-width: 600px) {
+    .center-container {
+      padding: 0 10%;
+    }
+  
+    .login-container {
+      padding: 20px;
+    }
   }
   
+
+  @media only screen and (min-width: 600px) and (max-width: 1024px){
+    .center-container {
+      padding: 0 20%;
+    }
+  
+    .login-container {
+      padding: 25px;
+    }
+  }
