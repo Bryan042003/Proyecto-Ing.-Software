@@ -37,11 +37,12 @@ class Audio{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    //public function removerAudio($id_admin, $id_audio, $motivo){
-    public function removerAudio($id){
-        $query = "DELETE FROM " . $this->tabla . " WHERE id = :id";
+    public function removerAudio($id_audio, $id_administrador, $motivo){
+        $query = "CALL EliminarAudioUbicacion(:id_audio, :id_administrador, :motivo)";
         $stmt = $this->conn->getConnection()->prepare($query);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id_audio', $id_audio);
+        $stmt->bindParam(':id_administrador', $id_administrador);
+        $stmt->bindParam(':motivo', $motivo);
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }

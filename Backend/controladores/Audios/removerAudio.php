@@ -6,9 +6,11 @@ include_once '../../modelos/Audio.php';
 $db = Database::getInstance();
 $audio = new Audio($db);
 
-$id = $_GET['id']; // Obtén el ID del audio desde la URL o la solicitud
+$id = $_GET['id']; 
+$id_administrador = $_GET['id_administrador']; 
+$motivo = $_GET['motivo']; 
 
-$resultado = $audio->removerAudio($id);
+$resultado = $audio->removerAudio($id, $id_administrador, $motivo);
 
 if($resultado){
     echo json_encode(
