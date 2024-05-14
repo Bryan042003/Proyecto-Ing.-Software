@@ -205,11 +205,8 @@ export class FormCrearAudioComponent {
           provincia !== 'Guanacaste' && provincia !== 'Puntarenas' && provincia !== 'Limón') {
           provincia = "Indefinido";
           canton = "Indefinido";
-          console.log('Provincia indefinida');
 
         }
-        console.log(canton);
-        console.log(provincia);
         this.form.controls.canton.setValue(canton);
         this.form.controls.provincia.setValue(provincia);
 

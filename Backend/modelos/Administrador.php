@@ -39,6 +39,18 @@ class Administrador{
         return $stmt->rowCount() > 0;
     }
 
+    public function autenticarAdmin($correo, $password){
+        $query = "SELECT * FROM " . $this->tabla . " WHERE correo = :correo";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':correo', $correo);
+        $stmt->execute();
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($admin && password_verify($password, $admin['password'])){
+            return $admin;
+        }
+        return false;
+    }
+
 
 }
 ?>
