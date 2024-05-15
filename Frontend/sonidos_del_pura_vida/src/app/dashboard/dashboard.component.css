@@ -1,3 +1,10 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .material-symbols-outlined {
     font-size: 45px;
 }
@@ -191,27 +198,16 @@ p {
     background-color: transparent;
     width: 100px;
 }
-
 #cuadroGeneral {
     background-color: #EDEFF6;
-    height: 100vh;
+    width:100%;
+    height: 100%;
 }
 
 @media only screen and (max-width: 1024px) {
 
-    #cuadroGeneral{
-       width: 100%;
-       height: 100vh;
-    }
-
-    .d-flex {
-        flex-direction: column;
-        height: auto;
-    }
-
     #botonMenu {
         display: block;
-        
     }
 
     #espacioderecha {

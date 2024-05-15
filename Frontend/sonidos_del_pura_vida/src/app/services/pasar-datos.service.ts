@@ -20,6 +20,9 @@ export class PasarDatosService {
   public datoFiltrar: string = '';
   private estadoFiltro = new BehaviorSubject<boolean>(false);
 
+  private flagEditarAudio = new BehaviorSubject<boolean>(false);
+  private flagConfirmarEliminacion = new BehaviorSubject<boolean>(false);
+
 
   public listaAudios: Audio[] = [];
   public listaAdmins: Admin[] = [];
@@ -49,6 +52,10 @@ export class PasarDatosService {
 
   getCantones(idProvincia:string): Observable<any> {
     return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia='+idProvincia);
+  }
+
+  getEliminarAudio(idAudio:number,idAdministrador:number,Motivo:string): Observable<any> {
+    return this.http.get(this.urlAudios + 'removerAudio.php?id='+idAudio+'&id_administrador='+idAdministrador+'&motivo='+Motivo);
   }
 
   getAudio() {
@@ -145,5 +152,26 @@ export class PasarDatosService {
   deleteAdministrador(id: string){
     return this.http.delete(this.urlAdmin + 'removerAdministrador?id='+id);
   }
+
+  
+  setFlagEditarAudio(flag: boolean) {
+    this.flagEditarAudio.next(flag);
+  }
+  
+  getFlagEditarAudio(): Observable<boolean> {
+    return this.flagEditarAudio.asObservable();
+  }
+
+
+  //--------------------Confirmar Eliminacion--------------------
+
+  setFlagConfirmarEliminacion(flag: boolean) {
+    this.flagConfirmarEliminacion.next(flag);
+  }
+  getFlagConfirmarEliminacion(): Observable<boolean> {
+    return this.flagConfirmarEliminacion.asObservable();
+  }
+
+
 
 }

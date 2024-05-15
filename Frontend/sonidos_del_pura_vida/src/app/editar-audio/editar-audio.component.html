@@ -1,9 +1,35 @@
-<div class="container">
+<div class="container " style="height: 100%;">
+    <div class="card" style="display: flex;place-content: center;">
+        <div class="row">
+            <div id="botonCerrar"style="width: 100%; display: flex; justify-content: left;">
+                <div style="width: 100%;">
+                    <button type="button" class="close" style="background: transparent; border: none; "
+                        (click)="cerrarEditar()">
+                        <span class="material-symbols-outlined" style=" font-size: 40px; ">
+                            cancel
+                        </span>
+                    </button>
+                </div>
+                <div style="width: 100%; justify-content: right; display: flex;">
+                    <button type="button" style="background: transparent; border: none; " (click)="activarEliminar()">
+                        <span class="material-symbols-outlined" style=" font-size: 40px;">
+                            edit
+                        </span>
+                    </button>
 
-    <div class="card">
-        <div class="row w-100">
-            <div class="col w-50">
-                <div class="inner-card">
+
+                    <button type="button" style="background: transparent; border: none; " (click)="activarEliminar()">
+                        <span class="material-symbols-outlined" style=" font-size: 40px;color:red ">
+                            delete
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="d-flex" style="place-content: center;"><strong>{{audio.titulo}}</strong> </h1>
+
+            <div class="col-md-6">
+                
+                <div class="card-body inner-card">
                     <h5 id="provincia"><strong>Provincia:</strong> {{audio.provincia}}</h5>
                     <h5><strong>Cantón:</strong> {{audio.canton}}</h5>
                     <h5><strong>Autor:</strong> {{audio.autor}}</h5>
@@ -16,22 +42,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col w-50">
-                    <div class="image-container">
-                        <img [src]="audio.ruta_imagen">
-                    </div>
+            <div class="col-md-6">
+                <div class="card-body image-container">
+                    <img [src]="audio.ruta_imagen">
+                </div>
             </div>
         </div>
-        <div class="row w-100">
-            <div class="col">
-                <div class="inner-card map-container" id="mapU"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body inner-card map-container" id="mapU"></div>
             </div>
-
-           
-
         </div>
-
-        <button (click)="editarAudio()">Editar</button>
-        <button (click)="eliminarAudio()">Eliminar</button>
     </div>
+
 </div>

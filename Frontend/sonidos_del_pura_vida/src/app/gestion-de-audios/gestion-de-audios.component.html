@@ -1,7 +1,7 @@
 <div class="card fondo d-flex" style="width: 100%; height: 100vh; border: none; background-color: transparent;">
     <div class="card-body" style="width: 100%; height: 100%; border: none;">
         <div class="row" style="height: 100%; border: none;">
-            <div class="col" style="height: 100%; border: none;">
+            <div class="col-md-12 col-lg-6" style="height: 100%; border: none;">
                 <div class="d-flex card" style="height: 100%; border-radius: 20px; align-items: center;  width: 100%;">
 
                     <div class="dropdown d-flex ms-auto">
@@ -64,26 +64,20 @@
                     </nav>
                 </div>
             </div>
-            <div class="col " style="height: 100%;">
-                <div class="card d-flex" style="height: 100%; border-radius: 20px; justify-content: center; ">
-                    <div class="d-flex" style="height: 100%; align-items: center;">
-                        <div style="height: 100%; width: 100%;"
-                            *ngIf="activarVistaInformacionAudio ; else vistaOriginal ">
-
-                            <div id="botonCerrar" style="width: 100%; margin:20px;">
-                                <button type="button" class="close" style="background: transparent; border: none; " (click)="cerrarEditar()">
-                                    <span class="material-symbols-outlined" style=" font-size: 40px; ">
-                                        cancel
-                                    </span>
-                                </button>
+            <div class="col-md-12 col-lg-6 ">
+                <div class="card d-flex card-container"  style="border-radius: 20px; justify-content: center;">
+                    <div class="d-flex" style="align-items: center;">
+                        <div style="width: 100%;" *ngIf="activarVistaInformacionAudio ; else vistaOriginal ">
+                            <div *ngIf="!flagConfirmarEliminar ; else confirmarEliminar " style="display: flex; place-content: center;width: 100%;">
+                                <app-editar-audio [audio]="audioSeleccionado"></app-editar-audio>
                             </div>
-
-                            <app-editar-audio [audio]="audioSeleccionado"></app-editar-audio>
+                            <ng-template #confirmarEliminar>
+                                <app-confirmar-eliminacion [audio]="audioSeleccionado" ></app-confirmar-eliminacion>
+                            </ng-template>
                         </div>
                         <ng-template #vistaOriginal>
                             <div>
-                                <img src="assets/imagenes/sonidosPV.png"
-                                    style="display: flex; width: 100%; place-content: center; ">
+                                <img src="assets/imagenes/sonidosPV.png" style="display: flex; width: 100%; place-content: center; ">
                             </div>
                         </ng-template>
                     </div>
