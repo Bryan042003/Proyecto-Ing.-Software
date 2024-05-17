@@ -1,14 +1,72 @@
+<div class="card fondo d-flex" style="width: 100%; height: 100vh; border: none; background-color: transparent;">
+    <div class="card-body" style="width: 100%; height: 100%; border: none;">
+        <div class="row" style="height: 100%; border: none; width: 100%;">
+            <div class="col-md-12 col-lg-6" style="height: 100%; border: none; width: 100%;">
+                <div class="d-flex card" style="height: 100%; border-radius: 20px; align-items: center;  width: 100%;">
 
-<div class="row" style="background-color: white; height: 90%;">
 
-    <div class="col">
-        <div class="card bg-primary text-white">
-            <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up
-                    the bulk of the card's content.</p>
+
+                    <div class="dropdown d-flex ms-auto">
+                        <button class="btn btn-secondary dropdown-toggle btn-block btn-sm" type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
+                            {{opcionElegida}}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
+                            <li><a class="dropdown-item" (click)="filtrando('Más reciente')">Más
+                                    reciente</a></li>
+                            <li><a class="dropdown-item" (click)="filtrando('Más antiguo')">Más
+                                    antiguo</a></li>
+                            <li><a class="dropdown-item"  (click)="filtrando('A → Z')">A → Z</a>
+                            </li>
+                            <li><a class="dropdown-item"  (click)="filtrando('Z → A')">Z → A</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2>Historial de Edición</h2>
+                    <div class="container">
+                        
+                        <div *ngFor="let audiohistorial of historial">
+                            <app-card-historial [audiohistorial]="audiohistorial"></app-card-historial>
+                        </div>
+                    </div>
+
+                    <nav aria-label="Page navigation example" style="margin-top: 20px;">
+                        <ul class="pagination justify-content-center flex-wrap">
+                            <li class="page-item" [class.disabled]="paginaActual === 0">
+                                <a class="page-link" id="btn-paginacion" 
+                                    (click)="paginaAnterior()">Anterior</a>
+                            </li>
+                            <ng-container *ngIf="paginas.length <= 5; else mostrarPuntos">
+                                <li class="page-item" *ngFor="let _ of paginas; let i = index"
+                                    [class.active]="i === paginaActual">
+                                    <a class="page-link" id="btn-paginacion2"  (click)="irAPagina(i)">{{ i + 1
+                                        }}</a>
+                                </li>
+                            </ng-container>
+
+                            <ng-template #mostrarPuntos>
+                                <li class="page-item" *ngFor="let _ of paginas.slice(0, 3); let i = index"
+                                    [class.active]="i === paginaActual">
+                                    <a class="page-link" id="btn-paginacion2"  (click)="irAPagina(i)">{{ i + 1
+                                        }}</a>
+                                </li>
+                                <li class="page-item disabled"><a class="page-link">...</a></li>
+                                <li class="page-item" *ngFor="let _ of paginas.slice(-2); let i = index"
+                                    [class.active]="paginaActual === paginas.length - 1 - i">
+                                    <a class="page-link" id="btn-paginacion2" 
+                                        (click)="irAPagina(paginas.length - 1 - i)">{{ paginas.length - i }}</a>
+                                </li>
+                            </ng-template>
+
+                            <li class="page-item" [class.disabled]="paginaActual === paginas.length - 1">
+                                <a class="page-link" id="btn-paginacion" 
+                                    (click)="paginaSiguiente()">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
-    
 </div>

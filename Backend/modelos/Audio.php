@@ -37,6 +37,7 @@ class Audio{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+
     public function removerAudio($id_audio, $id_administrador, $motivo){
         $query = "CALL EliminarAudioUbicacion(:id_audio, :id_administrador, :motivo)";
         $stmt = $this->conn->getConnection()->prepare($query);

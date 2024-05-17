@@ -4,6 +4,7 @@ import { Audio } from '../models/Audio.model';
 import { Admin } from '../models/Admin.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Historial } from '../models/Historial.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class PasarDatosService {
   private urlBase = environment.baseUrl;
   private urlAudios = this.urlBase + 'controladores/Audios/';
   private urlAdmin = this.urlBase + 'controladores/Administradores/';
+  private urlHistorial = this.urlBase + 'controladores/Historial/';
 
   public tipoFiltro: string = '';
   public datoFiltrar: string = '';
@@ -44,6 +46,10 @@ export class PasarDatosService {
 
   getAudios(): Observable<Audio> {
     return this.http.get<Audio>(this.urlAudios + 'obtenerAudios.php');
+  }
+
+  getHistorial(): Observable<Historial> {
+    return this.http.get<Historial>(this.urlHistorial + 'obtenerHistorial.php');
   }
 
   setAudio(audio: any) {

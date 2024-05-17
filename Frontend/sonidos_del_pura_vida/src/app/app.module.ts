@@ -25,6 +25,7 @@ import { RegistrarAdminComponent } from './registrar-admin/registrar-admin.compo
 import { CardAdminComponent } from './card-admin/card-admin.component';
 import { EditarAudioComponent } from './editar-audio/editar-audio.component';
 import { ConfirmarEliminacionComponent } from './confirmar-eliminacion/confirmar-eliminacion.component';
+import { CardHistorialComponent } from './card-historial/card-historial.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ConfirmarEliminacionComponent } from './confirmar-eliminacion/confirmar
     CardAdminComponent,
     EditarAudioComponent,
     ConfirmarEliminacionComponent,
+    CardHistorialComponent,
   ],
   imports: [
     BrowserModule,
