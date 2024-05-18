@@ -1,23 +1,23 @@
-<div class="card d-flex">
+<div class="card d-flex"  >
+
     <div class="card-body" style="display: flex; place-content: center;">
         <h5 class="card-title">{{audiohistorial.titulo}}</h5>
     </div>
     <div class="row">
-        
+
         <div class="col-xxl-5 col-sm-6 col-md-5 col-xl-7 col-11 d-flex justify-content-center align-items-center"
             style="margin-top: 10px;">
-            
-            <button style="border:none; background: transparent;text-align:start;">
-                
+
+            <div style="text-align:start;">
                 <p>Autor: {{ audiohistorial.autor }}</p>
                 <p>Motivo: {{ audiohistorial.motivo }}</p>
-            </button>
+            </div>
         </div>
         <div class="col d-flex" style="text-align: center;align-items: center; place-content: center;">
-            <p> {{ audiohistorial.accion }}</p>
-        </div>
+            <p [ngStyle]="{'color': audiohistorial.accion == 'Eliminado' ? 'red' : audiohistorial.accion == 'Modificado' ? 'blue' : 'none'}" > {{ audiohistorial.accion }}</p>        </div>
     </div>
-    <div class="row d-flex" style="place-content: center; align-items: center;justify-content: center; width: 100%;text-align: center;">
+    <div class="row d-flex"
+        style="place-content: center; align-items: center;justify-content: center; width: 100%;text-align: center;">
         <p>Fecha de edición: {{ audiohistorial.fecha_accion }}</p>
     </div>
 </div>

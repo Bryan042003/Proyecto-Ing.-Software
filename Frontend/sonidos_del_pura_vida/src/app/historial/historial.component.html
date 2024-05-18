@@ -26,7 +26,7 @@
                     <h2>Historial de Edición</h2>
                     <div class="container">
                         
-                        <div *ngFor="let audiohistorial of historial">
+                        <div *ngFor="let audiohistorial of paginas[paginaActual]">
                             <app-card-historial [audiohistorial]="audiohistorial"></app-card-historial>
                         </div>
                     </div>

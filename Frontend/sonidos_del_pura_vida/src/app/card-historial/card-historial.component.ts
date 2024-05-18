@@ -7,8 +7,6 @@ import { Historial } from '../models/Historial.model';
   styleUrl: './card-historial.component.css'
 })
 export class CardHistorialComponent {
-  @Input() audiohistorial!: Historial
-  ;
-
+  @Input() audiohistorial!: Historial;
 
 }
