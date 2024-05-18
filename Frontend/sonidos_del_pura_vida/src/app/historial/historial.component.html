@@ -1,65 +1,70 @@
 <div class="card fondo d-flex" style="width: 100%; height: 100vh; border: none; background-color: transparent;">
-    <div class="card-body" style="width: 100%; height: 100%; border: none;">
+    <div class="card-body d-flex" style="width: 100%; height: 100%; border: none; justify-content: center;">
         <div class="row" style="height: 100%; border: none; width: 100%;">
             <div class="col-md-12 col-lg-6" style="height: 100%; border: none; width: 100%;">
+
                 <div class="d-flex card" style="height: 100%; border-radius: 20px; align-items: center;  width: 100%;">
 
-                    <div class="dropdown d-flex ms-auto" >
 
-                        <div class="d-flex" *ngIf="estadoFiltroFecha" style="justify-content: center;align-items: center;">
-                            <button style="border: none; background: transparent;" (click)="eliminarFiltrosFecha()">
-                                <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
-                                    cancel
-                                </span>
-                            </button>
+                    <div id="filtros" class="dropdown d-flex flex-column flex-md-row">
+
+
+                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-2 mb-md-0"
+                            style="margin: 10px; width: 100%;">
+                            <div class="d-flex justify-content-center align-items-center mb-2 mb-md-0"
+                                *ngIf="estadoFiltroFecha">
+                                <button style="border: none; background: transparent;" (click)="eliminarFiltrosFecha()">
+                                    <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
+                                        cancel
+                                    </span>
+                                </button>
+                            </div>
+                            <input type="date" [(ngModel)]="startDate" class="form-control mb-2 mb-md-0 mr-md-2">
+                            <input type="date" [(ngModel)]="endDate" class="form-control mb-2 mb-md-0 mr-md-2">
+                            <button class="btn btn-primary" (click)="filtrarPorFecha(startDate || '', endDate || '')"
+                                style="background-color: #001148">Filtrar</button>
                         </div>
-                        <div class="d-flex" style="margin: 10px; justify-content: center;width: 100%; align-items: center;place-content: center;">
-                            <input type="date"[(ngModel)]="startDate"  class="form-control">
-                            <input type="date" [(ngModel)]="endDate" class="form-control">
-                            <button class="btn btn-primary" (click)="filtrarPorFecha(startDate || '', endDate || '')" style="background-color: #001148">Filtrar</button>
-                        </div>
 
-
-                        <div class="d-flex" *ngIf="estadoFiltroAccion" style="justify-content: center;align-items: center;">
+                        <div class="d-flex justify-content-center align-items-center mb-2 mb-md-0"
+                            *ngIf="estadoFiltroAccion">
                             <button style="border: none; background: transparent;" (click)="eliminarFiltrosHistorial()">
                                 <span class="material-symbols-outlined" style="color: red; font-size: 30px;">
                                     cancel
                                 </span>
                             </button>
                         </div>
-                        
-                        <button class="btn btn-secondary dropdown-toggle btn-block btn-sm" type="button"
+
+                        <button class="btn btn-secondary dropdown-toggle btn-block btn-sm mb-2 mb-md-0" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
                             style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
                             {{opcionElegidaHistorial}}
                         </button>
-                        
+
                         <ul class="dropdown-menu" aria-labelledby="Filtrar por acción: ">
                             <li><a class="dropdown-item" (click)="filtrandoAccion('Modificado')">Modificado</a></li>
                             <li><a class="dropdown-item" (click)="filtrandoAccion('Eliminado')">Eliminado</a></li>
                         </ul>
 
-                        <button class="btn btn-secondary dropdown-toggle btn-block btn-sm" type="button"
+                        <button class="btn btn-secondary dropdown-toggle btn-block btn-sm mb-2 mb-md-0" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
                             style="background-color: white; color: #4D7DEA; border-color: #4D7DEA; margin: 15px ;">
                             {{opcionElegida}}
                         </button>
+
                         <ul class="dropdown-menu" aria-labelledby="Ordenar por: ">
-                            <li><a class="dropdown-item" (click)="filtrando('Más reciente')">Más
-                                    reciente</a></li>
-                            <li><a class="dropdown-item" (click)="filtrando('Más antiguo')">Más
-                                    antiguo</a></li>
-                            <li><a class="dropdown-item" (click)="filtrando('A → Z')">A → Z</a>
-                            </li>
-                            <li><a class="dropdown-item" (click)="filtrando('Z → A')">Z → A</a>
-                            </li>
+                            <li><a class="dropdown-item" (click)="filtrando('Más reciente')">Más reciente</a></li>
+                            <li><a class="dropdown-item" (click)="filtrando('Más antiguo')">Más antiguo</a></li>
+                            <li><a class="dropdown-item" (click)="filtrando('A → Z')">A → Z</a></li>
+                            <li><a class="dropdown-item" (click)="filtrando('Z → A')">Z → A</a></li>
                         </ul>
+
                     </div>
 
-                    <h2>Historial de Edición</h2>
-                    <div class="container">
+                    <h2 style="margin-top: 20px;">Historial de Edición</h2>
 
-                        <div *ngFor="let audiohistorial of paginas[paginaActual]">
+                    <div class="container">
+                        <div *ngFor="let audiohistorial of paginas[paginaActual]" class="col-12 col-sm-12 col-md-6"
+                            style="padding: 10px;">
                             <app-card-historial [audiohistorial]="audiohistorial"></app-card-historial>
                         </div>
                     </div>

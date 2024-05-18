@@ -8,9 +8,8 @@
 }
 
 .container > div {
-    width: 50%;
-} 
-
+    margin-bottom: 10px; /* Optional: Add some space between rows */
+}
 
 
 #btn-paginacion {
@@ -57,3 +56,16 @@
     color: white;
 }
 
+
+.filtros {
+    
+    justify-content: end;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Increase width to 100% on mobile devices */
+        height: 1500px; /* Increase height on mobile devices */
+    }
+}

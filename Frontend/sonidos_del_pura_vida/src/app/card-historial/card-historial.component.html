@@ -1,4 +1,4 @@
-<div class="card d-flex"  >
+<div class="card d-flex" style="justify-content: center; width: 100%; height: 100%;" >
 
     <div class="card-body" style="display: flex; place-content: center;">
         <h5 class="card-title">{{audiohistorial.titulo}}</h5>
@@ -18,6 +18,6 @@
     </div>
     <div class="row d-flex"
         style="place-content: center; align-items: center;justify-content: center; width: 100%;text-align: center;">
-        <p>Fecha de edición: {{ audiohistorial.fecha_accion }}</p>
+        <p>Fecha de edición: {{ audiohistorial.fecha_accion.toString().split(' ')[0] }}</p>    
     </div>
 </div>
