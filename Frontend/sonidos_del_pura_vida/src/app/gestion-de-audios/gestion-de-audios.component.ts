@@ -67,9 +67,8 @@ export class GestionDeAudiosComponent {
 
   activarVistaInfoAudio(audio: Audio) {
     this.audioSeleccionado = audio;
-    console.log(this.audioSeleccionado);
     this.activarVistaInformacionAudio = true;
-    console.log(this.activarVistaInformacionAudio);
+
   }
 
 

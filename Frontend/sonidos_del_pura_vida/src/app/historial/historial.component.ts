@@ -17,6 +17,14 @@ export class HistorialComponent {
   paginaActual: number = 0;
   activarVistaInformacionAudio: boolean = false;
   opcionElegida: string = 'Ordenar por:';
+  opcionElegidaHistorial: string = 'Filtrar por acción:';
+  estadoFiltroAccion: boolean = false;
+  estadoFiltroFecha: boolean = false;
+  audiosFiltradosAccion: Historial[] = [];
+  audiosFiltradosFecha: Historial[] = [];
+  filtradoAccion: string = 'Accion';
+  startDate: string | undefined;
+  endDate: string | undefined;
 
   constructor(public pasarDatosService: PasarDatosService) { }
   ngOnInit() {
@@ -26,9 +34,11 @@ export class HistorialComponent {
   paginateHistorial() {
     this.paginaActual = 0;
     this.paginas = [];
+    
+    const listaHistorial = this.estadoFiltroFecha ? this.audiosFiltradosFecha : (this.estadoFiltroAccion ? this.audiosFiltradosAccion : this.historial);
 
-    for (let i = 0; i < this.historial.length; i += this.audioPorPagina) {
-      this.paginas.push(this.historial.slice(i, i + this.audioPorPagina));
+    for (let i = 0; i < listaHistorial.length; i += this.audioPorPagina) {
+      this.paginas.push(listaHistorial.slice(i, i + this.audioPorPagina));
     }
   }
   irAPagina(pagina: number) {
@@ -58,8 +68,6 @@ export class HistorialComponent {
 
   filtros(): void {
     const tipoFiltro = this.pasarDatosService.getTipoFiltro();
-    const datoFiltrar = this.pasarDatosService.getDatoFiltrar();
-
     switch (tipoFiltro) {
       case 'A → Z':
         this.historial.sort((a, b) => a.titulo.localeCompare(b.titulo));
@@ -70,16 +78,32 @@ export class HistorialComponent {
         break;
 
       case 'Más reciente':
-        this.historial.sort((a, b) => b.fecha_accion.localeCompare(a.fecha_accion));
+        this.historial.sort((a, b) => b.fecha_accion.toString().localeCompare(a.fecha_accion.toString()));
         break;
 
       case 'Más antiguo':
-        this.historial.sort((a, b) => a.fecha_accion.localeCompare(b.fecha_accion));
+        this.historial.sort((a, b) => a.fecha_accion.toString().localeCompare(b.fecha_accion.toString()));
+        break;
+
+      case 'Modificado':
+        if (this.estadoFiltroAccion === false) {
+          this.audiosFiltradosAccion = [];
+        } else {
+          this.audiosFiltradosAccion = this.historial.filter(historial => historial.accion === tipoFiltro);
+        }
+        break;
+      case 'Eliminado':
+        if (this.estadoFiltroAccion === false) {
+          this.audiosFiltradosAccion = [];
+        } else {
+          this.audiosFiltradosAccion = this.historial.filter(historial => historial.accion === tipoFiltro);
+        }
         break;
 
       default:
         break;
     }
+
     this.paginateHistorial();
   }
 
@@ -89,5 +113,35 @@ export class HistorialComponent {
     this.filtros();
   }
 
+  filtrandoAccion(tipoFiltrar: string) {
+    this.opcionElegidaHistorial = tipoFiltrar;
+    this.estadoFiltroAccion = true;
+    this.estadoFiltroFecha = false;
+    this.pasarDatosService.setTipoFiltro(tipoFiltrar);
+    this.filtros();
+  }
 
+  eliminarFiltrosHistorial() {
+    this.estadoFiltroAccion = false;
+    
+    this.paginateHistorial();
+  }
+
+  eliminarFiltrosFecha() {
+    this.estadoFiltroFecha = false;
+    this.startDate = '';
+    this.endDate = '';
+    this.paginateHistorial();
+  }
+
+  filtrarPorFecha(startDate: string, endDate: string): void {
+    console.log(startDate, endDate);
+    this.estadoFiltroFecha = true;
+    this.estadoFiltroAccion = false;
+    this.audiosFiltradosFecha = this.historial.filter(historial => {
+      const fechaAccion = historial.fecha_accion.toString().split(' ')[0];
+      return fechaAccion >= startDate && fechaAccion <= endDate;
+    });
+    this.paginateHistorial();
+  }
 }

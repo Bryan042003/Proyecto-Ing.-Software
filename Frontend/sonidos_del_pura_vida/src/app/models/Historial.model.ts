@@ -6,5 +6,5 @@ export interface Historial {
     "autor":string,
     "accion":string,
     "motivo":string,
-    "fecha_accion":string,
+    "fecha_accion":Date,
 }
