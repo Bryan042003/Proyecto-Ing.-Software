@@ -5,6 +5,8 @@ import { Admin } from '../models/Admin.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { jwtDecode } from "jwt-decode";
+import { Historial } from '../models/Historial.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,10 +17,14 @@ export class PasarDatosService {
   private urlBase = environment.baseUrl;
   private urlAudios = this.urlBase + 'controladores/Audios/';
   private urlAdmin = this.urlBase + 'controladores/Administradores/';
+  private urlHistorial = this.urlBase + 'controladores/Historial/';
 
   public tipoFiltro: string = '';
   public datoFiltrar: string = '';
   private estadoFiltro = new BehaviorSubject<boolean>(false);
+
+  private flagEditarAudio = new BehaviorSubject<boolean>(false);
+  private flagConfirmarEliminacion = new BehaviorSubject<boolean>(false);
 
 
   public listaAudios: Audio[] = [];
@@ -64,12 +70,20 @@ export class PasarDatosService {
     return this.http.get<Audio>(this.urlAudios + 'obtenerAudios.php');
   }
 
+  getHistorial(): Observable<Historial> {
+    return this.http.get<Historial>(this.urlHistorial + 'obtenerHistorial.php');
+  }
+
   setAudio(audio: any) {
     this.AudioGuardar = audio;
   }
 
   getCantones(idProvincia: string): Observable<any> {
     return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia=' + idProvincia);
+  }
+
+  getEliminarAudio(idAudio:number,idAdministrador:number,Motivo:string): Observable<any> {
+    return this.http.get(this.urlAudios + 'removerAudio.php?id='+idAudio+'&id_administrador='+idAdministrador+'&motivo='+Motivo);
   }
 
   getAudio() {
@@ -166,5 +180,26 @@ export class PasarDatosService {
   deleteAdministrador(id: string) {
     return this.http.delete(this.urlAdmin + 'removerAdministrador?id=' + id);
   }
+
+  
+  setFlagEditarAudio(flag: boolean) {
+    this.flagEditarAudio.next(flag);
+  }
+  
+  getFlagEditarAudio(): Observable<boolean> {
+    return this.flagEditarAudio.asObservable();
+  }
+
+
+  //--------------------Confirmar Eliminacion--------------------
+
+  setFlagConfirmarEliminacion(flag: boolean) {
+    this.flagConfirmarEliminacion.next(flag);
+  }
+  getFlagConfirmarEliminacion(): Observable<boolean> {
+    return this.flagConfirmarEliminacion.asObservable();
+  }
+
+
 
 }

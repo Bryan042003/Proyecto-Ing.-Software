@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+}
+
+.container > div {
+    margin-bottom: 10px; /* Optional: Add some space between rows */
+}
+
+
+#btn-paginacion {
+    background-color: #001148;
+    color: white;
+    box-shadow: none;
+
+}
+
+#btn-paginacion:hover {
+    background-color: #001148;
+    color: white;
+}
+
+#btn-paginacion2 {
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+#btn-paginacion2:hover {
+    background: #DA291C;
+    color: white;
+
+}
+
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #DA291C;
+    border-color: #DA291C;
+}
+.page-link {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+#btn-paginacion:hover {
+    background-color: #001148;
+    color: white;
+}
+
+
+.filtros {
+    
+    justify-content: end;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Increase width to 100% on mobile devices */
+        height: 1500px; /* Increase height on mobile devices */
+    }
+}

@@ -65,3 +65,20 @@ p{
     background-color: #DA291C;
 
 }
+
+
+.card-container {
+    height: 100%;
+}
+
+@media (max-width: 992px) { /* Para dispositivos con pantalla menor a 992px (Bootstrap lg breakpoint) */
+    .card-container {
+        min-height: 100vh; /* Asegura que el card tenga al menos la altura de la ventana del navegador */
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}

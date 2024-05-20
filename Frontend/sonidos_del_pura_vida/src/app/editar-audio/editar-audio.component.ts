@@ -1,23 +1,29 @@
-import { Component, Input,OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PasarDatosService } from '../services/pasar-datos.service';
 import { Audio } from '../models/Audio.model';
 import { Map, tileLayer, Marker } from 'leaflet'
 import * as L from 'leaflet';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
+import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-editar-audio',
   templateUrl: './editar-audio.component.html',
   styleUrl: './editar-audio.component.css'
 })
-export class EditarAudioComponent  implements OnInit {
+export class EditarAudioComponent implements OnInit {
   @Input() audio!: Audio;
   private map: any;
   private marker: any;
   private markers: L.Marker[] = [];
   private varMarcador: boolean = true;
+  flagEliminar = false;
+  flagCerrarEditar = false;
 
-  
-
+  constructor(public pasarDatosService: PasarDatosService) { }
 
   ngOnInit() {
     this.mostrarMapa();
@@ -50,14 +56,16 @@ export class EditarAudioComponent  implements OnInit {
     }, 200);
   }
 
-  editarAudio(){
-    
+
+  cerrarEditar(){
+    this.pasarDatosService.setFlagEditarAudio(false);
+  }
+
+  activarEliminar(){
+    this.flagEliminar = true;
+    this.pasarDatosService.setFlagConfirmarEliminacion(true);
   }
 
 
-
-  eliminarAudio(){
-    
-  }
 
 }

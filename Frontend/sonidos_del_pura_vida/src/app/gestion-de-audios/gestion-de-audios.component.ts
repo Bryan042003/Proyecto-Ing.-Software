@@ -17,9 +17,19 @@ export class GestionDeAudiosComponent {
   audioSeleccionado!: Audio;
   opcionElegida: string = 'Ordenar por:';
 
+  flagConfirmarEliminar = false;
+
   constructor(public pasarDatosService: PasarDatosService) { }
   ngOnInit() {
     this.cargarAudios();
+
+    this.pasarDatosService.getFlagEditarAudio().subscribe(flag => {
+      this.activarVistaInformacionAudio = flag;
+    });
+
+    this.pasarDatosService.getFlagConfirmarEliminacion().subscribe(flag => {
+      this.flagConfirmarEliminar = flag;
+    });
   }
 
   paginateAudios() {
@@ -57,9 +67,8 @@ export class GestionDeAudiosComponent {
 
   activarVistaInfoAudio(audio: Audio) {
     this.audioSeleccionado = audio;
-    console.log(this.audioSeleccionado);
-    console.log(this.activarVistaInformacionAudio);
     this.activarVistaInformacionAudio = true;
+
   }
 
 
@@ -97,9 +106,8 @@ export class GestionDeAudiosComponent {
     this.filtros();
   }
 
-
   cerrarEditar(){
-    this.activarVistaInformacionAudio = false;
+    this.pasarDatosService.setFlagEditarAudio(false);
   }
 
 }
