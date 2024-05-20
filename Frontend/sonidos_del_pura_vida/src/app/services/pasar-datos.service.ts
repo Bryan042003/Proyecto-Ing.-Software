@@ -4,7 +4,7 @@ import { Audio } from '../models/Audio.model';
 import { Admin } from '../models/Admin.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-
+import { jwtDecode } from "jwt-decode";
 @Injectable({
   providedIn: 'root'
 })
@@ -31,13 +31,34 @@ export class PasarDatosService {
 
   private estadoFiltroAutor = new BehaviorSubject<boolean>(false);
   private estadoFiltroProvincia = new BehaviorSubject<boolean>(false);
-  private estadoFiltroCanton= new BehaviorSubject<boolean>(false);
+  private estadoFiltroCanton = new BehaviorSubject<boolean>(false);
   private estadoFiltroTitulo = new BehaviorSubject<boolean>(false);
 
   provinciaList: any[] = [];
   cantonList: any[] = [];
 
   constructor(private http: HttpClient) { }
+
+  authAdmin(admin: any): Observable<any> {
+    return this.http.post(this.urlAdmin + 'inicioSesionAdmin.php', admin);
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
+
+  getAdminFromToken() {
+    const token = localStorage.getItem('token');
+    if(token){
+      console.log(this.getDecodedAccessToken(token));
+      return this.getDecodedAccessToken(token);
+    }
+    return null;
+  }
 
   getAudios(): Observable<Audio> {
     return this.http.get<Audio>(this.urlAudios + 'obtenerAudios.php');
@@ -47,8 +68,8 @@ export class PasarDatosService {
     this.AudioGuardar = audio;
   }
 
-  getCantones(idProvincia:string): Observable<any> {
-    return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia='+idProvincia);
+  getCantones(idProvincia: string): Observable<any> {
+    return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia=' + idProvincia);
   }
 
   getAudio() {
@@ -142,8 +163,8 @@ export class PasarDatosService {
     return this.AdminGuardar;
   }
 
-  deleteAdministrador(id: string){
-    return this.http.delete(this.urlAdmin + 'removerAdministrador?id='+id);
+  deleteAdministrador(id: string) {
+    return this.http.delete(this.urlAdmin + 'removerAdministrador?id=' + id);
   }
 
 }

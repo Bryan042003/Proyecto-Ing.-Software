@@ -7,8 +7,10 @@ include_once '../../config/database.php';
 include_once '../../modelos/Administrador.php';
 include_once '../../vendor/autoload.php'; // Incluye la librería de Firebase
 
+
 use Firebase\JWT\JWT; 
 
+$options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $db = Database::getInstance();
 $admin = new Administrador($db);
 $response = array();

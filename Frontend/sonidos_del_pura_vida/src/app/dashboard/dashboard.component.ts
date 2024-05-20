@@ -15,7 +15,7 @@ export class DashboardComponent {
   sidebarActive = false;
 
   seleccionarEspacio(espacioSeleccionado: string) {
-   
+    
     console.log(this.sidebarActive);
     switch (espacioSeleccionado) {
       case 'perfil':
