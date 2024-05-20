@@ -12,21 +12,13 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { GestionDeAudiosComponent } from './gestion-de-audios/gestion-de-audios.component';
 import { GestionDeAdministradoresComponent } from './gestion-de-administradores/gestion-de-administradores.component';
 import { HistorialComponent } from './historial/historial.component'; 
+import { AuthGuard } from './authGuard/auth.guard';
 
 const routes: Routes = [ 
-  // {path: '',redirectTo: "pagina-principal", pathMatch: "full"},
   {path: '',component: PaginaPrincipalComponent},
-  {path: 'mapa',component: MapaComponent},
-  {path: 'card-audio',component: CardAudioComponent},
-  {path: 'filtros',component: FiltrosComponent},
-  //{path: 'login', component: LoginComponent},
   {path: 'admin', component: LoginComponent},
-  {path: 'vista-admistrador',component: VistaAdministradorComponent},
-  {path: 'dashboard',component: DashboardComponent},
-  {path: 'perfil',component: PerfilComponent},
-  {path: 'gestion-de-audios',component: GestionDeAudiosComponent},
-  {path: 'gestion-de-administradores',component: GestionDeAdministradoresComponent},
-  {path: 'historial',component: HistorialComponent},
+  {path: 'dashboard',component: DashboardComponent, canActivate: [AuthGuard]},
+ 
 
 ];
 

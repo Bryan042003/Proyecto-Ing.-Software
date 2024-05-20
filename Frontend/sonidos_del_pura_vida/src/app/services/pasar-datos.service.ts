@@ -57,10 +57,17 @@ export class PasarDatosService {
     }
   }
 
+  isTokenExpired(token: string): boolean {
+    const decodedToken = this.getDecodedAccessToken(token);
+    if (decodedToken) {
+      return decodedToken.exp < Date.now() / 1000; 
+    }
+    return true;
+  }
+
   getAdminFromToken() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('jwt');
     if(token){
-      console.log(this.getDecodedAccessToken(token));
       return this.getDecodedAccessToken(token);
     }
     return null;

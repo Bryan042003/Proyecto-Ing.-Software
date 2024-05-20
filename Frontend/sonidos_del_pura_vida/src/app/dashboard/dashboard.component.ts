@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { PasarDatosService } from '../services/pasar-datos.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,17 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.css'
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
+  constructor(public pasarDatosService: PasarDatosService,private route:Router) { }
+  admin: any;
   flagPerfil: boolean = false;
   flagGestionDeAudios: boolean = true;
   flagGestionDeAdministrador: boolean = false;
   flagHistorial: boolean = false;
   sidebarActive = false;
 
+
   seleccionarEspacio(espacioSeleccionado: string) {
     
-    console.log(this.sidebarActive);
     switch (espacioSeleccionado) {
       case 'perfil':
         this.flagPerfil = true;
@@ -49,6 +53,16 @@ export class DashboardComponent {
     this.sidebarActive = !this.sidebarActive;
     console.log(this.sidebarActive);
   }
+
+  cerrarSesion() {
+    localStorage.removeItem('jwt');
+    this.route.navigate(['/admin']);
+  }
+
+  ngOnInit(): void {
+    this.admin = this.pasarDatosService.getAdminFromToken();
+  }
+
 
 
 
