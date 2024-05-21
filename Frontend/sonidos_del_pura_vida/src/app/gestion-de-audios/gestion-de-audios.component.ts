@@ -18,6 +18,7 @@ export class GestionDeAudiosComponent {
   opcionElegida: string = 'Ordenar por:';
 
   flagConfirmarEliminar = false;
+  flagConfirmarEdicionDatos = false;
 
   constructor(public pasarDatosService: PasarDatosService) { }
   ngOnInit() {
@@ -30,6 +31,13 @@ export class GestionDeAudiosComponent {
     this.pasarDatosService.getFlagConfirmarEliminacion().subscribe(flag => {
       this.flagConfirmarEliminar = flag;
     });
+
+    this.pasarDatosService.getFlagEditarDatosAudio().subscribe(flag => {
+      this.flagConfirmarEdicionDatos = flag;
+      console.log(" flag de edicion de datos:");
+      console.log(this.flagConfirmarEdicionDatos);
+    });
+
   }
 
   paginateAudios() {

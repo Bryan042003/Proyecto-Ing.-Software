@@ -22,6 +22,7 @@ export class EditarAudioComponent implements OnInit {
   private varMarcador: boolean = true;
   flagEliminar = false;
   flagCerrarEditar = false;
+  flagEditar = false;
 
   constructor(public pasarDatosService: PasarDatosService) { }
 
@@ -64,6 +65,12 @@ export class EditarAudioComponent implements OnInit {
   activarEliminar(){
     this.flagEliminar = true;
     this.pasarDatosService.setFlagConfirmarEliminacion(true);
+  }
+
+  activarEditar(){
+    console.log("estoy en editar true");
+    this.flagEditar = true;
+    this.pasarDatosService.setFlagEditarDatosAudio(true);
   }
 
 

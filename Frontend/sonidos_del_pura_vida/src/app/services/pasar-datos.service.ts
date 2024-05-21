@@ -25,6 +25,8 @@ export class PasarDatosService {
   private flagEditarAudio = new BehaviorSubject<boolean>(false);
   private flagConfirmarEliminacion = new BehaviorSubject<boolean>(false);
 
+  private flagEditarDatosAudio = new BehaviorSubject<boolean>(false);
+
 
   public listaAudios: Audio[] = [];
   public listaAdmins: Admin[] = [];
@@ -176,6 +178,15 @@ export class PasarDatosService {
   }
   getFlagConfirmarEliminacion(): Observable<boolean> {
     return this.flagConfirmarEliminacion.asObservable();
+  }
+
+
+  //--------------------Confirmar Editar Datos Audios--------------------
+  setFlagEditarDatosAudio(flag: boolean) {
+    this.flagEditarDatosAudio.next(flag);
+  }
+  getFlagEditarDatosAudio(): Observable<boolean> {
+    return this.flagEditarDatosAudio.asObservable();
   }
 
 
