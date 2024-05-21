@@ -26,6 +26,7 @@ import { CardAdminComponent } from './card-admin/card-admin.component';
 import { EditarAudioComponent } from './editar-audio/editar-audio.component';
 import { ConfirmarEliminacionComponent } from './confirmar-eliminacion/confirmar-eliminacion.component';
 import { CardHistorialComponent } from './card-historial/card-historial.component';
+import { ConfirmarEdicionAudioComponent } from './confirmar-edicion-audio/confirmar-edicion-audio.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CardHistorialComponent } from './card-historial/card-historial.componen
     EditarAudioComponent,
     ConfirmarEliminacionComponent,
     CardHistorialComponent,
+    ConfirmarEdicionAudioComponent,
   ],
   imports: [
     BrowserModule,

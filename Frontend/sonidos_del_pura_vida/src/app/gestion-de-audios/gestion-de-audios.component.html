@@ -67,12 +67,25 @@
             <div class="col-md-12 col-lg-6 ">
                 <div class="card d-flex card-container"  style="border-radius: 20px; justify-content: center;">
                     <div class="d-flex" style="align-items: center;">
-                        <div style="width: 100%;" *ngIf="activarVistaInformacionAudio ; else vistaOriginal ">
-                            <div *ngIf="!flagConfirmarEliminar ; else confirmarEliminar " style="display: flex; place-content: center;width: 100%;">
-                                <app-editar-audio [audio]="audioSeleccionado"></app-editar-audio>
-                            </div>
-                            <ng-template #confirmarEliminar>
-                                <app-confirmar-eliminacion [audio]="audioSeleccionado" ></app-confirmar-eliminacion>
+                        <div style="width: 100%;" *ngIf="activarVistaInformacionAudio; else vistaOriginal">
+                            <ng-container *ngIf="flagConfirmarEliminar; else editarAudio">
+                                <div style="display: flex; justify-content: center; width: 100%;">
+                                    <app-confirmar-eliminacion [audio]="audioSeleccionado"></app-confirmar-eliminacion>
+                                </div>
+                            </ng-container>
+                        
+                            <ng-template #editarAudio>
+                                <ng-container *ngIf="flagConfirmarEdicionDatos; else defaultEditarAudio">
+                                    <div style="display: flex; justify-content: center; width: 100%;">
+                                        <app-confirmar-edicion-audio [audio]="audioSeleccionado"></app-confirmar-edicion-audio>
+                                    </div>
+                                </ng-container>
+                            </ng-template>
+                        
+                            <ng-template #defaultEditarAudio>
+                                <div style="display: flex; justify-content: center; width: 100%;">
+                                    <app-editar-audio [audio]="audioSeleccionado"></app-editar-audio>
+                                </div>
                             </ng-template>
                         </div>
                         <ng-template #vistaOriginal>
