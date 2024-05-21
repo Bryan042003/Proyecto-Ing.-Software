@@ -3,7 +3,7 @@
 class Administrador{
     private $conn;
 
-    private $tabla = "Administrador";
+    private $tabla = "administrador";
 
     public $nombre;
     public $correo;
@@ -25,7 +25,7 @@ class Administrador{
 
     
     public function obtenerAdmins(){
-        $query = "SELECT * FROM Administrador";
+        $query = "SELECT * FROM ". $this->tabla . ";";
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->execute();
         return $stmt;
