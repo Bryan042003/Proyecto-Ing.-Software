@@ -4,6 +4,7 @@ import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angula
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { PasarDatosService } from '../services/pasar-datos.service';
+import { Admin } from '../models/Admin.model';
 
 @Component({
   selector: 'app-confirmar-eliminacion',
@@ -11,11 +12,14 @@ import { PasarDatosService } from '../services/pasar-datos.service';
   styleUrl: './confirmar-eliminacion.component.css'
 })
 export class ConfirmarEliminacionComponent {
-  @Input() audio!: Audio;
-  private idAdmin: number = 2;
-
 
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) { }
+  @Input() audio!: Audio;
+ 
+  private idAdmin: number = Number(this.pasarDatosService.getAdminFromToken().id);
+
+
+  
 
   form = this.fb.group({
     motivo: ['', [Validators.required, Validators.maxLength(255)]],
@@ -32,6 +36,7 @@ export class ConfirmarEliminacionComponent {
 
 
       this.showAlertLoad();
+      
       this.pasarDatosService.getEliminarAudio(this.audio.id, this.idAdmin, motivo).subscribe(
         (res) => {
           Swal.close();
@@ -97,6 +102,7 @@ export class ConfirmarEliminacionComponent {
 
 
   desactivarEliminar() {
+    console.log(this.idAdmin);
     this.pasarDatosService.setFlagConfirmarEliminacion(false);
   }
 
