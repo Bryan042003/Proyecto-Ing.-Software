@@ -3,7 +3,7 @@
 class Administrador{
     private $conn;
 
-    private $tabla = "Administrador";
+    private $tabla = "administrador";
 
     public $nombre;
     public $correo;
