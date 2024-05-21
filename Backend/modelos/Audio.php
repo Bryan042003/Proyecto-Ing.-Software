@@ -18,6 +18,10 @@ class Audio{
     public $canton;
     public $provincia;
 
+    public $id_audio;
+    public $id_administrador;
+    public $motivo;
+
     public function __construct($db){
         $this->conn = $db;
     }
@@ -71,6 +75,26 @@ class Audio{
         $stmt->execute();
         return $stmt; 
     }
+
+    public function editarAudio($audio) {
+        $query = "CALL ActualizarAudioUbicacion(:id_audio,:titulo, :autor, :comentarios, :ruta_audio, :ruta_imagen, :latitud, :longitud, :canton, :provincia, :id_administrador, :motivo)";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id_audio', $audio->id_audio);
+        $stmt->bindParam(':titulo', $audio->titulo);
+        $stmt->bindParam(':autor', $audio->autor);
+        $stmt->bindParam(':comentarios', $audio->comentarios);
+        $stmt->bindParam(':ruta_audio', $audio->ruta_audio);
+        $stmt->bindParam(':ruta_imagen', $audio->ruta_imagen);
+        $stmt->bindParam(':latitud', $audio->latitud);
+        $stmt->bindParam(':longitud', $audio->longitud);
+        $stmt->bindParam(':canton', $audio->canton);
+        $stmt->bindParam(':provincia', $audio->provincia);
+        $stmt->bindParam(':id_administrador', $audio->id_administrador);
+        $stmt->bindParam(':motivo', $audio->motivo);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
 
 
 }
