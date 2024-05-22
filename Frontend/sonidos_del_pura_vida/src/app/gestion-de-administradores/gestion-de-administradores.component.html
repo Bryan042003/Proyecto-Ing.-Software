@@ -52,18 +52,15 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="container"
-                        style=" overflow-y: auto; width: 100%;height:620px;">
+                    <div class="container" style=" overflow-y: auto; width: 90%; height:100%;padding: 20px;">
                         <div *ngFor="let admin of paginas[paginaActual]">
                             <app-card-admin [admin]="admin"></app-card-admin>
                         </div>
                     </div>
 
-
-
                 </div>
             </div>
-            <div class="col " style="height: 100%;">
+            <div class="col" style="height: 100%;">
               <div class="card" style="height: 100%; border-radius: 20px; justify-content: center; ">
 
                   <div style="overflow: auto;" *ngIf="tocoBotonAnadir ; else vistaAnadirUsuario ">
