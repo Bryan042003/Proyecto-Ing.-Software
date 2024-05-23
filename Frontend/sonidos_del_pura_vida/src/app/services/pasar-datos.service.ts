@@ -25,8 +25,11 @@ export class PasarDatosService {
 
   private flagEditarAudio = new BehaviorSubject<boolean>(false);
   private flagConfirmarEliminacion = new BehaviorSubject<boolean>(false);
-
   private flagEditarDatosAudio = new BehaviorSubject<boolean>(false);
+
+  private flagEditarAdmin = new BehaviorSubject<boolean>(false);
+  private flagEditarDatosAdmin = new BehaviorSubject<boolean>(false);
+  private flagConfirmarEliminacionAdmin = new BehaviorSubject<boolean>(false);
 
 
   public listaAudios: Audio[] = [];
@@ -199,16 +202,34 @@ export class PasarDatosService {
     return this.flagEditarAudio.asObservable();
   }
 
+    
+  setFlagEditarAdmin(flag: boolean) {
+    this.flagEditarAdmin.next(flag);
+  }
+  
+  getFlagEditarAdmin(): Observable<boolean> {
+    return this.flagEditarAdmin.asObservable();
+  }
 
-  //--------------------Confirmar Eliminacion--------------------
+
+  //--------------------Confirmar Eliminacion Audios--------------------
 
   setFlagConfirmarEliminacion(flag: boolean) {
     this.flagConfirmarEliminacion.next(flag);
   }
   getFlagConfirmarEliminacion(): Observable<boolean> {
     return this.flagConfirmarEliminacion.asObservable();
+    
   }
 
+    //--------------------Confirmar Eliminacion Admin--------------------
+
+    setFlagConfirmarEliminacionAdmin(flag: boolean) {
+      this.flagConfirmarEliminacionAdmin.next(flag);
+    }
+    getFlagConfirmarEliminacionAdmin(): Observable<boolean> {
+      return this.flagConfirmarEliminacionAdmin.asObservable();
+    }
 
   //--------------------Confirmar Editar Datos Audios--------------------
   setFlagEditarDatosAudio(flag: boolean) {
@@ -218,6 +239,14 @@ export class PasarDatosService {
     return this.flagEditarDatosAudio.asObservable();
   }
 
+    //--------------------Confirmar Editar Datos Admin--------------------
+    setFlagEditarDatosAdmin(flag: boolean) {
+      this.flagEditarDatosAdmin.next(flag);
+    }
+    getFlagEditarDatosAdmin(): Observable<boolean> {
+      return this.flagEditarDatosAdmin.asObservable();
+    }
+  
 
 
 }

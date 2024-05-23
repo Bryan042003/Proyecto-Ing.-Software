@@ -27,6 +27,9 @@ import { EditarAudioComponent } from './editar-audio/editar-audio.component';
 import { ConfirmarEliminacionComponent } from './confirmar-eliminacion/confirmar-eliminacion.component';
 import { CardHistorialComponent } from './card-historial/card-historial.component';
 import { ConfirmarEdicionAudioComponent } from './confirmar-edicion-audio/confirmar-edicion-audio.component';
+import { EditarAdminComponent } from './editar-admin/editar-admin.component';
+import { ConfirmarEliminacionAdminComponent } from './confirmar-eliminacion-admin/confirmar-eliminacion-admin.component';
+import { ConfirmarEdicionAdminComponent } from './confirmar-edicion-admin/confirmar-edicion-admin.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { ConfirmarEdicionAudioComponent } from './confirmar-edicion-audio/confir
     ConfirmarEliminacionComponent,
     CardHistorialComponent,
     ConfirmarEdicionAudioComponent,
+    EditarAdminComponent,
+    ConfirmarEliminacionAdminComponent,
+    ConfirmarEdicionAdminComponent,
   ],
   imports: [
     BrowserModule,

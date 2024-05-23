@@ -13,6 +13,7 @@ export class GestionDeAudiosComponent {
   audioPorPagina: number = 10;
   paginas: any[] = [];
   paginaActual: number = 0;
+  
   activarVistaInformacionAudio: boolean = false;
   audioSeleccionado!: Audio;
   opcionElegida: string = 'Ordenar por:';

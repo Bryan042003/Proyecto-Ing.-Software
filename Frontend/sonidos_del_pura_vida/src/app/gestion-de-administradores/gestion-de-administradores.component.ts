@@ -14,11 +14,30 @@ export class GestionDeAdministradoresComponent {
   paginas: any[] = []; 
   paginaActual: number = 0;
 
-tocoBotonAnadir: boolean = false;
+  activarVistaInformacionAdmin: boolean = false;
+  adminSeleccionado!: Admin;
+
+  flagConfirmarEliminar = false;
+  flagConfirmarEdicionDatos = false;
+
+  tocoBotonAnadir: boolean = false; 
+
 constructor(public pasarDatosService: PasarDatosService) { }
 ngOnInit() {
   this.cargarAdmins();
-  console.log(this.admins);
+  this.pasarDatosService.getFlagEditarAdmin().subscribe(flag => {
+    this.activarVistaInformacionAdmin = flag;
+  });
+
+  this.pasarDatosService.getFlagConfirmarEliminacion().subscribe(flag => {
+    this.flagConfirmarEliminar = flag;
+  });
+
+  this.pasarDatosService.getFlagEditarDatosAdmin().subscribe(flag => {
+    this.flagConfirmarEdicionDatos = flag;
+    console.log(" flag de edicion de datos:");
+    console.log(this.flagConfirmarEdicionDatos);
+  });
 
 }
 
@@ -54,6 +73,13 @@ cargarAdmins() {
       this.paginateAdmin();
     }
   );
+}
+
+activarVistaInfoAdmin(admin: Admin) {
+  this.adminSeleccionado = admin;
+  this.activarVistaInformacionAdmin = true;
+  console.log(admin)
+
 }
 
   botonAnadir(){

@@ -31,6 +31,14 @@ class Administrador{
         return $stmt;
     }
 
+    public function obtenerAdmin($id){
+        $query = "SELECT * FROM " . $this->vista . " WHERE admin_id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function removerAdministrador($id){
         $query = "DELETE FROM " . $this->tabla . " WHERE id = :id";
         $stmt = $this->conn->getConnection()->prepare($query);

@@ -1,0 +1,40 @@
+<div class="container " style="height: 100%;">
+    <div class="card" style="display: flex;place-content: center;">
+        <div class="row">
+            <div id="botonCerrar"style="width: 100%; display: flex; justify-content: left;">
+                <div style="width: 100%;">
+                    <button type="button" class="close" style="background: transparent; border: none; "
+                        (click)="cerrarEditar()">
+                        <span class="material-symbols-outlined" style=" font-size: 40px; ">
+                            cancel
+                        </span>
+                    </button>
+                </div>
+                <div style="width: 100%; justify-content: right; display: flex;">
+                    <button type="button" style="background: transparent; border: none; " (click)="activarEditar()">
+                        <span class="material-symbols-outlined" style=" font-size: 40px;">
+                            edit
+                        </span>
+                    </button>
+
+
+                    <button type="button" style="background: transparent; border: none; " (click)="activarEliminar()">
+                        <span class="material-symbols-outlined" style=" font-size: 40px;color:red ">
+                            delete
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="d-flex" style="place-content: center;"><strong>{{admin.nombre}}</strong> </h1>
+
+            <div class="col-md-6">
+                
+                <div class="card-body inner-card">
+                    <h5><strong>Correo:</strong> {{admin.correo}}</h5>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
