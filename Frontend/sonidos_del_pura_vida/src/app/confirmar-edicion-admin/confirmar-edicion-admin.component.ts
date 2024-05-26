@@ -31,6 +31,8 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
   desactivarEdicionDatosAdmin(){
     this.pasarDatosService.setFlagEditarDatosAdmin(false);
   }
+  
+  
 
   form = this.fb.group({ 
     nombre: ['', [Validators.required, Validators.maxLength(255)]],

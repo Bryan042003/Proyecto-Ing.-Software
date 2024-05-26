@@ -21,23 +21,40 @@ export class GestionDeAdministradoresComponent {
   flagConfirmarEdicionDatos = false;
 
   tocoBotonAnadir: boolean = false; 
+  eliminar = false;
+  editar = false;
 
 constructor(public pasarDatosService: PasarDatosService) { }
 ngOnInit() {
   this.cargarAdmins();
   this.pasarDatosService.getFlagEditarAdmin().subscribe(flag => {
     this.activarVistaInformacionAdmin = flag;
+    console.log("activar/desactivar vista admin");
+
   });
 
-  this.pasarDatosService.getFlagConfirmarEliminacion().subscribe(flag => {
-    this.flagConfirmarEliminar = flag;
+  this.pasarDatosService.getEliminarAdmin().subscribe(flag => {
+    this.eliminar = flag;
+    console.log("eliminar ");
   });
 
+  this.pasarDatosService.getEditarAdmin().subscribe(flag => {
+    this.editar = flag;
+    console.log("editar ");
+  });
+
+
+  /*
+  aqui se presiona el devolverse dentro de la vista de confirmar edicion y eliminacion de admin
+  */
   this.pasarDatosService.getFlagEditarDatosAdmin().subscribe(flag => {
     this.flagConfirmarEdicionDatos = flag;
-    console.log(" flag de edicion de datos:");
-    console.log(this.flagConfirmarEdicionDatos);
+    this.editar = false;
+    this.eliminar = false;
+    
   });
+
+
 
 }
 
@@ -76,14 +93,22 @@ cargarAdmins() {
 }
 
 activarVistaInfoAdmin(admin: Admin) {
+  this.tocoBotonAnadir = false;
   this.adminSeleccionado = admin;
   this.activarVistaInformacionAdmin = true;
-  console.log(admin)
+  this.flagConfirmarEliminar = false;
+  this.flagConfirmarEdicionDatos = false;
+  console.log("activar vista admin");
 
 }
 
   botonAnadir(){
     this.tocoBotonAnadir = !this.tocoBotonAnadir;
+    this.activarVistaInformacionAdmin = false;
+    this.flagConfirmarEliminar = false;
+    this.flagConfirmarEdicionDatos = false;
+    console.log("activar añadir admin");
+    
   }
 
 }

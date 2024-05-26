@@ -68,7 +68,6 @@ export class EditarAudioComponent implements OnInit {
   }
 
   activarEditar(){
-    console.log("estoy en editar true");
     this.flagEditar = true;
     this.pasarDatosService.setFlagEditarDatosAudio(true);
   }

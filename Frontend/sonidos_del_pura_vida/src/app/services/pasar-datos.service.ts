@@ -32,6 +32,10 @@ export class PasarDatosService {
   private flagConfirmarEliminacionAdmin = new BehaviorSubject<boolean>(false);
 
 
+  private EliminarAdmin = new BehaviorSubject<boolean>(false);
+  private EditarAdmin = new BehaviorSubject<boolean>(false);
+
+
   public listaAudios: Audio[] = [];
   public listaAdmins: Admin[] = [];
 
@@ -65,14 +69,14 @@ export class PasarDatosService {
   isTokenExpired(token: string): boolean {
     const decodedToken = this.getDecodedAccessToken(token);
     if (decodedToken) {
-      return decodedToken.exp < Date.now() / 1000; 
+      return decodedToken.exp < Date.now() / 1000;
     }
     return true;
   }
 
   getAdminFromToken() {
     const token = localStorage.getItem('jwt');
-    if(token){
+    if (token) {
       return this.getDecodedAccessToken(token);
     }
     return null;
@@ -94,8 +98,8 @@ export class PasarDatosService {
     return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia=' + idProvincia);
   }
 
-  getEliminarAudio(idAudio:number,idAdministrador:number,Motivo:string): Observable<any> {
-    return this.http.get(this.urlAudios + 'removerAudio.php?id='+idAudio+'&id_administrador='+idAdministrador+'&motivo='+Motivo);
+  getEliminarAudio(idAudio: number, idAdministrador: number, Motivo: string): Observable<any> {
+    return this.http.get(this.urlAudios + 'removerAudio.php?id=' + idAudio + '&id_administrador=' + idAdministrador + '&motivo=' + Motivo);
   }
 
   getAudio() {
@@ -193,23 +197,25 @@ export class PasarDatosService {
     return this.http.delete(this.urlAdmin + 'removerAdministrador?id=' + id);
   }
 
-  
+
   setFlagEditarAudio(flag: boolean) {
     this.flagEditarAudio.next(flag);
   }
-  
+
   getFlagEditarAudio(): Observable<boolean> {
     return this.flagEditarAudio.asObservable();
   }
 
-    
+
   setFlagEditarAdmin(flag: boolean) {
     this.flagEditarAdmin.next(flag);
   }
-  
+
   getFlagEditarAdmin(): Observable<boolean> {
     return this.flagEditarAdmin.asObservable();
   }
+
+
 
 
   //--------------------Confirmar Eliminacion Audios--------------------
@@ -219,17 +225,17 @@ export class PasarDatosService {
   }
   getFlagConfirmarEliminacion(): Observable<boolean> {
     return this.flagConfirmarEliminacion.asObservable();
-    
+
   }
 
-    //--------------------Confirmar Eliminacion Admin--------------------
+  //--------------------Confirmar Eliminacion Admin--------------------
 
-    setFlagConfirmarEliminacionAdmin(flag: boolean) {
-      this.flagConfirmarEliminacionAdmin.next(flag);
-    }
-    getFlagConfirmarEliminacionAdmin(): Observable<boolean> {
-      return this.flagConfirmarEliminacionAdmin.asObservable();
-    }
+  setFlagConfirmarEliminacionAdmin(flag: boolean) {
+    this.flagConfirmarEliminacionAdmin.next(flag);
+  }
+  getFlagConfirmarEliminacionAdmin(): Observable<boolean> {
+    return this.flagConfirmarEliminacionAdmin.asObservable();
+  }
 
   //--------------------Confirmar Editar Datos Audios--------------------
   setFlagEditarDatosAudio(flag: boolean) {
@@ -239,14 +245,36 @@ export class PasarDatosService {
     return this.flagEditarDatosAudio.asObservable();
   }
 
-    //--------------------Confirmar Editar Datos Admin--------------------
-    setFlagEditarDatosAdmin(flag: boolean) {
-      this.flagEditarDatosAdmin.next(flag);
-    }
-    getFlagEditarDatosAdmin(): Observable<boolean> {
-      return this.flagEditarDatosAdmin.asObservable();
-    }
-  
+  //--------------------Confirmar Editar Datos Admin--------------------
+  setFlagEditarDatosAdmin(flag: boolean) {
+    this.flagEditarDatosAdmin.next(flag);
+  }
+  getFlagEditarDatosAdmin(): Observable<boolean> {
+    return this.flagEditarDatosAdmin.asObservable();
+  }
+
+  //----------------------------------------------------
+
+
+  setEliminarAdmin(flag: boolean) {
+    this.EliminarAdmin.next(flag);
+  }
+
+  getEliminarAdmin(): Observable<boolean> {
+    return this.EliminarAdmin.asObservable();
+  }
+
+  setEditarAdmin(flag: boolean) {
+    this.EditarAdmin.next(flag);
+  }
+
+  getEditarAdmin(): Observable<boolean> {
+    return this.EditarAdmin.asObservable();
+  }
+
+
+
+
 
 
 }

@@ -14,19 +14,21 @@ export class EditarAdminComponent {
   flagEditar = false;
 
   constructor(public pasarDatosService: PasarDatosService) { }
-  cerrarEditar(){
+   cerrarEditar(){
     this.pasarDatosService.setFlagEditarAdmin(false);
   }
 
+
+  
   activarEliminar(){
     this.flagEliminar = true;
-    this.pasarDatosService.setFlagConfirmarEliminacionAdmin(true);
+    this.pasarDatosService.setEliminarAdmin(true);
   }
 
   activarEditar(){
     console.log("estoy en editar true");
     this.flagEditar = true;
-    this.pasarDatosService.setFlagEditarDatosAdmin(true);
+    this.pasarDatosService.setEditarAdmin(true);
   }
 
 

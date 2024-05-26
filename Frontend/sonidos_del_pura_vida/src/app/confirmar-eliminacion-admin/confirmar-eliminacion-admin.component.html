@@ -1,1 +1,38 @@
-<p>confirmar-eliminacion-admin works!</p>
+<div class="container "  style="height: 100%;">
+    <div class="card" style="display: flex;place-content: center; border: none;height: 100%;">
+        <div id="botonCerrar" style="width: 100%; margin:20px;display: flex;justify-content: left;">
+            <button type="button" class="close" style="background: transparent; border: none; "
+                (click)="desactivarEliminar()">
+                <span class="material-symbols-outlined" style=" font-size: 40px; ">
+                    undo
+                </span>
+            </button>
+        </div>
+
+        <div class="row" style="place-content: center;display: flex;">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div style="display: flex;width: 100%; justify-content: center;">
+                        <h1><strong>Eliminar Audio</strong></h1>
+                    </div>
+                    <form class="needs-validation m-4" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
+                        <div class="row mt-3">
+                            <label class="form-label" for="motivo">Motivo: </label>
+                            <div class="input-group has-validation">
+                                <textarea type="text" class="form-control form-control-lg" id="motivo" name="motivo"
+                                    formControlName="motivo"
+                                    [class.is-invalid]="form.get('motivo')?.invalid && form.get('motivo')?.touched"></textarea>
+                                <div class="invalid-feedback" *ngIf="form.get('motivo')?.errors?.['maxlength']">
+                                    El motivo no puede exceder los 255 caracteres
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-center" style="margin-top: 20px; ">
+                            <button type="submit" class="btn btn-primary btn-lg " style="background-color: #001148;">
+                                Eliminar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
