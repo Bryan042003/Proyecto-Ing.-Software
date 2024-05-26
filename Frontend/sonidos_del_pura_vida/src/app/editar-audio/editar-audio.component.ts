@@ -20,6 +20,7 @@ export class EditarAudioComponent implements OnInit {
   private marker: any;
   private markers: L.Marker[] = [];
   private varMarcador: boolean = true;
+
   flagEliminar = false;
   flagCerrarEditar = false;
   flagEditar = false;
@@ -57,7 +58,6 @@ export class EditarAudioComponent implements OnInit {
     }, 200);
   }
 
-
   cerrarEditar(){
     this.pasarDatosService.setFlagEditarAudio(false);
   }
@@ -71,7 +71,5 @@ export class EditarAudioComponent implements OnInit {
     this.flagEditar = true;
     this.pasarDatosService.setFlagEditarDatosAudio(true);
   }
-
-
 
 }

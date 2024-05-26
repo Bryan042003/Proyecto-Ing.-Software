@@ -19,7 +19,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
   password: string = '';
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) { }
 
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['admin']) {
       this.nombre = this.admin.nombre;
@@ -29,12 +29,11 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
   }
 
   desactivarEdicionDatosAdmin(){
-    this.pasarDatosService.setFlagEditarDatosAdmin(false);
+   /// aqui desactivarla y que se nos active el de de ver información de admin
+    this.pasarDatosService.setActivarInformacionAdmin(true);
   }
-  
-  
 
-  form = this.fb.group({ 
+  form = this.fb.group({
     nombre: ['', [Validators.required, Validators.maxLength(255)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]]
@@ -42,8 +41,6 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
 
 
   async onSubmit() {
-    console.log("estoy en confirmacion de edicion de admin");
-    console.log(this.admin);
 
     if(this.form.valid){
       const motivo = this.form.get('motivo')?.value || '';

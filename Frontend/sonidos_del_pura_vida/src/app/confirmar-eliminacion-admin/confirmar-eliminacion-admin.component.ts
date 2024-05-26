@@ -12,25 +12,17 @@ import { Admin } from '../models/Admin.model';
   styleUrl: './confirmar-eliminacion-admin.component.css'
 })
 export class ConfirmarEliminacionAdminComponent {
-
-
-  
+  @Input() admin!: Admin;
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) { }
   @Input() audio!: Audio;
- 
+
   private idAdmin: number = Number(this.pasarDatosService.getAdminFromToken().id);
-
-
-  
 
   form = this.fb.group({
     motivo: ['', [Validators.required, Validators.maxLength(255)]],
   });
 
   async onSubmit() {
-    console.log("estoy en confirmacion de eliminacion de audio");
-    console.log(this.audio);
-
 
     if (this.form.valid) {
       const motivo = this.form.get('motivo')?.value || '';
@@ -38,7 +30,7 @@ export class ConfirmarEliminacionAdminComponent {
 
 
       this.showAlertLoad();
-      
+
       this.pasarDatosService.getEliminarAudio(this.audio.id, this.idAdmin, motivo).subscribe(
         (res) => {
           Swal.close();
@@ -54,14 +46,36 @@ export class ConfirmarEliminacionAdminComponent {
         }
       );
     } else {
-      this.showAlertInvalid();
       this.form.markAllAsTouched();
     }
   }
 
+  eliminarAdministrador(){
+    this.pasarDatosService.deleteAdministrador(this.admin.id).subscribe(
+      (res) => {
+        Swal.close();
+        this.showAlertSuccess();
+        this.form.reset();
+        this.form.untouched;
+
+      },
+      (error) => {
+        console.log(error);
+        Swal.close();
+        this.showAlertError();
+      }
+    );
+
+  }
+
+  desactivarEliminar() {
+    this.pasarDatosService.setActivarInformacionAdmin(true);
+  }
+
+
   showAlertSuccess() {
     Swal.fire({
-      title: 'Audio Eliminado',
+      title: 'Administrador Eliminado',
       icon: 'success',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -72,17 +86,7 @@ export class ConfirmarEliminacionAdminComponent {
 
   showAlertError() {
     Swal.fire({
-      title: 'Error al eliminar el audio',
-      icon: 'error',
-      confirmButtonText: 'Aceptar',
-      confirmButtonColor: '#001148'
-    });
-  }
-
-  showAlertInvalid() {
-    Swal.fire({
-      title: 'Campos inválidos',
-      text: 'Por favor, revise los campos de motivo',
+      title: 'Error al eliminar el Administrador',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -103,9 +107,5 @@ export class ConfirmarEliminacionAdminComponent {
   }
 
 
-  desactivarEliminar() {
-    console.log(this.idAdmin);
-    this.pasarDatosService.setFlagConfirmarEliminacion(false);
-  }
 
 }

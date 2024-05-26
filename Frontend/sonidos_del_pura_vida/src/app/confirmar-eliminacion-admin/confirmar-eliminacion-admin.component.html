@@ -13,25 +13,18 @@
             <div class="col-md-12">
                 <div class="card-body">
                     <div style="display: flex;width: 100%; justify-content: center;">
-                        <h1><strong>Eliminar Audio</strong></h1>
+                        <h1><strong>Eliminar Administrador</strong></h1>
                     </div>
-                    <form class="needs-validation m-4" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
-                        <div class="row mt-3">
-                            <label class="form-label" for="motivo">Motivo: </label>
-                            <div class="input-group has-validation">
-                                <textarea type="text" class="form-control form-control-lg" id="motivo" name="motivo"
-                                    formControlName="motivo"
-                                    [class.is-invalid]="form.get('motivo')?.invalid && form.get('motivo')?.touched"></textarea>
-                                <div class="invalid-feedback" *ngIf="form.get('motivo')?.errors?.['maxlength']">
-                                    El motivo no puede exceder los 255 caracteres
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 d-flex justify-content-center" style="margin-top: 20px; ">
-                            <button type="submit" class="btn btn-primary btn-lg " style="background-color: #001148;">
-                                Eliminar</button>
-                        </div>
-                    </form>
+                    <div style="display: flex; flex-direction: column; align-items: center; color:red" >
+                      <h3 style="margin-top: 50px; margin-bottom: 50px;"> ¿Está seguro(a) de eliminar el administrador?</h3>
+                      <h5><strong>Id:</strong> {{admin.id}}</h5>
+                      <h5><strong>Nombre:</strong> {{admin.nombre}}</h5>
+                      <h5><strong>Correo:</strong> {{admin.correo}}</h5>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center" style="margin-top: 30px; ">
+                      <button (click)="eliminarAdministrador()" type="submit" class="btn btn-primary btn-lg " style="background-color: #001148;">
+                          Eliminar</button>
+                  </div>
                 </div>
             </div>
         </div>

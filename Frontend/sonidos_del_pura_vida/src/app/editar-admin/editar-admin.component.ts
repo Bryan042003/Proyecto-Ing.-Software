@@ -15,21 +15,18 @@ export class EditarAdminComponent {
 
   constructor(public pasarDatosService: PasarDatosService) { }
    cerrarEditar(){
+    this.pasarDatosService.setActivarOriginalVistaAdmin(true);
     this.pasarDatosService.setFlagEditarAdmin(false);
+    this.pasarDatosService.setFlagEditarDatosAdmin(false);
+    this.flagCerrarEditar = true;
   }
 
-
-  
   activarEliminar(){
+    this.pasarDatosService.setFlagEliminarAdmin(true);
     this.flagEliminar = true;
-    this.pasarDatosService.setEliminarAdmin(true);
   }
 
   activarEditar(){
-    console.log("estoy en editar true");
-    this.flagEditar = true;
-    this.pasarDatosService.setEditarAdmin(true);
+    this.pasarDatosService.setFlagEditarDatosAdmin(true);
   }
-
-
 }

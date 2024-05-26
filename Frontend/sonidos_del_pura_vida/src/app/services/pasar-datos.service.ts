@@ -29,7 +29,9 @@ export class PasarDatosService {
 
   private flagEditarAdmin = new BehaviorSubject<boolean>(false);
   private flagEditarDatosAdmin = new BehaviorSubject<boolean>(false);
-  private flagConfirmarEliminacionAdmin = new BehaviorSubject<boolean>(false);
+
+
+  private flagEliminacionAdmin = new BehaviorSubject<boolean>(false);
 
 
   private EliminarAdmin = new BehaviorSubject<boolean>(false);
@@ -51,6 +53,9 @@ export class PasarDatosService {
 
   provinciaList: any[] = [];
   cantonList: any[] = [];
+
+  private originalVistaAdmin =  new BehaviorSubject<boolean>(true);
+  private originalInformacionAdmin = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
@@ -194,7 +199,7 @@ export class PasarDatosService {
   }
 
   deleteAdministrador(id: string) {
-    return this.http.delete(this.urlAdmin + 'removerAdministrador?id=' + id);
+    return this.http.delete(this.urlAdmin + 'removerAdministrador.php?id=' + id);
   }
 
 
@@ -216,65 +221,59 @@ export class PasarDatosService {
   }
 
 
+//----------------------------Audios--------------------------
 
+//--------------------Confirmar Eliminacion Audios--------------------
 
-  //--------------------Confirmar Eliminacion Audios--------------------
+setFlagConfirmarEliminacion(flag: boolean) {
+  this.flagConfirmarEliminacion.next(flag);
+}
 
-  setFlagConfirmarEliminacion(flag: boolean) {
-    this.flagConfirmarEliminacion.next(flag);
-  }
-  getFlagConfirmarEliminacion(): Observable<boolean> {
-    return this.flagConfirmarEliminacion.asObservable();
+getFlagConfirmarEliminacion(): Observable<boolean> {
+  return this.flagConfirmarEliminacion.asObservable();
+}
 
-  }
+//--------------------Confirmar Editar Datos Audios--------------------
+setFlagEditarDatosAudio(flag: boolean) {
+  this.flagEditarDatosAudio.next(flag);
+}
 
-  //--------------------Confirmar Eliminacion Admin--------------------
+getFlagEditarDatosAudio(): Observable<boolean> {
+  return this.flagEditarDatosAudio.asObservable();
+}
 
-  setFlagConfirmarEliminacionAdmin(flag: boolean) {
-    this.flagConfirmarEliminacionAdmin.next(flag);
-  }
-  getFlagConfirmarEliminacionAdmin(): Observable<boolean> {
-    return this.flagConfirmarEliminacionAdmin.asObservable();
-  }
+////--------------------Admins--------------------
 
-  //--------------------Confirmar Editar Datos Audios--------------------
-  setFlagEditarDatosAudio(flag: boolean) {
-    this.flagEditarDatosAudio.next(flag);
-  }
-  getFlagEditarDatosAudio(): Observable<boolean> {
-    return this.flagEditarDatosAudio.asObservable();
-  }
+//--------------------Confirmar Eliminacion Admin--------------------
 
-  //--------------------Confirmar Editar Datos Admin--------------------
-  setFlagEditarDatosAdmin(flag: boolean) {
-    this.flagEditarDatosAdmin.next(flag);
-  }
-  getFlagEditarDatosAdmin(): Observable<boolean> {
-    return this.flagEditarDatosAdmin.asObservable();
-  }
+setFlagEliminarAdmin(flag: boolean) {
+  this.flagEliminacionAdmin.next(flag);
+}
+getFlagEliminarAdmin(): Observable<boolean> {
+  return this.flagEliminacionAdmin.asObservable();
+}
 
-  //----------------------------------------------------
+//--------------------Confirmar Editar Datos Admin--------------------
+setFlagEditarDatosAdmin(flag: boolean) {
+  this.flagEditarDatosAdmin.next(flag);
+}
+getFlagEditarDatosAdmin(): Observable<boolean> {
+  return this.flagEditarDatosAdmin.asObservable();
+}
 
+setActivarOriginalVistaAdmin(flag: boolean) {
+  this.originalVistaAdmin.next(flag);
+}
+getActivarOriginalVistaAdmin(): Observable<boolean> {
+  return this.originalVistaAdmin.asObservable();
+}
 
-  setEliminarAdmin(flag: boolean) {
-    this.EliminarAdmin.next(flag);
-  }
+// InformacionAdmin
+setActivarInformacionAdmin(flag: boolean) {
+  this.originalInformacionAdmin.next(flag);
+}
 
-  getEliminarAdmin(): Observable<boolean> {
-    return this.EliminarAdmin.asObservable();
-  }
-
-  setEditarAdmin(flag: boolean) {
-    this.EditarAdmin.next(flag);
-  }
-
-  getEditarAdmin(): Observable<boolean> {
-    return this.EditarAdmin.asObservable();
-  }
-
-
-
-
-
-
+getActivarInformacionAdmin(): Observable<boolean> {
+  return this.originalInformacionAdmin.asObservable();
+}
 }
