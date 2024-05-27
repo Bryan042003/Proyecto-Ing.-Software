@@ -13,7 +13,7 @@ export class GestionDeAudiosComponent {
   audioPorPagina: number = 10;
   paginas: any[] = [];
   paginaActual: number = 0;
-  
+
   activarVistaInformacionAudio: boolean = false;
   audioSeleccionado!: Audio;
   opcionElegida: string = 'Ordenar por:';
@@ -24,6 +24,8 @@ export class GestionDeAudiosComponent {
   constructor(public pasarDatosService: PasarDatosService) { }
   ngOnInit() {
     this.cargarAudios();
+    this.pasarDatosService.setFlagConfirmarEliminacion(false);
+    this.pasarDatosService.setFlagEditarDatosAudio(false);
 
     this.pasarDatosService.getFlagEditarAudio().subscribe(flag => {
       this.activarVistaInformacionAudio = flag;
@@ -110,7 +112,7 @@ export class GestionDeAudiosComponent {
     this.paginateAudios();
   }
 
-  
+
   filtrando(tipoFiltrar: string) {
     this.opcionElegida = tipoFiltrar;
     this.pasarDatosService.setTipoFiltro(tipoFiltrar);
