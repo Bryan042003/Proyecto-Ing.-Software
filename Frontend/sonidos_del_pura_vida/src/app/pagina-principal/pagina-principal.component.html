@@ -189,7 +189,7 @@
 
 <!-- Modal sobre proyecto-->
 <div class="modal fade" id="sobreProyecto" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1500px; ">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1500px; ">
         <div class="modal-content" style="border-radius: 40px;">
             <div class="d-flex align-items-start">
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
@@ -202,7 +202,7 @@
 
             <h2 class="d-flex" style="place-content: center;">Sobre proyecto</h2>
 
-            <div class="modal-body d-flex" style="place-content: center;">
+            <div class="modal-body d-flex" style="place-content: center;margin-bottom:75px;">
                 <div class="card"
                     style="place-content: center; align-items: center; border: none;">
                     <img style="max-width: 500px; width: 100%; margin-top: 10px;" src="assets/imagenes/sonidosPV.png">
@@ -231,27 +231,71 @@
 
 <!-- Modal acerca de nosotros-->
 <div class="modal fade" id="acercaDeNosotros" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1500px; ">
-        <div class="modal-content" style="height: 800px; border-radius: 40px;">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1500px;">
+        <div class="modal-content" style="height: 100%; border-radius: 40px; overflow: hidden; position: relative; backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.5);">
             <div class="d-flex align-items-start">
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
                     style="background: transparent; border: none; margin: 20px;">
-                    <span class="material-symbols-outlined" style=" font-size: 40px;">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: #ffffff;">
                         cancel
                     </span>
                 </button>
             </div>
 
-            <h2 class="d-flex" style="place-content: center;">Acerca de nosotros</h2>
+            <h2 class="d-flex" style="place-content: center; z-index: 1; color: white;">Acerca de Nosotros</h2>
 
-            <div class="modal-body d-flex" style="place-content: center;">
-                <div class="card"
-                    style="place-content: center; align-items: center;  width: 90%;height: 85%; border: none;">
-                    <div style=" height: 70%; width:70%; margin-top: 20px;">
-                        <p> Escribir sobre nosotros
+            <div class="modal-body d-flex" style="place-content: center; z-index: 1;">
+                <div class="card" style="place-content: center; align-items: center; width: 90%; height: 85%; border: none; background: transparent; color: white;">
+                    <div style="height: 70%; width: 85%; margin-top: 20px; text-align: center;">
+                        <img src="assets/imagenes/logo tec.png" alt="">
+                        <p>
+                            Este proyecto ha sido desarrollado por un talentoso grupo de estudiantes del Tecnológico de Costa Rica. Nuestro objetivo es proporcionar soluciones innovadoras y efectivas a los desafíos actuales, aplicando los conocimientos adquiridos en nuestras respectivas disciplinas.
                         </p>
+                        <p>
+                            Estamos orgullosos del esfuerzo y la dedicación que cada miembro del equipo ha invertido en este proyecto. Su creatividad y compromiso han sido fundamentales para convertir nuestra visión en realidad.
+                        </p>
+                        <h3>Integrantes del Proyecto</h3>
+                        <div style="width: 100%;">
+                            <ul style="list-style-type: none; display: flex; flex-wrap: wrap; justify-content: center; padding: 0; width: 100%;">
+                                <li style="margin: 5px; background: rgba(51, 51, 51, 0.8); padding: 10px; border-radius: 10px; flex: 1 1 calc(25% - 40px); box-sizing: border-box;">
+                                    <img src="assets/imagenes/fotoBryan.jpg" alt="Juan Pérez" style="border-radius: 50%;width: 100px;height: 100px;">
+                                    <h4>Bryan Castro Solís</h4>
+                                    <p>
+                                        <a href="mailto:bryancastrosolis732@gmail.com" style="color: #1abc9c;">bryancastrosolis732&#64;gmail.com</a><br>
+                                        <a href="https://www.linkedin.com/in/bryancastrosolis/" style="color: #1abc9c;" target="_blank">LinkedIn</a> |
+                                        <a href="https://www.instagram.com/bc_cr04/" style="color: #1abc9c;" target="_blank">Instagram</a>
+                                    </p>
+                                </li>
+                                <li style="margin: 5px; background: rgba(51, 51, 51, 0.8); padding: 10px; border-radius: 10px; flex: 1 1 calc(25% - 40px); box-sizing: border-box;">
+                                    <img src="assets/imagenes/fotoGlori.jpg" alt="Juan Pérez" style="border-radius: 50%;width: 100px;height: 100px;">
+                                    <h4>Gloriana Bustamante Varela</h4>
+                                    <p>
+                                        <a href="mailto:Globv2803@gmail.com" style="color: #1abc9c;">Globv2803&#64;gmail.com</a><br>
+                                        <a href="https://www.linkedin.com/in/gloriana-bustamante-varela-8832262b5/" style="color: #1abc9c;" target="_blank">LinkedIn</a> |
+                                        <a href="https://www.instagram.com/globv_28/" style="color: #1abc9c;" target="_blank">Instagram</a>
+                                    </p>
+                                </li>
+                                <li style="margin:5px; background: rgba(51, 51, 51, 0.8); padding: 10px; border-radius: 10px; flex: 1 1 calc(25% - 40px); box-sizing: border-box;">
+                                    <img src="assets/imagenes/fotoNelson.jpg" alt="Juan Pérez" style="border-radius: 50%;width: 100px;height: 100px;">
+                                    <h4>Nelson Alvarado Navarro</h4>
+                                    <p>
+                                        <a href="mailto:NelsonAN2203@hotmail.com" style="color: #1abc9c;">NelsonAN2203&#64;hotmail.com</a><br>
+                                        <a href="https://www.linkedin.com/in/nelson-alvarado-navarro-690230310/" style="color: #1abc9c;"  target="_blank">LinkedIn</a> |
+                                        <a href="https://www.instagram.com/nelsonan2203/" style="color: #1abc9c;" target="_blank">Instagram</a>
+                                    </p>
+                                </li>
+                                <li style="margin: 5px; background: rgba(51, 51, 51, 0.8); padding:10px; border-radius: 10px; flex: 1 1 calc(25% - 40px); box-sizing: border-box;">
+                                    <img src="assets/imagenes/fotoRichard.jpg" alt="Juan Pérez" style="border-radius: 50%;width: 100px;height: 100px;">
+                                    <h4>Richard León Chinchilla</h4>
+                                    <p>
+                                        <a href="mailto:richardleonchinchilla@gmail.com " style="color: #1abc9c;">richardleonchinchilla&#64;gmail.com </a><br>
+                                        <a href="https://www.linkedin.com/in/richard-leon-73237022a/" style="color: #1abc9c;" target="_blank">LinkedIn</a> |
+                                        <a href="https://www.instagram.com/xxrichard29xx/" style="color: #1abc9c;" target="_blank">Instagram</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -259,9 +303,11 @@
 </div>
 
 
+
+
 <!-- Modal terminos de uso-->
 <div class="modal fade" id="terminosDeUso1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1500px; ">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1500px; ">
         <div class="modal-content" style="height: 800px; border-radius: 40px;">
             <div class="d-flex align-items-start">
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
