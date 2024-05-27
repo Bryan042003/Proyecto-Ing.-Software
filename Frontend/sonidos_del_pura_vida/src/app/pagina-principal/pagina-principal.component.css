@@ -64,6 +64,19 @@ p{
     color: white;
 }
 
+.fotoTec{
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 1rem;
+
+}
+
+@media only screen and (max-width:600px){
+    .fotoTec{
+        max-width: 100%;
+    }
+}
+
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
     #drop-area {
         width: 100%;
