@@ -14,21 +14,31 @@
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-xxl-4 col-md-6">
                 <div class="cardInfo position-relative">
+                  <div *ngIf="botonInactivo; else botonActivo">
                     <button class="position-absolute top-0 end-0 mt-2" style="background-color: transparent;border: none;" (click)="toggleEditable()">
                         <span class="material-symbols-outlined" style="font-size: 40px;">
                             edit_square
                         </span>
                     </button>
+                  </div>
+                  <ng-template #botonActivo>
+                    <button class="position-absolute top-0 end-0 mt-2" style="background-color: transparent;border: none;" (click)="toggleEditable()">
+                        <span class="material-symbols-outlined" style="font-size: 40px;  color: red;">
+                            edit_square
+                        </span>
+                    </button>
+                </ng-template>
+
                     <div class="card-body">
                         <h3 class="card-title">Id: <span>{{admin.id}}</span></h3>
                         <div class="d-flex align-items-center">
                             <h3 class="card-title mb-0">Nombre:  </h3>
-                            <input style="margin-left: 5px;" type="text"  placeholder="Nombre" [(ngModel)]="nombre" 
+                            <input style="margin-left: 5px;" type="text" placeholder="Nombre" [(ngModel)]="nombre"
                             [readOnly]="!esEditable" [class.line]="esEditable" (keyup.enter)="guardarCambios()">
                         </div>
 
                         <h3 class="card-title">Correo: <span>{{admin.correo}}</span></h3>
-                        
+
                     </div>
                 </div>
             </div>

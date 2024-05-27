@@ -57,6 +57,8 @@ export class PasarDatosService {
   private originalVistaAdmin =  new BehaviorSubject<boolean>(true);
   private originalInformacionAdmin = new BehaviorSubject<boolean>(false);
 
+  private nombreAdminPeril: string = '';
+
   constructor(private http: HttpClient) { }
 
   authAdmin(admin: any): Observable<any> {
@@ -279,4 +281,21 @@ setActivarInformacionAdmin(flag: boolean) {
 getActivarInformacionAdmin(): Observable<boolean> {
   return this.originalInformacionAdmin.asObservable();
 }
+
+editarNombreAdminPerfil(admin: FormData): Observable<any> {
+  return this.http.post(this.urlAdmin + 'editarAdminNombrePerfil.php', admin);
+}
+
+editarContraAdminPerfil(admin: FormData): Observable<any> {
+  return this.http.post(this.urlAdmin + 'editarContraAdminPerfil.php', admin);
+}
+
+setNombreAdminPerfil(nombre: string) {
+  this.nombreAdminPeril = nombre;
+}
+
+getNombreAdminPerfil() {
+  return this.nombreAdminPeril;
+}
+
 }

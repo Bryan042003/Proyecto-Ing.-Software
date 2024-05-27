@@ -5,6 +5,7 @@ class Administrador{
 
     private $tabla = "administrador";
 
+    public $id;
     public $nombre;
     public $correo;
     public $password;
@@ -58,6 +59,19 @@ class Administrador{
         }
         return false;
     }
+
+    public function editarAdmiNombrePerfil() {
+        $query = "UPDATE " . $this->tabla . " SET nombre = :nombre WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':nombre', $this->nombre);
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 }

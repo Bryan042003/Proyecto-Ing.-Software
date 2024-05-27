@@ -12,15 +12,18 @@ export class DashboardComponent implements OnInit{
 
   constructor(public pasarDatosService: PasarDatosService,private route:Router) { }
   admin: any;
-  flagPerfil: boolean = false;
-  flagGestionDeAudios: boolean = true;
+  flagPerfil: boolean = true;
+  flagGestionDeAudios: boolean = false;
   flagGestionDeAdministrador: boolean = false;
   flagHistorial: boolean = false;
   sidebarActive = false;
 
+  admin1 = this.pasarDatosService.getAdminFromToken();
+
+  guardando = this.pasarDatosService.setNombreAdminPerfil(this.admin1.nombre);
 
   seleccionarEspacio(espacioSeleccionado: string) {
-    
+
     switch (espacioSeleccionado) {
       case 'perfil':
         this.flagPerfil = true;
