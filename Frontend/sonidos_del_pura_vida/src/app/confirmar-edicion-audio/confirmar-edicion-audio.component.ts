@@ -229,8 +229,10 @@ export class ConfirmarEdicionAudioComponent{
     if (this.form.valid) {
       await this.obtenerCantonProvincia();
       if (!this.puntoInvalido) {
-
         const audio = new FormData();
+
+
+
         audio.append('id_audio', this.audio.id.toString());
         audio.append('titulo', this.form.get('titulo')?.value || '');
         audio.append('autor', this.form.get('autor')?.value || '');
@@ -242,17 +244,23 @@ export class ConfirmarEdicionAudioComponent{
         audio.append('id_administrador', this.idAdmin.toString());
         audio.append('motivo', this.form.get('motivo')?.value || '');
         
-        if (this.audioFile)
-          audio.append('AudioFile', this.audioFile, this.audioFile.name);
 
-        if (this.imagenFile)
+      
+        if (this.audioFile){
+          audio.append('AudioFile', this.audioFile, this.audioFile.name);
+          audio.append('rutaAudio', '');
+        }
+        else 
+          audio.append('rutaAudio', this.audioSrc.toString());
+
+        if (this.imagenFile){
           audio.append('imagen', this.imagenFile, this.imagenFile.name);
+          audio.append('rutaImagen', '');
+        }
+        else
+          audio.append('rutaImagen', this.imageSrc.toString());
 
         this.showAlertLoad();
-        console.log("estoy en confirmacion de edicion de audio");
-        audio.forEach((value, key) => {
-          console.log(key, value);
-        });
         this.pasarDatosService.getEditarAudio(audio).subscribe(
           (res) => {
             Swal.close();
@@ -306,7 +314,7 @@ export class ConfirmarEdicionAudioComponent{
 
   showAlertSuccess() {
     Swal.fire({
-      title: 'Edición de Audio guardado',
+      title: 'Audio editado correctamente',
       icon: 'success',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'

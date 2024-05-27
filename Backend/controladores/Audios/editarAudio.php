@@ -12,8 +12,9 @@ $db = Database::getInstance();
 $id_unico = uniqid();
 $response = array();
 
-if (isset($_POST["id_audio"],$_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_FILES["AudioFile"], $_POST["latitud"], $_POST["longitud"], $_POST["canton"], $_POST["provincia"], $_POST["id_administrador"], $_POST["motivo"])) {
+if (isset($_POST["id_audio"],$_POST["titulo"], $_POST["autor"], $_POST["comentarios"], $_POST["latitud"], $_POST["longitud"], $_POST["canton"], $_POST["provincia"], $_POST["id_administrador"], $_POST["motivo"])) {
     $audio = new Audio($db);
+   
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
         
         $imagen_name = $_FILES["imagen"]["name"];
@@ -41,35 +42,50 @@ if (isset($_POST["id_audio"],$_POST["titulo"], $_POST["autor"], $_POST["comentar
         }
 
     } else {
-        $direccion_image = $_ENV['DIR_IMGS_NOPHOTO'];
+        if($_POST['rutaImagen']==''){
+            $direccion_image = $_ENV['DIR_IMGS_NOPHOTO'];
+        }else{
+            $direccion_image = $_POST['rutaImagen'];
+        }
+        // $direccion_image = $_ENV['DIR_IMGS_NOPHOTO'];
+       // move_uploaded_file($temp_imagen_name, $folder_imagen);
         
     }
     
 
     // audio
-    $audiofile_name = $_FILES["AudioFile"]["name"];
-    $audiofile_type = $_FILES['AudioFile']['type'];
-    $audio_size = $_FILES["AudioFile"]["size"];
-    $temp_audiofile_name = $_FILES["AudioFile"]["tmp_name"];
-    $audio_unico = $id_unico. $audiofile_name;
-    $folder_audio = '../../../public/audios/'. $audio_unico;
 
-    $direccion_audiofile = $_ENV['DIR_AUDIOS']. $audio_unico;
-
-    $extension_audio = strtolower(pathinfo($audiofile_name, PATHINFO_EXTENSION));
-    $extensions_audio_allowed = array('mp3', 'wav', 'ogg', 'mp4','m4a');
-
-    if (in_array($extension_audio, $extensions_audio_allowed)) {
-        if ($audio_size > 50000000) { // 50MB en bytes
-            echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
-            return;
+    // echo $_POST["rutaAudio"];
+    if(isset($_FILES["AudioFile"]) && $_FILES["AudioFile"]["error"] == 0){
+        $audiofile_name = $_FILES["AudioFile"]["name"];
+        $audiofile_type = $_FILES['AudioFile']['type'];
+        $audio_size = $_FILES["AudioFile"]["size"];
+        $temp_audiofile_name = $_FILES["AudioFile"]["tmp_name"];
+        $audio_unico = $id_unico. $audiofile_name;
+        $folder_audio = '../../../public/audios/'. $audio_unico;
+    
+        $direccion_audiofile = $_ENV['DIR_AUDIOS']. $audio_unico;
+    
+        $extension_audio = strtolower(pathinfo($audiofile_name, PATHINFO_EXTENSION));
+        $extensions_audio_allowed = array('mp3', 'wav', 'ogg', 'mp4','m4a');
+    
+        if (in_array($extension_audio, $extensions_audio_allowed)) {
+            if ($audio_size > 50000000) { // 50MB en bytes
+                echo json_encode(array("ERROR" => "El tamaño del archivo es demasiado grande. Tamaño máximo permitido: 50MB."), JSON_UNESCAPED_UNICODE);
+                return;
+            } else {
+                move_uploaded_file($temp_audiofile_name, $folder_audio);
+            }
         } else {
-            move_uploaded_file($temp_audiofile_name, $folder_audio);
+            echo json_encode(array("ERROR" => "El tipo de archivo no está permitido. Formatos permitidos: mp3, wav, ogg, mp4."), JSON_UNESCAPED_UNICODE);
+            return;
         }
-    } else {
-        echo json_encode(array("ERROR" => "El tipo de archivo no está permitido. Formatos permitidos: mp3, wav, ogg, mp4."), JSON_UNESCAPED_UNICODE);
-        return;
     }
+    else{
+       
+        $direccion_audiofile = $_POST['rutaAudio'];
+   }
+
 
 
     // audio data
@@ -96,7 +112,7 @@ if (isset($_POST["id_audio"],$_POST["titulo"], $_POST["autor"], $_POST["comentar
     }
 } else {
     $response["mensaje"] = "No se recibieron los datos del formulario correctamente";
-    //echo json_encode(array("mensaje" => "No se recibieron los datos del formulario correctamente"));
+
 }
 echo json_encode($response, JSON_UNESCAPED_UNICODE);
 ?>
