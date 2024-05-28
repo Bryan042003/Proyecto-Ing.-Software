@@ -60,10 +60,21 @@ class Administrador{
         return false;
     }
 
-    public function editarAdmiNombrePerfil() {
+    public function editarAdmiNombrePerfil(){
         $query = "UPDATE " . $this->tabla . " SET nombre = :nombre WHERE id = :id";
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->bindParam(':nombre', $this->nombre);
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function editarAdmiContraPerfil() {
+        $query = "UPDATE " . $this->tabla . " SET password = :password WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':password', $this->password);
         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
         if ($stmt->execute()) {
             return true;

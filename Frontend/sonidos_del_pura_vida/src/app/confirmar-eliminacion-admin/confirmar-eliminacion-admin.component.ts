@@ -22,6 +22,10 @@ export class ConfirmarEliminacionAdminComponent {
     motivo: ['', [Validators.required, Validators.maxLength(255)]],
   });
 
+
+  adminActual = this.pasarDatosService.getAdminFromToken();
+  adminActualID = this.adminActual.id;
+
   async onSubmit() {
 
     if (this.form.valid) {
@@ -51,27 +55,29 @@ export class ConfirmarEliminacionAdminComponent {
   }
 
   eliminarAdministrador(){
-    this.pasarDatosService.deleteAdministrador(this.admin.id).subscribe(
-      (res) => {
-        Swal.close();
-        this.showAlertSuccess();
-        this.form.reset();
-        this.form.untouched;
+    if(this.adminActualID != this.admin.id){
+      this.pasarDatosService.deleteAdministrador(this.admin.id).subscribe(
+        (res) => {
+          Swal.close();
+          this.showAlertSuccess();
+          this.form.reset();
+          this.form.untouched;
 
-      },
-      (error) => {
-        console.log(error);
-        Swal.close();
-        this.showAlertError();
-      }
-    );
-
+        },
+        (error) => {
+          console.log(error);
+          Swal.close();
+          this.showAlertError();
+        }
+      );
+    } else {
+      this.showAlertErrorAdminLogin();
+    }
   }
 
   desactivarEliminar() {
     this.pasarDatosService.setActivarInformacionAdmin(true);
   }
-
 
   showAlertSuccess() {
     Swal.fire({
@@ -87,6 +93,15 @@ export class ConfirmarEliminacionAdminComponent {
   showAlertError() {
     Swal.fire({
       title: 'Error al eliminar el Administrador',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#001148'
+    });
+  }
+
+  showAlertErrorAdminLogin() {
+    Swal.fire({
+      title: 'ERROR! No se puede autoeliminar!',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'

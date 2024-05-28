@@ -29,27 +29,27 @@
                             <li class="page-item" [class.disabled]="paginaActual === 0">
                                 <a class="page-link" id="btn-paginacion" style="margin-right: 0.5rem; margin-bottom: 0.5rem;" (click)="paginaAnterior()">Anterior</a>
                             </li>
-                    
+
                             <li class="page-item" [class.disabled]="paginaGrupoActual === 0">
                                 <a class="page-link" id="btn-grupo-anterior" (click)="grupoAnterior()">...</a>
                             </li>
-                    
+
                             <ng-container *ngFor="let i of getPaginasGrupoActual()">
                                 <li class="page-item" [class.active]="i === paginaActual">
                                     <a class="page-link" id="btn-paginacion2" (click)="irAPagina(i)">{{ i + 1 }}</a>
                                 </li>
                             </ng-container>
-                    
+
                             <li class="page-item" [class.disabled]="paginaGrupoActual === maximoGrupos - 1">
                                 <a class="page-link" id="btn-grupo-siguiente" (click)="grupoSiguiente()">...</a>
                             </li>
-                    
+
                             <li class="page-item" [class.disabled]="paginaActual === paginas.length - 1">
                                 <a class="page-link" id="btn-paginacion" style="margin-left: 0.5rem;" (click)="paginaSiguiente()">Siguiente</a>
                             </li>
                         </ul>
                     </nav>
-                    
+
                     <div class="container" style=" overflow-y: auto; width: 90%; height:100%;padding: 20px;">
                         <div *ngFor="let admin of paginas[paginaActual]" (click)="activarVistaInfoAdmin(admin)">
                             <app-card-admin [admin]="admin"></app-card-admin>

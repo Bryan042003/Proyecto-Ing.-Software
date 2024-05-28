@@ -29,11 +29,11 @@ export class LoginComponent {
         (res: any) => {
           if(res.jwt){
             localStorage.setItem('jwt', res.jwt);
+            localStorage.setItem('contraAdmin', this.form.value.password || '');
             this.showAlertSuccess().then(() => {
               this.router.navigate(['/dashboard']);
-            
             });
-         
+
           }
           else{
             this.showAlertError();
@@ -48,7 +48,7 @@ export class LoginComponent {
     else{
       this.showAlertError();
     }
-   
+
   }
 
   viewpass() {
@@ -63,7 +63,7 @@ export class LoginComponent {
       timer: 1000,
       showConfirmButton: false
     });
-  
+
   }
   showAlertError() {
     Swal.fire({

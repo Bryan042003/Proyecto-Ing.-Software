@@ -18,11 +18,15 @@ export class DashboardComponent implements OnInit{
   flagHistorial: boolean = false;
   sidebarActive = false;
 
+  obteniendoContraseña = '';
+
   admin1 = this.pasarDatosService.getAdminFromToken();
 
   guardando = this.pasarDatosService.setNombreAdminPerfil(this.admin1.nombre);
 
   seleccionarEspacio(espacioSeleccionado: string) {
+    console.log("Contra admin guardada")
+    console.log(this.pasarDatosService.getContraAdminPerfil())
 
     switch (espacioSeleccionado) {
       case 'perfil':
@@ -64,6 +68,11 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.admin = this.pasarDatosService.getAdminFromToken();
+    this.obteniendoContraseña = this.pasarDatosService.getContraAdminPerfil();
+    this.pasarDatosService.setContraAdminPerfil(this.obteniendoContraseña);
+    console.log("Estamos en dashboard")
+    console.log(this.obteniendoContraseña)
+
   }
 
 

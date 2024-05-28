@@ -57,7 +57,8 @@ export class PasarDatosService {
   private originalVistaAdmin =  new BehaviorSubject<boolean>(true);
   private originalInformacionAdmin = new BehaviorSubject<boolean>(false);
 
-  private nombreAdminPeril: string = '';
+  private nombreAdminPerfil: string = '';
+  private contraAdminPerfil: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -287,15 +288,26 @@ editarNombreAdminPerfil(admin: FormData): Observable<any> {
 }
 
 editarContraAdminPerfil(admin: FormData): Observable<any> {
-  return this.http.post(this.urlAdmin + 'editarContraAdminPerfil.php', admin);
+  return this.http.post(this.urlAdmin + 'editarAdminContraPerfil.php', admin);
 }
 
 setNombreAdminPerfil(nombre: string) {
-  this.nombreAdminPeril = nombre;
+  this.nombreAdminPerfil = nombre;
 }
 
 getNombreAdminPerfil() {
-  return this.nombreAdminPeril;
+  return this.nombreAdminPerfil;
+}
+
+setContraAdminPerfil(contra: string) {
+  console.log("Entramos a guardar contraseña pasardatos 1")
+  console.log(contra)
+  console.log("Entramos a guardar contraseña pasardatos 2")
+  this.contraAdminPerfil = contra;
+}
+
+getContraAdminPerfil() {
+  return this.contraAdminPerfil;
 }
 
 }
