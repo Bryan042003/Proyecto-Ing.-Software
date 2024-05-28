@@ -64,16 +64,14 @@ span{
     font-weight: 400;
 }
 
-input{
+.input{
     border: none;
     background-color: transparent;
     width: 100%;
     font-size: 1.8rem;
-    font-weight: 400;
-
 }
 
-input:focus{
+.input:focus{
     outline: none;
 }
 

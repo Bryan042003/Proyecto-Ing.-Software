@@ -12,14 +12,16 @@
       <div class="col-xxl-6 col-md-12">
         <div class="cardInfo position-relative">
           <div *ngIf="botonEditarContraInactivo; else botonEditarContraActivo">
-            <button class="position-absolute top-1 end-0 mt-2" style="background-color: transparent; border: none; margin-right: 40px;" (click)="toggleEditableContra()">
+            <button class="position-absolute top-1 end-0 mt-2"
+              style="background-color: transparent; border: none; margin-right: 40px;" (click)="toggleEditableContra()">
               <span class="material-symbols-outlined" style="font-size: 42px;">
                 lock_reset
               </span>
             </button>
           </div>
           <ng-template #botonEditarContraActivo>
-            <button class="position-absolute top-1 end-0 mt-2" style="background-color: transparent; border: none; margin-right: 40px;" (click)="toggleEditableContra()">
+            <button class="position-absolute top-1 end-0 mt-2"
+              style="background-color: transparent; border: none; margin-right: 40px;" (click)="toggleEditableContra()">
               <span class="material-symbols-outlined" style="font-size: 42px; color: #DA291C;">
                 lock_reset
               </span>
@@ -27,14 +29,16 @@
           </ng-template>
 
           <div *ngIf="botonInactivo; else botonActivo">
-            <button class="position-absolute top-0 end-0 mt-2" style="background-color: transparent;border: none;" (click)="toggleEditable()">
+            <button class="position-absolute top-0 end-0 mt-2" style="background-color: transparent;border: none;"
+              (click)="toggleEditable()">
               <span class="material-symbols-outlined" style="font-size: 40px;">
                 edit_square
               </span>
             </button>
           </div>
           <ng-template #botonActivo>
-            <button class="position-absolute top-0 end-0 mt-2" style="background-color: transparent;border: none;" (click)="toggleEditable()">
+            <button class="position-absolute top-0 end-0 mt-2" style="background-color: transparent;border: none;"
+              (click)="toggleEditable()">
               <span class="material-symbols-outlined" style="font-size: 40px; color: #DA291C;">
                 edit_square
               </span>
@@ -45,7 +49,8 @@
             <h3 class="card-title">Id: <span>{{admin.id}}</span></h3>
             <div class="d-flex align-items-center">
               <h3 class="card-title mb-0">Nombre: </h3>
-              <input style="margin-left: 5px;" type="text" placeholder="Nombre" [(ngModel)]="nombre" [readOnly]="!esEditable" [class.line]="esEditable" (keyup.enter)="guardarCambiosNombre()">
+              <input class="input" style="margin-left: 5px;" type="text" placeholder="Nombre" [(ngModel)]="nombre"
+                [readOnly]="!esEditable" [class.line]="esEditable" (keyup.enter)="guardarCambiosNombre()">
             </div>
             <h3 class="card-title">Correo: <span>{{admin.correo}}</span></h3>
           </div>
@@ -53,13 +58,15 @@
       </div>
 
       <div class="col-xxl-6 col-md-12" *ngIf="CapaCambiarContraPerfil">
-        <form action=" "(ngSubmit)="editarContraPerfil()" [formGroup]="form">
+        <form action=" " (ngSubmit)="editarContraPerfil()" [formGroup]="form">
           <div class="cardInfo position-relative">
             <div class="card-body">
               <div class="d-flex align-items-center">
                 <h3 class="card-title mb-0">Contraseña:</h3>
-                <input style="margin-left: 5px; width: 80%;" [type]="changetype ? 'password' : 'text'" placeholder="Contraseña" id="password" [(ngModel)]="contraAdminStorage" required autofocus
-                  formControlName="password" [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched">
+                <input class="input" style="margin-left: 5px; width: 80%;" [type]="changetype ? 'password' : 'text'"
+                  placeholder="Contraseña" id="password" [(ngModel)]="contraAdminStorage" required autofocus
+                  formControlName="password"
+                  [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched">
               </div>
               <div class="invalid-feedback d-block">
                 <div *ngIf="form.get('password')?.errors?.['noNumber']">
@@ -73,24 +80,34 @@
                 </div>
               </div>
               <div class="d-flex" style="place-content: center;">
-                <progress id="passwordStrength" [value]="getPasswordStrength()" max="4" style="width: 90%; height: 5px; margin-top: 2px;"></progress>
+                <progress id="passwordStrength" [value]="getPasswordStrength()" max="4"
+                  style="width: 90%; height: 5px; margin-top: 2px;"></progress>
               </div>
               <div class="d-flex align-items-center" style="margin-top: 30px;">
                 <h3 class="card-title mb-0" style="white-space: nowrap;">Confirmar Contraseña:</h3>
-                <input style="margin-left: 5px; width: 80%;" placeholder="Confirmar Contraseña" [type]="changetype ? 'password' : 'text'" id="confirmPassword" name="confirmPassword"
-                  formControlName="confirmPassword" [class.is-invalid]="form.errors?.['passwordsNotMatch'] && form.get('confirmPassword')?.touched">
+                <input class="input" style="margin-left: 5px; width: 80%;" placeholder="Confirmar Contraseña"
+                  [type]="changetype ? 'password' : 'text'" id="confirmPassword" name="confirmPassword"
+                  formControlName="confirmPassword"
+                  [class.is-invalid]="form.errors?.['passwordsNotMatch'] && form.get('confirmPassword')?.touched">
               </div>
-              <div class="invalid-feedback d-block" *ngIf="form.errors?.['passwordsNotMatch'] && form.get('confirmPassword')?.touched">
+              <div class="invalid-feedback d-block"
+                *ngIf="form.errors?.['passwordsNotMatch'] && form.get('confirmPassword')?.touched">
                 Las contraseñas no coinciden.
               </div>
-            </div>
-            <div>
-              <div class="">
-                <input type="checkbox" (change)="viewpass()" [checked]="!visible"> Mostrar contraseña
+
+
+              <div style="display: flex; width: 100%; height: 100%;">
+                <input type="checkbox" (change)="viewpass()" [checked]="!visible">
+                <div style="margin-left: 5px;">
+                  Mostrar Contraseña
+                </div>
               </div>
+
             </div>
+
             <div class="col-md-12 d-flex justify-content-center" style="margin-top: 20px; margin-bottom: 20px;">
-              <button type="submit" class="btn btn-primary btn-lg botonRegistrar" style="background-color: #001148;"> Editar Contraseña</button>
+              <button type="submit" class="btn btn-primary btn-lg botonRegistrar" style="background-color: #001148;">
+                Editar Contraseña</button>
             </div>
           </div>
         </form>
