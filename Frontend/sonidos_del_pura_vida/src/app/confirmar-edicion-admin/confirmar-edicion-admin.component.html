@@ -1,8 +1,7 @@
 <div class="container" style="height: 100%;">
     <div class="card" style="display: flex; place-content: center; border: none; height: 100%;">
         <div id="botonCerrar" style="width: 100%; margin: 20px; display: flex; justify-content: left;">
-            <button type="button" class="close" style="background: transparent; border: none;"
-                onclick="desactivarEdicionDatosAdmin()">
+            <button type="button" class="close" style="background: transparent; border: none;" onclick="desactivarEdicionDatosAdmin()">
                 <span class="material-symbols-outlined" style="font-size: 40px;">
                     undo
                 </span>
@@ -15,22 +14,20 @@
                     <div style="display: flex; width: 100%; justify-content: center;">
                         <h1><strong>Editar Administrador</strong></h1>
                     </div>
-                    <form id="editarAdminForm">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nuevo nombre">
+                            <input type="text" class="form-control" id="nombre" formControlName="nombre" [(ngModel)]="admin.nombre">
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <input type="email" class="form-control" id="correo" placeholder="Ingrese el nuevo correo">
+                            <input type="email" class="form-control" id="correo" formControlName="email" [(ngModel)]="admin.correo">
                         </div>
                         <div class="form-group">
                             <label for="contrasena">Contraseña:</label>
-                            <input type="password" class="form-control" id="contrasena"
-                                placeholder="Ingrese la nueva contraseña">
+                            <input type="text" class="form-control" id="contrasena"   placeholder="Ingrese la contraseña nueva">
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="guardarCambiosAdmin()">Guardar
-                            Cambios</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </form>
                 </div>
             </div>

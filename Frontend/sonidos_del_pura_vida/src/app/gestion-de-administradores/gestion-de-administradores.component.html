@@ -67,7 +67,7 @@
                       <app-editar-admin [admin]="adminSeleccionado"></app-editar-admin>
                    </div>
                     <div *ngIf="editarAdmin">
-                        <app-confirmar-edicion-admin></app-confirmar-edicion-admin>
+                        <app-confirmar-edicion-admin [admin] = "adminSeleccionado"> </app-confirmar-edicion-admin>
                     </div>
                     <div *ngIf="eliminarAdmin">
                       <app-confirmar-eliminacion-admin [admin]="adminSeleccionado"></app-confirmar-eliminacion-admin>

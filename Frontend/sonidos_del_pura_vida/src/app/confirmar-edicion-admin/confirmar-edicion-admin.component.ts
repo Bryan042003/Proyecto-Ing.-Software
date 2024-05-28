@@ -1,59 +1,59 @@
-import { Component,Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Admin } from '../models/Admin.model';
 import { PasarDatosService } from '../services/pasar-datos.service';
-import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-confirmar-edicion-admin',
   templateUrl: './confirmar-edicion-admin.component.html',
-  styleUrl: './confirmar-edicion-admin.component.css'
+  styleUrls: ['./confirmar-edicion-admin.component.css']
 })
-export class ConfirmarEdicionAdminComponent implements OnChanges{
+export class ConfirmarEdicionAdminComponent implements OnChanges {
   @Input() admin!: Admin;
-  private idAdmin: number = 2;
 
-  nombre: string = '';
-  email: string = '';
-  password: string = '';
-  constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) { }
+  form: FormGroup;
 
+  constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) {
+    this.form = this.fb.group({
+      nombre: ['', [Validators.required, Validators.maxLength(255)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['admin']) {
-      this.nombre = this.admin.nombre;
-      this.email = this.admin.correo;
-      this.password = this.admin.password;
+    if (changes['admin'] && this.admin) {
+      this.form.patchValue({
+        nombre: this.admin.nombre,
+        email: this.admin.correo,
+        password: this.admin.password
+      });
     }
   }
 
-  desactivarEdicionDatosAdmin(){
-   /// aqui desactivarla y que se nos active el de de ver información de admin
+  desactivarEdicionDatosAdmin() {
+    // Aquí desactivarla y que se nos active el de ver información de admin
     this.pasarDatosService.setActivarInformacionAdmin(true);
   }
 
-  form = this.fb.group({
-    nombre: ['', [Validators.required, Validators.maxLength(255)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
-});
-
-
   async onSubmit() {
+    if (this.form.valid) {
+      const datosActualizados = this.form.value;
+      console.log(datosActualizados);
 
-    if(this.form.valid){
-      const motivo = this.form.get('motivo')?.value || '';
-      console.log(motivo);
+      // Aquí puedes agregar la lógica para guardar los cambios en el backend
+      // ...
 
-      this.showAlertLoad();
+      this.showAlertSuccess();
+    } else {
+      this.showAlertInvalid();
+    }
   }
-
-}
 
   showAlertSuccess() {
     Swal.fire({
-      title: 'Admin Eliminado',
+      title: 'Cambios Guardados',
       icon: 'success',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -64,7 +64,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
 
   showAlertError() {
     Swal.fire({
-      title: 'Error al eliminar el Admin',
+      title: 'Error al guardar los cambios',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -74,7 +74,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
   showAlertInvalid() {
     Swal.fire({
       title: 'Campos inválidos',
-      text: 'Por favor, revise los campos de motivo',
+      text: 'Por favor, revise los campos del formulario',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -89,9 +89,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
       allowOutsideClick: false,
       allowEscapeKey: false,
       allowEnterKey: false,
-
     });
     Swal.showLoading();
   }
-
 }
