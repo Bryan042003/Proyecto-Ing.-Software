@@ -16,6 +16,7 @@
     background-color: #001148;
     color: white;
     box-shadow: none;
+    cursor: pointer;
 
 }
 
@@ -36,7 +37,10 @@
     color: white;
 
 }
+a{
+    color: #000;
 
+}
 
 .page-item.active .page-link {
     color: #fff;

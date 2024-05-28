@@ -57,10 +57,14 @@ p{
 
 
 
-#btn-paginacion:hover {
+#btn-paginacion {
     background-color: #001148;
     color: white;
+    box-shadow: none;
+    cursor: pointer;
+
 }
+
 .botonCerrar:hover{
     background-color: #DA291C;
 

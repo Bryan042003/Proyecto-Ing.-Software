@@ -15,7 +15,7 @@
     background-color: #001148;
     color: white;
     box-shadow: none;
-
+    cursor: pointer;
 }
 
 #btn-paginacion:hover {

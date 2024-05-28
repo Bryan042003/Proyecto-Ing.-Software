@@ -13,6 +13,9 @@ export class GestionDeAdministradoresComponent {
   adminPorPagina: number = 10;
   paginas: any[] = [];
   paginaActual: number = 0;
+  paginaGrupoActual: number = 0;
+  paginasPorGrupo: number = 5;
+  maximoGrupos: number = 0;
 
   activarVistaInformacionAdmin: boolean = false;
   adminSeleccionado!: Admin;
@@ -80,22 +83,47 @@ paginateAdmin() {
   for (let i = 0; i < this.admins.length; i += this.adminPorPagina) {
     this.paginas.push(this.admins.slice(i, i + this.adminPorPagina));
   }
+  this.maximoGrupos = Math.ceil(this.paginas.length / this.paginasPorGrupo); // Número de grupos de páginas
 }
 irAPagina(pagina: number) {
   this.paginaActual = pagina;
+  this.paginaGrupoActual = Math.floor(this.paginaActual / this.paginasPorGrupo); // Actualizar el grupo de páginas
+
 }
 
 paginaAnterior() {
   if (this.paginaActual > 0) {
     this.paginaActual--;
+    this.paginaGrupoActual = Math.floor(this.paginaActual / this.paginasPorGrupo);
+
   }
 }
 
 paginaSiguiente() {
   if (this.paginaActual < this.paginas.length - 1) {
     this.paginaActual++;
+    this.paginaGrupoActual = Math.floor(this.paginaActual / this.paginasPorGrupo);
   }
 }
+  // Métodos para cambiar de grupo de páginas
+  grupoAnterior() {
+    if (this.paginaGrupoActual > 0) {
+      this.paginaGrupoActual--;
+    }
+  }
+
+  grupoSiguiente() {
+    if (this.paginaGrupoActual < this.maximoGrupos - 1) {
+      this.paginaGrupoActual++;
+    }
+  }
+
+  // Obtener las páginas del grupo actual
+  getPaginasGrupoActual(): number[] {
+    const inicio = this.paginaGrupoActual * this.paginasPorGrupo;
+    const fin = inicio + this.paginasPorGrupo;
+    return this.paginas.slice(inicio, fin).map((_, i) => inicio + i); // Devolver un array con las páginas del grupo actual
+  }
 
 cargarAdmins() {
   this.pasarDatosService.getAdmins().subscribe(
