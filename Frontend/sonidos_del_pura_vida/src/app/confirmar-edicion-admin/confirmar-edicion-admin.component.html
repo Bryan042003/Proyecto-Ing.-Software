@@ -1,22 +1,39 @@
-<div class="container " style="height: 100%;">
-    <div class="card" style="display: flex;place-content: center; border: none;height: 100%;">
-        <div id="botonCerrar" style="width: 100%; margin:20px;display: flex;justify-content: left;">
-            <button type="button" class="close" style="background: transparent; border: none; "
-                (click)="desactivarEdicionDatosAdmin()">
-                <span class="material-symbols-outlined" style=" font-size: 40px; ">
+<div class="container" style="height: 100%;">
+    <div class="card" style="display: flex; place-content: center; border: none; height: 100%;">
+        <div id="botonCerrar" style="width: 100%; margin: 20px; display: flex; justify-content: left;">
+            <button type="button" class="close" style="background: transparent; border: none;"
+                onclick="desactivarEdicionDatosAdmin()">
+                <span class="material-symbols-outlined" style="font-size: 40px;">
                     undo
                 </span>
             </button>
         </div>
 
-        <div class="row" style="place-content: center;display: flex;">
+        <div class="row" style="place-content: center; display: flex;">
             <div class="col-md-12">
                 <div class="card-body">
-                    <div style="display: flex;width: 100%; justify-content: center;">
+                    <div style="display: flex; width: 100%; justify-content: center;">
                         <h1><strong>Editar Administrador</strong></h1>
                     </div>
-
+                    <form id="editarAdminForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nuevo nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo:</label>
+                            <input type="email" class="form-control" id="correo" placeholder="Ingrese el nuevo correo">
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasena">Contraseña:</label>
+                            <input type="password" class="form-control" id="contrasena"
+                                placeholder="Ingrese la nueva contraseña">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="guardarCambiosAdmin()">Guardar
+                            Cambios</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>

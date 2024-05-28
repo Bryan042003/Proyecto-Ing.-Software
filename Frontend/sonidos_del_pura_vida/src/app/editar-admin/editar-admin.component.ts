@@ -27,6 +27,8 @@ export class EditarAdminComponent {
   }
 
   activarEditar(){
+    this.flagEditar = true;
     this.pasarDatosService.setFlagEditarDatosAdmin(true);
+    
   }
 }

@@ -53,7 +53,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
 
   showAlertSuccess() {
     Swal.fire({
-      title: 'Audio Eliminado',
+      title: 'Admin Eliminado',
       icon: 'success',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -64,7 +64,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges{
 
   showAlertError() {
     Swal.fire({
-      title: 'Error al eliminar el audio',
+      title: 'Error al eliminar el Admin',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
