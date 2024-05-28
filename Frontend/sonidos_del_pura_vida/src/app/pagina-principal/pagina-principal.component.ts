@@ -11,9 +11,12 @@ import { FormCrearAudioComponent } from '../form-crear-audio/form-crear-audio.co
 export class PaginaPrincipalComponent implements OnInit {
   audios: Audio[] = [];
 
-  audiosPorPagina: number = 10;
+  audiosPorPagina: number = 3;
   paginas: any[] = []; 
   paginaActual: number = 0;
+  paginaGrupoActual: number = 0;
+  paginasPorGrupo: number = 5;
+  maximoGrupos: number = 0;
 
   audiosFilter: Audio[] = [];
   audiosFiltradosProvincia: Audio[] = [];
@@ -43,27 +46,52 @@ export class PaginaPrincipalComponent implements OnInit {
     this.paginaActual = 0;
     this.paginas = [];
     const listaAudios = this.estadoFiltro ? this.audiosFilter : this.audios;
-  
+
     for (let i = 0; i < listaAudios.length; i += this.audiosPorPagina) {
       this.paginas.push(listaAudios.slice(i, i + this.audiosPorPagina));
     }
+
+    this.maximoGrupos = Math.ceil(this.paginas.length / this.paginasPorGrupo); // Número de grupos de páginas
   }
 
-
+  // Métodos para cambiar de página
   irAPagina(pagina: number) {
     this.paginaActual = pagina;
+    this.paginaGrupoActual = Math.floor(this.paginaActual / this.paginasPorGrupo); // Actualizar el grupo de páginas
   }
-  
+
   paginaAnterior() {
     if (this.paginaActual > 0) {
       this.paginaActual--;
+      this.paginaGrupoActual = Math.floor(this.paginaActual / this.paginasPorGrupo);
     }
   }
-  
+
   paginaSiguiente() {
     if (this.paginaActual < this.paginas.length - 1) {
       this.paginaActual++;
+      this.paginaGrupoActual = Math.floor(this.paginaActual / this.paginasPorGrupo);
     }
+  }
+
+  // Métodos para cambiar de grupo de páginas
+  grupoAnterior() {
+    if (this.paginaGrupoActual > 0) {
+      this.paginaGrupoActual--;
+    }
+  }
+
+  grupoSiguiente() {
+    if (this.paginaGrupoActual < this.maximoGrupos - 1) {
+      this.paginaGrupoActual++;
+    }
+  }
+
+  // Obtener las páginas del grupo actual
+  getPaginasGrupoActual(): number[] {
+    const inicio = this.paginaGrupoActual * this.paginasPorGrupo; 
+    const fin = inicio + this.paginasPorGrupo;
+    return this.paginas.slice(inicio, fin).map((_, i) => inicio + i); // Devolver un array con las páginas del grupo actual
   }
 
   cargarAudios() {

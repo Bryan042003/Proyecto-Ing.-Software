@@ -17,6 +17,7 @@
     background-color: #001148;
     color: white;
     box-shadow: none;
+    cursor: pointer;
 
 }
 
@@ -57,12 +58,6 @@ p{
     display: flex;
 }
 
-
-
-#btn-paginacion:hover {
-    background-color: #001148;
-    color: white;
-}
 
 .fotoTec{
     max-width: 50%;
