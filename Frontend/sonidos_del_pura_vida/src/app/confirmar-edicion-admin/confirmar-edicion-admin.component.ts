@@ -16,6 +16,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
 
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) {
     this.form = this.fb.group({
+      id: [''],
       nombre: ['', [Validators.required, Validators.maxLength(255)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['']
@@ -25,6 +26,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['admin'] && this.admin) {
       this.form.patchValue({
+        id: this.admin.id,
         nombre: this.admin.nombre,
         email: this.admin.correo,
         password: ''
@@ -39,13 +41,13 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
   async onSubmit() {
     if (this.form.valid) {
       const datosActualizados = this.form.value;
-      console.log(datosActualizados);
 
       this.showAlertLoad();
 
       const formDataAdmin = new FormData();
+      formDataAdmin.append('id', datosActualizados.id);
       formDataAdmin.append('nombre', datosActualizados.nombre);
-      formDataAdmin.append('email', datosActualizados.email);
+      formDataAdmin.append('correo', datosActualizados.email);
 
       const formDataPassword = new FormData();
       formDataPassword.append('password', datosActualizados.password);
@@ -82,8 +84,6 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       icon: 'success',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
-    }).then(() => {
-      window.location.reload();
     });
   }
 
