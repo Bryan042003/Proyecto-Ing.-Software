@@ -83,7 +83,24 @@ class Administrador{
     }
 
 
+    public function editarAdmin() {
+        $query = "UPDATE " . $this->tabla . " SET nombre = :nombre, correo = :correo WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindParam(':nombre', $this->nombre);
+        $stmt->bindParam(':correo', $this->correo);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 
+    public function cambiarContraAdmin($admin) {
+        $query = "UPDATE " . $this->tabla . " SET password = :password WHERE id = :id";
+        $stmt = $this->conn->getConnection()->prepare($query);
+        $stmt->bindParam(':password', $admin->password);
+        $stmt->bindParam(':id', $admin->id);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 
 }
 ?>

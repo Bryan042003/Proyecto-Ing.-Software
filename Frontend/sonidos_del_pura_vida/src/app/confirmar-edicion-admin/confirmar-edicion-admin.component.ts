@@ -18,7 +18,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
     this.form = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(255)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['']
     });
   }
 
@@ -27,13 +27,12 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       this.form.patchValue({
         nombre: this.admin.nombre,
         email: this.admin.correo,
-        password: this.admin.password
+        password: ''
       });
     }
   }
 
   desactivarEdicionDatosAdmin() {
-    // Aquí desactivarla y que se nos active el de ver información de admin
     this.pasarDatosService.setActivarInformacionAdmin(true);
   }
 
@@ -42,10 +41,36 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       const datosActualizados = this.form.value;
       console.log(datosActualizados);
 
-      // Aquí puedes agregar la lógica para guardar los cambios en el backend
-      // ...
+      this.showAlertLoad();
 
-      this.showAlertSuccess();
+      const formDataAdmin = new FormData();
+      formDataAdmin.append('nombre', datosActualizados.nombre);
+      formDataAdmin.append('email', datosActualizados.email);
+
+      const formDataPassword = new FormData();
+      formDataPassword.append('password', datosActualizados.password);
+
+      // Realizar la llamada para actualizar nombre y correo
+      this.pasarDatosService.getEditarAdmin(formDataAdmin).subscribe(
+        response => {
+          if (datosActualizados.password) {
+            // Si hay una nueva contraseña, realizar la llamada para cambiar la contraseña
+            this.pasarDatosService.getEditarContraAdmin(formDataPassword).subscribe(
+              response => {
+                this.showAlertSuccess();
+              },
+              error => {
+                this.showAlertError();
+              }
+            );
+          } else {
+            this.showAlertSuccess();
+          }
+        },
+        error => {
+          this.showAlertError();
+        }
+      );
     } else {
       this.showAlertInvalid();
     }
@@ -93,3 +118,4 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
     Swal.showLoading();
   }
 }
+

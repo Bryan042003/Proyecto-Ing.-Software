@@ -291,6 +291,14 @@ editarContraAdminPerfil(admin: FormData): Observable<any> {
   return this.http.post(this.urlAdmin + 'editarAdminContraPerfil.php', admin);
 }
 
+getEditarAdmin(admin: FormData): Observable<any> {
+  return this.http.post(this.urlAdmin + 'editarAdmin.php', admin);
+}
+
+getEditarContraAdmin(admin: FormData): Observable<any> {
+  return this.http.post(this.urlAdmin + 'cambiarContraAdmin.php', admin);
+}
+
 setNombreAdminPerfil(nombre: string) {
   this.nombreAdminPerfil = nombre;
 }
