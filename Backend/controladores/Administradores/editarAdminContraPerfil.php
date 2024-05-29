@@ -9,8 +9,6 @@ include_once '../../modelos/Administrador.php';
 $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
 $db = Database::getInstance();
-$response = array();
-
 if (isset($_POST["id"], $_POST["password"])) {
 
     $admin = new Administrador($db);

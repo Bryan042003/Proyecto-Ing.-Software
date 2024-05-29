@@ -10,7 +10,6 @@ $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
 $db = Database::getInstance();
 $response = array();
-
 if (isset($_POST["id"], $_POST["nombre"])) {
 
     $admin = new Administrador($db);

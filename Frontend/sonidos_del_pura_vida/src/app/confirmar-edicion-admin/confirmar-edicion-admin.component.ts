@@ -50,6 +50,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       formDataAdmin.append('correo', datosActualizados.email);
 
       const formDataPassword = new FormData();
+      formDataPassword.append('id', datosActualizados.id);
       formDataPassword.append('password', datosActualizados.password);
 
       // Realizar la llamada para actualizar nombre y correo
@@ -62,6 +63,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
                 this.showAlertSuccess();
               },
               error => {
+                console.log(error);
                 this.showAlertError();
               }
             );
