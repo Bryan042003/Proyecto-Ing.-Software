@@ -29,8 +29,6 @@ export class PasarDatosService {
 
   private flagEditarAdmin = new BehaviorSubject<boolean>(false);
   private flagEditarDatosAdmin = new BehaviorSubject<boolean>(false);
-
-
   private flagEliminacionAdmin = new BehaviorSubject<boolean>(false);
 
 
