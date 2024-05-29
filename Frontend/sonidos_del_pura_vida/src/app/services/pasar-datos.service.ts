@@ -204,6 +204,10 @@ export class PasarDatosService {
     return this.AdminGuardar;
   }
 
+  getAdminById(id: string): Observable<any> {
+    return this.http.get(this.urlAdmin + 'obtenerAdminById.php?id=' + id);
+  }
+
   deleteAdministrador(id: string) {
     return this.http.delete(this.urlAdmin + 'removerAdministrador.php?id=' + id);
   }
