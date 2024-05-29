@@ -12,6 +12,10 @@ import Swal from 'sweetalert2';
 export class ConfirmarEdicionAdminComponent implements OnChanges {
   @Input() admin!: Admin;
 
+  flagEditar = true;
+  visible:boolean = true;
+  changetype: boolean = true;
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) {
@@ -21,6 +25,46 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       email: ['', [Validators.required, Validators.email]],
       password: ['']
     });
+  }
+
+
+
+  getPasswordStrength() {
+    let contraActual = (<HTMLInputElement>document.getElementById("password")).value;
+    let strength = 0;
+
+    if (contraActual.length > 7) {
+      strength++;
+    }
+    if (contraActual.match(/[a-z]/)) {
+      strength++;
+    }
+    if (contraActual.match(/[A-Z]/)) {
+      strength++;
+    }
+    if (contraActual.match(/[0-9]/)) {
+      strength++;
+    }
+    if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(contraActual)) {
+      strength++;
+    }
+
+    let progressBar = <HTMLProgressElement>document.getElementById("passwordStrength");
+    progressBar.value = strength;
+
+    if (strength <= 1) {
+      progressBar.classList.add('weak');
+    } else if (strength <= 4) {
+      progressBar.classList.add('medium');
+    } else {
+      progressBar.classList.add('strong');
+    }
+    return strength;
+  }
+
+  viewpass() {
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -34,8 +78,11 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
     }
   }
 
-  desactivarEdicionDatosAdmin() {
-    this.pasarDatosService.setActivarInformacionAdmin(true);
+
+  desactivarEditar(){
+    this.flagEditar = false;
+    this.pasarDatosService.setActivarOriginalVistaAdmin(true);
+    
   }
 
   async onSubmit() {
