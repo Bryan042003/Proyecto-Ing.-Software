@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PasarDatosService } from '../services/pasar-datos.service';
 import { Admin } from '../models/Admin.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-admin',
@@ -13,6 +14,9 @@ export class EditarAdminComponent {
   flagCerrarEditar = false;
   flagEditar = false;
 
+  adminActual = this.pasarDatosService.getAdminFromToken();
+  adminActualID = this.adminActual.id;
+
   constructor(public pasarDatosService: PasarDatosService) { }
    cerrarEditar(){
     this.pasarDatosService.setActivarOriginalVistaAdmin(true);
@@ -22,13 +26,44 @@ export class EditarAdminComponent {
   }
 
   activarEliminar(){
-    this.pasarDatosService.setFlagEliminarAdmin(true);
-    this.flagEliminar = true;
+
+    if(this.adminActualID != this.admin.id){
+      this.pasarDatosService.setFlagEliminarAdmin(true);
+      this.flagEliminar = true;
+    } else {
+      this.showAlertErrorEliminarAdminActual();
+
+    }
+
   }
 
   activarEditar(){
-    this.flagEditar = true;
-    this.pasarDatosService.setFlagEditarDatosAdmin(true);
-    
+
+    if(this.adminActualID != this.admin.id){
+      this.flagEditar = true;
+      this.pasarDatosService.setFlagEditarDatosAdmin(true);
+    } else {
+      this.showAlertErrorEditarAdminActual();
+    }
+
   }
+
+  showAlertErrorEliminarAdminActual() {
+    Swal.fire({
+      title: 'ERROR! No se puede autoeliminar!',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#001148'
+    });
+  }
+
+  showAlertErrorEditarAdminActual() {
+    Swal.fire({
+      title: 'ERROR! Para autoeditarse hazlo desde Perfil!',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#001148'
+    });
+  }
+
 }

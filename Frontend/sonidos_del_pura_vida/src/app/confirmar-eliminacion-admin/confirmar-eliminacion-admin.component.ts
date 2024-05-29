@@ -55,7 +55,6 @@ export class ConfirmarEliminacionAdminComponent {
   }
 
   eliminarAdministrador(){
-    if(this.adminActualID != this.admin.id){
       this.pasarDatosService.deleteAdministrador(this.admin.id).subscribe(
         (res) => {
           Swal.close();
@@ -70,9 +69,6 @@ export class ConfirmarEliminacionAdminComponent {
           this.showAlertError();
         }
       );
-    } else {
-      this.showAlertErrorAdminLogin();
-    }
   }
 
   desactivarEliminar() {
