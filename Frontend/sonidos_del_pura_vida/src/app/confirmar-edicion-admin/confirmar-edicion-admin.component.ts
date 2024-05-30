@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Admin } from '../models/Admin.model';
 import { PasarDatosService } from '../services/pasar-datos.service';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -25,11 +25,23 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
     id: [''],
     nombre: ['', [Validators.required, Validators.maxLength(50)]],
     correo: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(this.emailPattern)]],
-    password: ['',[Validators.required, Validators.maxLength(50), this.hasNumber, this.hasCapitalCase, this.hasEightCharacters]],
-    }
-  );
+    password: ['', Validators.compose([
+      this.optionalValidator(Validators.required),
+      this.optionalValidator(Validators.maxLength(50)),
+      this.optionalValidator(this.hasNumber),
+      this.optionalValidator(this.hasCapitalCase),
+      this.optionalValidator(this.hasEightCharacters)
+    ])],
+  });
 
-  hasNumber(control: FormControl): {[s: string]: boolean} | null {
+  optionalValidator(validator: ValidatorFn): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const isEmpty = (control.value || '').trim().length === 0;
+      return isEmpty ? null : validator(control);
+    };
+  }
+
+  hasNumber(control: AbstractControl): {[s: string]: boolean} | null {
     const numReg = /\d/;
     if (!control.value || !numReg.test(control.value)) {
       return { noNumber: true };
@@ -37,7 +49,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
     return null;
   }
 
-  hasCapitalCase(control: FormControl): {[s: string]: boolean} | null {
+  hasCapitalCase(control: AbstractControl): {[s: string]: boolean} | null {
     const capitalReg = /[A-Z]/;
     if (!control.value || !capitalReg.test(control.value)) {
       return { noCapitalCase: true };
@@ -45,7 +57,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
     return null;
   }
 
-  hasEightCharacters(control: FormControl): {[s: string]: boolean} | null {
+  hasEightCharacters(control: AbstractControl): {[s: string]: boolean} | null {
     if (!control.value || control.value.length < 8) {
       return { lessThanEightCharacters: true };
     }
