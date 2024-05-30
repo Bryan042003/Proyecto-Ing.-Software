@@ -243,14 +243,14 @@ export class ConfirmarEdicionAudioComponent{
         audio.append('provincia', this.form.get('provincia')?.value || '');
         audio.append('id_administrador', this.idAdmin.toString());
         audio.append('motivo', this.form.get('motivo')?.value || '');
-        
 
-      
+
+
         if (this.audioFile){
           audio.append('AudioFile', this.audioFile, this.audioFile.name);
           audio.append('rutaAudio', '');
         }
-        else 
+        else
           audio.append('rutaAudio', this.audioSrc.toString());
 
         if (this.imagenFile){
@@ -297,7 +297,7 @@ export class ConfirmarEdicionAudioComponent{
         this.map.invalidateSize();
       }
     }, 200);
-  
+
     this.audioSrc = this.audio.ruta_audio;
     this.imageSrc = this.audio.ruta_imagen;
 

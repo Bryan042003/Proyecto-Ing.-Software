@@ -26,7 +26,7 @@
             <div class="row mt-3">
               <label class="form-label" for="correo">Correo: </label>
               <div class="input-group has-validation">
-                <input type="email" class="form-control" id="correo" formControlName="email">
+                <input type="email" class="form-control" id="correo" formControlName="correo" [class.is-invalid]="form.get('correo')?.invalid && form.get('correo')?.touched">
                 <div class="invalid-feedback" *ngIf="form.get('correo')?.invalid && form.get('correo')?.touched" style="width: 100%;">
                   Debe ingresar un correo válido y que no exceda 50 caracteres
                 </div>

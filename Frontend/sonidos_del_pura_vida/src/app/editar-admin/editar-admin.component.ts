@@ -50,7 +50,7 @@ export class EditarAdminComponent {
 
   showAlertErrorEliminarAdminActual() {
     Swal.fire({
-      title: 'ERROR! No se puede autoeliminar!',
+      title: 'No se puede autoeliminar!',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
@@ -59,7 +59,7 @@ export class EditarAdminComponent {
 
   showAlertErrorEditarAdminActual() {
     Swal.fire({
-      title: 'ERROR! Para autoeditarse hazlo desde Perfil!',
+      title: 'Para autoeditarse hacerlo desde el perfil!',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'

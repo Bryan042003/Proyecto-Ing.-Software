@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Admin } from '../models/Admin.model';
 import { PasarDatosService } from '../services/pasar-datos.service';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,22 +12,45 @@ import Swal from 'sweetalert2';
 export class ConfirmarEdicionAdminComponent implements OnChanges {
   @Input() admin!: Admin;
 
+
+  emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,}$/i;
+
   flagEditar = true;
   visible:boolean = true;
   changetype: boolean = true;
 
-  form: FormGroup;
+  constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) {}
 
-  constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) {
-    this.form = this.fb.group({
-      id: [''],
-      nombre: ['', [Validators.required, Validators.maxLength(255)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['']
-    });
+  form = this.fb.group({
+    id: [''],
+    nombre: ['', [Validators.required, Validators.maxLength(255)]],
+    correo: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(this.emailPattern)]],
+    password: ['',[Validators.required, Validators.maxLength(50), this.hasNumber, this.hasCapitalCase, this.hasEightCharacters]],
+    }
+  );
+
+  hasNumber(control: FormControl): {[s: string]: boolean} | null {
+    const numReg = /\d/;
+    if (!control.value || !numReg.test(control.value)) {
+      return { noNumber: true };
+    }
+    return null;
   }
 
+  hasCapitalCase(control: FormControl): {[s: string]: boolean} | null {
+    const capitalReg = /[A-Z]/;
+    if (!control.value || !capitalReg.test(control.value)) {
+      return { noCapitalCase: true };
+    }
+    return null;
+  }
 
+  hasEightCharacters(control: FormControl): {[s: string]: boolean} | null {
+    if (!control.value || control.value.length < 8) {
+      return { lessThanEightCharacters: true };
+    }
+    return null;
+  }
 
   getPasswordStrength() {
     let contraActual = (<HTMLInputElement>document.getElementById("password")).value;
@@ -72,7 +95,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       this.form.patchValue({
         id: this.admin.id,
         nombre: this.admin.nombre,
-        email: this.admin.correo,
+        correo: this.admin.correo,
         password: ''
       });
     }
@@ -82,7 +105,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
   desactivarEditar(){
     this.flagEditar = false;
     this.pasarDatosService.setActivarOriginalVistaAdmin(true);
-    
+
   }
 
   async onSubmit() {
@@ -92,13 +115,13 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       this.showAlertLoad();
 
       const formDataAdmin = new FormData();
-      formDataAdmin.append('id', datosActualizados.id);
-      formDataAdmin.append('nombre', datosActualizados.nombre);
-      formDataAdmin.append('correo', datosActualizados.email);
+      formDataAdmin.append('id', this.form.get('id')?.value || '');
+      formDataAdmin.append('nombre', this.form.get('nombre')?.value || '');
+      formDataAdmin.append('correo', this.form.get('correo')?.value || '');
 
       const formDataPassword = new FormData();
-      formDataPassword.append('id', datosActualizados.id);
-      formDataPassword.append('password', datosActualizados.password);
+      formDataPassword.append('id', this.form.get('id')?.value || '');
+      formDataPassword.append('password', this.form.get('password')?.value || '');
 
       // Realizar la llamada para actualizar nombre y correo
       this.pasarDatosService.getEditarAdmin(formDataAdmin).subscribe(
@@ -133,6 +156,8 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
       icon: 'success',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
+    }).then(() => {
+      window.location.reload();
     });
   }
 
