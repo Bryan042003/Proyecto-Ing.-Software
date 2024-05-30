@@ -310,9 +310,6 @@ getNombreAdminPerfil() {
 }
 
 setContraAdminPerfil(contra: string) {
-  console.log("Entramos a guardar contraseña pasardatos 1")
-  console.log(contra)
-  console.log("Entramos a guardar contraseña pasardatos 2")
   this.contraAdminPerfil = contra;
 }
 
