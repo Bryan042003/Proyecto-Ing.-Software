@@ -58,12 +58,12 @@ export class PerfilComponent {
     Admin.append('nombre', this.nombre);
     this.pasarDatosService.editarNombreAdminPerfil(Admin).subscribe(
       (res) => {
-        this.showAlertSuccessContra();
+        this.showAlertSuccessNombre();
         this.pasarDatosService.setNombreAdminPerfil(this.nombre);
       },
       (error) => {
         Swal.close();
-        this.showAlertErrorContra();
+        this.showAlertErrorNombre();
       }
     );
   }
