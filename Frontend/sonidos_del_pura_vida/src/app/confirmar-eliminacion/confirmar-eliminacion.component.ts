@@ -26,13 +26,11 @@ export class ConfirmarEliminacionComponent {
   });
 
   async onSubmit() {
-    console.log("estoy en confirmacion de eliminacion de audio");
-    console.log(this.audio);
+   
 
 
     if (this.form.valid) {
       const motivo = this.form.get('motivo')?.value || '';
-      console.log(motivo);
 
 
       this.showAlertLoad();
@@ -46,7 +44,6 @@ export class ConfirmarEliminacionComponent {
 
         },
         (error) => {
-          console.log(error);
           Swal.close();
           this.showAlertError();
         }
@@ -102,7 +99,6 @@ export class ConfirmarEliminacionComponent {
 
 
   desactivarEliminar() {
-    console.log(this.idAdmin);
     this.pasarDatosService.setFlagConfirmarEliminacion(false);
   }
 
