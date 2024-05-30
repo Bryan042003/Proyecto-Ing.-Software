@@ -25,8 +25,6 @@ export class DashboardComponent implements OnInit{
   guardando = this.pasarDatosService.setNombreAdminPerfil(this.admin1.nombre);
 
   seleccionarEspacio(espacioSeleccionado: string) {
-    console.log("Contra admin guardada")
-    console.log(this.pasarDatosService.getContraAdminPerfil())
 
     switch (espacioSeleccionado) {
       case 'perfil':
@@ -58,7 +56,6 @@ export class DashboardComponent implements OnInit{
 
   toggleSidebar() {
     this.sidebarActive = !this.sidebarActive;
-    console.log(this.sidebarActive);
   }
 
   cerrarSesion() {
@@ -70,8 +67,6 @@ export class DashboardComponent implements OnInit{
     this.admin = this.pasarDatosService.getAdminFromToken();
     this.obteniendoContraseña = this.pasarDatosService.getContraAdminPerfil();
     this.pasarDatosService.setContraAdminPerfil(this.obteniendoContraseña);
-    console.log("Estamos en dashboard")
-    console.log(this.obteniendoContraseña)
 
   }
 

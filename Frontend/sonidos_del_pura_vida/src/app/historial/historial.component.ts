@@ -167,7 +167,6 @@ export class HistorialComponent {
   }
 
   filtrarPorFecha(startDate: string, endDate: string): void {
-    console.log(startDate, endDate);
     this.estadoFiltroFecha = true;
     this.estadoFiltroAccion = false;
     this.audiosFiltradosFecha = this.historial.filter(historial => {

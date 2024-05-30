@@ -129,7 +129,6 @@ cargarAdmins() {
   this.pasarDatosService.getAdmins().subscribe(
     (res: any) => {
       this.admins = res;
-      console.log("entrando a cargarAdmins");
       this.paginateAdmin();
     }
   );
