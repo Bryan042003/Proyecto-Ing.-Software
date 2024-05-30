@@ -30,7 +30,6 @@ export class ConfirmarEliminacionAdminComponent {
 
     if (this.form.valid) {
       const motivo = this.form.get('motivo')?.value || '';
-      console.log(motivo);
 
 
       this.showAlertLoad();
@@ -44,7 +43,6 @@ export class ConfirmarEliminacionAdminComponent {
 
         },
         (error) => {
-          console.log(error);
           Swal.close();
           this.showAlertError();
         }
@@ -64,7 +62,6 @@ export class ConfirmarEliminacionAdminComponent {
 
         },
         (error) => {
-          console.log(error);
           Swal.close();
           this.showAlertError();
         }

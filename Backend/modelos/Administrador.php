@@ -33,7 +33,7 @@ class Administrador{
     }
 
     public function obtenerAdmin($id){
-        $query = "SELECT * FROM " . $this->vista . " WHERE admin_id = :id";
+        $query = "SELECT * FROM " . $this->tabla . " WHERE id = :id";
         $stmt = $this->conn->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

@@ -256,7 +256,6 @@ export class FormCrearAudioComponent {
 
           },
           (error) => {
-            console.log(error);
             Swal.close();
             this.showAlertError();
           }

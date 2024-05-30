@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json; charset=UTF-8");
 include_once '../../config/database.php';
 include_once '../../modelos/Administrador.php';
@@ -7,7 +8,7 @@ include_once '../../modelos/Administrador.php';
 
 $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $db = Database::getInstance();
-$admin = new Admin($db);
+$admin = new Administrador($db);
 
 $id = $_GET['id']; // Por medio id
 
@@ -15,7 +16,7 @@ $adminObtenido = $admin->obtenerAdmin($id);
 
 if($adminObtenido){
     $adminData = array(
-        "id" => $adminObtenido['admin_id'],
+        "id" => $adminObtenido['id'],
         "nombre" => $adminObtenido['nombre'],
         "correo" => $adminObtenido['correo'],
         "password" => $adminObtenido['password'],

@@ -42,8 +42,7 @@ export class GestionDeAudiosComponent {
 
     this.pasarDatosService.getFlagEditarDatosAudio().subscribe(flag => {
       this.flagConfirmarEdicionDatos = flag;
-      console.log(" flag de edicion de datos:");
-      console.log(this.flagConfirmarEdicionDatos);
+     
     });
 
 

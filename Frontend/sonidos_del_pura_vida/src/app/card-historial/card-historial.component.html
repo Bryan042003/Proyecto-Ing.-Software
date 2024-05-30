@@ -1,23 +1,34 @@
-<div class="card d-flex" style="justify-content: center; width: 100%; height: 100%;" >
+<div class="card d-flex" style="justify-content: center; width: 100%; height: auto;">
 
     <div class="card-body" style="display: flex; place-content: center;">
         <h5 class="card-title">{{audiohistorial.titulo}}</h5>
     </div>
-    <div class="row">
+    <div class="row d-flex" style="justify-content: center;">
+        <div class="col-xxl-5 col-sm-6 col-md-5 col-xl-7 col-11 d-flex justify-content-center">
 
-        <div class="col-xxl-5 col-sm-6 col-md-5 col-xl-7 col-11 d-flex justify-content-center align-items-center"
-            style="margin-top: 10px;">
-
-            <div style="text-align:start;">
-                <p>Autor: {{ audiohistorial.autor }}</p>
-                <p>Motivo: {{ audiohistorial.motivo }}</p>
+            <div style="text-align:center;">
+                <p>Datos administrador: </p>
+                <p>Id Admin: {{admin?.id}}</p>
+                <p>Nombre: {{admin?.nombre}}</p>
+                <p>Correo: {{admin?.correo}}</p>
             </div>
         </div>
-        <div class="col d-flex" style="text-align: center;align-items: center; place-content: center;">
-            <p [ngStyle]="{'color': audiohistorial.accion == 'Eliminado' ? 'red' : audiohistorial.accion == 'Modificado' ? 'blue' : 'none'}" > {{ audiohistorial.accion }}</p>        </div>
+        <div class="col-xxl-5 col-sm-6 col-md-5 col-xl-7 col-11 d-flex justify-content-center">
+            <div style="text-align:center;">
+                <p>Datos del audio: </p>
+                <p>Autor: {{ audiohistorial.autor }}</p>
+                <p style="max-height: 63px; overflow-y: auto;">Motivo: {{ audiohistorial.motivo }}</p>
+            </div>
+        </div>
     </div>
-    <div class="row d-flex"
-        style="place-content: center; align-items: center;justify-content: center; width: 100%;text-align: center;">
-        <p>Fecha de edición: {{ audiohistorial.fecha_accion.toString().split(' ')[0] }}</p>    
+    <div class="row d-flex justify-content-center" style="width: 100%; margin: 5px;">
+        <div class="col-sm-6" style="text-align:center;">
+            <p>Fecha de edición: {{ audiohistorial.fecha_accion.toString().split(' ')[0] }}</p>
+        </div>
+        <div class="col-sm-6 r" style="text-align:center;">
+            <p [ngStyle]="{'color': audiohistorial.accion == 'Eliminado' ? 'red' : audiohistorial.accion == 'Modificado' ? 'blue' : 'none'}">
+                {{ audiohistorial.accion }}
+            </p>
+        </div>
     </div>
 </div>
