@@ -23,7 +23,7 @@ export class ConfirmarEdicionAdminComponent implements OnChanges {
 
   form = this.fb.group({
     id: [''],
-    nombre: ['', [Validators.required, Validators.maxLength(255)]],
+    nombre: ['', [Validators.required, Validators.maxLength(50)]],
     correo: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(this.emailPattern)]],
     password: ['',[Validators.required, Validators.maxLength(50), this.hasNumber, this.hasCapitalCase, this.hasEightCharacters]],
     }
