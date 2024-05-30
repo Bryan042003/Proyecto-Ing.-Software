@@ -189,7 +189,12 @@ p {
 }
 
 .sidebar {
-    animation: 1s ease-out 0s 1 slideInFromLeft;
+    animation: 0.5s ease-out 0s 1 slideInFromLeft;
+    background-color: #161C25;
+    height: 100%;
+    width: 100%;
+
+
 }
 
 #botonMenu {
@@ -202,6 +207,11 @@ p {
     background-color: #EDEFF6;
     width:100%;
     height: 100%;
+}
+
+#salir{
+    margin-top: 180px;
+
 }
 
 @media only screen and (max-width: 1024px) {
@@ -221,31 +231,35 @@ p {
         height: 5%;
     }
 
-    #hr{
-        display: none !important;
-    }
     .music {
         width: 200px;
         height: 100px;
     }
     
-
-    .col-md-3{
-        height: 100%;
-    }
-
     .sidebar {
         background-color: #1C232F;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        display: none;
-        animation: none;
-
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 300px; 
+      
+        padding: 20px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateX(-100%);
+        opacity: 0; 
+        visibility: hidden; 
     }
+    
     .sidebar.active {
-        display: block;
-        animation: none;
+        transform: translateX(0); 
+        opacity: 1;
+        visibility: visible; 
+        height: auto;
+        /* overflow: auto;  */
     }
 
     #botonMenu{
@@ -267,14 +281,6 @@ p {
         height: auto;
         flex-direction: column;
     }
-    #sidebarCollapse{
-        width: 100% !important;
-        animation: none;
-    }
-    #salir {
-        margin-top: 0;
-      }
-
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

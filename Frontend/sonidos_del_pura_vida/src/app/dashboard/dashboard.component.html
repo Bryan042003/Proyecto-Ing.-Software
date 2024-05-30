@@ -12,10 +12,10 @@
                     </button>
                 </div>
                 
-                <div  [ngClass]="{'active': sidebarActive}" class=" sidebar text-white" style="background-color:#1C232F;height: 100%; width: 100%;" >
+                <div  [ngClass]="{'active': sidebarActive}" class=" sidebar text-white">
                     
 
-                    <div class="collapse d-xl-block" id="sidebarCollapse">
+                    <div>
 
                         <div id="imagen" class="d-flex">
                             <div class="music">
@@ -125,7 +125,7 @@
                             </li>
                         </ul>
 
-                        <ul id="salir" class="list-group" style="margin-top: 180px;">
+                        <ul id="salir" class="list-group" style="margin-top: 100px;">
                             <hr>
                             <li class="list-group-item" (click)="cerrarSesion()">
                                 <a class="nav-link d-flex text-white">
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-12 col-lg-10" style="height: 100vh; border: none;">
+            <div class="col-12  col-lg-10" style="height: 100vh; border: none;">
                 <!-- Main content area -->
                 <div class="content" style="height: 100%; border: none;">
                     <div *ngIf="flagPerfil; else gestionDeAudiosBlock">
