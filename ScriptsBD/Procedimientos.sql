@@ -196,12 +196,6 @@ END$$
 DELIMITER ;
 
 
--- Ejecutar antes de ejecutar InsertarAdministrador
-
-ALTER TABLE administrador MODIFY password VARCHAR(255);
-
--------------------------------------------------
-
 DELIMITER $$
 
 CREATE PROCEDURE InsertarAdministrador(

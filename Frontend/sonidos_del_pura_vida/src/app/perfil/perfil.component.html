@@ -8,8 +8,8 @@
       <img src="assets/imagenes/volcano.jpg" class="portada">
     </div>
 
-    <div class="row mt-4 d-flex justify-content-center align-items-center">
-      <div class="col-xxl-6 col-md-12">
+    <div class="row mt-4 d-flex justify-content-center  ">
+      <div class="col-xxl-6 col-lg-10 col-md-10 d-flex justify-content-center">
         <div class="cardInfo position-relative">
           <div *ngIf="botonEditarContraInactivo; else botonEditarContraActivo">
             <button class="position-absolute top-1 end-0 mt-2"
@@ -57,8 +57,8 @@
         </div>
       </div>
 
-      <div class="col-xxl-6 col-md-12" *ngIf="CapaCambiarContraPerfil">
-        <form action=" " (ngSubmit)="editarContraPerfil()" [formGroup]="form">
+      <div class="col-xxl-6 col-lg-10 col-md-10" *ngIf="CapaCambiarContraPerfil">
+        <form (ngSubmit)="editarContraPerfil()" [formGroup]="form">
           <div class="cardInfo position-relative">
             <div class="card-body">
               <div class="d-flex align-items-center">

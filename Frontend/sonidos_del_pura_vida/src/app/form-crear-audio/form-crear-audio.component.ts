@@ -308,7 +308,7 @@ export class FormCrearAudioComponent {
 
   showAlertError() {
     Swal.fire({
-      title: 'Error al guardar el audio',
+      title: 'Error al guardar el audio. Revise su conexión a internet y vuelva a intentarlo.',
       icon: 'error',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#001148'
