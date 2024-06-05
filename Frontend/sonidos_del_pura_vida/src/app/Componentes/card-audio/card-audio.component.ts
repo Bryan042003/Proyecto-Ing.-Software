@@ -9,6 +9,7 @@ import { PasarDatosService } from '../../services/pasar-datos.service';
 })
 export class CardAudioComponent {
   @Input() audio!: Audio;
+  @Input() esAdmin!: boolean;
 
   constructor(private pasarDatosService: PasarDatosService) { }
 

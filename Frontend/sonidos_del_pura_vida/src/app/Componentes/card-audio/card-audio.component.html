@@ -7,13 +7,20 @@
     </div>
 
     <div class="col-xxl-5 col-sm-6 col-md-5 col-xl-7 col-11 d-flex justify-content-center align-items-center" style="margin-top: 10px;">
-      <button data-bs-toggle="modal" data-bs-target="#verinfoaudios"
+      <button *ngIf="!esAdmin" data-bs-toggle="modal" data-bs-target="#verinfoaudios"
         style="border:none; background: transparent;text-align:start; word-break: break-word;" (click)="ubicarAudio()">
         <h5> {{ audio.titulo }}</h5>
         <p>Provincia: {{ audio.provincia }}</p>
         <p>Cantón: {{ audio.canton }}</p>
         <p>Autor: {{ audio.autor }}</p>
       </button>
+
+      <div *ngIf="esAdmin" style="border:none; background: transparent;text-align:start; word-break: break-word;">
+        <h5> {{ audio.titulo }}</h5>
+        <p>Provincia: {{ audio.provincia }}</p>
+        <p>Cantón: {{ audio.canton }}</p>
+        <p>Autor: {{ audio.autor }}</p>
+      </div>
     </div>
     <div class="col d-flex" style="text-align: center;align-items: center; place-content: center;">
       <a [href]="audio.ruta_audio" download>
