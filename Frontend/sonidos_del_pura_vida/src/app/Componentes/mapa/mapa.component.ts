@@ -43,7 +43,7 @@ export class MapaComponent implements OnInit {
 
         const marker = new Marker([latitud, longitud])
           .bindPopup(`
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 300px; margin-bottom: 10px;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 300px; margin-bottom: 10px; word-break: break-word">
           <h5 style="margin-top: 10px;"><strong>${audio.titulo}</strong></h5>
           <p><strong>Autor</strong> ${audio.autor}</p>
           <p><strong>Provincia</strong> ${audio.provincia}</p>
@@ -63,7 +63,7 @@ export class MapaComponent implements OnInit {
 
         const marker = new Marker([latitud, longitud])
           .bindPopup(`
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 300px; margin-bottom: 10px;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 300px; margin-bottom: 10px; word-break: break-word">
           <h5 style="margin-top: 10px;"><strong>${audio.titulo}</strong></h5>
           <p><strong>Autor</strong> ${audio.autor}</p>
           <p><strong>Provincia</strong> ${audio.provincia}</p>
