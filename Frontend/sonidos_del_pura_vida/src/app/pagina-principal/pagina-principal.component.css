@@ -80,6 +80,10 @@ p{
         width: 600px;
         height: 150px;
     }
+
+    .mapa{
+        margin-top: 2rem;
+    }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
