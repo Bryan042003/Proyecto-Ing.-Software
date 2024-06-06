@@ -175,6 +175,7 @@ export class FormCrearAudioComponent {
   quitarImagen() {
     this.imageSrc = '';
     this.form.controls.imagen.setValue('');
+    this.imagenFile = new File([], '');
 
   }
 

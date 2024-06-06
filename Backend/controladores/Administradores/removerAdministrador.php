@@ -11,17 +11,23 @@ include_once '../../modelos/Administrador.php';
 $db = Database::getInstance();
 $admin = new Administrador($db);
 
-$id = $_GET['id'];
+if(isset($_GET["id"])){
+    $id = $_GET['id'];
 
-$resultado = $admin->removerAdministrador($id);
+    $resultado = $admin->removerAdministrador($id);
 
-if($resultado){
-    echo json_encode(
-        array("mensaje" => "Administrador eliminado exitosamente")
-    );
+    if($resultado){
+        echo json_encode(
+            array("mensaje" => "Administrador eliminado exitosamente")
+        );
+    } else {
+        echo json_encode(
+            array("error" => "No se pudo eliminar el administrador")
+        );
+    }
 } else {
     echo json_encode(
-        array("error" => "No se pudo eliminar el administrador")
+        array("error" => "No se recibieron los datos del formulario correctamente") 
     );
 }
 ?>

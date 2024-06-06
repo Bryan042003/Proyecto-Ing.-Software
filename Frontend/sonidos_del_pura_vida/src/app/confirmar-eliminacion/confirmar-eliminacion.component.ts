@@ -15,27 +15,19 @@ export class ConfirmarEliminacionComponent {
 
   constructor(private fb: FormBuilder, public pasarDatosService: PasarDatosService) { }
   @Input() audio!: Audio;
- 
+
   private idAdmin: number = Number(this.pasarDatosService.getAdminFromToken().id);
-
-
-  
 
   form = this.fb.group({
     motivo: ['', [Validators.required, Validators.maxLength(255)]],
   });
 
   async onSubmit() {
-   
-
 
     if (this.form.valid) {
       const motivo = this.form.get('motivo')?.value || '';
-
-
       this.showAlertLoad();
-      
-      this.pasarDatosService.getEliminarAudio(this.audio.id, this.idAdmin, motivo).subscribe(
+      this.pasarDatosService.getEliminarAudio(this.audio.id, this.idAdmin, motivo, this.audio.ruta_audio, this.audio.ruta_imagen).subscribe(
         (res) => {
           Swal.close();
           this.showAlertSuccess();
@@ -44,6 +36,7 @@ export class ConfirmarEliminacionComponent {
 
         },
         (error) => {
+          console.error(error);
           Swal.close();
           this.showAlertError();
         }

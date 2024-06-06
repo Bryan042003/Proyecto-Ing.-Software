@@ -34,7 +34,7 @@ export class ConfirmarEliminacionAdminComponent {
 
       this.showAlertLoad();
 
-      this.pasarDatosService.getEliminarAudio(this.audio.id, this.idAdmin, motivo).subscribe(
+      this.pasarDatosService.getEliminarAudio(this.audio.id, this.idAdmin, motivo, this.audio.ruta_audio, this.audio.ruta_imagen).subscribe(
         (res) => {
           Swal.close();
           this.showAlertSuccess();

@@ -104,9 +104,9 @@ export class PasarDatosService {
     return this.http.get(this.urlAudios + 'obtenerCantonByProvincia.php?id_provincia=' + idProvincia);
   }
 
-  getEliminarAudio(idAudio: number, idAdministrador: number, Motivo: string): Observable<any> {
-    return this.http.get(this.urlAudios + 'removerAudio.php?id=' + idAudio + '&id_administrador=' + idAdministrador + '&motivo=' + Motivo);
-  }
+  getEliminarAudio(idAudio: number, idAdministrador: number, Motivo: string, rutaAudio: string, rutaImagen: string): Observable<any> {
+    return this.http.get(this.urlAudios + 'removerAudio.php?id=' + idAudio + '&id_administrador=' + idAdministrador + '&motivo=' + Motivo + '&ruta_audio=' + rutaAudio + '&ruta_imagen=' + rutaImagen);
+}
 
   getEditarAudio(audio: FormData): Observable<any> {
     return this.http.post(this.urlAudios + 'editarAudio.php', audio);
