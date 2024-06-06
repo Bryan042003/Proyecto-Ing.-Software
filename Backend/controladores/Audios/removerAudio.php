@@ -45,6 +45,10 @@ if(isset($_GET["id"], $_GET["id_administrador"], $_GET["motivo"], $_GET["ruta_au
                 );
             }
         }
+    } else {
+        echo json_encode(
+            array("error" => "No se pudo eliminar el audio") 
+        );
     }
 } else {
     echo json_encode(
