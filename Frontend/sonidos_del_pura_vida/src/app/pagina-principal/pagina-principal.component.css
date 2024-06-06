@@ -66,9 +66,19 @@ p{
 
 }
 
+.logo{
+    max-width: 800px;
+    width: 100%;
+}
+
 @media only screen and (max-width:600px){
     .fotoTec{
         max-width: 100%;
+    }
+
+    .logo{
+        width: 450px;
+        height: 150px;
     }
 }
 
