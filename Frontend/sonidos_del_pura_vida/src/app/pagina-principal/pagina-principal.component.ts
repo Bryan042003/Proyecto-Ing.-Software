@@ -11,7 +11,7 @@ import { FormCrearAudioComponent } from '../form-crear-audio/form-crear-audio.co
 export class PaginaPrincipalComponent implements OnInit {
   audios: Audio[] = [];
 
-  audiosPorPagina: number = 3;
+  audiosPorPagina: number = 10;
   paginas: any[] = []; 
   paginaActual: number = 0;
   paginaGrupoActual: number = 0;
