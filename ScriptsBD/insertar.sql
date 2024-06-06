@@ -8,16 +8,15 @@ INSERT INTO provincia (nombre) VALUES
 ('Heredia'),
 ('Guanacaste'),
 ('Puntarenas'),
-('Limón');
-('Indefinido'),
+('Limón'),
+('Indefinido');
 
 
 -- Canton ----------------------------------------------------------------------------
 
 -- San José
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido', 1),
-('Central', 1),
+('San José', 1),
 ('Escazú', 1),
 ('Desamparados', 1),
 ('Puriscal', 1),
@@ -41,7 +40,6 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Alajuela
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido',2),
 ('Alajuela', 2),
 ('San Ramón', 2),
 ('Grecia', 2),
@@ -61,7 +59,6 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Cartago
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido',3),
 ('Cartago', 3),
 ('Paraíso', 3),
 ('La Unión', 3),
@@ -73,7 +70,6 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Heredia
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido',4),
 ('Heredia', 4),
 ('Barva', 4),
 ('Santo Domingo', 4),
@@ -87,7 +83,6 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Guanacaste
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido',5),
 ('Liberia', 5),
 ('Nicoya', 5),
 ('Santa Cruz', 5),
@@ -102,7 +97,6 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Puntarenas
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido',6),
 ('Puntarenas', 6),
 ('Esparza', 6),
 ('Buenos Aires', 6),
@@ -117,7 +111,6 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 
 -- Limón
 INSERT INTO canton (nombre, id_provincia) VALUES
-('Indefinido',7),
 ('Limón', 7),
 ('Pococí', 7),
 ('Siquirres', 7),
@@ -128,4 +121,11 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 --
 
 INSERT INTO canton (nombre, id_provincia) VALUES
+('Indefinido',1),
+('Indefinido',2),
+('Indefinido',3),
+('Indefinido',4),
+('Indefinido',5),
+('Indefinido',6),
+('Indefinido',7),
 ('Indefinido',8);
