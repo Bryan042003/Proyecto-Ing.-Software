@@ -58,7 +58,7 @@ export class LoginComponent {
 
   showAlertSuccess() {
     return Swal.fire({
-      title: 'Aunteticación exitosa',
+      title: 'Autenticación exitosa',
       icon: 'success',
       timer: 1000,
       showConfirmButton: false
