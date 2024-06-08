@@ -107,7 +107,7 @@ INSERT INTO canton (nombre, id_provincia) VALUES
 ('Coto Brus', 6),
 ('Parrita', 6),
 ('Corredores', 6),
-('Monte Verde', 6),
+('Monteverde', 6),
 ('Puerto Jiménez', 6),
 ('Garabito', 6);
 
