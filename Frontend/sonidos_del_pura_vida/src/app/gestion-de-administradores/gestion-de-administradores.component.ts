@@ -153,6 +153,7 @@ activarVistaInfoAdmin(admin: Admin) {
   this.eliminarAdmin = false;
   this.editarAdmin = false;
   this.original = false;
+  this.pasarDatosService.setAdmin(admin);
 }
 }
 

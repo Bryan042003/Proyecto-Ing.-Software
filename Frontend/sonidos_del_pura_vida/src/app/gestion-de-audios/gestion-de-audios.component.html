@@ -25,7 +25,7 @@
                         </ul>
                     </div>
 
-                    <div class="container" style=" overflow-y: auto; width: 90%; height:100%;padding: 20px;">
+                    <div class="container" style=" overflow-y: auto; width: 90%; height:100%;padding: 20px; cursor: pointer;">
                         <div *ngFor="let audio of paginas[paginaActual]" (click)="activarVistaInfoAudio(audio)">
                             <app-card-audio [audio]="audio" [esAdmin]="true"></app-card-audio>
                         </div>

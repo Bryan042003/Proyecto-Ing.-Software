@@ -29,7 +29,7 @@
 
                     
 
-                    <div class="container" style=" overflow-y: auto; width: 90%; height:100%;padding: 20px;">
+                    <div class="container" style=" overflow-y: auto; width: 90%; height:100%;padding: 20px; cursor: pointer;">
                         <div *ngFor="let admin of paginas[paginaActual]" (click)="activarVistaInfoAdmin(admin)">
                             <app-card-admin [admin]="admin"></app-card-admin>
                         </div>
