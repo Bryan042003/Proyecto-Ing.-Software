@@ -81,12 +81,12 @@ p{
         height: 150px;
     }
 
-    .mapa{
+    .filtro{
         margin-top: 2rem;
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
     #drop-area {
         width: 100%;
         height: auto;
@@ -99,6 +99,10 @@ p{
 
     .col-12{
         margin-top: 1rem;
+    }
+
+    .filtro{
+        margin-top: 2rem;
     }
 }
 

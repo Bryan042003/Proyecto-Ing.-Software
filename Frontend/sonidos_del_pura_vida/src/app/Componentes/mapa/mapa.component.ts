@@ -28,7 +28,7 @@ export class MapaComponent implements OnInit {
 
   private cargarMapa() {
     if (!this.map) {
-      this.map = new Map('map').setView([9.9634, -84.1003], 9);
+      this.map = new Map('map').setView([9.9634, -84.1003], 8);
       tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
