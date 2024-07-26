@@ -11,3 +11,14 @@ Base de Datos: MySQL
 Backend: PHP vanilla usando como servidor Apache. Se siguió los principios de la arquitectura Modelo-Vista-Controlador (MVC)
 
 Frontend: Angular.
+
+CI-CD: GitHub Actions
+
+Deployment: Oracle Cloud Infrastructure (OCI) usando una máquina virtual con Ubuntu 20.04.
+
+Desarrolladores:
+
+Richard León Chinchilla.
+Bryan Castro Solís.
+Nelson Alvarado Navarro.
+Gloriana Bustamante Varela.
