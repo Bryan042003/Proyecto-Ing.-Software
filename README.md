@@ -16,9 +16,11 @@ Para la construcción de la aplicación se utilizó la siguiente estructura:
 
 **Deployment**: Oracle Cloud Infrastructure (OCI) usando una máquina virtual con Ubuntu 20.04.
 
+**Aplicación**: http://150.230.173.90/
+
 **Desarrolladores**:
 
-*Richard León Chinchilla.
-*Bryan Castro Solís.
-*Nelson Alvarado Navarro.
-*Gloriana Bustamante Varela.
+- Richard León Chinchilla.
+- Bryan Castro Solís.
+- Nelson Alvarado Navarro.
+- Gloriana Bustamante Varela.
