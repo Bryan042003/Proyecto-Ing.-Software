@@ -6,19 +6,19 @@ Mapa sonoro interactivo de Costa Rica para preservar y promover la diversidad ac
 
 Para la construcción de la aplicación se utilizó la siguiente estructura:
 
-Base de Datos: MySQL
+**Base de Datos**: MySQL
 
-Backend: PHP vanilla usando como servidor Apache. Se siguió los principios de la arquitectura Modelo-Vista-Controlador (MVC)
+**Backend**: PHP vanilla usando como servidor Apache. Se siguió los principios de la arquitectura Modelo-Vista-Controlador (MVC)
 
-Frontend: Angular.
+**Frontend**: Angular.
 
-CI-CD: GitHub Actions
+**CI-CD**: GitHub Actions
 
-Deployment: Oracle Cloud Infrastructure (OCI) usando una máquina virtual con Ubuntu 20.04.
+**Deployment**: Oracle Cloud Infrastructure (OCI) usando una máquina virtual con Ubuntu 20.04.
 
-Desarrolladores:
+**Desarrolladores**:
 
-Richard León Chinchilla.
-Bryan Castro Solís.
-Nelson Alvarado Navarro.
-Gloriana Bustamante Varela.
+*Richard León Chinchilla.
+*Bryan Castro Solís.
+*Nelson Alvarado Navarro.
+*Gloriana Bustamante Varela.
