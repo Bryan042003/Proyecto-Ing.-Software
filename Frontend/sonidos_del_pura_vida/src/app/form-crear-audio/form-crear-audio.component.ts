@@ -187,7 +187,7 @@ export class FormCrearAudioComponent {
       .then(response => response.json())
       .then(data => {
         let canton = data.address.county;
-        let provincia = data.address.province;
+        let provincia = data.address.province?data.address.province:data.address.state;
 
         if(provincia === undefined ){
           provincia = 'Indefinido';
@@ -197,6 +197,7 @@ export class FormCrearAudioComponent {
         }
 
         canton = canton.replace('Cantón ', '');
+        canton = canton.replace('de ', '');
         provincia = provincia.replace('Provincia ', '');
         provincia = provincia.replace('de ', '');
 
