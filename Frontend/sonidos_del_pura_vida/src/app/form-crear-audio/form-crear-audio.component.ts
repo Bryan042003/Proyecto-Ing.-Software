@@ -242,7 +242,6 @@ export class FormCrearAudioComponent {
 
         if (this.imagenFile)
           audio.append('imagen', this.imagenFile, this.imagenFile.name);
-
         this.showAlertLoad();
         this.pasarDatosService.addAudio(audio).subscribe(
           (res) => {
