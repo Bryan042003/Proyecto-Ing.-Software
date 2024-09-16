@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
-    baseUrl: 'http://150.230.173.90/sonidosPV/Backend/',
-    sitekeyCaptcha: '6LeAfMkpAAAAAHBJGIOjYKPst-9vADbmFqgk21zM'
+    baseUrl: 'http://129.80.51.89/sonidosPV/Backend/',
+    sitekeyCaptcha: '6LcxmTAqAAAAALY_XhQNMrm3618pQ2u9mOjpLAyH'
   };
   
   
